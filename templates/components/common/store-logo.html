@@ -1,13 +1,5 @@
 <a href="{{urls.home}}" class="header-logo__link">
-    {{#if settings.store_logo.image}}
-        {{#if theme_settings.logo_size '===' 'original'}}
-            <img class="header-logo-image-unknown-size" src="{{getImage settings.store_logo.image 'logo_size'}}" alt="{{settings.store_logo.title}}" title="{{settings.store_logo.title}}">
-        {{else}}
-            <div class="header-logo-image-container">
-                <img class="header-logo-image" src="{{getImage settings.store_logo.image 'logo_size'}}" alt="{{settings.store_logo.title}}" title="{{settings.store_logo.title}}">
-            </div>
-        {{/if}}
-    {{else}}
-        <span class="header-logo-text">{{settings.store_logo.title}}</span>
-    {{/if}}
+    <div class="header-logo-image-container">
+        <img class="header-logo-image" src="https://trello-attachments.s3.amazonaws.com/5fd12fdf6d56a10a216c120e/5fda5d9d4c638f64979c0900/6cfcbd887ca1e6e7f65bbfc3d01efa37/bdudemo-logo.png" alt="BDUDEMO" title="BDUDEMO">
+    </div>
 </a>
