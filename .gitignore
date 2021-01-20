@@ -1,4 +1,5 @@
 node_modules/
+package_lock.json
 .stencil
 .DS_Store
 assets/css-artifacts
