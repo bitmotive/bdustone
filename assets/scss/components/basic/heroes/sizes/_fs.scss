@@ -1,0 +1,18 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HERO > SIZES > SMALL
+
+\*  --------------------------------------------------------------------------  */
+&.fs {
+    padding: #{$gutterLg} 0;
+    height: 100vh;
+    @include flex(flex-end, null, null, column nowrap);
+    
+    @media #{$mediaMd} {
+        padding: #{$gutterLg * 1.5} 0;
+    }
+    
+    @media #{$mediaMd} {
+        padding: #{$gutterLg * 2} 0;
+    }
+}

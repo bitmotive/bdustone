@@ -1,0 +1,22 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - LAYOUT - HORIZONTAL - HAS UTILITY NAV
+
+\*  --------------------------------------------------------------------------  */
+nav {
+    align-self: stretch;
+    @include flex(flex-start, center, null, column nowrap);
+
+    @media #{$mediaFullHeader} {
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .main {
+            order: 1;
+        }
+
+        .utility {
+            order: 0;
+        }
+    }
+}

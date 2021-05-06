@@ -1,51 +1,56 @@
 {{#partial "page"}}
-<div class="login">
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <h1 class="page-heading">{{lang 'login.heading' }}</h1>
-    {{#if forms.login.error}}
-        {{> components/common/alert-error forms.login.error}}
-    {{/if}}
-    {{#if forms.login.success}}
-        {{> components/common/alert-success forms.login.success}}
-    {{/if}}
-    <div class="login-row">
-        <form class="login-form form" action="{{urls.auth.check_login}}" method="post">
-            {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
-            {{inject 'enterPass' (lang 'forms.validate.common.password')}}
-            <div class="form-field">
-                <label class="form-label" for="login_email">{{lang 'login.field_email'}}</label>
-                <input class="form-input" name="login_email" id="login_email" type="email">
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="login_pass">{{lang 'login.field_password'}}</label>
-                <input class="form-input" id="login_pass" type="password" name="login_pass" autocomplete="off">
-            </div>
-            <div class="form-actions">
-                <input type="submit" class="button button--primary" value="{{lang 'login.submit_value' }}">
-                <a class="forgot-password" href="{{urls.auth.forgot_password}}">{{lang 'login.forgot_password' }}</a>
-            </div>
-        </form>
-        {{#if settings.account_creation_enabled}}
-            <div class="new-customer">
-                <div class="panel">
-                    <div class="panel-header">
-                        <h2 class="panel-title">{{lang 'login.new_customer.heading' }}</h2>
-                    </div>
-                    <div class="panel-body">
-                        <p class="new-customer-intro">{{lang 'login.new_customer.intro' }}</p>
-                        <ul class="new-customer-fact-list">
-                            <li class="new-customer-fact">{{lang 'login.new_customer.fact1' }}</li>
-                            <li class="new-customer-fact">{{lang 'login.new_customer.fact2' }}</li>
-                            <li class="new-customer-fact">{{lang 'login.new_customer.fact3' }}</li>
-                            <li class="new-customer-fact">{{lang 'login.new_customer.fact4' }}</li>
-                            <li class="new-customer-fact">{{lang 'login.new_customer.fact5' }}</li>
-                        </ul>
-                        <a href="{{urls.auth.create_account}}"><button class="button button--primary">{{lang 'login.new_customer.create_account' }}</button></a>
-                    </div>
-                </div>
-            </div>
-        {{/if}}
+<header class="hero">
+    <div class="container">
+        {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h1>{{lang 'login.heading' }}</h1>
     </div>
-</div>
+</header>
+<section>
+    <div class="container">
+        <div class="row ha-center">
+            <div class="col-xs-12 col-md-6 col-xl-5">
+                {{#if settings.account_creation_enabled}}
+                        <h2>{{lang 'login.new_customer.heading' }}</h2>
+                        <div class="cnt">
+                            <p>{{lang 'login.new_customer.intro' }}</p>
+                            <ul>
+                                <li>{{lang 'login.new_customer.fact1' }}</li>
+                                <li>{{lang 'login.new_customer.fact2' }}</li>
+                                <li>{{lang 'login.new_customer.fact3' }}</li>
+                                <li>{{lang 'login.new_customer.fact4' }}</li>
+                            </ul>
+                            <a href="{{urls.auth.create_account}}" class=" create-account-btn btn-primary">{{lang 'login.new_customer.create_account' }}</a>
+                        </div>
+                {{/if}}
+            </div>
+            <div class="col-xs-12 col-md-6 col-xl-5">
+                <h2>{{lang 'login.heading2' }}</h2>
+                {{#if forms.login.error}}
+                    {{> components/global/alerts/error forms.login.error}}
+                {{/if}}
+                {{#if forms.login.success}}
+                    {{> components/global/alerts/success forms.login.success}}
+                {{/if}}
+                <form class="form l-above" action="{{urls.auth.check_login}}" method="post">
+                    {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
+                    {{inject 'enterPass' (lang 'forms.validate.common.password')}}
+                    <div class="form-el">
+                        <label class="form-label" for="login_email">{{lang 'login.field_email'}}</label>
+                        <input class="form-input" name="login_email" id="login_email" type="email">
+                    </div>
+                    <div class="form-el">
+                        <label class="form-label" for="login_pass">{{lang 'login.field_password'}}</label>
+                        <input class="form-input" id="login_pass" type="password" name="login_pass" autocomplete="off">
+                    </div>
+                    <div class="form-btns ha-left">
+                        <button type="submit" class="btn-primary btn-login">{{lang 'login.submit_value' }}</button>
+                        <a class="btn-txt sm" href="{{urls.auth.forgot_password}}">{{lang 'login.forgot_password' }}</a>
+                    </div>
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</section>
 {{/partial}}
 {{> layout/base}}

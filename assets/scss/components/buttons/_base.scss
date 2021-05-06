@@ -1,0 +1,67 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Buttons
+
+    These are used throughout the website to create a call to action for another element like
+    submitting a form, linking to another page, or linking to another element on the same page.
+    GENERIC BUTTON STYLES
+    This sets up the base of all our styles, it's also the btn-default styles
+
+\*  --------------------------------------------------------------------------  */
+[class*="btn-"] {
+    @include buttonBase;
+    
+    /*  ----------------------------------------------------------------------  *\
+
+        Button Arrow Options
+
+        @import 'icon/_icon-top';
+        @import 'icon/_icon-bottom';
+        @import 'icon/_icon-left';
+        @import 'icon/_icon-right';
+
+    \*  ----------------------------------------------------------------------  */
+
+    svg {
+        fill: currentColor;
+        margin: 0 0 0 remCalc(8);
+    }
+
+    &.btn-sm, &.sm {
+        font-size: remCalc(12);
+        padding: remCalc(8) remCalc(20);
+    }
+
+    @include hover {
+        cursor: pointer;
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    Button Color Options
+
+    @import 'colors/tag';
+    @import 'colors/success';
+    @import 'colors/danger';
+    @import 'colors/warning';
+
+\*  --------------------------------------------------------------------------  */
+@import 'colors/primary';
+@import 'colors/secondary';
+@import 'colors/tertiary';
+@import 'colors/text';
+@import 'dropdown';
+@import 'back-to-top';
+/*  --------------------------------------------------------------------------  *\
+
+    Buttons Animation Options
+
+\*  --------------------------------------------------------------------------  */
+//@import 'animations/_base';
+//@import 'animations/_fill';
+//@import 'animations/_press';
+//@import 'animations/_effects/_effect-1';
+//@import 'animations/_effects/_effect-2';
+//@import 'animations/_effects/_effect-3';
+//@import 'animations/_effects/_effect-4';
+//@import 'animations/_effects/_effect-5';

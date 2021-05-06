@@ -1,0 +1,43 @@
+/*  --------------------------------------------------------------------------  *\
+
+    BANNERS - LAYOUT - WITH IMAGE OVERLAP
+
+\*  --------------------------------------------------------------------------  */
+&.img-overlap {
+    
+    @media #{$mediaMd} {
+        @include flex(space-between, center, center, row nowrap);
+        border: none;
+        background: none;
+
+        > .img-w {
+            @include position(relative, 0);
+            @include flexItem(0, 0, auto, 0);
+            width: 75%;
+        }
+
+        > .cnt {
+            @include position(relative, 100);
+            @include flexItem(0, 0, auto, 0);
+            margin: 0 0 0 -10%;
+            width: 35%;
+            border: .2rem solid $neutral-2;
+            background: $white;
+        }
+
+        &.alt, &:nth-child(even) {
+
+            > .img-w {
+                order: 1;
+            }
+            
+            > .cnt {
+                margin: 0 -10% 0 0;
+            }
+        }
+        
+        + .img-overlap {
+            margin-top: #{$gutter * 2};
+        }
+    }
+}

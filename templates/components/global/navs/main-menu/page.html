@@ -1,0 +1,74 @@
+<li>
+    <a href="{{ url }}">
+        {{ name }}
+    </a>
+    {{#if children }}
+        <input type="checkbox" id="mainNav{{pascalcase name }}">
+        <label for="mainNav{{pascalcase name }}">
+            {{{lang 'header.main_nav.display_sub_nav' name=name}}}
+            <svg>
+                <use xlink:href="#icon-caret-right"></use>
+            </svg>
+        </label>
+        <div>
+            <ul>
+                <li>
+                    <label for="mainNav{{pascalcase name }}">
+                        <svg>
+                            <use xlink:href="#icon-caret-left"></use>
+                        </svg>
+                        {{lang 'header.main_nav.back_to_main'}}
+                    </label>
+                </li>
+                <li>
+                    <a href="{{url}}">{{name}}</a>
+                </li>
+                {{#each children}}
+                    <li>
+                        <a href="{{url}}">{{name}}</a>
+                        {{#if children}}
+                            <input type="checkbox" id="subNav{{pascalcase name }}">
+                            <label for="subNav{{pascalcase name }}">
+                                {{{lang 'header.main_nav.display_sub_nav' name=name}}}
+                                <svg>
+                                    <use xlink:href="#icon-caret-right"></use>
+                                </svg>
+                            </label>
+                            <ul>
+                                <li>
+                                    <label for="subNav{{pascalcase name }}">
+                                        <svg>
+                                            <use xlink:href="#icon-caret-left"></use>
+                                        </svg>
+                                        {{{lang 'header.main_nav.display_sub_nav' name=name}}}
+                                    </label>
+                                </li>
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                                {{#each children}}
+                                    <li>
+                                        <a href="{{url}}">{{name}}</a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    </li>
+                {{/each}}
+            </ul>
+            {{#unlessEq name compare="Commercial Sales"}}
+                <div class="card">
+                    <a href="{{lang (concat (concat 'header.main_nav.' (snakecase name)) '.ad.link_url')}}" class="img-w">
+                        <img src="{{cdn (lang (concat (concat 'header.main_nav.' (snakecase name)) '.ad.img'))}}" alt="{{lang (concat (concat 'header.main_nav.' (snakecase name)) '.ad.link_text')}}" />
+                    </a>
+                    <div class="cnt">
+                        <p class="title">{{lang (concat (concat 'header.main_nav.' (snakecase name)) '.ad.name')}}</p>
+                        <a href="{{lang (concat (concat 'header.main_nav.' (snakecase name)) '.ad.link_url')}}" class="btn-primary">
+                            {{lang (concat (concat 'header.main_nav.' (snakecase name)) '.ad.link_text')}}
+                        </a>
+                    </div>
+                </div>
+            {{/unlessEq}}
+        </div>
+    {{/if}}
+</li>

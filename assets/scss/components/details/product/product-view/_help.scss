@@ -1,0 +1,71 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - HELP
+
+\*  --------------------------------------------------------------------------  */
+.help {
+    background: $neutral-2;
+    font-size: remCalc(14);
+    line-height: (18 / 14);
+    padding: remCalc(20) remCalc(24);
+    margin: remCalc(24) 0 0;
+    color:$tertiary;
+    border-radius: 4px;
+
+    .help_message {
+        padding-right:remCalc(10);
+    }
+
+    li {
+        @include flex(center, top, null, row nowrap);
+        padding: 0;
+
+        svg {
+            flex-shrink: 0;
+            fill: $secondary;
+            width: remCalc(20);
+            height: remCalc(20);
+            margin: 0 remCalc(8) 0 0;
+        }
+
+        &:before {
+            display: none;
+        }
+
+        + li {
+            margin: remCalc(12) 0 0 0;
+            padding: remCalc(12) 0 0 0;
+            border-top: remCalc(1) solid $primary;
+        }
+
+        a {
+            margin: 0 0 0 remCalc(8);
+            text-decoration:underline;
+            @include hover {
+                color: $secondary;
+            };
+        }
+    }
+
+    @media (min-width: 1425px) {
+        ul {
+            @include flex(center, center, null, row nowrap);
+        }
+
+        li {
+
+            + li {
+                margin: 0 0 0 remCalc(20);
+                padding: 0 0 0 remCalc(21);
+                border-top: none;
+
+                &:before {
+                    display: block;
+                    height: remCalc(20);
+                    width: remCalc(1);
+                    background: $primary;
+                }
+            }
+        }
+    }
+}

@@ -1,23 +1,46 @@
 ---
+products:
 product:
     videos:
         limit: {{theme_settings.productpage_videos_count}}
     reviews:
         limit: {{theme_settings.productpage_reviews_count}}
     related_products:
-        limit: {{theme_settings.productpage_related_products_count}}
+        limit: 8
     similar_by_views:
-        limit: {{theme_settings.productpage_similar_by_views_count}}
+        limit: 8
 ---
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{inject "product" product}}
+{{inject "settings" settings}}
+
+<div itemscope itemtype="https://schema.org/Product" class="det-product">
+    <header class="overview">
+        <div class="container">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            {{> components/products/details/product-view }}
+        </div>
+    </header>
+    {{> components/products/details/sticky-info}}
+    {{!-- {{> components/products/details/jump-nav}} --}}
+    <section class="bg-grey">
+        <div class="container">
+            {{> components/products/details/descriptions/description-tabs }}
+        </div>
+    </section>
+    <section id="#CompleteYourOrder" class="default carousel-section">
+        <div class="container related-products">
+            {{> components/products/carousel-lists/related products=product.related_products currency_selector=currency_selector }}
+        </div>
+    </section>
+</div>
+{{> components/global/local-scripts/wishlist-removal-PDP }} 
+
+{{!-- 
 
     {{#each product.shipping_messages}}
-        {{> components/common/alert-info message}}
+        {{> components/global/alerts/info message}}
     {{/each}}
-
-    <div itemscope itemtype="http://schema.org/Product">
-        {{> components/products/product-view schema=true  }}
 
         {{{region name="product_below_content"}}}
 
@@ -31,5 +54,6 @@ product:
 
         {{> components/products/tabs}}
     </div>
+--}}
 {{/partial}}
 {{> layout/base}}

@@ -1,0 +1,47 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TESTIMONIALS/QUOTES - BUBBLE RIGHT
+
+\*  --------------------------------------------------------------------------  */
+&.bubble.q-right {
+    // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+    // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+    // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+    border-right: none;
+    // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+    // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+
+    .quote {
+        // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+        // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+        // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+        // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+        // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+        // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+    }
+
+    .attr {
+        // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+        // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+        // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+        // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+        // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+        // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+
+        &:before {
+            // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+            left: calc(100% + #{$gutter * 2});
+            top: 50%;
+            @include transform(translate(0, -50%));
+            // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+            // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+            border-top: #{$gutter} solid transparent;
+            border-right: #{$gutter} solid $neutral-light;
+            border-bottom: #{$gutter} solid transparent;
+            border-left: none;
+            // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+            // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+            // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+        }
+    }
+}

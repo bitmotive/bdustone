@@ -23,19 +23,16 @@ export default function (maintenanceMode = {}) {
 
     if (password) {
         const $element = $('<div>', {
-            class: 'adminBar',
+            class: 'alert admin-bar',
         });
 
         const url = encodeURIComponent((new URL(window.location.href).pathname + window.location.search).replace(/^\/|\/$/g, ''));
 
-        $element.html(`<div class="adminBar-logo">
-            <a href="${securePath}/manage/dashboard"><svg><use xlink:href="#logo-small"></use></svg></a></div>
-            <div class="adminBar-content">
-                <a href="${securePath}/manage/theme-editor?redirectIframeUrl=${url}" target="_blank">Customize Theme</a>
-                <div class="adminBar-private">
-                    <span>Your storefront is private.</span>
-                    <span class="preview">Share your site with preview code: ${password}</span>
-                </div>
+        $element.html(`<a href="${securePath}/manage/dashboard" class="bc-logo"><svg><use xlink:href="#logo-small"></use></svg></a>
+            <a href="${securePath}/manage/theme-editor?redirectIframeUrl=${url}" target="_blank">Customize Theme</a>
+            <div class="adminBar-private">
+                <span>Your storefront is private.</span>
+                <span class="preview">Share your site with preview code: ${password}</span>
             </div>`);
 
 

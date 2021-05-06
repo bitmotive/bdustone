@@ -1,44 +1,36 @@
 {{#unless customer.addresses}}
-    {{> components/common/alert-info (lang 'account.addresses.no_addresses')}}
+    {{> components/global/alerts/info (lang 'account.addresses.no_addresses')}}
 {{/unless}}
-
-<ul class="addressList">
+<div class="addresses">
     {{#each customer.addresses}}
-        <li class="address">
-            <div class="panel panel--address">
-                <div class="panel-body">
-                    <h5 class="address-title">{{first_name}} {{last_name}}</h5>
-                    <ul class="address-details address-details--postal">
-                        <li>{{company}}</li>
-                        <li>{{address1}}</li>
-                        <li>{{address2}}</li>
-                        <li>{{city}}{{#if state}}, {{state}}{{/if}} {{zip}}</li>
-                        <li>{{country}}</li>
-                    </ul>
-                    {{#if phone}}
-                        <dl class="address-details">
-                            <dt class="address-label">{{lang 'account.addresses.phone' }}</dt>
-                            <dd class="address-description">{{phone}}</dd>
-                        </dl>
-                    {{/if}}
-                    <form action="{{delete_url}}" method="post" data-delete-address="{{lang 'forms.address.confirm_delete'}}">
-                        <div class="form-actions">
-                            <a class="button button--primary button--small" href="{{edit_url}}">{{lang 'common.edit' }}</a>
-                            <button type="submit" class="button secondary button--small">{{lang 'common.delete' }}</button>
-                        </div>
-                    </form>
-                </div>
+        <article class="card">
+            <div class="cnt">
+                <h3 class="h5">{{first_name}} {{last_name}}</h3>
+                <p>
+                    {{#if company }}{{company}}<br />{{/if}}
+                    {{address1}}<br />
+                    {{#if address2}}{{address2}}<br />{{/if}}
+                    {{city}}{{#if state}}, {{state}}{{/if}} {{zip}}<br />
+                    {{country}}
+                </p>
+                    <p>
+                        <strong>{{lang 'account.addresses.phone' }}</strong> 
+                        {{#if phone}}
+                        {{phone}}
+                        {{else}}
+                        {{/if}}
+                    </p>
+                <form action="{{delete_url}}" method="post" data-delete-address="{{lang 'forms.address.confirm_delete'}}">
+                    <div class="form-btns">
+                        <a class="btn-primary sm" href="{{edit_url}}">{{lang 'common.edit' }}</a>
+                        <button type="submit" class="btn-secondary sm">{{lang 'common.delete' }}</button>
+                    </div>
+                </form>
             </div>
-        </li>
+        </article>
     {{/each}}
-    <li class="address">
-        <a class="panel panel--address panel--newAddress" href="{{urls.account.add_address}}">
-            <span class="panel-body">
-                <span class="address-addNew">
-                    <span class="address-symbol">&plus;</span>
-                    <h5 class="address-title">{{lang 'account.addresses.new_address' }}</h5>
-                </span>
-            </span>
-        </a>
-    </li>
-</ul>
+    <a class="btn-primary" href="{{urls.account.add_address}}">
+        <svg><use xlink:href="#icon-add"></use></svg>
+        {{lang 'account.addresses.new_address' }}
+    </a>
+</div>

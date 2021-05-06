@@ -1,0 +1,103 @@
+#bfx-cc-wrapper {
+    padding: remCalc(13) remCalc(7);
+    background: $neutral-2;
+    border: remCalc(2) solid $primary;
+    height: remCalc(58);
+    width: remCalc(58);
+    bottom: 0;
+    right:0;
+    z-index:999;
+    position:fixed;
+    &:before {
+        content:"Ship To:";
+        color: #fff;
+        padding: 0;
+        font-size: 0.75rem;
+        display:none;
+        margin:0 remCalc(6) 0 0;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .bfx-cc-expanded {
+        position: fixed;
+        bottom: 58px;
+        top: auto;
+        right: 0px;
+        .bfx-cc-content form #bfx-cc-btn {
+            display: inline-flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            padding:remCalc(11) remCalc(29);
+            margin: 0;
+            border: remCalc(2) solid currentColor;
+            font-weight: 700;
+            font-size: remCalc(14);
+            line-height: (17 / 14);
+            letter-spacing: 0.1em;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all .25s;
+            width: 100%;
+            background:$secondary;
+            border-color: $secondary;
+            color:$white;
+            border-radius: 0;
+            height: auto;
+            margin: 1rem 0 0;
+            @include hover {
+                background:#C95C57;
+                border-color:#C95C57;
+                color:$white;
+                cursor: pointer;
+            }
+            
+            &:active {
+                background: #6E1C1F;
+                border-color:#6E1C1F;
+                color: $white;
+            }
+        }
+    }
+    img {
+        filter: grayscale(100%);
+    }
+    @media #{$mediaToggleHeader} {
+        top: auto !important;
+    }
+    @media #{$mediaFullHeader} {
+        z-index:1001;
+        padding:0 0 0 remCalc(16);
+        background: transparent;
+        border: none;
+        height:remCalc(32);
+        width: auto;
+        position:absolute;
+        bottom: auto;
+        top: 0;
+        right: calc(2.5% + 7px) !important;
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content: flex-end;
+        &:before {
+            display:block;
+        }
+        .bfx-cc-collapsed {
+            height:auto !important;
+        }
+        .bfx-cc-expanded {
+            position: absolute;
+            bottom: auto;
+            top: 100%;
+        }
+    }
+    @media #{$mediaXl} {
+        right: calc(7.5% + 7px) !important;
+    }
+    @media (min-width: 1412px) {
+        right:calc(50vw - 593px) !important;
+    }
+}

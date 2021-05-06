@@ -1,0 +1,96 @@
+<nav class="pagination" id="top-pagination">
+    <div class="numbers">
+        {{#gt links.length 0}}
+            <p> {{{lang 'common.paginator.page_of' start=start end=end total=totalCount}}}</p>
+            <ul>
+                <li>
+                    <a href="{{#if previous}}{{previous}}{{else}}#{{/if}}" {{#unless previous}} class="is-disabled" aria-disabled="true" disabled{{/unless}}>
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-caret-left"></use>
+                        </svg>
+                        <span class="sr-only">{{lang 'common.previous'}}</span>
+                    </a>
+                </li>
+                <li>
+                    <ol>
+                        {{#each links}}
+                            {{#if this.number '==' ../current}}
+                                <li class="pagination-item pagination-item--current">
+                                    <a class="pagination-link" href="{{this.url}}">{{this.number}}</a>
+                                </li>
+                            {{else}}
+                                <li class="pagination-item">
+                                    <a class="pagination-link" href="{{this.url}}">{{this.number}}</a>
+                                </li>
+                            {{/if}}
+                        {{/each}}
+                    </ol>
+                </li>
+                <li class="pagination-item pagination-item--next">
+                    <a href="{{#if next}}{{next}}{{else}}#{{/if}}"  {{#unless next}} class="is-disabled" aria-disabled="true" disabled{{/unless}}>
+                        <span class="sr-only">{{lang 'common.next'}}</span>
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-caret-right"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        {{else}}
+            <p>{{{lang 'common.paginator.page_of_alt' start=1 end=totalCount}}}</p>
+        {{/gt}}
+    </div>
+    <div>
+    <div class="show">
+        <label for="limit">{{lang 'common.paginator.products_to_display'}}</label>
+        <select id="limit" onchange="newLimit(this.id,this.value)">
+            <option value="12" {{#if 12 "===" theme_settings.categorypage_products_per_page }}selected{{/if}}>12</option>
+            <option value="24" {{#if 24 "===" theme_settings.categorypage_products_per_page }}selected{{/if}}>24</option>
+            <option value="48" {{#if 48 "===" theme_settings.categorypage_products_per_page }}selected{{/if}}>48</option>
+            <option value="100" {{#if 100 "===" theme_settings.categorypage_products_per_page }}selected{{/if}}>100</option>
+        </select>
+    </div>
+    {{> components/category/sort-box sort=this.sort}}
+    </div>
+</nav>
+<script>
+    (function(){
+        try {
+            var url = new URL(window.location.href);
+            var c = url.searchParams.get('limit');
+            if(c != null){
+                var limit = document.querySelectorAll('select#limit option');
+                Array.prototype.forEach.call(limit, function(element) {
+                if(element.value == c){
+                    element.selected = true;
+                }
+            });
+        }
+        } catch(e) {
+
+        }
+    }());
+
+    function newLimit(passvar,value) {
+        console.log(window.location.search);
+        if(window.location.search) {
+            var parts = window.location.search.split( '?' );
+            parts = parts[1].split('&');
+            var newparts = '?_bc_fsnf=1';
+            index = 0;             
+            while (index < parts.length) { 
+                if (parts[index].includes(passvar) || parts[index].includes('_bc_fsnf=1')) {
+                    // skip them
+                } else {
+                    newparts = newparts + '&' + parts[index];
+                }
+                index++; 
+            }
+            newparts = newparts + '&'+passvar+'='+value;
+            //console.log(parts);
+            //console.log(newparts);
+            location=newparts;
+        } else {
+            location='?'+passvar+'='+value;
+        }
+    }
+</script>

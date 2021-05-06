@@ -1,46 +1,81 @@
-{{#if reviews.total}}
-<section class="toggle productReviews" id="product-reviews" data-product-reviews>
-    <h4 class="toggle-title">
-        {{lang 'products.reviews.header' total=reviews.total}}
-        {{#if theme_settings.show_product_reviews_tabs '!==' true}}
-            <a class="toggleLink is-open" data-collapsible href="#productReviews-content">
-                <span class="toggleLink-text toggleLink-text--on">
-                    {{lang 'products.reviews.hide'}}
-                </span>
-                <span class="toggleLink-text toggleLink-text--off">
-                    {{lang 'products.reviews.show'}}
-                </span>
-            </a>
-        {{/if}}
-    </h4>
-    <div class="toggle-content is-open" id="productReviews-content" aria-hidden="false">
-        <ul class="productReviews-list" id="productReviews-list">
-            {{#each reviews.list}}
-            <li class="productReview">
-                <article itemprop="review" itemscope itemtype="http://schema.org/Review">
-                    <header>
-                        <span class="productReview-rating rating--small" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
-                            {{> components/products/ratings rating=rating}}
-                            <span class="productReview-ratingNumber" itemprop="ratingValue">{{ rating }}</span>
-                        </span>
-                        <h5 itemprop="name" class="productReview-title">{{ title }}</h5>
-                        {{#if name}}
-                            <meta itemprop="author" content="{{name}}">
-                            <p class="productReview-author">
-                                {{lang 'products.reviews.post_on_by' date=date name=name }}
-                            </p>
-                        {{else}}
-                            <p class="productReview-author">
-                                {{lang 'products.reviews.post_on_by' date=date name=(lang 'products.reviews.anonymous_poster')}}
-                            </p>
-                        {{/if}}
-                    </header>
-                    <p itemprop="reviewBody" class="productReview-body">{{nl2br text}}</p>
-                </article>
-            </li>
-            {{/each}}
-        </ul>
-        {{> components/common/paginator pagination.reviews}}
-    </div>
-</section>
-{{/if}}
+{{#gt product.reviews.total 0}}
+    <section class="bg-white" id="productReviews" data-product-reviews>
+        <div class="container">
+            <h2 class="ta-center">
+                {{ product.title }} {{lang 'products.reviews.header'}}
+            </h2>
+            <div class="reviews-wrap">
+                <p class="rating rating-lg">
+                    {{> components/products/details/common/ratings rating=product.rating}}
+                    <span class="review-link">
+                        {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                    </span>
+                </p>
+                <dl class="tabs">
+                    <dt class="sr-only">
+                        <button id="viewPreviewReviewsToggle" 
+                            aria-expanded="{{#gt product.reviews.total 0}}true{{ else }}false{{/gt}}" 
+                            aria-controls="viewPreviewReviewsPanel" 
+                            type="button" 
+                            aria-disabled="{{#gt product.reviews.total 0}}true{{ else }}false{{/gt}}">
+                            Sample Reviews
+                        </button>
+                    </dt>
+                    <dd id="viewPreviewReviewsPanel" 
+                        aria-labelledby="viewPreviewReviewsToggle" 
+                        {{#if product.reviews.total '===' 0}}hidden{{/if}}>
+                        {{> components/products/reviews/preview-list reviews=product.reviews }}
+                    </dd>
+                    {{#and (if customer.customer_group_id "!==" 1) (if customer.customer_group_id "!==" 41)}}
+                        <dt>
+                            <button id="writeAReviewToggle" 
+                                aria-expanded="{{#if product.reviews.total '===' 0}}true{{ else }}false{{/if}}" 
+                                aria-controls="writeAReviewPanel" 
+                                type="button" 
+                                aria-disabled="{{#if product.reviews.total '===' 0}}true{{ else }}false{{/if}}">
+                                Write a Review
+                            </button>
+                        </dt>
+                        <dd id="writeAReviewPanel" 
+                            aria-labelledby="writeAReviewToggle" 
+                            {{#unless product.reviews.total '===' 0}}hidden{{/unless}}>
+                            {{> components/products/reviews/form }}
+                        </dd>
+                        <dt>
+                            <button id="viewReviewsToggle" 
+                                aria-expanded="false" 
+                                aria-controls="viewReviewsPanel" 
+                                type="button" 
+                                aria-disabled="false">
+                                View All Reviews
+                            </button>
+                        </dt>
+                        <dd id="viewReviewsPanel" 
+                            aria-labelledby="viewReviewsToggle" 
+                            hidden>
+                            {{> components/products/reviews/list reviews=product.reviews }}
+                        </dd>
+                    {{/and}}
+                </dl>
+            </div>
+        </div>
+    </section>
+{{else}}
+    {{#and (if customer.customer_group_id "!==" 1) (if customer.customer_group_id "!==" 41)}}
+        <section class="bg-white" id="productReviews" data-product-reviews>
+            <div class="container">
+                <h2 class="ta-center">
+                    {{ product.title }} {{lang 'products.reviews.header'}}
+                </h2>
+                <div class="reviews-wrap">
+                    <h2 class="ta-center">
+                        {{lang 'products.reviews.new'}} {{ product.title }} 
+                    </h2>
+                    <div class="reviews-wrap">
+                        {{> components/products/reviews/form }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {{/and}}
+{{/gt}}

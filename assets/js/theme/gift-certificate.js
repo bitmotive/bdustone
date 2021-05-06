@@ -2,6 +2,7 @@ import PageManager from './page-manager';
 import nod from './common/nod';
 import giftCertChecker from './common/gift-certificate-validator';
 import formModel from './common/models/forms';
+import ImageGallery from './product/image-gallery';
 import { api } from '@bigcommerce/stencil-utils';
 import { defaultModal } from './global/modal';
 
@@ -10,6 +11,9 @@ export default class GiftCertificate extends PageManager {
         super(context);
 
         const $certBalanceForm = $('#gift-certificate-balance');
+
+        this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
+        this.imageGallery.init();
 
         const purchaseModel = {
             recipientName(val) {

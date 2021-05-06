@@ -1,0 +1,17 @@
+{{#if social_media}}
+    <nav class="social">
+        <h5 class="sr-only">{{lang 'social.connect'}}</h5>
+        <ul>
+            {{#each (sortBy social_media 'position')}}
+                <li>
+                    <a href="{{url}}" target="_blank">
+                        <svg>
+                            <title>{{display_name}}</title>
+                            <use xlink:href="#icon-soc-{{lowercase display_name}}"></use>
+                        </svg>
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/if}}

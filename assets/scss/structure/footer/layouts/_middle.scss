@@ -1,0 +1,15 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FOOTER - LAYOUT - MIDDLE
+
+\*  --------------------------------------------------------------------------  */
+.footer-middle {
+    padding: 0 0 remCalc(32);
+    > .container {
+        padding:0;
+        margin:0 auto;
+    }
+    @media #{$mediaMd} {
+        padding: remCalc(0) 0;
+    }
+}

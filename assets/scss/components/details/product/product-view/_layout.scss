@@ -1,0 +1,73 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - LAYOUT
+
+\*  --------------------------------------------------------------------------  */
+.product-view {
+    
+    @media #{$mediaMd} {
+        @include clearfix();
+        margin-top: remCalc(32);
+    }
+
+
+    .details-wrap {
+        margin-bottom:remCalc(80);
+
+        @media #{$mediaMd} {
+            @include position(relative, null);
+            width: calc(41.667% - #{remCalc(16)});
+            float: right;
+        }
+    }
+    
+    .title {
+        margin: remCalc(16) 0 remCalc(16);
+        @media #{$mediaMd} {
+            margin: 0 0 remCalc(24);
+            width: calc(41.667% - #{remCalc(16)});
+            float: right;
+        }
+        h1 {
+            font-family: $headingFF;
+            text-transform: uppercase;
+            font-weight:500;
+        }
+    }
+    
+    .gallery-wrap {
+        margin: 0 0 remCalc(12);      
+                
+        @media #{$mediaMd} {
+            @include position(sticky, null, (top), (#{remCalc(100)}));
+            width: calc(54.1667% - #{remCalc(16)});
+            float: left;
+            .gallery {
+                @include flex(space-between, flex-start, null, row wrap);
+            }
+ 
+            
+        }
+    }
+
+}
+
+&.bundle {
+    .product-view {
+        @media #{$mediaMd} {
+            .title {
+                float: left;
+                width: calc(41.667% - #{remCalc(32)});
+            }
+    
+            .gallery-wrap {
+                margin: remCalc(24) 0 0;
+                width: 100%;
+            }
+    
+            .details-wrap {
+                width: calc(58.333% - #{remCalc(32)});
+            }
+        }
+    }
+}

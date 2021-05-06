@@ -1,0 +1,6 @@
+{{!-- SORT
+    {{> components/products/filter sort=pagination.category.sort}}
+--}}
+<form action="{{urls.compare}}" method='POST' {{#if settings.data_tag_enabled}} data-list-name="Category: {{category.name}}" {{/if}} data-product-compare>
+    {{> components/products/lists/list products=category.products theme_settings=theme_settings}}
+</form>

@@ -1,0 +1,21 @@
+
+
+.invert {
+    background: $primary;
+
+    h1, p, strong, small {
+        color: $white;
+    }
+
+    a {
+        color: $white;
+
+        @include hover {
+            //color: $accent-1;
+        }
+    }
+
+    hr {
+        background: $white;
+    }
+}

@@ -1,0 +1,25 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > GET IN TOUCH MODIFICATIONS
+
+\*  --------------------------------------------------------------------------  */
+&.form-git {
+    margin: remCalc(16) 0 0;
+
+    @media #{$mediaMd} {
+        margin: remCalc(20) 0 0;
+        @include flex(space-between, flex-start, null, row wrap);
+    
+        .form-el {
+            width: calc(50% - #{remCalc(8)});
+    
+            &.multi-line {
+                width: 100%;
+            }
+        }
+    }
+
+    @media #{$mediaLg} {
+        margin: remCalc(24) 0 0;
+    }
+}

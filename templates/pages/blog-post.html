@@ -1,8 +1,25 @@
 {{#partial "page"}}
-
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
-{{> components/blog/post post=blog.post show_tags=true}}
-
+<div class="det-article">
+    <header class="hero has-bg">
+        <div class="container">
+            <div class="row ha-center">
+                <div class="col-xs-12 col-lg-10">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1>{{ blog.post.title }}</h1>
+            <p class="byline">{{#if blog.post.author}}{{lang 'blog.posted_by' name=blog.post.author}} <span>|</span> {{/if}}{{blog.post.date_published}}</p>
+            </div></div>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="row ha-center">
+                <div class="col-xs-12 col-lg-10">
+                    {{{blog.post.body}}}
+                    <p class="tags">{{lang 'blog.tags'}}: {{#forEach blog.post.tags}}<a href="{{url}}">{{name}}</a>{{#unless isLast}}, {{/unless}}{{/forEach}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 {{/partial}}
 {{> layout/base}}

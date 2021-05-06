@@ -1,0 +1,104 @@
+/*  --------------------------------------------------------------------------  *\
+
+    COMMERCE > MINI CART
+
+\*  --------------------------------------------------------------------------  */
+.cart-dropdown {
+    @include position(absolute, null, (right, top), (0, 100%));
+    display: none;
+    padding: remCalc(16);
+    background: $white;
+    color: $primary;
+    border-radius: 0 ;
+    box-shadow: 0 0 remCalc(8) 0 rgba($primary, .2);
+
+    &:before {
+        content:"Cart";
+        color: $secondary;
+        font-family: $headingFF;
+        line-height: 1.25;
+        font-size: remCalc(16);
+        font-weight: 700;
+        letter-spacing:2px;
+        text-transform:uppercase;
+        margin: remCalc(16) 0;
+        display:block;
+    }
+
+    &.is-open {
+        display: block;
+    }
+
+    .btns-wrap {
+        white-space: nowrap;
+        @include flex(space-between, stretch, null, row nowrap);
+
+        [class*="btn"] {
+            width: calc(50% - #{remCalc(8)});
+            margin: 0;
+            white-space: nowrap;
+            text-align: center;
+            justify-content: center;
+        }
+    }
+
+    .f-mini {
+        margin: 0 0 remCalc(16);
+        padding:0;
+        max-height: 340px;
+        overflow: auto;
+        border-top: remCalc(1) solid $secondary;
+        > li {
+            margin: 0;
+            padding:remCalc(16) 0 ;
+            @include flex(space-between, flex-start, null, row nowrap);
+
+            &:before {
+                display: none;
+            }
+
+            + li {
+                margin:0;
+                padding:remCalc(16) 0 ;
+                border-top: remCalc(1) solid $secondary;
+            }
+            &:nth-last-child(2), &:nth-last-child(-n + 2), &:first-child {
+                margin:0 !important;
+                a {
+                    height:auto;
+                    white-space:normal;
+                }
+            }
+        }
+
+        .img {
+            width: calc(25% - #{remCalc(8)});
+            @include flexItem(0, 0, auto);
+            height:auto;
+        }
+
+        .cnt {
+            width: calc(75% - #{remCalc(8)});
+            @include flexItem(0, 0, auto);
+            p {
+                &:last-child {
+                    margin:0;
+                }
+            }
+        }
+
+        .title {
+            font-size: remCalc(16);
+            font-weight: bold;
+            margin: 0 0 remCalc(8);
+
+            a {
+                color: $secondary;
+
+                @include hover {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}

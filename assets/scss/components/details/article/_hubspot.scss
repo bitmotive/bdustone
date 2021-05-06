@@ -1,0 +1,154 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ARTICLE - Hubspot Blog Card
+
+\*  --------------------------------------------------------------------------  */
+
+[data-hbs-blog-featured],
+[data-hbs-blog-tag] {
+  article {
+    border: 1px solid $neutral-2;
+    padding: 0;
+    position: relative;
+    margin: remCalc(8) !important;
+    width: calc(100% - 1rem);
+  }
+
+  .tags {
+    @include position(absolute, null, (top, left), (5%, 0));
+    .tag {
+      background: $primary;
+      display: flex;
+      color: $neutral-3;
+      font-size: remCalc(14);
+      font-weight: 400;
+      letter-spacing: .1em;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      padding: remCalc(8 12);
+      text-transform: uppercase;
+      &:before {
+        content: '';
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-wine.png) no-repeat 50% 50% / contain;
+        margin: remCalc(0 8 0 0);
+        width: remCalc(16);
+        height: remCalc(16);
+      }
+    }
+
+    .tag-how-to-guide, .tag.tag-learn {
+      background: $accent-1;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-how-to.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-info {
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-info.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-news {
+      background: $accent-4;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-news.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-reviews, .tag-beer-reviews {
+      background: $accent-7;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-reviews.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-blog-post {
+      background: $accent-9;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-blog.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-featured-project {
+      background: $tertiary;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-featured.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-recipes {
+      background: $accent-6;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-recipes.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-beer {
+      background: $accent-3;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-beer.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-cocktail-recipes, .tag-cocktails-recipes {
+      background: $accent-2;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-cocktail.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-wine {
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-wine.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-spirits {
+      background: $accent-3;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-spirits.png) no-repeat 50% 50% / contain;
+      }
+    }
+
+    .tag-fun-stuff, [class*="tag-parties"] {
+      background: $accent-3;
+      &:before {
+        background: url(https://f.hubspotusercontent40.net/hubfs/6632597/KegWorks%20Assets/tag-assets/tag-fun-stuff.png) no-repeat 50% 50% / contain;
+      }
+    }
+  }
+
+  .cnt {
+    padding: remCalc(16);
+  }
+
+  .readmore {
+    color: $secondary;
+    display: flex;
+    font-weight: 600;
+    align-items: center;
+    text-transform: uppercase;
+    &:after {
+      content: '';
+      margin-left: remCalc(12);
+      width: remCalc(16);
+      height: remCalc(16);
+      background: url('data:image/svg+xml;utf8,<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5118 5.85011L6.56565 1.90396L7.48475 0.984863L13 6.50011L12.5404 6.95966L7.48475 12.0154L6.56565 11.0963L10.5118 7.15011H0V5.85011H10.5118Z" fill="%2398262B"/></svg>') no-repeat 50% 50% / contain;
+    }
+
+    &:hover, &:focus {
+      color: $accent-9;
+      &:after {
+        background: url('data:image/svg+xml;utf8,<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5118 5.85011L6.56565 1.90396L7.48475 0.984863L13 6.50011L12.5404 6.95966L7.48475 12.0154L6.56565 11.0963L10.5118 7.15011H0V5.85011H10.5118Z" fill="%2389431c"/></svg>') no-repeat 50% 50% / contain;
+      }
+    }
+  }
+
+  @media #{$mediaMd} {
+    article { 
+      width: calc(33.3% - 1rem);
+    }
+  }
+}

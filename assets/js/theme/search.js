@@ -7,6 +7,7 @@ import Url from 'url';
 import collapsibleFactory from './common/collapsible';
 import 'jstree';
 import nod from './common/nod';
+//import Reflektion from './groove/components/interactive/reflektion';
 
 export default class Search extends CatalogPage {
     formatCategoryTreeForJSTree(node) {
@@ -71,6 +72,9 @@ export default class Search extends CatalogPage {
 
     onReady() {
         compareProducts(this.context.urls);
+
+        // Reflektion setup
+        //this.reflektion = new Reflektion(this.context);
 
         const $searchForm = $('[data-advanced-search-form]');
         const $categoryTreeContainer = $searchForm.find('[data-search-category-tree]');

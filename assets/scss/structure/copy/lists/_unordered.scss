@@ -1,0 +1,39 @@
+/*  --------------------------------------------------------------------------  *\
+
+    COPY - LISTS - UNORDERED
+
+\*  --------------------------------------------------------------------------  */
+ul {
+    
+    li {
+        
+        &:before {
+            width: remCalc(4);
+            height: remCalc(4);
+            background: $primary;
+            border-radius: remCalc(4);
+            content: "";
+        }
+    }
+
+    ul {
+        
+        li {
+            
+            &:before {
+                border-radius: 0;
+            }
+        }
+        
+        ul {
+            
+            li {
+                
+                &:before {
+                    @include transform(translate(0, -50%) rotate(45deg));
+                }
+            }
+            
+        }
+    }
+}

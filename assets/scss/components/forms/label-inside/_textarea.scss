@@ -1,0 +1,27 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL INSIDE > TEXTAREA
+
+\*  --------------------------------------------------------------------------  */
+textarea {
+    display: block;
+    width: 100%;
+    height: calc(6em + #{remCalc(32)});
+    padding: remCalc(12) remCalc(16);
+    border-radius: remCalc(8);
+    background: $white;
+    margin: 0;
+    line-height: 1.5;
+    @include formBorder($formLIBorder, $formLIBorderStyle);
+    
+    &:focus {
+        border-color: $formLIBorderFocus;
+    }
+
+    &:disabled {
+        background: $neutral-3;
+        color: $neutral-2;
+        font-style: italic;
+        cursor: not-allowed;
+    }
+}

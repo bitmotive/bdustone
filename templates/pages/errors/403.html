@@ -1,18 +1,50 @@
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<header class="hero">
+    <div class="container">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1 class="page-heading">Thank you for visiting us, you need to be a member to view this page. Not a member yet? See below to sign up.</h1>
+    </div>
+</header>
 
 <main class="page">
-    <section class="page-content page-content--centered">
-        <h1 class="page-heading">{{lang 'forbidden.page_heading'}}</h1>
-        <p class="u-textAlignCenter">
-            {{lang 'forbidden.if_you_were_signed_in'}}
-            <a href="{{urls.auth.login}}">{{lang 'forbidden.sign_in'}}</a>
-            {{lang 'forbidden.to_continue'}}
+    <div class="container">
+        <p> Not a member of Big Daddy Unlimited? <a href="/">Click here for our 30-day 99 cent Trial membership</a>.</p>
+        
+        <p>If you believe that you have received this message in error, please make sure that you are 
+            logged into your Big Daddy Unlimited member account.</p>
+            
+        <p>
+            <a id="loginLink" href="/login.php">
+                <input class="btn btn-primary" value="Click here to login" />
+                <br /><span style="padding-left:45px;">(Click here to login)</span>
+            </a>
         </p>
-        {{> components/common/search-box}}
-    </section>
+        
+        <p>If you have any questions, please contact us at <a href="mailto:support@bigdaddyunlimited.com">support@bigdaddyunlimited.com</a></p>
+        
+        <p><a href="/">&#8592; Return to our homepage.</a></p>
+    </div>
 </main>
+
+<script>
+    var currentPath = window.location.pathname;
+    if(currentPath && currentPath.length > 0){
+        setTimeout(function(){
+            if(currentPath[0] == '/'){
+                currentPath = currentPath.substr(1, currentPath.length-1);
+            }
+            var loginPath = $("#loginLink").prop("href");
+            loginPath = loginPath + '?from=' + currentPath + '?from403=1';                                               
+            $("#loginLink").prop("href", loginPath);
+            $("#loginLink2").prop("href", loginPath);
+        }, 500);
+    }
+    var checkCurrentEmail = "";
+    if(checkCurrentEmail){
+        $('span#nonMemberWarning').hide();
+    }
+</script>
 
 {{/partial}}
 {{> layout/base}}

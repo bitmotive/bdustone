@@ -1,0 +1,42 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - SEARCH - RESULTS
+
+\*  --------------------------------------------------------------------------  */
+.results {
+    margin: remCalc(16) 0 0;
+
+    &:empty {
+        display: none;
+    }
+
+    .card {
+        &:nth-child(n + 3) {
+            display: none;
+        }
+    }
+
+    @media #{$mediaMd} {
+        .card {
+            width: calc(33.333% - #{remCalc(32)});
+
+            &:nth-child(3) {
+                display: block;
+            }
+
+            &:nth-child(n + 4) {
+                display: none;
+            }
+        }
+    }
+
+    @media #{$mediaFullHeader} {
+        display: none;
+        @include position(absolute, null, (right, top), (0, 100%));
+        width: remCalc(800);
+        margin: 0;
+        background: $white;
+        padding: remCalc(24);
+        border: remCalc(1) solid $accent-2;
+    }
+}

@@ -1,0 +1,55 @@
+/*  --------------------------------------------------------------------------  *\
+
+    JUMP NAVIGATIONS
+
+\*  --------------------------------------------------------------------------  */
+&.jn {
+    display:none;
+    margin:0;
+    width:100%;
+    padding:remCalc(12) 0;
+    @include transition(.2s);
+    background:$accent-7;
+    font-weight: 600;
+    font-size: remCalc(12);
+    line-height: 1;
+
+    @supports (position: sticky) {
+        @include position(sticky, 1000, (top), (#{remCalc(127)}));
+    }
+
+    @media #{$mediaMd} {
+        padding: remCalc(18) 0;
+        font-size: remCalc(14);
+    }
+
+    @media #{$mediaLg} {
+        padding: remCalc(24) 0;
+        font-size: remCalc(16);
+        display:block;
+    }
+
+    &::-webkit-scrollbar-track, &::-webkit-scrollbar, &::-webkit-scrollbar-thumb {
+        display:none;
+    }
+
+    ul {
+        margin: 0 auto;
+        max-width: $siteWMx;
+        @include setW;
+        @include flex(space-between, center, null, row nowrap);
+
+        li {
+            padding:0 remCalc(8);
+
+            &:before {
+                display:none;
+            }
+
+            a {
+                white-space: nowrap;
+                color:$white;
+            }
+        }
+    }
+}

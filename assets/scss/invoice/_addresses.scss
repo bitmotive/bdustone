@@ -1,0 +1,21 @@
+/*  --------------------------------------------------------------------------  *\
+
+    INVOICE - ADDRESSES
+
+\*  --------------------------------------------------------------------------  */
+.addresses {
+    @include flex(space-between, stretch, stretch, row nowrap);
+    margin: 0 remCalc(-12) remCalc(12);
+    
+    > div {
+        min-width: calc(50% - #{remCalc(24)});
+        margin: 0 remCalc(12);
+        padding: remCalc(12) remCalc(16);
+        background: rgba($tertiary, .15);
+    }
+
+    address {
+        font-style: normal;
+        margin: 0 0 1rem;
+    }
+}

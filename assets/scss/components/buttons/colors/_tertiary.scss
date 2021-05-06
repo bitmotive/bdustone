@@ -1,0 +1,43 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Button - Tertiary
+
+\*  --------------------------------------------------------------------------  */
+.btn-tertiary {
+    background: $neutral-1;
+    border:1px solid $neutral-1;
+    color: $tertiary;
+
+    svg {
+        fill: currentColor;
+        margin: 0 remCalc(8) 0 0;
+    }
+    
+    @include hover {
+        background: $tertiary;
+        border-color: $tertiary;
+        color: $white;
+    }
+    
+    &:active{
+        background: $black;
+        border-color: $black;
+        color: $white;
+    }
+
+    &.disabled {
+        background:none;
+        border:none;
+        padding:0 !important;
+        position:relative;
+        top:remCalc(-8);
+        color:$black;
+
+        @include hover {
+            background: none;
+            border-color: none;
+            color: $tertiary;
+            cursor: default;
+        }
+    }
+}

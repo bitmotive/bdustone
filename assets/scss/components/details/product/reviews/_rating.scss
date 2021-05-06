@@ -1,0 +1,22 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAILS - REVIEWS - RATING
+
+\*  --------------------------------------------------------------------------  */
+.rating-lg {
+
+    .review-link {
+        font-size: remCalc(16);
+        line-height: 1;
+    }
+
+    svg {
+        width: remCalc(18);
+        height: remCalc(18);
+        margin: 0 0 0 remCalc(2);
+    }
+
+    @media #{$mediaMd} {
+        @include position(absolute, null, (left, top), (0, 0));
+    }
+}

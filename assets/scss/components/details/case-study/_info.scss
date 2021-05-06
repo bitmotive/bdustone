@@ -1,0 +1,45 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CASE STUDY - GALLERY
+
+\*  --------------------------------------------------------------------------  */
+.cs-info {
+    line-height: 1.5;
+    
+    dt {
+        ~ dt {
+            margin-top: #{$gutterSm / 2};
+            padding-top: #{$gutterSm / 2};
+            border-top: 1px solid currentColor;
+        }
+    }
+    
+    dd {
+        padding: 0;
+    }
+    
+    ul {
+        li {
+            display: inline;
+            padding: 0;
+            margin: 0;
+            
+            &:first-child {
+                &:before {
+                    display: none;
+                }
+            }
+            
+            + li {
+                padding: 0 0 0 #{$gutterSm / 2};
+                margin: 0 0 0 #{$gutterSm / 2};
+                
+                &:before {
+                    left: 0;
+                    top: .667em;
+                    @include transform(translate(-50%, -50%));
+                }
+            }
+        }
+    }
+}

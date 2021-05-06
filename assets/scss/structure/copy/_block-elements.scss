@@ -1,0 +1,57 @@
+/*  --------------------------------------------------------------------------  *\
+
+    COPY - BLOCK ELEMENTS
+
+\*  --------------------------------------------------------------------------  */
+p, ul, ol, dl, table, blockquote, figure, address {
+    margin: 0 0 remCalc(24);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+p:last-child {
+    //margin:0 0 remCalc(24);
+}
+hr {
+    margin: $gutter auto;
+    height: remCalc(1);
+    max-width: $siteWMx;
+    background: $primary;
+    border: none;
+}
+.intro {
+    font-size: $copyFS * 1.5;
+}
+.disclaimer {
+    color: $primary;
+    font-style: italic;
+    font-size: $copyFS * .75;
+    text-align: center;
+}
+
+address {
+    font-style: normal;
+}
+
+.account-number {
+    color: $primary;
+
+    strong {
+        text-transform: uppercase;
+        font-weight: 900;
+        margin: 0 remCalc(8) 0 0;
+    }
+}
+div.med-up-only {
+    display:none;
+    @media #{$mediaMd} {
+        display:flex;
+    }
+}
+div.med-down-only {
+    @media #{$mediaMd} {
+        display:none;
+    }
+}

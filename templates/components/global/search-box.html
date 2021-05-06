@@ -1,0 +1,14 @@
+<div class="hero-search">
+    <form class="form"  action="/search/searchresults/">
+        <div class="form-el">
+            <label class="sr-only" for="search_query_adv">{{lang 'search.results.form_label'}}</label>
+            <input id="search_query_adv" name="search_query_adv" value="{{forms.search.query}}">
+            <button type="submit">
+                <svg>
+                    <use xlink:href="#icon-search"></use>
+                </svg>
+                <span class="sr-only">{{lang 'search.results.form_button_text'}}</span>
+            </button>
+        </div>
+    </form>
+</div>

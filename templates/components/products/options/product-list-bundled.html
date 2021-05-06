@@ -1,0 +1,42 @@
+<dl class="accordion acc-options" role="presentation" data-display-name="{{this.display_name}}" data-allow-toggle="true" data-allow-multiple="true">
+    {{#filter product.options 'product-list' property='partial'}}
+        {{#filter ../product.custom_fields 'Picklist Options - Checkbox' property='name'}}
+            {{#inArray (split this.value ',') ../this.display_name}}
+            {{else}}
+                <dt role="heading" aria-level="2"{{#if ../../required}}{{else}} class="not-required"{{/if}}>
+                    <button data-bundle-acc-product-heading id="accOptions{{ ../../this.id }}Toggle" type="button" aria-expanded="false" aria-controls="accOptions{{ ../../this.id }}Panel">
+                        {{ ../../this.display_name }}
+                        {{#if ../../required}}
+                            <small class="required">{{lang 'common.required_text'}}</small>
+                        {{else}}
+                            <small>{{lang 'common.optional_text'}}</small>
+                        {{/if}}
+                        <span data-selected-product>{{lang 'forms.products.bundled_form.default_option'}}</span>
+                        <span class="bfx-price" style="display:block;" data-selected-price></span>
+                    </button>
+                    {{#each (limit ../../this.values 1)}}
+                        <img src="{{getImage image 'acc_thumbnail'}}" alt="{{ image.alt }}" />
+                    {{/each}}
+                </dt>
+                <dd id="accOptions{{ ../../this.id }}Panel" hidden="" aria-labelledby="accOptions{{ ../../this.id }}Toggle">
+                    <div class="form-field opts-select">
+                        <label class="sr-only">{{lang 'forms.products.bundled_form.label' option=../../this.display_name}}</label>
+                        <select name="attribute[{{../../this.id}}]" 
+                            id="attribute_select_{{../../id}}"
+                            data-bundle-acc-product-ids="{{#each ../../this.values}}{{data}}{{#unless @last}},{{/unless}}{{/each}}"
+                            {{#if required}}required{{/if}}>
+                            <option value="0" data-option-text="{{lang 'forms.products.bundled_form.default_option'}}">{{lang 'forms.products.bundled_form.default_option'}}</option>
+                            {{#each ../../this.values}}
+                                <option value="{{id}}"
+                                        data-option-product-id="{{data}}"
+                                        data-option-text="{{ label }}"
+                                        data-option-image-src="{{getImage image 'acc_thumbnail'}}"
+                                        data-option-image-alt="{{ image.alt }}">{{ label }}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </dd>
+            {{/inArray}}
+        {{/filter}}
+    {{/filter}}
+</dl>

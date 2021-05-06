@@ -1,0 +1,34 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FACTS - ALT 2 LAYOUT
+
+    USED FOR OUR REWARDS PAGE
+
+\*  --------------------------------------------------------------------------  */
+&.alt-2 { 
+
+    
+    
+    h3 {
+        color: $neutral-1;
+        font-size: remCalc(12);
+
+        strong {
+            font-size: 2em;
+        }
+    }
+
+    small {
+        display: block;
+        margin: remCalc(8) 0 0;
+        font-size: remCalc(14);
+        line-height:  (17 / 14);
+        color: $secondary;
+    }
+
+    @media #{$mediaMd} {
+        + .fact {
+            border-left: remCalc(1) solid $secondary;
+        }
+    }
+}

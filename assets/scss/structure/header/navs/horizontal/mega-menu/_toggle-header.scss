@@ -1,0 +1,128 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - MEGA MENU - TOGGLE HEADER
+
+\*  --------------------------------------------------------------------------  */
+& {
+    @media #{$mediaToggleHeader} {
+        border-top: 1px dashed $tertiary;
+        margin: 0;
+    
+        a, label, button {
+            padding: remCalc(14) remCalc(16);
+        }
+        .card * {
+            display: none;
+        }
+    
+        > li {
+            @include flex(space-between, stretch, null, row wrap);
+            a {
+                display: none;
+
+                &:only-child {
+                    display: block;
+                    width: 100%;
+                }
+            }
+
+            li {
+                a {
+                    width: 100%;
+                }
+            }
+            
+            label {
+                @include flexItem(0, 0, auto);
+                @include flex(space-between, center, null, row nowrap);
+                width: 100%;
+                margin: auto;
+
+                svg {
+                    width: remCalc(16);
+                    height: remCalc(16);
+                    transition: .25s;
+
+                    * {
+                        stroke: $white;
+                        stroke-width: remCalc(1);
+                        fill: $white;
+                    }
+                }
+            }
+            
+        }
+        
+        li {
+
+            > div {
+                &, ul ul {
+                    @include position(absolute, 1000, (left, top), (-100%, 0));
+                    @include flexItem(0, 0, auto);
+                    width: 100%;
+                    height: 100%;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    background: $black;
+                    transition: transform .25s linear;
+                }
+            }
+        }
+
+        ul {
+
+            a {
+                background: $black;
+            }
+
+            > li {
+                
+                &:first-child {
+                    margin: 0 0 remCalc(10);
+
+                    label {
+                        background: $black;
+                        justify-content: flex-start;
+                        padding: remCalc(14);
+                        border-bottom:1px dashed $tertiary;
+
+                        svg {
+                            margin: 0 remCalc(10) 0 0;
+                        }
+                    }
+                }
+    
+                &:nth-child(2) {                    
+                    > a {
+                        padding: remCalc(20) remCalc(16);
+                        font-family:$headingFF;
+                        font-weight: 600;
+                        font-size: remCalc(18);
+                        line-height: 1.3;
+                        color: $white;
+                        text-transform: uppercase;
+                        letter-spacing: .04em;
+                    }
+                }
+            }
+        }
+        
+        .toggle-text {
+            display: none;
+        }
+        
+        input {
+            &:checked {
+                ~ label {
+                    svg {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                ~ div, ~ ul {
+                    @include transform(translate(100%, 0));
+                }
+            }
+        }
+    }
+}

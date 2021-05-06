@@ -1,0 +1,160 @@
+/*  --------------------------------------------------------------------------  *\
+
+    GLOBAL SITE VARIABLES
+
+    ORGANIZATION OF OUR CSS DEFINITIONS GROUP CLASS DEFINITIONS BY THE FOLLOWING TYPES
+
+    POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+    BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+    BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+    FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+    TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+    OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+
+    IF A MIXIN IS AVAILABLE USE THAT INSTEAD WRITING ALL PROPERTIES OUT
+
+\*  --------------------------------------------------------------------------  */
+/*  --------------------------------------------------------------------------  *\
+
+    COLORS
+    
+    IT'S IMPORTANT TO USE A GENERIC NAMING SYSTEM FOR COLORS USED THROUGHOUT THE 
+    SITE. THIS ALLOWS US TO BUILD UPDATE VARIABLES IN THE FUTURE WITHOUT HAVING 
+    POTENTIAL ISSUES LIKE RED BECOMING GREEN DUE TO A RE-BRAND.
+
+    Primary, Seoncdary, and Tertiary refer to the most used, second most used
+    and third most used color in the pallete.  These are generally shades of
+    gray used to set the color of copy and backgrounds of elements.
+
+    Aceent colors are used to set the brand colors used throughout the web 
+    design. These are commonly used to accent an element like when used as a 
+    border or design element to a heading, or draw the users attention to a
+    call to action like a button.
+
+    The reason we want to stick to this style naming convention for colors
+    is so that if the branding of the company changes, we can quickly update
+    a variable from a light shade of green to a WCAG compliant shade of green
+    and not have to do a find and replace for $lt-green and change it to 
+    $dk-green.
+
+\*  --------------------------------------------------------------------------  */
+$white: #fff;
+$black: #000;
+$body: $white;
+// PRIMARY
+$primary: #000;
+$secondary: #ff7900;
+$tertiary: #414141;
+// SECONDARY
+$neutral-1: #b8b8b8;
+$neutral-2: #f2f2f2;
+$neutral-3: #fff;
+$neutral-4: #7F7F7F;
+// ACCENT
+$accent-1: #c76102;
+$accent-2: #904107;
+$accent-3: #f0f;
+$accent-4: #0ff;
+$accent-5: #00f;
+$accent-6: #0f0;
+$accent-7: #990;
+$accent-8: #099;
+$accent-9: #909;
+// COLORS
+$success: #76bd22;
+$warning: #fce300;
+$danger: #DE0D1B;
+/*  --------------------------------------------------------------------------  *\
+
+    FONT SETTINGS
+
+    These variables define the font settings used throughout the website.
+
+    Setting the copies font family, size, color and line-height allows us to 
+    use these variables throughout our files and ensure we are consistently
+    setting things up.  These are all used in the reset file on the body and 
+    html element, which should mean the only time you need to re-use these
+    are when you are resetting a more specific class back to these values.
+
+    The headings file under structure utilize the heading variables.
+
+\*  --------------------------------------------------------------------------  */
+$copyFF: 'Heebo', sans-serif; // FONT FAMILY FOR DEFAULT COPY
+$copyFS: 16;
+$copyLH: 1.5;
+$copyC: $primary;
+$headingFF: 'Oswald', sans-serif; // FONT FAMILY FOR HEADINGS (H1-H6)
+$headingC: $primary;
+$linkC: $secondary;
+$linkCHov: $tertiary;
+$linkCAct: $tertiary;
+$iconFF: "Font Awesome 5 Free"; // FONT FAMILY FOR HEADINGS (H1-H6)
+$rem-base: 16;
+$remBase: 16; // REM BASE SHOULD REMAIN 10 UNLESS YOU WANT TO DO A DIFFERENT BASE FOR MEASUREMENT
+/*  --------------------------------------------------------------------------  *\
+
+    MEDIA QUERIES
+
+    Common media queries that we utilize throughout the SCSS for the website.
+
+\*  --------------------------------------------------------------------------  */
+$mediaXs: " (max-width: 575.9px)"; // MOBILE DEVICES
+$mediaSm: " (min-width: 576px)"; // PHONES LANDSCAPE AND UP
+$mediaSmOnly: " (min-width: 576px) and (max-width: 767.9px)"; // PHONES LANDSCAPE ONLY
+$mediaSmBelow: "(max-width: 767.9px)";
+$mediaMd: " (min-width: 768px)"; // TABLETS PORTRAIT AND UP
+$mediaMdOnly: " (min-width: 768px) and (max-width: 991.9px)"; // TABLETS PORTRAIT ONLY
+$mediaLg: " (min-width: 992px)"; // TABLETS LANDSCAPE AND UP
+$mediaLgOnly: " (min-width: 992px) and (max-width: 1199.9px)"; // TABLETS LANDSCAPE ONLY
+$mediaLgBelow: "(max-width: 991.9px)";
+$mediaXl: " (min-width: 1200px)"; // SMALL MONITORS
+$mediaXxl: " (min-width: 1425px)"; // LARGER MONITORS
+$mediaToggleHeader: " (max-width: 991.9px)"; // ALL PHONES DEVICES
+$mediaFullHeader: " (min-width: 992px)"; // ALL PHONES DEVICES
+$mediaPortrait: "(orientation: portrait)"; // PORTRAIT LANDSCAPE
+$darkMode: " (prefers-color-scheme: dark)"; // LARGER MONITORS
+$print: " print";
+/*  --------------------------------------------------------------------------  *\
+
+    GRID SETUP
+
+    Grid variables that are used to set the base variables of the Grid Mixins.
+
+\*  --------------------------------------------------------------------------  */
+$siteWList: 100%, 100%, 100%; // LIST USED BY GRID FUNCTION, AND OTHERS TO SET THE DESIRED WIDTH OF THE WEBSITE
+$siteWQueryList: $mediaXs, $mediaLg, $mediaXl; // USED BY GRID FUNCTION TO SET BREAKPOINTS
+$siteWMx: 1280px; // SITES CONTENT MAX WIDTH
+$gridMediaList: "XS", "SM", "MD", "LG", "XL"; // MEDIA QUERY LIST USED TO GENERATE GRID ELEMENTS
+$gridMediaQueryList: $mediaXs, $mediaSm, $mediaMd, $mediaLg, $mediaXl; // MEDIA QUERIES USED IN COMBINATION WITH GRID MEDIA LIST
+$gridCount: 12; // GRID COUNT
+/*  --------------------------------------------------------------------------  *\
+
+    GUTTER
+
+    This is probably the most used set of variables found throuhgout the base 
+    styling of the component library.
+
+    Utilizing a standard set of gutters for spacing will help maintain 
+    consistency throughout the website. Most of our designers use at least 3
+    common sizes for gutters in their designs.
+
+    We utilize the Normal, Small and Large gutters to create the spacing for
+    all of our components that have sm and lg variations.  The core styling
+    utilizes the $gutter variable, while the sm and lg utilize $gutterSm
+    and $gutterLg respectively.
+
+\*  --------------------------------------------------------------------------  */
+$gutter: 1.875rem;
+$gutterSm: 1.5rem;
+$gutterLg: 1.875rem;
+$gutterXl: 2.5rem;
+$gutterXxl: 3.75rem;
+
+// Content Gutter
+$sideMarginSm: 15;
+$sideMarginMd: 35;
+$sideMarginLg: 80;
+
+// borders for testing
+$bd1: 1px solid red;
+$bd2: 5px solid gold;

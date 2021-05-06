@@ -1,0 +1,30 @@
+/*  --------------------------------------------------------------------------  *\
+
+    INVOICE - BASE
+
+\*  --------------------------------------------------------------------------  */
+html {
+    font-size: 100%;
+}
+body {
+    font-family: $copyFF;
+    font-size: remCalc(12);
+    line-height: 1.5;
+}
+main {
+    display: block;
+    padding: remCalc(16);
+}
+h1, h2, h3, h4, h5 {
+    margin: 0 0 .5em;
+    font-weight: 800;
+}
+h1 {
+    font-size: remCalc(18);
+}
+h2 {
+    font-size: remCalc(16);
+}
+h3 {
+    font-size: remCalc(14);
+}

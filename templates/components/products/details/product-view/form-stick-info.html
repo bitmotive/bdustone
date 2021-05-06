@@ -1,0 +1,19 @@
+<div class="form-product">
+    <form method="post" 
+        action="{{product.cart_url}}" 
+        enctype="multipart/form-data"
+        data-cart-item-add>
+        <input type="hidden" name="action" value="add">
+        <input type="hidden" name="product_id" value="{{product.id}}"/>
+        {{#if product.options}}
+            <div class="options" data-product-option-change>
+                {{#each product.options}}
+                    {{{dynamicComponent 'components/products/options'}}}
+                {{/each}}
+            </div>
+        {{/if}}
+        {{#if product.can_purchase}}
+            {{> components/products/details/product-view/add-to-cart}}
+        {{/if}}
+    </form>
+</div>

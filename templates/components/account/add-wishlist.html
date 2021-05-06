@@ -1,39 +1,33 @@
-<div class="wishlist-add">
-    <header class="wishlist-header">
+{{#if forms.wishlist.errors}}
+    {{> components/global/alerts/error forms.wishlist.errors}}
+{{/if}}
+<form action="{{#if forms.wishlist.id}}{{urls.account.wishlists.edit}}{{else}}{{urls.account.wishlists.add}}&product_id={{forms.wishlist.product_id}}{{/if}}" class="form l-above form-wishlist bfx-remove-element" method="post">
+    <p>{{lang 'account.wishlists.tag_line'}}</p>
+    <input type="hidden" name="submit">
+
+    <div class="form-el">
+        <label for="wishlistname">
+            {{lang 'forms.wishlist.name'}}
+            <small>{{lang 'common.required' }}</small>
+        </label>
+        <input name="wishlistname" id="wishlistname" value="{{forms.wishlist.name}}">
+    </div>
+    {{!-- <div class="form-cr">
+        <input type="checkbox" name="publicwishlist" id="publicwishlist" {{#if forms.wishlist.is_public}}checked{{/if}}>
+        <label for="publicwishlist">{{lang 'forms.wishlist.public' }}</label>
+    </div> 
+   --}}
+
+    <div class="form-btns">
         {{#if forms.wishlist.id}}
-            <h1>{{lang 'account.wishlists.edit'}}</h1>
+            <input type="hidden" name="wishlistid" value="{{forms.wishlist.id}}">
+            <button type="submit" class="btn-primary">
+                {{lang 'account.wishlists.save'}}
+            </button>
         {{else}}
-            <h1>{{lang 'account.wishlists.new'}}</h1>
-            <p>{{lang 'account.wishlists.tag_line'}}</p>
+            <button type="submit" class="btn-primary">
+                {{lang 'account.wishlists.create'}}
+            </button>
         {{/if}}
-        {{#if forms.wishlist.errors}}
-            {{> components/common/alert-error forms.wishlist.errors}}
-        {{/if}}
-    </header>
-    <form action="{{#if forms.wishlist.id}}{{urls.account.wishlists.edit}}{{else}}{{urls.account.wishlists.add}}&product_id={{forms.wishlist.product_id}}{{/if}}" class="form wishlist-form" method="post">
-        <input type="hidden" name="submit">
-
-        <div class="form-field">
-            <label class="form-label" for="wishlistname">
-                {{lang 'forms.wishlist.name'}}
-                <small>{{lang 'common.required' }}</small>
-            </label>
-            <input class="form-input" name="wishlistname" id="wishlistname" value="{{forms.wishlist.name}}">
-        </div>
-        <div class="form-field">
-            <input type="checkbox" class="form-checkbox" name="publicwishlist" id="publicwishlist" {{#if forms.wishlist.is_public}}checked{{/if}}>
-            <label class="form-label" for="publicwishlist">{{lang 'forms.wishlist.public' }}</label>
-
-        </div>
-        <div class="form-actions">
-            {{#if forms.wishlist.id}}
-                <input type="submit" class="button button--primary" value="{{lang 'account.wishlists.save'}}">
-                <input type="hidden" name="wishlistid" value="{{forms.wishlist.id}}">
-            {{else}}
-                <input type="submit" class="button button--primary"
-                       value="{{lang 'account.wishlists.create'}}">
-            {{/if}}
-        </div>
-    </form>
-
-</div>
+    </div>
+</form>

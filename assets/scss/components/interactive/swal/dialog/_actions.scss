@@ -1,0 +1,41 @@
+/*  --------------------------------------------------------------------------  *\
+
+    DIALOG - MODAL > ACTIONS
+
+\*  --------------------------------------------------------------------------  */
+&-actions {
+    width: 100%;
+    padding: remCalc(24) 0 0;
+    @include flex(space-around, center, null, row wrap);
+
+    .button {
+        @include buttonBase();
+        width:100%;
+        margin-bottom:remCalc(15);
+        
+        &.swal2-confirm {
+            background:$secondary;
+            border-color: $secondary;
+            color:$black;
+
+        }
+
+        &.swal2-cancel {
+            background: $neutral-1;
+            border:1px solid $neutral-1;
+            color: $tertiary;
+            
+            @include hover {
+                background: $tertiary;
+                border-color: $tertiary;
+                color: $white;
+            }
+            
+            &:active{
+                background: $black;
+                border-color: $black;
+                color: $white;
+            }
+        }
+    }
+}

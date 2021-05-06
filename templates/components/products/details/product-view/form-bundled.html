@@ -1,0 +1,42 @@
+<div class="form-product form-bundle">
+    <form method="post" 
+        action="{{product.cart_url}}" 
+        enctype="multipart/form-data"
+        data-cart-item-add>
+        <input type="hidden" name="action" value="add">
+        <input type="hidden" name="product_id" value="{{product.id}}"/>
+        <div data-product-option-change class="options">
+            {{#each product.options}}
+                {{#unless partial '===' 'product-list'}}
+                    {{{dynamicComponent 'components/products/options'}}}
+                {{/unless}}
+            {{/each}}
+            {{> components/products/options/product-list-bundled}}
+            {{> components/products/options/product-list-bundled-addons}}
+        </div>
+        {{#if product.stock_level }}
+        <div class="form-field form-field--stock">
+            <label class="form-label form-label--alternate">
+                {{lang 'products.current_stock'}}
+                <span data-product-stock>{{product.stock_level}}</span>
+            </label>
+        </div>
+        {{/if}}
+        <div class="totals">
+            {{> components/products/details/common/price price=product.price show_total=true}}
+            {{#if product.can_purchase}}
+                {{> components/products/details/product-view/add-to-cart}}
+            {{/if}}
+            {{#if product.out_of_stock}}
+                {{#if product.out_of_stock_message}}
+                    {{> components/global/alerts/error product.out_of_stock_message}}
+                {{else}}
+                    {{> components/global/alerts/error (lang 'products.sold_out')}}
+                {{/if}}
+            {{/if}}
+        </div>
+    </form>
+    {{#and settings.show_wishlist product.can_purchase}}
+        {{> components/global/wishlist-dropdown}}
+    {{/and}}
+</div>

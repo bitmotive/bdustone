@@ -1,0 +1,60 @@
+<section class="carousel-section news-carousel">
+    <div class="carousel-container container">
+        <h2>
+    {{carouselHeadline}}
+    <a href="{{carouselButtonLink}}" class="shop-all-desktop button button--small card-figcaption-button btn-secondary">{{carouselButtonText}}</a>
+</h2>
+<div class="feed-carousel-featured"
+     data-rfk-carousel
+     data-slick='{
+        "accessibility": false,
+        "infinite": false,
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 3,
+        "arrows": false,
+        "dots": false,
+        "draggable": false,
+        "swipe": false,
+        "responsive": [
+            {
+                "breakpoint": 767,
+                "settings": {
+                    "slidesToShow": 3,
+                    "arrows": true,
+                    "swipe": true,
+                    "draggable": true             
+                }
+            },
+            {
+                "breakpoint": 992,
+                "settings": {
+                    "slidesToShow": 3,
+                    "arrows": true,
+                    "swipe": true,
+                    "draggable": true             
+                }
+            }
+        ]
+    }'
+     data-list-name="Related Products">
+    {{#each carouselItems}}
+        <article class="card card-featured">
+            <div class="img-w">
+                <a href="{{carouselItemLink}}">
+                    <img src="{{carouselItemImageUrl.src}}" alt="{{altText}}">
+                </a>
+            </div>
+            <div class="cnt">
+                <h3 class="title" itemprop="name">
+                    <a href="{{carouselItemLink}}">{{carouselItemHeadline}}</a>
+                </h3>
+                <p>{{carouselItemText}}</p>
+                <a href="{{carouselItemLink}}">{{{carouselItemButtonText}}}</a>
+            </div>
+        </article>   
+    {{/each}}
+</div>
+<a href="{{carouselButtonLink}}" class="shop-all-mobile button button--small card-figcaption-button btn-secondary">{{carouselButtonText}}</a>
+</div>
+</section>

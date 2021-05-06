@@ -1,0 +1,31 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Button - Tags
+
+\*  --------------------------------------------------------------------------  */
+.btn-tag {
+    display: inline-block;
+    font-size: remCalc(14);
+    line-height: (24 / 14);
+    padding: remCalc(1) remCalc(8);
+    border: none;
+    border-radius: remCalc(4);
+
+    &.recipes {
+        color: $white;
+        background: $accent-1;
+
+        @include hover {
+            background: $accent-1;
+        }
+    }
+
+    &.cooking-tips {
+        color: $white;
+        background: $neutral-1;
+
+        @include hover {
+            background: $neutral-1;
+        }
+    }
+}

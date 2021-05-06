@@ -1,7 +1,7 @@
 import { hooks } from '@bigcommerce/stencil-utils';
 import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
-import FacetedSearch from './common/faceted-search';
+//import FacetedSearch from './common/faceted-search';
 
 export default class Category extends CatalogPage {
     onReady() {
@@ -16,8 +16,8 @@ export default class Category extends CatalogPage {
     }
 
     initFacetedSearch() {
-        const $productListingContainer = $('#product-listing-container');
-        const $facetedSearchContainer = $('#faceted-search-container');
+        const $productListingContainer = $('.feed-products');
+        const $facetedSearchContainer = $('#facetedSearch');
         const productsPerPage = this.context.categoryProductsPerPage;
         const requestOptions = {
             config: {
@@ -35,6 +35,7 @@ export default class Category extends CatalogPage {
             showMore: 'category/show-more',
         };
 
+        /*
         this.facetedSearch = new FacetedSearch(requestOptions, (content) => {
             $productListingContainer.html(content.productListing);
             $facetedSearchContainer.html(content.sidebar);
@@ -45,5 +46,6 @@ export default class Category extends CatalogPage {
                 scrollTop: 0,
             }, 100);
         });
+        */
     }
 }

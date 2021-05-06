@@ -1,0 +1,22 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - AVAILABILITY
+
+\*  --------------------------------------------------------------------------  */
+.availability {
+    color: $neutral-1;
+    font-size: remCalc(14);
+    margin-right:remCalc(28);
+    
+    &.oos {
+        color: $black;
+    }
+    SPAN {
+        color: $black;
+        font-weight:500;
+    }
+
+    @media #{$mediaLg} {
+        font-size: remCalc(16);
+    }
+}

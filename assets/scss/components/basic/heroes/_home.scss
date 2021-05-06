@@ -1,0 +1,126 @@
+&.home {
+    @media #{$mediaLg} {
+        max-height: remCalc(650);
+    }
+
+    .picture {
+        position:absolute;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+        width:100%;
+        height:100%;
+        picture img, img {
+            width:100%;
+            height:100%;
+            object-fit: cover;
+            &.mob-only {
+                @media #{$mediaMd} {
+                    display:none;
+                }
+            }
+            &.dt-only {
+                display:none;
+                @media #{$mediaMd} {
+                    display:block;
+                }
+            }
+        }
+    }
+    .container {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        padding-top:0;
+        padding-bottom:0;
+        border:none;
+        @media #{$mediaMd} {
+            padding:0 remCalc(50);
+            display:flex;
+            flex-direction:row;
+        }
+        @media #{$mediaLg} {
+            padding:0 remCalc(75);
+        }
+        @media #{$mediaXl} {
+            padding:0 remCalc(100);
+        }
+        div {
+            padding:remCalc(36) 0 remCalc(200);
+            width: 83.333%;
+            margin: 0 auto;
+
+            @media #{$mediaSm} {
+                width: 66.667%;
+            }
+
+            @media #{$mediaMd} {
+                max-width:58.33%;
+                padding:remCalc(110) 0;
+                margin: 0;
+            }
+
+            @media #{$mediaLg} {
+                max-width:50%;
+            }
+
+            @media #{$mediaXl} {
+                max-width:45.5%;
+            }
+
+            h1, p {
+                color:$primary;
+            }
+        }
+    }
+
+    h1 {
+        font-size: remCalc(28);
+        line-height: (33 / 27);
+        letter-spacing: -.01em;
+        margin: 0 0 remCalc(16);
+
+        @media #{$mediaMd} {
+            font-size: remCalc(36);
+            margin: 0 0 remCalc(18);
+        }
+
+        @media #{$mediaLg} {
+            font-size: remCalc(42);
+            margin: 0 0 remCalc(20);
+        }
+    }
+    
+    p {
+        font-size: remCalc(18);
+        line-height: (28 / 18);
+    }
+
+    &.invert {
+        .container {
+            div {
+                h1, p {
+                    color:$white;
+                }
+            }
+        }
+    }
+    &.ca-center {
+        .container {
+            @media #{$mediaMd} {
+                justify-content:center;
+                text-align:center;
+            }
+        }
+    }
+    &.ca-right {
+        .container {
+            @media #{$mediaMd} {
+                justify-content:flex-end;
+                text-align:right;
+            }
+        }
+    }
+}

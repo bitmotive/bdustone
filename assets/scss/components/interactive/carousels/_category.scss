@@ -1,0 +1,66 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CAROUSEL - SLICK SLIDER
+
+\*  --------------------------------------------------------------------------  */
+.carousel-category {
+    @include position(relative, null);
+
+    .slide {
+        border: remCalc(1) solid $accent-2;
+        @include flex(justify-content, stretch, null, row wrap);
+        border-radius: remCalc(16);
+
+        .img-w {
+            border: remCalc(8) solid $white;
+            border-right: none;
+            border-radius: remCalc(16) 0 0 remCalc(16);
+            overflow: hidden;
+
+            @media #{$mediaMd} {
+                width: 50%;
+                @include flexItem(0, 0, auto);
+            }
+        }
+
+        .content {
+            padding: remCalc(28) remCalc(16);
+            width: 50%;
+            @include flexItem(0, 0, auto);
+            border: remCalc(8) solid $white;
+            border-left: none;
+            border-radius: 0 remCalc(16) remCalc(16) 0;
+            overflow: hidden;
+            color: $white;
+            @include flex(center, stretch, null, column wrap);
+
+            h3 {
+                color: $white;
+
+                small {
+                    color: $white;
+                }
+            }
+
+            @media #{$mediaMd} {
+                padding: remCalc(32);
+            }
+
+            @media #{$mediaLg} {
+                padding: remCalc(48);
+            }
+        }
+    }
+
+    .slick-arrow {
+        @include position(absolute, null, (top), (50%), translate(0, -50%));
+    }
+
+    .slick-prev {
+        right: calc(100% + #{remCalc(16)});
+    }
+
+    .slick-next {
+        left: calc(100% + #{remCalc(16)});
+    }
+}

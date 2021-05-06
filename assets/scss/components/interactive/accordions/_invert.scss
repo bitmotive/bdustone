@@ -1,0 +1,27 @@
+
+
+.invert &, .dk-textured & {
+
+    dt{
+        button{
+            color: $white;
+            
+            &:before, &:after{
+
+                background: $white;
+            }
+
+            @include hover {
+                color: $accent-1;
+
+                &:before, &:after{
+                    background: $accent-1;
+                }
+            }
+        }
+    }
+
+    dd{
+            color: $white;
+    }
+}

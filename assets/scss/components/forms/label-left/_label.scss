@@ -1,0 +1,20 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL LEFT > LABELS
+
+\*  --------------------------------------------------------------------------  */
+label {
+    display: block;
+    order: 0;
+    margin: 0;
+    width: #{$formLLLabelW};
+
+    small {
+        color: $danger;
+        font-size: .75em;
+
+        //&:before {
+        //    content: "*";
+        //}
+    }
+}

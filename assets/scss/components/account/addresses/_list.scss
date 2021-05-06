@@ -1,0 +1,104 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCOUNT - ADDRESSES - LIST
+
+\*  --------------------------------------------------------------------------  */
+.addresses {
+    @include flex(flex-start, stretch, null, row wrap);
+    margin: 0 ($gutterSm * -.5);
+    .card {
+        width:  100%;
+        margin: 0 ($gutterSm * .5);
+        text-align: center;
+
+        .cnt {
+            padding: remCalc(16);
+            border-top: none;
+        }
+
+        &:nth-child(n + 3) {
+            margin-top: #{$gutterSm};
+        }
+    }
+    .btn-primary{
+        width: auto;
+    }
+
+    .form-actions {
+        text-align: center;
+        justify-content: center;
+    }
+    @media #{$mediaSmBelow} {
+        .card {
+            // fixes variety in card sizes on mobile view
+            h3, p {
+                overflow:hidden;
+            }
+            p {
+                font-size: remCalc(12);
+            }
+            .cnt {
+                padding-top: 0;
+            }
+        }
+        
+    }
+    @media #{$mediaMd} {
+        margin: 0 remCalc(-16);
+        width: 80%;
+        display: inline-flex;
+        padding-top: remCalc(10);
+        margin-left: remCalc(10) !important;
+ 
+        .card {
+            width: 40%;
+            margin: 0 remCalc(16);
+
+            &:nth-child(3) {
+                margin-top: 0;
+            }
+
+            &:nth-child(n + 4) {
+                margin-top: #{$gutterSm};
+            }
+        }
+
+        > .btn-primary {
+            justify-content: center;
+            flex-flow: column nowrap;
+            width: auto;
+            background-color: $white;
+            margin: 0 remCalc(16);
+            border-color: $neutral-1;
+            border-radius: remCalc(8);
+    
+            svg {
+                display: block;
+                width: remCalc(48);
+                height: remCalc(48);
+                margin: 0 auto remCalc(24);
+                stroke: $tertiary;
+                stroke-width: remCalc(2);
+                stroke-linecap: round;
+            }
+        }
+    }
+
+    @media #{$mediaLg} {
+
+        .card {
+            &:nth-child(4) {
+                margin-top: 0;
+            }
+
+            &:nth-child(n + 5) {
+                margin-top: #{$gutterSm};
+            }
+
+            h3 {
+                font-size: remCalc(18);
+            }
+        }
+
+    }
+}

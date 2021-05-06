@@ -1,0 +1,68 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - PERSONALIZED FORMS
+
+\*  --------------------------------------------------------------------------  */
+.form-bundle {
+    margin: remCalc(24) 0 0;
+
+    .options {
+        padding: remCalc(0);
+        margin: 0 0 remCalc(24);
+        border: remCalc(1) solid $neutral-1;
+        background: $white;
+    }
+    
+    .acc-options { margin: 0; }
+
+    .acc-options.addons {
+        button[aria-expanded="true"] { margin: 0; width: 100%; }
+        dd { padding: remCalc(20) remCalc(18); }
+    }
+
+    @media #{$mediaMd} {
+        @include clearfix();
+
+        .totals {
+            @include flex(space-between, center, null, row wrap);
+            margin: remCalc(24) 0;
+        }
+
+        .price {
+            width: 100%;
+            @include flexItem(0, 0, auto);
+        }
+
+        .drop-btn {
+            @include position(relative, 1000);
+            right: auto;
+            bottom: auto;
+            float: right;
+        }
+
+        .quantity {
+            margin: 0;
+        }
+    }
+
+    @media #{$mediaLg} {
+
+        .totals {
+            width: 85%;
+            margin: remCalc(24) 0 remCalc(24) 15%;
+        }
+
+        + .help {
+            margin: remCalc(24) 0 0 15%;
+            width: 85%;
+        }
+    }
+
+    @media #{$mediaXl} {
+
+        .totals, + .help {
+            margin: remCalc(24) 0 remCalc(24) 27.5%;
+            width: 72.5%;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FEED - TILES
+
+\*  --------------------------------------------------------------------------  */
+.feed-products {
+    @include flex(flex-start, stretch, null, row wrap);
+    .card {
+        //border:1px solid green;
+        width: 50%;
+        padding:remCalc(8);
+        margin-bottom: remCalc(16);
+
+        @media #{$mediaMd} {
+            width:33%;
+            padding:remCalc(16);
+        }
+    }
+}
+
+.feed-products.sig-saur {
+    .card {
+        @media #{$mediaSm} {
+            width:33%;
+        }
+        @media #{$mediaMd} {
+            width:25%;
+        }
+    }
+}

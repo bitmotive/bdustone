@@ -1,0 +1,63 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Buttons - DROPDOWN BUTTONS
+
+\*  --------------------------------------------------------------------------  */
+.drop-btn {
+    margin: remCalc(16) 0 0;
+    @include position(relative, null);
+    width: 100%;
+    padding-top:remCalc(10);
+
+    @media #{$mediaLg} {
+        width: auto;
+        &:not(:only-child) {
+            margin: 0;
+            @include position(absolute, null, (left, bottom), (remCalc(160), remCalc(0)));
+        }
+    }
+
+    ul {
+        display: none;
+        @include position(absolute, null, (left, top), (0 !important, 100% !important));
+        border: remCalc(2) solid $primary;
+        //border-top: none;
+        background: $white;
+        width: 100%;
+        font-size: remCalc(14);
+
+        li {
+            padding: 0;
+            
+            &:before {
+                display: none;
+            }
+
+            + li {
+                border-top: remCalc(2) solid $primary;
+                margin: 0;
+            }
+        }
+
+        a, button {
+            display: block;
+            padding: remCalc(15) remCalc(15);
+            margin: 0;
+            width: 100%;
+            text-align:center;
+            
+
+            @include hover {
+                background: $primary;
+                color: $white;
+            }
+        }
+    }
+
+    [class*="btn-"][aria-expanded="true"] {
+
+        + ul {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,61 @@
+/*  --------------------------------------------------------------------------  *\
+
+    BANNERS
+
+\*  --------------------------------------------------------------------------  */
+.banner {
+    @include flex(space-between, center, null, row nowrap);
+    border: .1rem solid currentColor;
+    background: rgba($primary, .125);
+    color: $primary;
+    padding: #{$gutterSm};
+    
+    > div {
+        @include flex(0, 0, auto);
+        width: calc(100% - #{$gutter});
+        
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+    
+    button {
+        @include flex(0, 0, auto);
+        width: auto;
+        color: currentColor;
+        
+        * {
+            pointer-events: none;
+        }
+    }
+    
+    + .banner {
+        margin: #{$gutterSm} 0 0;
+    }
+    
+    /*  ----------------------------------------------------------------------  *\
+    
+    COLOR OPTIONS
+
+    Comment out what you don't want to include.  Also, if only one style is used, 
+    remove the class name from the imported file to reduce output of code.
+    
+    \*  ----------------------------------------------------------------------  */
+    @import 'banners/colors/_primary';
+    @import 'banners/colors/_secondary';
+    @import 'banners/colors/_tertiary';
+    @import 'banners/colors/_success';
+    @import 'banners/colors/_warning';
+    @import 'banners/colors/_danger';
+    
+    /*  ----------------------------------------------------------------------  *\
+    
+    SIZING OPTIONS
+
+    Comment out what you don't want to include.  Also, if only one style is used, 
+    remove the class name from the imported file to reduce output of code.
+    
+    \*  ----------------------------------------------------------------------  */
+    @import 'banners/sizing/_sm';
+    @import 'banners/sizing/_lg';
+}

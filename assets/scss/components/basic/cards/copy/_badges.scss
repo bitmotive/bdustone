@@ -1,0 +1,28 @@
+[class*="badge-"] {
+    position:absolute;
+    top:remCalc(10);
+    right:remCalc(10);
+    border-radius:50%;
+    font-style: normal;
+    font-weight: bold;
+    font-size:remCalc(10);
+    line-height:remCalc(10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-transform: capitalize;
+    color:$white;
+    background:$accent-1;
+    height:remCalc(42);
+    width:remCalc(42);
+    &[class*="best"] {
+        background:$accent-5;
+    }
+    &[class*="sale"] {
+        background:$accent-4;
+    }
+    &[class*="exclusive"] {
+        background:$accent-9;
+    }
+}

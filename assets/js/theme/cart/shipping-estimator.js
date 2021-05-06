@@ -160,6 +160,9 @@ export default class ShippingEstimator {
                         window.location.reload();
                     });
                 });
+
+                // CHOOSE FIRST OPTION
+                $('.shipping-quotes .shipping-quote[value="0"]').click();
             });
         });
 

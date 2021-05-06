@@ -1,0 +1,26 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL ATTACHED > LABELS
+
+\*  --------------------------------------------------------------------------  */
+label {
+    display: block;
+    order: 0;
+    margin: 0;
+    padding: $formLAtGutter;
+    width: $formLAtLabelW;
+    text-align: left;
+    @include formBorder($formLAtBorder, $formLAtBorderStyle);
+    background: $formLAtLabelBg;
+}
+
+input, select, textarea {
+    &:focus {
+        + label {
+            @if ($formLAtLabelBg != $formLAtLabelBgFocus) {
+                background: $formLAtLabelBgFocus;
+            }
+            border-color: $formLAtBorderFocus;
+        }
+    }
+}

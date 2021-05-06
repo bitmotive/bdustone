@@ -1,0 +1,5 @@
+{{#for 1 5}}
+    <svg class="{{#if ../this.rating '>=' $index}}full{{else}}empty{{/if}}">
+        <use xlink:href="#icon-star" />
+    </svg>
+{{/for}}

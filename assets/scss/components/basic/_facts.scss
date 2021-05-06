@@ -1,0 +1,100 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FACTS
+
+    These elements are used to display content, most likely in a sidebar, column 
+    in the body of the page, or as a slide in a carousel.
+
+    They can include images, icons, and text.
+
+\*  --------------------------------------------------------------------------  */
+.fact-wrap {
+    margin: remCalc(32) remCalc(-8) 0;
+
+    @media #{$mediaMd} {
+        @include flex(space-between, stretch, null, row wrap);
+        margin: remCalc(48) remCalc(-12) 0;
+        padding:2rem 0;
+    }
+    
+    @media #{$mediaLg} {
+        margin: remCalc(64) remCalc(-16) 0;
+    }
+}
+
+.fact {
+    padding: 0 $gutterSm;
+    text-align: center;
+    
+    + .fact {
+        margin-top: remCalc(56);
+    }
+
+    @media #{$mediaMd} {
+        @include flexItem(1, 0, auto);
+        max-width: calc(50% - #{remCalc(32)});
+        width: calc(25% - #{remCalc(32)});
+        margin: 0 remCalc(16);
+
+        &:nth-child(n + 5) {
+            margin: remCalc(32) remCalc(16) 0;
+        }
+
+        > * {
+            width: 100%;
+        }
+
+        + .fact {
+            margin-top: 0;
+        }
+    }
+
+    img {
+        @include position(relative, null);
+        display: block;
+        width: remCalc(64);
+        height: remCalc(64);
+        margin: 0 auto remCalc(24);
+    }
+    .icon-w {
+        @include position(relative, null);
+        display: block;
+        width: remCalc(64);
+        height: remCalc(64);
+        color: $accent-3;
+        font-size: 8em;
+        text-align: center;
+        margin: 0 auto remCalc(24);
+        padding: remCalc(14);
+        border-radius: 50%;
+        border: remCalc(1) solid $white;
+
+        svg {
+            @include position(absolute, null, (left, top), (50%, 50%), translate(-50%, -50%));
+            display: block;
+            width: remCalc(36);
+            height: remCalc(36);
+            padding: 0;
+            fill: $white;
+        }
+    }
+    
+    h3 {
+        font-size: remCalc(16);
+        line-height: 1.5;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        margin: 0 0 remCalc(14);
+    }
+    /*  ----------------------------------------------------------------------  *\
+
+        FACTS - VARIATIONS IMPORTS
+        
+        @import 'facts/_small';
+
+    \*  ----------------------------------------------------------------------  */
+    //@import 'facts/large';
+    //@import 'facts/alt';
+    //@import 'facts/alt-2';
+}

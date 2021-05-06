@@ -1,0 +1,176 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TESTIMONIALS/QUOTES
+
+    Testimonials/Quotes can be used to display quoted text that has an attribution.
+
+    Typically we stylize these multiple ways on a single site showing for different
+    use cases.
+
+\*  --------------------------------------------------------------------------  */
+blockquote {
+    // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+    // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+    padding: #{$gutterSm} #{$gutter} #{$gutterSm} #{$gutter * 1.25};
+    margin: 0 0 #{$gutter};
+    // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+    border-left: .5rem solid $primary;
+    // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+    // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+    // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+    
+    .quote {
+        // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+        // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+        margin: 0 0 #{$gutter * 2};
+        // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+        // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+        // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+        // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+        
+        p {
+            // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+            @include position(relative, 0);
+            // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+            // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+            // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+            // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+            // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+            
+            &:first-child {
+                // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+                // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+                // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+                // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+                // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+                // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+                
+                &:before {
+                    // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+                    @include position(absolute, 0, (left, top), (#{$gutter * -.6125}, 0), translate(-50%, 0));
+                    // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+                    // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+                    // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+                    font-size: 4em;
+                    line-height: 1;
+                    // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+                    // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+                    content: "\201C";
+                }
+            }
+            
+            &:last-child {
+                // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+                // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+                margin: 0;
+                // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+                // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+                // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+                // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+                
+                &:after {
+                    // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+                    @include position(absolute, 0, (left, bottom), (calc(100% + #{$gutter * .5}), -.5em), translate(-50%, 0));
+                    // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+                    // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+                    // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+                    font-size: 4em;
+                    line-height: 1;
+                    // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+                    // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+                    content: "\201D";
+                }
+            }
+        
+            @media #{$mediaMd} {
+                // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+                // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+                // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+                // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+                font-size: 1.25em;
+                // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+                // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+            }
+        
+            @media #{$mediaXl} {
+                // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+                // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+                // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+                // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+                font-size: 1.5em;
+                // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+                // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+            }
+        }
+    }
+    
+    .attr {
+        // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+        @include flex(center, center, center, row nowrap);
+        // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+        max-width: 30rem;
+        // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+        // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+        font-size: 1.25em;
+        // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+        // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+    
+        img {
+            // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+            // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+            width: 40%;
+            height: auto;
+            margin: 0 #{$gutter} 0 0;
+            // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+            overflow: hidden;
+            border-radius: 100%;
+            // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+            // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+            // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+        }
+        
+        p {
+            // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+            // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+            margin: 0;
+            // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+            // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+            // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+            // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+        }
+        
+        small {
+            // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+            display: block;
+            // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+            margin: .5em 0 0;
+            // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+            // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+            font-size: .75em;
+            // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+            // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+        }
+    }
+
+    /*---------------------*\
+      IMPORT STYLES FOR VARIOUS DIRECTIONS
+
+      The default styling is for the attribution to fall under the quote.  
+      The imports below will alter that.
+    \*---------------------*/
+    @import 'quotes/direction/_quote-left';
+    @import 'quotes/direction/_quote-right';
+    @import 'quotes/direction/_quote-bottom';
+    /*---------------------*\
+      IMPORT STYLES FOR BUBBLE STYLING
+    \*---------------------*/
+    @import 'quotes/bubbles/_bubbles';
+    @import 'quotes/bubbles/_bubbles-left';
+    @import 'quotes/bubbles/_bubbles-right';
+    @import 'quotes/bubbles/_bubbles-bottom';
+    /*---------------------*\
+      IMPORT STYLES FOR SMALL VARIATION
+    \*---------------------*/
+    @import 'quotes/size/_small';
+    @import 'quotes/bubbles/_bubbles-small';
+}

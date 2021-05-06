@@ -1,56 +1,101 @@
 ---
 cart: true
+customer:
+    wishlists:
+        limit: 10
 ---
+
 {{#partial "page"}}
-<div class="page">
-
-    <main class="page-content" data-cart>
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
+<header class="hero txt-only">
+    <div class="container">
         {{> components/cart/page-title}}
-
-        <div data-cart-status>
-            {{> components/cart/status-messages}}
-        </div>
-
-        {{#if cart.items.length}}
-            <div class="loadingOverlay"></div>
-
-            <div data-cart-content>
-                {{> components/cart/content}}
+        {{#if cart.show_primary_checkout_button}}
+            <div class="cart-actions med-down-only">
+                <a class="btn-primary bfx-checkout" href="{{urls.checkout.single_address}}" title="{{lang 'cart.checkout.title'}}">
+                    <svg><use xlink:href="#icon-secure-black" /></svg>
+                    {{lang 'cart.checkout.button'}}
+                </a>
+                {{#if cart.show_multiple_address_shipping}}
+                    <a class="checkoutMultiple" href="{{urls.checkout.multiple_address}}">
+                        {{lang 'cart.preview.checkout_multiple'}}
+                    </a>
+                {{/if}}
             </div>
-
-            <div data-cart-totals>
-                {{> components/cart/totals}}
-            </div>
-
-            {{#if cart.show_primary_checkout_button}}
-                <div class="cart-actions">
-                    <a class="button button--primary" href="{{urls.checkout.single_address}}" title="{{lang 'cart.checkout.title'}}">{{lang 'cart.checkout.button'}}</a>
-                    {{#if cart.show_multiple_address_shipping}}
-                        <a class="checkoutMultiple" href="{{urls.checkout.multiple_address}}">
-                            {{lang 'cart.preview.checkout_multiple'}}
-                        </a>
-                    {{/if}}
-                </div>
-            {{else}}
-                <div class="cart-actions">
-                    <a class="button" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">{{lang 'cart.continue_shopping'}}</a>
-                </div>
-            {{/if}}
-
-            {{#if cart.additional_checkout_buttons}}
-                <div class="cart-additionalCheckoutButtons">
-                    {{#each cart.additional_checkout_buttons}}
-                        {{{this}}}
-                    {{/each}}
-                </div>
-            {{/if}}
-        {{else}}
-            <h3>{{lang 'cart.checkout.empty_cart'}}</h3>
         {{/if}}
+    </div>
+</header>
+<section data-cart>
+    <div class="container">
+        {{#if cart.items.length}}
+            <div class="row" style="">
+                <div class="col-xs-12 col-lg-7">
+                    <div data-cart-status>
+                        {{> components/cart/status-messages}}
+                    </div>
+                    <div class="loadingOverlay"></div>
+                    <div data-cart-content>
+                        {{> components/cart/content}}
+                    </div>
+                    <div class="flex jc-space-between med-up-only checkout-options-med-up">
+                        <a  href="{{urls.home}}" class="cont-shopping">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-chevron-left fa-w-10 fa-3x"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" class=""></path></svg>
+                            {{lang 'cart.continue_shopping'}}
+                        </a>
+                        <a href="#" class="empty-cart" data-confirm-delete="{{lang 'cart.confirm_delete_all'}}">
+                            <svg>
+                                <use xlink:href="#icon-trash"></use>
+                            </svg>
+                            <span>{{lang 'cart.empty_cart'}} </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-4" style="">
+                    <div class="totals-wrap">
+                        <h2 class="order-summary-heading">{{lang 'cart.checkout.order_summary_heading'}}</h2>
+                        <div data-cart-totals>
+                            {{> components/cart/totals}}
+                        </div>
+                        {{#if cart.show_primary_checkout_button}}
+                            <div class="cart-actions">
+                                <a class="btn-primary bfx-checkout" href="{{urls.checkout.single_address}}" title="{{lang 'cart.checkout.title'}}">
+                                    <svg><use xlink:href="#icon-secure-black" /></svg>
+                                    {{lang 'cart.checkout.button'}}
+                                </a>
+                                {{#if cart.show_multiple_address_shipping}}
+                                    <a class="checkoutMultiple" href="{{urls.checkout.multiple_address}}">
+                                        {{lang 'cart.preview.checkout_multiple'}}
+                                    </a>
+                                {{/if}}
+                            </div>
+                        {{/if}}
+                        {{#if cart.additional_checkout_buttons}}
+                            <div class="cart-additionalCheckoutButtons bfx-remove-element">
+                                {{#each cart.additional_checkout_buttons}}
+                                    {{{this}}}
+                                {{/each}}
+                            </div>
+                        {{/if}}
+                    </div>
+                    <div class="flex jc-space-between checkout-options med-down-only">
+                        <a  href="{{urls.home}}" class="cont-shopping">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-chevron-left fa-w-10 fa-3x"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" class=""></path></svg>
+                            {{lang 'cart.continue_shopping'}}
+                        </a>
+                        <a href="#" class="empty-cart" data-confirm-delete="{{lang 'cart.confirm_delete_all'}}">
+                            <svg>
+                                <use xlink:href="#icon-trash"></use>
+                            </svg>
+                            <span>{{lang 'cart.empty_cart'}} </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <h2>{{lang 'cart.checkout.empty_cart'}}</h2>
+        {{/if}}
+    </div>
+</section>
+{{> components/global/local-scripts/wishlist-removal-cart }}
 
-    </main>
-</div>
 {{/partial}}
 {{> layout/base}}

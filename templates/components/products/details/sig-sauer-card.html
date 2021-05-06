@@ -1,0 +1,53 @@
+<article class="card" itemscope itemtype="http://schema.org/Product">
+    <div class="img-w">
+        {{#if brand.name '==' 'Sig Sauer'}}
+            <span class="img-l">
+                {{> components/global/responsive-img
+                image=image
+                class="card-image"
+                fallback_size=theme_settings.productgallery_size
+                lazyload=theme_settings.lazyload_mode
+                default_image=theme_settings.default_image_product
+                }}
+            </span>
+        {{else}}
+            Error, this item should not be displayed
+        {{/if}}
+
+        {{#each custom_fields}}
+            {{#if name 'New'}}
+                {{#if value 'true'}}
+                    <div class="badge-new">New Arrival</div>
+                {{/if}}
+            {{/if}}
+            {{#if name 'Sale'}}
+                {{#if value 'true'}}
+                    <div class="badge-sale">Sale</div>
+                {{/if}}
+            {{/if}}
+            {{#if name 'Exclusive'}}
+                {{#if value 'true'}}
+                    <div class="badge-exclusive">Exclusive</div>
+                {{/if}}
+            {{/if}}
+            {{#if name 'BestSeller'}}
+                {{#if value 'true'}}
+                    <div class="badge-best">Best Seller</div>
+                {{/if}}
+            {{/if}}
+        {{/each}}
+    </div>
+    <div class="cnt">
+        <h3 class="title" itemprop="name">
+            <a>{{name}}</a>
+        </h3>
+
+            <div class="price bfx-price-container">
+                <span class="bfx-price sig-label" data-product-price-without-tax itemprop="price">{{sku}}</span>
+                <span class="bfx-price sig-label" data-product-price-without-tax itemprop="price">Model Number</span>
+            </div>
+
+            <a href="{{url}}" class="button button--small card-figcaption-button btn-primary" data-product-id="{{id}}">{{lang 'products.choose_options'}}</a>
+
+    </div>
+</article>

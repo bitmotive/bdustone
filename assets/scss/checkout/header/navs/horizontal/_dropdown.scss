@@ -1,0 +1,179 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - DROPDOWN
+
+\*  --------------------------------------------------------------------------  */
+nav {
+    @include position(fixed, 0, (left, top), (100%, 64px), translate(0, 0));
+    background: $white;
+    padding: 20px 0 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    @include transition(transform .25s);
+    overflow: auto;
+    
+    @media #{$mediaFullHeader} {
+        @include position(static, null, (left, top), (auto, auto), none);
+        background: none;
+        width: auto;
+        height: auto;
+        padding: 0;
+        overflow: visible;
+    }
+}
+
+
+.toggle {
+    &:checked {
+        ~ nav {
+            @include transform(translate(-100%, 0));
+        }
+    }
+}
+
+.main {
+    
+    input[type="checkbox"] {
+        @include srOnly;
+    }
+    
+    a, label, button {
+        display: block;
+        padding: remCalc(24);
+        color: $accent-1;
+        font-size: remCalc(14);
+        font-weight: 600;
+        text-transform: uppercase;
+        white-space: nowrap;
+        
+        @include hover {
+            color: $accent-1;
+        }
+    }
+    
+    @media #{$mediaToggleHeader} {
+        width: 100%;
+    
+        > li {
+            @include flex(space-between, stretch, null, row nowrap);
+            
+            a {
+                @include flexItem(0, 1, auto);
+                width: 100%;
+            }
+            
+            label {
+                @include flexItem(0, 0, auto);
+                width: auto;
+                background: $secondary;
+                color: $white;
+            }
+        }
+        
+        li {
+            
+            + li {
+                border-top: remCalc(1) solid $secondary;
+            }
+        }
+        
+        .toggle-text {
+            display: none;
+        }
+
+        ul {
+            @include position(fixed, null, (left, top), (100%, 0));
+            height: calc(100vh - 80px);
+            @include transition(transform .25s);
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: $white;
+        }
+        
+        input {
+            &:checked {
+                ~ ul {
+                    @include transform(translate(-100%, 0));
+                }
+            }
+        }
+    }
+    
+    @media #{$mediaFullHeader} {
+        @include flex(flex-end, center, stretch, row nowrap);
+        margin: 0 remCalc(-15) 0 0;
+        
+        li {
+            @include position(relative, null);
+            
+            &:hover {
+                a:not(:only-child) {
+                    border: remCalc(1) solid $secondary;
+                }
+
+                ul {
+                    display: block;
+                }
+            }
+        }
+
+        a, label, button {
+            padding: remCalc(19) remCalc(14);
+            border: remCalc(1) solid $white;
+        }
+        
+        ul {
+            display: none;
+            @include position(absolute, null, (left, top), (0, 100%));
+            min-width: 200px;
+            background: $white;
+            border: remCalc(1) solid $secondary;
+            text-align: left;
+            border-radius: 0 0 remCalc(5) remCalc(5);
+
+            li {
+                + li {
+                    border-top: remCalc(1) solid $secondary;
+                }
+            }
+
+            a {
+                padding: remCalc(20) remCalc(15);
+
+                @include hover {
+                    color: $white;
+                    background: $accent-1;
+                    border-color: $accent-1;
+                }
+            }
+        }
+        
+        label {
+            @include position(absolute, null, (left, top), (50%, 100%), translate(-50%, 50%));
+            background: $primary;
+            color: $white;
+            
+            &:not(:focus) {
+                @include srOnly();
+            }
+        }
+        
+        input[type="checkbox"] {
+            &:focus {
+                + label {
+                    display: block;
+                }
+            }
+            
+            &:checked {
+                + label {
+                    display: none;
+                }
+                
+                ~ ul {
+                    display: block;
+                }
+            }
+        }
+    }
+}

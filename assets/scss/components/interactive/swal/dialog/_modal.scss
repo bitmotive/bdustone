@@ -1,0 +1,20 @@
+/*  --------------------------------------------------------------------------  *\
+
+    DIALOG - MODAL > MODAL
+
+\*  --------------------------------------------------------------------------  */
+&-modal {
+    @include flex(space-around, center, null, column nowrap);
+    @include position(absolute, 5000, (left, top), (50%, 50%), translate(-50%, -50%));
+    width: 90vw;
+    max-width: 500px;
+    padding: remCalc(32);
+    border: 2px solid $tertiary;
+    border-radius:0;
+    background: $white;
+    @include boxShadow(0 0 1.5rem rgba(33,35,34,0.5));
+
+    @media #{$mediaMd} {
+        height: auto;
+    }
+}

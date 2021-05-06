@@ -1,0 +1,199 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCOUNT - FORM
+
+\*  --------------------------------------------------------------------------  */
+
+.form-account {
+    padding-top: remCalc(24);
+    border-top: 1px solid $primary;
+    input {
+        border-radius: 4px !important;
+    }
+    select {
+        border-radius: 4px !important;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: white url(../img/arrow.png) no-repeat 95% 50% !important;
+  }
+  label {
+    font-size: remCalc(14);
+    margin-bottom: remCalc(4) !important;
+  }
+  .shipping-border {
+    border-top: 1px solid $primary;
+    padding-top: remCalc(24);
+    margin-top: remCalc(40);
+    @media #{$mediaMd} {
+      margin-top: remCalc(24);
+    }
+  }
+  .g-recaptcha {
+    width: 100%;
+    margin-bottom: remCalc(16);
+    @media #{$mediaSmBelow} {
+      margin-top: remCalc(24);
+      margin-bottom: 0;
+    }
+    > div {
+      margin: 0 auto;
+    }
+  }
+  @media #{$mediaMd} {
+    @include flex(space-between, flex-start, null, row wrap);
+    > div {
+      width: 100%;
+    }
+    .form-el {
+      width: calc(50% - #{remCalc(16)});
+
+    //   &[data-type*="Address"] {
+    //   }
+    }
+  }
+}
+
+
+
+
+
+.editaccount {
+    .col-xs-12 + .col-xs-12 {
+        margin-top: 0;
+    }
+    input {
+        max-width: remCalc(352);
+    }
+    .form-cr {
+        p {
+            font-weight: 800;
+            .form-label {
+                font-weight: normal;
+                margin-top: remCalc(10);
+            }
+        }
+
+    }
+    .leave-blank {
+        color: grey;
+    }
+    p {
+        margin: 0;
+    }
+    section {
+        padding-top: remCalc(0);
+    }
+    .form-el {
+        margin-right: remCalc(10) !important;
+    }
+}
+.account_recentitems {
+  section {
+    padding-top: remCalc(0);
+  }
+}
+.account_orderstatus {
+    section {
+      padding-top: 0;
+    .alertBox--storeCredit {
+        margin-top: remCalc(10);
+    }
+    }
+    .ta-left {
+        margin-bottom: 0;
+    }
+    .order-none {
+        margin-top: remCalc(20); 
+        display: inline-block;
+        @media #{$mediaMd} {
+            margin-left: remCalc(24);
+        }
+    }
+}
+.account_recentitems {
+  @media #{$mediaMd} {
+    .feed-products {
+      width: 76%;
+      display: inline-flex;
+      padding-top: remCalc(10);
+      margin-left: remCalc(5) !important;
+      padding-left: remCalc(30);
+    }
+    .card {
+      padding: remCalc(8);
+    }
+    section {
+      padding-top: 0;
+    }
+  }
+}
+.add-wishlist {
+  section {
+    padding-top: 0;
+  }
+}
+.shippingaddressform {
+  @media #{$mediaSmBelow} {
+    section {
+      padding-top: 0;
+    }
+  }
+}
+
+.shippingaddressform,
+.account_order,
+.editaccount {
+  @media #{$mediaMd} {
+    section {
+      padding-top: 0;
+      .container {
+        > .row {
+
+          @media #{$mediaMd} {
+            width: 76%;
+            display: inline-flex;
+            padding-top: remCalc(10);
+            margin-left: remCalc(5) !important;
+            padding-left: remCalc(30);
+            .account-orderTotal-value {
+              padding-left: 0;
+            }
+            .print-invoice {
+              margin-bottom: remCalc(10);
+            }
+          }
+        }
+      }
+      .row {
+        + .row {
+          @media #{$mediaMd} {
+            margin-top: remCalc(10);
+          }
+        }
+      }
+    }
+  }
+}
+.account_addressbook {
+  section {
+    padding-top: 0;
+  }
+  @media #{$mediaSmBelow} {
+    .btn-primary {
+      width: 100% !important;
+      margin-top: remCalc(32);
+      text-align: center;
+    }
+  }
+  .form-btns {
+      flex-flow: column nowrap !important;
+      [class*="btn-"] {
+        width: 100% !important;
+      }
+        .btn-primary {
+            margin-top: 0;
+            margin-bottom: remCalc(8) !important;
+        }   
+    }
+}

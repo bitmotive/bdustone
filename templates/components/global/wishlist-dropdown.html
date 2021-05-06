@@ -1,0 +1,36 @@
+<form action="{{product.add_to_wishlist_url}}" style="display:none;" class="addtocart_{{product.id}} drop-btn form form-wishlist form-action" data-wishlist-add method="post">
+    <a aria-controls="wishlistDropdown" 
+       aria-expanded="false" 
+       class="{{#if class_name }}{{ class_name }}{{ else }}btn-secondary{{/if}}" 
+       data-dropdown="wishlistDropdown">
+        {{lang 'account.wishlists.add_item'}}
+    </a>
+    <ul aria-hidden="true" 
+        data-dropdown-content 
+        id="wishlistDropdown" 
+        tabindex="-1">
+        {{#if customer.wishlists}}
+            {{#each customer.wishlists}}
+                <li>
+                    <button formaction="{{this.add_url}}&product_id={{../product.id}}"
+                            type="submit">
+                        {{this.name}}
+                    </button>
+                </li>
+            {{/each}}
+        {{else}}
+            <li>
+                <button type="submit"
+                        data-action="add_to_default">
+                    {{lang 'account.wishlists.add_to_default'}}
+                </button>
+            </li>
+        {{/if}}
+        <li>
+            <a href="/wishlist.php?action=addwishlist&product_id={{product.id}}"
+                rel="nofollow">
+               {{lang 'account.wishlists.create_new'}}
+            </a>
+        </li>
+    </ul>
+</form>

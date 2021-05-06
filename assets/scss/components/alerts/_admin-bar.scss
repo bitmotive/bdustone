@@ -1,0 +1,17 @@
+&.admin-bar {
+    .container {
+        @include flex(center, center, null, row nowrap);
+
+        a, div {
+            color: $white;
+            margin: 0 remCalc(8);
+        }
+    }
+
+    svg {
+        width: remCalc(30);
+        height: remCalc(24);
+        fill: $white;
+        display:none;
+    }
+}

@@ -1,0 +1,41 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TABS - VERTICAL - TRADITIONAL
+
+\*  --------------------------------------------------------------------------  */
+&.traditional {
+    > dt {
+        @include position(relative, 200);
+        margin: 0 -.2rem 0 0;
+        width: calc(100% + .2rem);
+        
+        > button {
+            border: .2rem solid currentColor;
+            border-right-color: transparent;
+
+            &[aria-expanded="true"] {
+                border-right-color: $white;
+            }
+        }
+    }
+    
+    > dd {
+        @include position(relative, 100);
+        border: .2rem solid $primary;
+    }
+    
+    &.t-right {
+        > dt {
+            > button {
+                margin: 0 0 0 -.2rem;
+                border-right-color: currentColor;
+                border-left-color: transparent;
+                
+                &[aria-expanded="true"] {
+                    border-right-color: currentColor;
+                    border-left-color: $white;
+                }
+            }
+        }
+    }
+}

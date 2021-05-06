@@ -1,0 +1,60 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - SEARCH - FORM
+
+\*  --------------------------------------------------------------------------  */
+.form {
+    .form-el {
+        @include position(relative, null);
+    }
+
+    input {
+        background:$tertiary;
+        width: 100%;
+        font-size: remCalc(14);
+        @include flexItem(0, 1, auto);
+        border: remCalc(1) solid $neutral-1;
+        padding: remCalc(11) remCalc(21);
+        appearance:none;
+        border-radius: 10px;
+        line-height: remCalc(18);
+        &:focus {
+            border-color: $secondary;
+        }
+
+        &::placeholder {
+            color: #8b8b8b;
+            font-weight: 400;
+            font-family: $copyFF;
+        }
+    }
+
+    button {
+        @include position(absolute, 100, (right, top), (#{remCalc(1)}, #{remCalc(1)}));
+        width: remCalc(36);
+        height: remCalc(36);
+        border: remCalc(1) solid transparent;
+        border-left: none;
+        color: $primary;
+        padding: remCalc(8);
+        background: $tertiary;
+        border-radius: 10px;
+        z-index:0;
+        svg {
+            display: block;
+            fill: none;
+            width: 100%;
+            height: 100%;
+            
+            * {
+                stroke: $white;
+                stroke-width: remCalc(1);
+                stroke-linecap: round;
+            }
+        }
+
+        @include hover {
+            color: $secondary;
+        }
+    }
+}

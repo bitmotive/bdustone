@@ -1,0 +1,144 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - DROPDOWN
+
+\*  --------------------------------------------------------------------------  */
+nav {
+    @include position(relative, null);
+    overflow: hidden;
+    
+    @media #{$mediaToggleHeader} {
+        @include position(absolute, null, (left, top), (100%, 80px));
+        height: calc(100vh - 80px);
+        background: $white;
+        @include transition(transform .25s);
+    }
+    
+    @media #{$mediaFullHeader} {
+        width: calc(100% + #{$gutterSm});
+        margin: #{$gutterSm} #{$gutterSm * -.5} 0;
+    }
+}
+
+.toggle {
+        
+    &:checked {
+        @media #{$mediaToggleHeader} {
+            
+            ~ nav {
+                @include transform(translate(-100%, 0));
+            }
+        }
+    }
+}
+
+.main-nav {
+    border-top: .1rem solid $primary;
+    border-bottom: 1px solid $primary;
+    
+    a, label, button {
+        display: block;
+        padding: #{$gutterSm * .5} #{$gutterSm * .5};
+        color: $primary;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        
+        @include hover {
+            color: $secondary;
+        }
+    }
+    
+    li {
+        
+        + li {
+            border-top: .1rem solid $primary;
+        }
+    }
+    
+    > li {
+        @include flex(space-between, stretch, null, row wrap);
+        
+        a {
+            width: calc(100% - 29px);
+            
+            &:only-child {
+                width: 100%;
+            }
+        }
+        
+        label {
+            background: $secondary;
+            
+            @include hover {
+                color: $white;
+            }
+        }
+    }
+    
+    .toggle-text {
+        @include srOnly;
+    }
+    
+    ul {
+        display: none;
+        width: 100%;
+        background: $primary;
+        
+        li {
+            &:nth-child(-n + 2) {
+                @include srOnly;
+            }
+        }
+    
+        a, label, button {
+            background: $primary;
+            color: $white;
+            font-size: 1.4rem;
+            font-weight: normal;
+            text-transform: none;
+
+            @include hover {
+                background: $secondary;
+                color: $white;
+            }
+        }
+    }
+    
+    input[type="checkbox"] {
+        @include srOnly;
+        
+        &:focus {
+            
+            ~ label {
+                color: $white;
+            }
+        }
+        
+        &:checked {
+            + label {
+                .fas {
+                    @include transform(rotate(90deg));
+                }
+            }
+            
+            ~ ul {
+                display: block;
+            }
+        }
+    }
+    
+    .active {
+        label {
+            color: $white;
+            
+            .fas {
+                @include transform(rotate(90deg));
+            }
+        }
+        
+        ul {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCORDION - INDICATOR - CHEVRON TOGGLE
+
+\*  --------------------------------------------------------------------------  */
+> dt {
+    
+    > button {
+        
+        &:before {
+            @include position(absolute, 1000, (left, top), (100%, 50%), (translate(-100%, -50%) rotate(45deg)));
+            width: remCalc(6);
+            height: remCalc(6);
+            border: remCalc(2) solid currentColor;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            background: none;
+            transition: all .25s;
+            content: "";
+        }
+
+        &:after {
+            display: none;
+        }
+
+        @include hover {
+
+            &:before {
+                background: none;
+                border-color: $primary;
+                border-top-color: transparent;
+                border-left-color: transparent;
+            }
+        }
+
+        &[aria-expanded="true"] {
+
+            &:before {
+                @include transform(translate(-100%, -50%) rotate(225deg));
+            }
+        }
+    
+    }
+}

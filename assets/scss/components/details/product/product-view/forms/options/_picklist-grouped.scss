@@ -1,0 +1,129 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORMS - OPTIONS - PICKLIST BUNDLED
+
+\*  --------------------------------------------------------------------------  */
+.form-grouped, .form-bundle, .form-simple {
+
+    .opts-picklist {
+
+        .pl-image {
+            @include position(absolute, null, (left, top), (0, 0));
+            width: remCalc(32);
+            height: remCalc(32);
+            overflow: hidden;
+            border: remCalc(1) solid $neutral-3;
+            border-radius: 50%;
+
+            > img {
+                @include position(absolute, null, (left, top), (50%, 50%), translate(-50%, -50%));
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .pl-name {
+            font-size: remCalc(14);
+            line-height: 1.5;
+            font-weight: 600;
+            margin: 0 0 remCalc(5);
+        }
+
+        .pl-sku {
+            color: $tertiary;
+            font-size: remCalc(11);
+            line-height: 1;
+            font-weight: 500;
+            letter-spacing: .08em;
+            margin: 0 0 remCalc(12);
+        }
+
+        .pl-avail {
+            color: $tertiary;
+            font-size: remCalc(12);
+            line-height: (18 / 12);
+            font-weight:  600;
+            margin: 0;
+        }
+
+        .info {
+            display: block;
+        }
+
+        li {
+            //padding: 0 0 0 remCalc(40);
+            padding:0;
+            width: 100%;
+
+            &:before {
+                display: none;
+            }
+
+            @media #{$mediaXl} {
+
+                .form-field {
+                    @include flex(space-between, flex-start, null, row nowrap);
+                }
+
+                .form-field.quantity {
+                    align-items: center;
+                    margin-top: 0;
+                }
+
+                .info {
+                    width: calc(100% - #{remCalc(180)});
+                    margin: 0;
+                }
+            }
+
+            + li {
+                //padding: remCalc(20) 0 0 remCalc(40);
+                padding: remCalc(20) 0 0;
+                margin: remCalc(20) 0 0;
+                border-top: remCalc(1) solid $neutral-2;
+
+                .pl-image {
+                    top: remCalc(20);
+                }
+            }
+        }
+    }
+
+    .form-field.quantity {
+        align-items: center;
+
+        label {
+            //font-size: remCalc(14);
+           // width:auto;
+        }
+
+        .form-increment {
+            margin: 0 0 0 remCalc(16);
+        }
+    
+        input {
+            width: remCalc(50);
+            font-size: remCalc(14);
+            padding: remCalc(5);
+            border: remCalc(1) solid $neutral-1;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+
+            &[type=number] {
+                -webkit-appearance: none;
+                -moz-appearance: textfield;
+                appearance: none;
+            }
+        }
+    
+        .inc-minus, .inc-plus {
+            width: remCalc(43);
+            height: remCalc(43);
+        }
+    
+    }
+}

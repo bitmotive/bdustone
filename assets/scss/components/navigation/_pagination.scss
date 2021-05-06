@@ -1,0 +1,165 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PAGINATION
+
+\*  --------------------------------------------------------------------------  */
+&.pagination {
+    padding: remCalc(12) 0;
+    @media #{$mediaMd}{  
+        margin-bottom:remCalc(30);
+    }
+    @include flexItem(0, 0, auto);
+    @include flex(space-between, center, null, row nowrap);
+    border-radius: 0;
+    border-top: 1px solid $neutral-1; 
+    border-bottom: 1px solid $neutral-1; 
+    font-size: remCalc(16);
+    line-height:  (22 / 16);
+    @media #{$mediaToggleHeader} {
+        
+        flex-direction: column;
+    }
+    @media #{$mediaMd} {
+        flex-direction: row;
+    }
+
+    @media #{$mediaLg} {
+    }
+
+    div {
+        @include flex(center, center, null, column nowrap);
+        //display: none;
+        p, ul {
+            @media #{$mediaSmBelow} {
+                margin-bottom:remCalc(20);
+            }
+        }
+
+        &.show {
+            @media #{$mediaToggleHeader} {
+                display: none;
+            }
+        }   
+
+        @media #{$mediaMd} {
+            flex-direction: row;
+        }
+        @media #{$mediaLg} {
+           
+        }
+    }
+    .form-el{
+        justify-content: flex-start;
+        flex-flow: row nowrap ;
+        margin-bottom: 0px;
+    } 
+    label {
+        margin: 0 remCalc(8) 0 0;
+        width: 25%;
+        text-align: right;
+        font-weight: normal;
+        font-size: remCalc(14);
+        @media #{$mediaLg} {
+            width: 7em;
+        }
+    }
+
+    select {
+        -webkit-appearance: none; 
+        -moz-appearance: none;
+        appearance: none;
+        background: white url(../img/arrow.png) no-repeat 80% 50%;
+        border: 1px solid $neutral-1;
+        border-radius: remCalc(10);
+        color: $primary;
+        font-size: remCalc(14);
+        font-family: $copyFF;
+        font-weight: 500;
+        line-height: 21px;
+        padding: remCalc(11) remCalc(24);
+        padding-right: remCalc(58);  
+        text-align: left;
+        &:focus{
+            border: 1px solid $primary;
+        }
+    }
+    option{
+        font-weight: 800 !important;
+    }
+
+    p {
+        //display: none;
+
+        margin: 0;
+
+        @media #{$mediaMd} {
+            display: block;
+        }
+
+        strong {
+            color: $primary;
+            font-weight: 500;
+        }
+    }
+    
+    ul, ol {
+        margin: 0;
+        @include flex(flex-end, stretch, stretch, row nowrap);
+    }
+
+    ul {
+        @media #{$mediaMd} {
+            margin: 0 0 0 remCalc(32);
+        }
+    }
+    
+    a {
+        display: block;
+        color: $neutral-1;
+        font-weight:normal;
+
+        @include hover {
+           color: $secondary;
+        }
+
+        svg {
+            width: remCalc(20);
+            height: remCalc(20);
+            fill: $primary;
+            pointer-events: none;
+        }
+        
+        &[disabled] {
+            opacity: .5;
+            pointer-events: none;            
+        }
+    }
+
+    li {
+        a {
+            display: flex;
+        }
+        + li {
+            margin: 0 0 0 remCalc(18);
+        }
+
+        &:first-child {
+
+            svg {
+                margin: 0 remCalc(8) 0 0;
+            }
+        }
+        &[class*=current] {
+            a {
+                color:$primary;
+                font-weight:600;
+            }
+        }
+        &:last-child {
+
+            svg {
+                margin: 0 0 0 remCalc(8);
+            }
+        }
+    }
+}

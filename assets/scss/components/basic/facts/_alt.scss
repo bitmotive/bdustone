@@ -1,0 +1,43 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FACTS - ALT LAYOUT
+
+    USED FOR CART FACTS
+
+\*  --------------------------------------------------------------------------  */
+&.alt {
+    text-align: left;
+
+    @media #{$mediaMd} {
+        + .fact {
+            border-left: remCalc(1) solid $secondary;
+        }
+    }
+
+    .heading {
+        @include flex(flex-start, center, null, row nowrap);
+        margin: 0 0 remCalc(16);
+
+        > svg {
+            height: remCalc(32);
+            width: remCalc(40);
+            margin: 0 remCalc(8) 0 0;
+            @include flexItem(0, 0, auto);
+            fill: $neutral-1;
+        }
+
+        h3 {
+            @include flexItem(0, 1, auto);
+            width: 100%;
+            margin: 0;
+            color: $primary;
+            font-size: remCalc(12);
+            line-height: (14 / 12);
+        }
+    }
+
+    p {
+        font-size: remCalc(14);
+        line-height: (16 / 14);
+    }
+}

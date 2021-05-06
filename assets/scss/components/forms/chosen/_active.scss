@@ -1,0 +1,28 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > CHOSEN > ACTIVE
+
+\*  --------------------------------------------------------------------------  */
+.chosen-container-active {
+    .chosen-single {
+    }
+    
+    &.chosen-with-drop {
+        .chosen-single {
+            
+            &:after {
+                @include transform(translate(0, -50%) rotate(-135deg))
+            }
+        }
+    }
+    
+    .chosen-choices {
+        border: 1px solid $primary;
+        
+        li.search-field {
+            input[type="text"] {
+                color: $primary;
+            }
+        }
+    }
+}

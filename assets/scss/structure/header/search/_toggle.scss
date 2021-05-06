@@ -1,0 +1,29 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - SEARCH > TOGGLE
+
+\*  --------------------------------------------------------------------------  */
+.toggle-search {
+    display: block;
+    width: remCalc(55);
+    height: remCalc(55);
+    @include position(absolute, null, (right, top), (remCalc(55), 0));
+    padding: remCalc(15) remCalc(15);
+
+    svg {
+        display: block;
+        width: remCalc(24);
+        height: remCalc(24);
+        fill: none;
+    
+        * {
+            stroke: $white;
+            stroke-width: remCalc(2);
+            stroke-linecap: round;
+        }
+    }
+    
+    @media #{$mediaFullHeader} {
+        display: none;
+    }
+}

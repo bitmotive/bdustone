@@ -1,20 +1,18 @@
-<nav>
-    {{#if category.subcategories}}
-        <div class="sidebarBlock">
-            <h5 class="sidebarBlock-heading">{{category.name}}</h5>
-            <ul class="navList">
-                {{#each category.subcategories}}
-                <li class="navList-item">
-                    <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
-                </li>
-                {{/each}}
-            </ul>
-        </div>
-    {{/if}}
 
-    {{#if category.faceted_search_enabled}}
-        {{> components/faceted-search/index category}}
+<nav data-rfk-sidebar class="mobile-filter">
+    {{#or (if category.faceted_search_enabled) (if page_type '===' 'brand')}}
+        <input type="checkbox" id="facetsCheck">
+        <label for="facetsCheck" class="btn-secondary">
+            <svg><use xlink:href="#icon-sliders" /></svg>
+            {{lang 'categories.facets_heading'}}
+        </label>
+        <div class="screen-cover"></div> 
+        {{#if page_type '===' 'brand'}}
+            {{> components/faceted-search/index brand}}
+        {{else}}
+            {{> components/faceted-search/index category}}
+        {{/if}}
     {{else}}
         {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
-    {{/if}}
+    {{/or}}
 </nav>

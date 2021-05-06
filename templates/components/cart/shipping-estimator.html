@@ -1,68 +1,60 @@
 {{#if shipping_cost}}
-    <div class="cart-total-value">
-        <div class="subtotal shipping-estimate-show">
-            <a href="#" class="shipping-estimate-value">{{shipping_cost.formatted}}</a>
-        </div>
-    </div>
+    <dd>
+        <button class="shipping-estimate-show bfx-price bfx-total-shipping">{{shipping_cost.formatted}}</button>
+        <button class="toggle shipping-estimate-hide bfx-price bfx-total-shipping" style="display: none;">{{shipping_cost.formatted}}</button>
+    </dd>
 {{else}}
-    <div class="cart-total-value">
-        <button class="shipping-estimate-show">{{lang 'cart.shipping_estimator.add_info'}}</button>
-        <button class="shipping-estimate-hide" style="display: none;">Cancel</button>
-    </div>
+    <dd class="cart-total-value">
+        <button class="toggle shipping-estimate-show bfx-price bfx-total-shipping">{{lang 'cart.shipping_estimator.add_info'}}</button>
+        <button class="toggle shipping-estimate-hide" style="display: none;">Cancel</button>
+    </dd>
+{{/if}}
+{{#if provider }}
+<dd class="cart-form ta-right">
+    {{ provider.description }}
+</dd>
 {{/if}}
 
-<div class="shipping-estimator u-hiddenVisually">
+<dd class="cart-form shipping-estimator u-hiddenVisually">
     <form class="form estimator-form" data-shipping-estimator>
-        <dl>
-            <dt class="estimator-form-label">
-                <label class="form-label" for="shipping-country">{{lang 'cart.shipping_estimator.select_a_country'}}</label>
-            </dt>
-
-            <dd class="estimator-form-input">
-                <select class="form-select" id="shipping-country" name="shipping-country" data-field-type="Country">
-                    <option>{{lang 'cart.shipping_estimator.select_a_country'}}</option>
-                    {{#each countries}}
+        <div class="form-el">
+            <label for="shipping-country">{{lang 'cart.shipping_estimator.select_a_country'}}</label>
+            <select id="shipping-country" name="shipping-country" data-field-type="Country">
+                <option>{{lang 'cart.shipping_estimator.select_a_country'}}</option>
+                {{#each countries}}
+                    <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
+                        {{name}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-el">
+            <label for="shipping-state">{{lang 'cart.shipping_estimator.select_a_state'}}</label>
+            {{#if states.length}}
+                <select id="shipping-state" name="shipping-state" data-field-type="State">
+                    <option>{{lang 'cart.shipping_estimator.select_a_state'}}</option>
+                    {{#each states}}
                         <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
                             {{name}}
                         </option>
                     {{/each}}
                 </select>
-            </dd>
+            {{else}}
+                <input type="text" id="shipping-state" name="shipping-state" data-field-type="State" placeholder="{{lang 'cart.shipping_estimator.select_a_state'}}">
+            {{/if}}
+        </div>
+        <div class="form-el">
+            <label for="shipping-city">{{lang 'cart.shipping_estimator.suburb_city'}}</label>
+            <input type="text" id="shipping-city" name="shipping-city" value="{{selected_city}}" placeholder="{{lang 'cart.shipping_estimator.suburb_city'}}">
+        </div>
+        <div class="form-el">
+                <label for="shipping-zip">{{lang 'cart.shipping_estimator.zip_postal_code'}}</label>
+                <input type="text" id="shipping-zip" name="shipping-zip" value="{{selected_zip}}" placeholder="{{lang 'cart.shipping_estimator.zip_postal_code'}}">
 
-            <dt class="estimator-form-label">
-                <label class="form-label" for="shipping-state">{{lang 'cart.shipping_estimator.select_a_state'}}</label>
-            </dt>
-
-            <dd class="estimator-form-input">
-                {{#if states.length}}
-                    <select class="form-select" id="shipping-state" name="shipping-state" data-field-type="State">
-                        <option>{{lang 'cart.shipping_estimator.select_a_state'}}</option>
-                        {{#each states}}
-                            <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
-                                {{name}}
-                            </option>
-                        {{/each}}
-                    </select>
-                {{else}}
-                    <input class="form-input" type="text" id="shipping-state" name="shipping-state" data-field-type="State" placeholder="{{lang 'cart.shipping_estimator.select_a_state'}}">
-                {{/if}}
-            </dd>
-
-            <dt class="estimator-form-label">
-                <label class="form-label" for="shipping-city">{{lang 'cart.shipping_estimator.suburb_city'}}</label>
-            </dt>
-            <dd class="estimator-form-input">
-                <input class="form-input" type="text" id="shipping-city" name="shipping-city" value="{{selected_city}}" placeholder="{{lang 'cart.shipping_estimator.suburb_city'}}">
-            </dd>
-
-            <dt class="estimator-form-label">
-                <label class="form-label" for="shipping-zip">{{lang 'cart.shipping_estimator.zip_postal_code'}}</label>
-            </dt>
-            <dd class="estimator-form-input">
-                <input class="form-input" type="text" id="shipping-zip" name="shipping-zip" value="{{selected_zip}}" placeholder="{{lang 'cart.shipping_estimator.zip_postal_code'}}">
-            </dd>
-            <button class="button button--primary button--small shipping-estimate-submit">{{lang 'cart.shipping_estimator.estimate_shipping'}}</button>
-        </dl>
+        </div>
+        <div class="form-btns">
+            <button class="btn-secondary shipping-estimate-submit">{{lang 'cart.shipping_estimator.estimate_shipping'}}</button>
+        </div>
     </form>
     <div class="shipping-quotes"></div>
-</div>
+</dd>

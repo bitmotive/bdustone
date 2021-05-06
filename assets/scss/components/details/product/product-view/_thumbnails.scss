@@ -1,0 +1,160 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - THUMBNAILS
+
+\*  --------------------------------------------------------------------------  */
+.thumbnails {
+    width: 100%;
+    margin: 0 0 remCalc(16);
+    padding:0 0 remCalc(48);
+    //border:1px solid red; 
+    
+    @media #{$mediaMd} {
+        display: block;
+        padding:0 remCalc(47);
+        margin:0;
+        overflow: hidden;
+        order: 2;
+    }
+    
+    .slick-dots {
+        @include position(absolute, 100, (left, bottom), (0, #{remCalc(16)}));
+        width: 100%;
+
+        button {
+            background: $neutral-1;
+        }
+
+        .slick-active {
+
+            button {
+                background: $tertiary;
+                width: remCalc(10);
+                height: remCalc(10);
+                border-radius: remCalc(10);
+            }
+        }
+    }
+
+    .slick-arrow {
+        //background: none;
+        position:absolute;
+        top:calc(50%);
+        transform:translate(0,-50%);
+        background:rgba(230,224,215,.7);
+        z-index:1;
+        @media #{$mediaMd} {
+            background:$neutral-1;
+            height:remCalc(35);
+            width:remCalc(35);
+            @include hover {
+                background:$black;
+            }
+        }
+        &:before {
+            content:"";
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+            height: 100%;
+            width: 100%;
+        }
+    }
+    
+    .slick-prev {
+        left:0px;
+        &:before {
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxNSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGQ9Ik0xMS4zMDk3IDEzLjIyOTlMOS42Mjk4OSAxNC42MjVMMy42OTAxOSA3LjVMOS42Mjk4OSAwLjM3NTAwMkwxMS4zMDk3IDEuNzcwMTJMNi41MjUwNCA3LjQ5OTk3TDExLjMwOTcgMTMuMjI5OVoiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDAiPgo8cmVjdCB5PSIxNSIgd2lkdGg9IjE1IiBoZWlnaHQ9IjE1IiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMCAxNSkiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==') no-repeat 45% 50%;
+        }
+    }
+
+    .slick-next {
+        right:0px;
+        &:before {
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxNSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGQ9Ik0zLjY5MDI2IDEuNzcwMTJMNS4zNzAxMSAwLjM3NUwxMS4zMDk4IDcuNUw1LjM3MDExIDE0LjYyNUwzLjY5MDI2IDEzLjIyOTlMOC40NzQ5NiA3LjUwMDAzTDMuNjkwMjYgMS43NzAxMloiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDAiPgo8cmVjdCB4PSIxNSIgd2lkdGg9IjE1IiBoZWlnaHQ9IjE1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCAxNSAwKSIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4=') no-repeat 55% 50%;
+
+        }
+    }
+    
+    .thumbnail {
+        margin:auto  0;
+
+        @media #{$mediaMd} {
+            margin:0 remCalc(8)
+        }
+        picture {
+            display: block;
+            width: 100%;
+            @include transition(all .25s linear);
+        }
+
+        a {
+            display: block;
+
+            @include hover {
+
+                picture {
+                    border-color: $primary;
+                }
+            }
+
+            &.is-active {
+                border-color: $primary;
+            }
+        }
+
+        &.video {
+            a {  display: none;  }
+            padding-top:1.5%;
+           
+            @media #{$mediaMd} {
+                padding:0;
+                .video-w {
+                    padding: 100% 0 0;
+                    display:none;
+                }
+                a {display:block;padding-top:12%;}
+            }
+          
+            > a {
+                position:relative;
+                &:after {
+                    content:"";
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 11px 0 11px 20px;
+                    border-color: transparent transparent transparent#fff;
+                    position:absolute;
+                    top:50%;
+                    left:50%;
+                    transform:translate(-50%, -50%);
+                    opacity:1;
+                }
+                &:hover,
+                &.is-active {
+                    &:after {
+                        opacity:.8;
+                    }
+                }
+            }
+
+        }
+    }
+
+    /*@media #{$mediaLg} {
+        display: block;
+        margin:0;
+        overflow: hidden;
+        order: 2;
+    
+        .thumbnail {
+            padding: remCalc(4) 0;
+        }
+
+        .slick-track {
+            display: block;
+        }
+    }*/
+}

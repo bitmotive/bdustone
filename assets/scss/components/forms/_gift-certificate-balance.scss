@@ -1,0 +1,32 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > GIFT CERTIFICATE BALANCE
+
+\*  --------------------------------------------------------------------------  */
+& {
+    margin: remCalc(32) 0 0;
+
+    label {
+        display: block;
+        margin: 0 0 remCalc(8);
+    }
+
+    .form-field {
+
+        div {
+            @include flex(space-between, stretch, stretch, row nowrap);
+        }
+
+        input {
+            width: 100%;
+            @include flexItem(0, 1, auto);
+            border-radius: 0;
+            border: remCalc(1) solid $tertiary;
+            padding: remCalc(4) remCalc(8);
+        }
+
+        .btn-primary {
+            white-space: nowrap;
+        }
+    }
+}

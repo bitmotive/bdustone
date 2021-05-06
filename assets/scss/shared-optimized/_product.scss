@@ -1,0 +1,22 @@
+/*  --------------------------------------------------------------------------  *\
+
+    OPTIMIZED CHECKOUT > PRODUCTS
+
+\*  --------------------------------------------------------------------------  */
+.productList {
+    li {
+        padding: 0;
+
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.product {
+    &-title {
+        font-size: remCalc(14);
+        text-transform: none;
+        letter-spacing: normal;
+    }
+}

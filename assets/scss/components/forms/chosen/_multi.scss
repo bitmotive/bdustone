@@ -1,0 +1,94 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > CHOSEN > MULTIPLE OPTIONS
+
+\*  --------------------------------------------------------------------------  */
+.chosen-container-multi {
+    
+    .chosen-choices {
+        @include flex(flex-start, center, null, row nowrap);
+        position: relative;
+        margin: 0;
+        padding: #{$gutterSm * .5};
+        width: 100%;
+        height: auto;
+        border: 1px solid $primary;
+        background-color: $white;
+        
+        li {
+            @include flexItem(0, 1, auto, 100%);
+            
+            &.search-field {
+                margin: 0;
+                padding: 0;
+                white-space: nowrap;
+                
+                input[type="text"] {
+                    padding: #{$gutterSm * .5};
+                    border: none;
+                    color: $secondary;
+                }
+            }
+            
+            &.search-choice {
+                @include  flex(flex-start, center, null, row nowrap);
+                margin: #{$gutterSm * .25};
+                padding: #{$gutterSm * .25};
+                border: 1px solid $primary;
+                max-width: 100%;
+                background: $accent-3;
+                color: $primary;
+                cursor: default;
+                font-size: .8125em;
+                
+                span {
+                    word-wrap: break-word;
+                }
+                
+                .search-choice-close {
+                    display: block;
+                    margin: 0 0 0 #{$gutterSm * .5};
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    border-radius: 100%;
+                    background: $primary;
+                    color: $white;
+                    text-align: center;
+                    line-height: 1.5rem;
+                    font-size: 1rem;
+                    text-decoration: none;
+                    
+                    @include hover {
+                        background: $secondary;
+                    }
+                    
+                    &:before {
+                        content: "\00d7";
+                    }
+                }
+            }
+            
+            &.search-choice-disabled {
+                border: 1px solid $neutral-2;
+                color: $neutral-2;
+            }
+            
+            &.search-choice-focus {
+                color: $secondary;
+            }
+        }
+    }
+    
+    .chosen-results {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .chosen-drop {
+        .result-selected {
+            display: list-item;
+            color: $secondary;
+            cursor: default;
+        }
+    }
+}

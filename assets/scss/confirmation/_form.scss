@@ -1,0 +1,34 @@
+/*  --------------------------------------------------------------------------  *\
+
+    OPTIMIZED CHECKOUT > FORM
+
+\*  --------------------------------------------------------------------------  */
+.form {
+    margin: 0;
+    max-width: none;
+
+    &-label {
+        float: none;
+        width: 100%;
+        @include flex(flex-start, flex-end, null, row nowrap);
+
+        small {
+            font-size: .75em;
+            margin: 0 0 0 remCalc(8);
+            line-height: 1.75;
+        }
+    }
+
+    &-actions {
+        margin: 0;
+    }
+}
+button.button--tertiary {
+    background-color: $secondary;
+    border-radius: 10px;
+    border:none;
+    letter-spacing: 0.04em;
+}
+.modalOverlay {
+    z-index: 10000;
+}

@@ -1,0 +1,30 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Buttons - BACK TO TOP BUTTONS
+
+\*  --------------------------------------------------------------------------  */
+a.btt {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0 0 0 remCalc(16);
+    white-space: nowrap;
+
+    .icon {
+        @include position(relative, null);
+        display: block;
+        width: remCalc(50);
+        height: remCalc(50);
+        border-radius: remCalc(50);
+        background: $primary;
+        color: $white;
+        margin: 0 auto remCalc(4);
+
+        svg {
+            @include position(absolute, null, (left, top), (50%, 50%), translate(-50%, -50%));
+            fill: currentColor;
+            width: remCalc(20);
+            height: remCalc(20);
+        }
+    }
+}

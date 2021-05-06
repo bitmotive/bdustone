@@ -1,0 +1,23 @@
+{{#each product.custom_fields}}
+    {{#if name "===" "Feature"}}
+        {{#if value "===" "Glitter Free"}}
+            <div class="badges">
+                <div class="badge">
+                    <span class="icon">
+                        <svg>
+                            <use xlink:href="#icon-twinkle"></use>
+                        </svg>
+                    </span>
+                    <div class="cnt">
+                        {{ value }}
+                        <div class="tooltip-trigger">?
+                            <div class="tooltip">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum iste dolores omnis! Tempore consequuntur, eveniet, et voluptatum reprehenderit repellendus, perferendis corrupti consequatur soluta sapiente delectus.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+{{/each}}

@@ -1,0 +1,120 @@
+<script type="text/javascript">
+    // add new case insensitive contains selector
+    jQuery.expr[':'].containsi = function(a, i, m) {
+        return jQuery(a).text().toLowerCase()
+        .indexOf(m[3].toLowerCase()) >= 0;
+    };
+    
+    // Add blocked brands here (all lowercase)
+    var gBlockedBrands = ["sig ", "sig sauer", "agency arms", "polymer80", "daniel defense" , "rugged ", "holosun", "salient arms", "athlon optics", "vortex ", "nightforce"];
+    
+    // prototype method to store objects in storage
+    Storage.prototype.setObject = function(key, value) {
+        this.setItem(key, JSON.stringify(value));
+    }
+
+    // prototype method to get objects from storage
+    Storage.prototype.getObject = function(key) {
+        var value = this.getItem(key);
+        return value && JSON.parse(value);
+    }
+    
+    // check if storage (local/session) is available for use in this browser
+    function storageAvailable(type) {
+        var storage;
+        try {
+            storage = window[type];
+            var x = '__storage_test__';
+            storage.setItem(x, x);
+            storage.removeItem(x);
+            return true;
+        }
+        catch(e) {
+            return e instanceof DOMException && (
+                // everything except Firefox
+                e.code === 22 ||
+                // Firefox
+                e.code === 1014 ||
+                // test name field too, because code might not be present
+                // everything except Firefox
+                e.name === 'QuotaExceededError' ||
+                // Firefox
+                e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+                // acknowledge QuotaExceededError only if there's something already stored
+                (storage && storage.length !== 0);
+        }
+    } 
+        
+    // get query string variables as a lookup object
+    function getQueryStringVars() {
+       var vars = {};
+       var hash;
+       var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+       for (var i = 0; i < hashes.length; i++) {
+           hash = hashes[i].split('=');    
+           vars[hash[0]] = hash[1];
+       }
+       return vars;
+    }
+        
+    // check if flushCache=true is present in the query string, if so - get the priceDisplayRules from the server and overwrite the cached value
+    var queryStringVars = getQueryStringVars();
+    var flushCache = queryStringVars.flushCache == "true";
+    
+    // initialize rule vars
+    var priceDisplayRules = null;
+    var tempPriceDisplayRules = storageAvailable('localStorage') ? localStorage.getObject("priceDisplayRules") : null;
+    var priceDisplayRulesCacheDuration = 1000 * 60 * 60; // 1 hour in milliseconds
+    var productDetailsPriceRulesCalled = false;
+    var categoryContentPriceRulesCalled = false;
+    
+    // use cached price display rules
+    if(!flushCache && tempPriceDisplayRules && tempPriceDisplayRules.dateCached && (new Date(tempPriceDisplayRules.dateCached) > (Date.now() - priceDisplayRulesCacheDuration))) {        
+        priceDisplayRules = tempPriceDisplayRules;
+        gBlockedBrands = priceDisplayRules.blockedBrandNames;
+        console.log("Using cached price display rules: ", priceDisplayRules);
+    } 
+    // need to request the rules from the server
+    else {        
+        $.ajax({
+            'url': 'https://automation.bigdaddyunlimited.com/priceDisplayRules',
+            'type': 'get',
+            'timeout': 5000,
+            'success': function(data) {
+                console.log("Got price display rules from the server: ", data);
+                if(storageAvailable('localStorage')) {
+                    localStorage.setObject("priceDisplayRules", data);
+                }                             
+                priceDisplayRules = data;
+                gBlockedBrands = priceDisplayRules.blockedBrandNames;
+                
+                $(document).ready(function(){
+                    if (typeof productDetailsPriceRules !== 'undefined' && !productDetailsPriceRulesCalled) {
+                        console.log("productDetailsPriceRules function exists, so calling it");
+                        productDetailsPriceRules();
+                    }
+                    
+                    if (typeof categoryContentPriceRules!== 'undefined' && !categoryContentPriceRulesCalled) {
+                        console.log("categoryContentPriceRules exists, so calling it");
+                        categoryContentPriceRules();
+                    }
+                });
+            },
+            'error': function(qXHR, textStatus, errorThrown) {
+                console.log("Error getting the price display rules: ", textStatus, errorThrown);
+                
+                $(document).ready(function(){
+                    if (typeof productDetailsPriceRules !== 'undefined' && !productDetailsPriceRulesCalled) {
+                        console.log("productDetailsPriceRules function exists, so calling it");
+                        productDetailsPriceRules();
+                    }
+                    
+                    if (typeof categoryContentPriceRules!== 'undefined' && !categoryContentPriceRulesCalled) {
+                        console.log("categoryContentPriceRules function exists, so calling it");
+                        categoryContentPriceRules();
+                    }
+                });
+            }
+        });
+    }
+</script>

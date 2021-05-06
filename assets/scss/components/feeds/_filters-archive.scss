@@ -1,0 +1,364 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FILTERS ARCHIVES
+
+\*  --------------------------------------------------------------------------  */
+.category, .search {
+    @media #{$mediaSmBelow} {
+        > section, > .section {
+            > .container {
+                > .row {
+                    > .col-md-3 {
+                        position:sticky;
+                        top:remCalc(56);
+                        background:$white;
+                        z-index:1;
+                    }
+                }
+            }
+        }
+    }
+    @media #{$mediaMdOnly}{
+        > section, > .section {
+            > .container {
+                > .row {
+                    //padding: 0 remCalc(16);
+                }
+            }
+        }
+    }
+}
+nav[data-rfk-sidebar] {
+    input[type="checkbox"] {
+        @include srOnly;
+        @media #{$mediaLgBelow} {
+            &:checked {
+                ~ .facets-heading:after {
+                    @include transform(translate(-100%, -50%));
+                }
+                ~ .facetedSearch {
+                    transition-duration: 0.3s;
+                    @include transform(translate(0,-85%));
+                }
+                ~ .screen-cover {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+.facetedSearch-refineFilters {
+    li {
+        margin-bottom:remCalc(7);
+    }
+    margin-bottom:remCalc(20);
+    padding-bottom:remCalc(10);
+
+    .sidebarBlock-heading {
+        font-size:remCalc(19);
+        border-bottom:1px solid $black;
+        padding-bottom:remCalc(12);
+        margin-bottom:remCalc(10);
+    }
+}
+.facetLabel {
+    background:$neutral-1;
+    padding:remCalc(3) remCalc(7);
+    color:$tertiary;
+    font-size:.9em;
+    border-radius: remCalc(5);
+    margin-bottom:remCalc(5);
+
+    span {
+        color:$neutral-4;
+        margin-left:remCalc(7);
+    }
+}
+
+.facets-heading {
+    font-weight: 600;
+    font-family: $headingFF;
+    font-size: remCalc(20);
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    text-transform:uppercase;
+    color:$black;
+    border-bottom:1px solid $primary;
+    padding:remCalc(20) 0;
+    margin:0;
+    display:none;
+    position:relative;
+    @media #{$mediaSmBelow} {
+        display:block;
+        &:before, &:after {
+            @include position(absolute, null, (left, top), (100%, 50%));
+            width: remCalc(11);
+            height: remCalc(2);
+            background: $primary;
+            transition: all .25s;
+            content: "";
+
+        }
+        &:before {
+            @include transform(translate(-100%, -50%));
+        }
+        &:after {
+            @include transform(translate(-100%, -50%) rotate(90deg));
+        }
+    }
+}
+.facetedSearch {
+    @media #{$mediaLgBelow} {
+        top:100%;
+    }
+}
+.acc-facets {
+    margin: 0 0 remClac(24);
+    > dt {
+        font-size: remCalc(16);
+        line-height: (28 / 16); 
+        border-bottom:1px solid $primary;
+
+        &:first-child {
+            border-top: none;
+        }
+
+        button {
+            color: $primary;
+            font-family: $headingFF;
+            padding-top:remCalc(16);
+            padding-bottom:remCalc(16);
+            font-weight:600;
+            font-size: remCalc(19);
+            line-height: 28px;
+            letter-spacing: 0.02em;
+            text-transform:uppercase;
+        }
+    }
+
+    > dd {
+        padding: remCalc(16) 0;
+        font-size: remCalc(14);
+    }
+
+    //@import '../interactive/accordions/indicators/chevron';
+
+    ul {
+        margin: 0;
+    }
+
+
+    .navList-item {
+           //max-height: remCalc(30);
+       }
+   
+    .checkmark-wrap {
+        display:inline-block;
+        -ms-transform: rotate(45deg); /* IE 9 */
+        -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+        transform: rotate(45deg);
+        margin-left: 0 !important;
+        margin-right: remCalc(10);
+        position:relative;
+        left:remCalc(4);
+    }
+    .checkmark-kick {
+        position: absolute;
+        z-index: 2;
+        width:5px;
+        height:2px;
+        background-color:white;
+        right:13px;
+        top:10px;
+    }
+    .checkmark-stem {
+        position: absolute;
+        z-index: 2;
+        width:2px;
+        height:13px;
+        background-color:white;
+        right:11px;
+        top:-1px;
+    }
+    a {
+        @include position(relative, null);
+        color: $primary;
+        z-index: 0;
+        margin-left: remCalc(20);
+        &:before {
+            position: relative;
+            top: remCalc(16);
+            right: remCalc(16);
+            z-index: 0;
+            border-radius: remCalc(1);
+            width: remCalc(12);
+            height: remCalc(12);
+            display: block;
+            background: $white;
+            box-shadow:  0 0 0 remCalc(2) $white, 0 0 0 remCalc(3) $primary;
+            content: "";
+        }
+
+        @include hover {
+            color: $primary;
+            text-decoration:none;
+        }
+
+        &.is-selected {
+            &:before {
+                background: $tertiary;
+                box-shadow:  0 0 0 remCalc(2) $tertiary, 0 0 0 remCalc(3) $tertiary;
+                transition: 0.25s;
+            }
+        }
+    }
+    span {
+        color: $neutral-1;
+        margin-left: remCalc(8);
+    }
+    form {
+        border: none;
+        @include flex(space-between, center, null, row wrap);
+        .form-el {
+            @include flexItem(0, 0, auto);
+            width: calc(50% - #{remCalc(12)});
+            input {
+                width: 100%;
+                padding: remCalc(8);
+                text-align: left;
+                border-radius: remCalc(4);
+                border: remCalc(1) solid $neutral-3;
+            }
+            .price-input-dollarSign {
+                display:flex;
+                align-items: center;
+                color:black;
+                border: 1px solid black;
+                padding: 0 remCalc(8);
+                border-radius: remCalc(10);
+            }
+        }
+        .form-btn {
+            @include flex(center, center, null, row nowrap);
+            @include flexItem(0, 0, auto);
+            width: 100%;
+            margin: remCalc(16) 0 0;
+        }
+
+
+        .form-inlineMessage {
+            width: 100%;
+            margin: remCalc(16) 0 0;
+            color: $danger;
+
+            &:empty {
+                display: none;
+            }
+        }
+    }
+    
+    //@import 'archives/checkboxes';
+    //@import 'archives/selects';
+}
+
+.facet-btns {
+    text-align: center;
+    margin: remCalc(24) 0 0;
+}
+
+.mobile-filter{
+    // @include srOnly;
+    
+    h1 {
+        @media #{$mediaLg}{
+            display:none;
+        }
+    }
+
+    .screen-cover{
+        display:none;
+        position:fixed;
+        top: 0%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color:black;
+        opacity: 0.5;
+        z-index: 1001;
+    }
+    .btn-secondary{
+        position: fixed;
+        z-index: 1002;
+        background-color: $primary;
+        color: $neutral-3;
+        width: remCalc(230);
+        left: 50%;
+        bottom: 5%;
+        transform: translate(-50%);
+        svg {
+            margin-right: remCalc(15);
+        }
+        @media #{$mediaLg}{
+            display:none;
+        }
+    }
+    //creates the "x" icon that closes the filter menu
+    .x-check {
+        float: right;
+        width: remCalc(15);
+        height: remCalc(15);
+        position: relative;
+        margin: auto;
+        cursor: pointer;
+        
+        @media #{$mediaLg}{
+            display:none;
+        }
+    }
+    .x-check:before, .x-check:after {
+        content: '';
+        width: 110%;
+        height: 3px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: $primary;
+    }
+    .x-check:before {
+        -webkit-transform: translate(-50%,-50%) rotate(45deg);
+        transform: translate(-50%,-50%) rotate(45deg);
+    }
+    .x-check:after {
+        -webkit-transform: translate(-50%,-50%) rotate(-45deg);
+        transform: translate(-50%,-50%) rotate(-45deg);
+    }
+    .sidebarBlock {
+        border: 1px solid #f2f2f2;
+        left:0;
+        position: fixed;
+        z-index: 1003;
+        width: 100%;
+        background-color: $neutral-3;
+        border-radius: remCalc(25) remCalc(25) 0 0 ;
+        height: 90vh;
+        padding: remCalc(20) remCalc(40);
+        padding-bottom:remCalc(200);
+        overflow-y:auto;
+
+        @media #{$mediaLg}{
+            position: relative;
+            height:auto;
+            border:0;
+            padding:0;
+            overflow: visible;;
+            z-index: 1;
+        }
+        
+    }
+}
+
+.desktop-filter{
+    @media #{$mediaLgBelow} {
+    display: none;
+    }
+}

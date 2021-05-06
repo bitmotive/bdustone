@@ -1,0 +1,10 @@
+<ul class="main">
+    {{#each categories}}
+        {{> components/global/navs/main-menu/category }}
+    {{/each}}
+    {{#each pages}}
+        {{#unlessEq this.name compare="Gift Cards" }}
+            {{!-- {{> components/global/navs/main-menu/page }} --}}
+        {{/unlessEq}}
+    {{/each}}
+</ul>

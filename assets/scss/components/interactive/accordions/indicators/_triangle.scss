@@ -1,0 +1,32 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCORDION - INDICATOR - TRIANGLE TOGGLE
+
+\*  --------------------------------------------------------------------------  */
+&.triangles {
+    
+    > dt {
+        
+        > button {
+            
+            &:before {
+                @include position(absolute, 1000, (left, top), (100%, 50%), translate(-100%, -50%));
+                width: 0;
+                height: 0;
+                border-left: .75rem solid transparent;
+                border-right: .75rem solid transparent;
+                border-top: .75rem solid currentColor;
+                transition: all .25s;
+                content: "";
+            }
+
+            &[aria-expanded="true"] {
+
+                &:before {
+                    @include transform(translate(-100%, -50%) rotate(180deg));
+                }
+            }
+     
+        }
+    }
+}

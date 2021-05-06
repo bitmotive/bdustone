@@ -1,0 +1,9 @@
+.form-actions {
+    @include flex(flex-start, center, null, row nowrap);
+
+    [class*="btn-"] {
+        white-space: nowrap;
+        width: auto;
+        @include flexItem(0, 0, auto);
+    }
+}

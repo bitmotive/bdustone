@@ -5,6 +5,8 @@ category:
         limit: {{theme_settings.categorypage_products_per_page}}
 ---
 {{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{inject "category" category.name}}
+
 {{#partial "head"}}
     {{#if pagination.category.previous}}
         <link rel="prev" href="{{pagination.category.previous}}">
@@ -16,45 +18,64 @@ category:
 
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-{{#if category.image}}
-    {{> components/common/responsive-img
-        image=category.image
-        fallback_size=theme_settings.zoom_size
-        lazyload=theme_settings.lazyload_mode
-    }}
-{{/if}}
-{{#unless theme_settings.hide_category_page_heading }}
-    <h1 class="page-heading">{{category.name}}</h1>
-    {{{region name="category_below_header"}}}
-{{/unless}}
-{{{category.description}}}
-<div class="page">
-    {{#if category.faceted_search_enabled}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/sidebar}}
-        </aside>
-    {{else if category.subcategories}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/sidebar}}
-        </aside>
-    {{else if category.shop_by_price}}
-        {{#if theme_settings.shop_by_price_visibility}}
-             <aside class="page-sidebar" id="faceted-search-container">
+<header class="hero">
+    <div class="container">
+        {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h1>{{ category.name }}</h1>
+    </div>
+</header>
+
+<section class="category-section">
+    <div class="container" id="main-container">
+            {{> components/global/navs/paginator pagination.category totalCount=category.total_products theme_settings=theme_settings}}
+        <div class="row">
+            <div class="col-xs-12 col-lg-3">
                 {{> components/category/sidebar}}
-            </aside>
-        {{/if}}
-    {{/if}}
+            </div>
+            <div class="col-xs-12 col-lg-9">
+                <div class="banner">
+                    {{#if banners.bottom}}
+                        {{#each banners.bottom_metadata }}
+                            {{#contains this.banner-name "Promo"}}
+                                <div class="banner-w">
+                                    {{{this.content}}}
+                                </div>
+                            {{/contains}}
+                        {{/each}}
+                    {{/if}}
+                </div>
+                <div> 
+                    {{#if category.products}}
+                        {{> components/products/lists/category}}
+                    {{else}}
+                        <p>{{lang 'categories.no_products'}}</p>
+                    {{/if}}
+                </div>
+                <div class="bottom-pag">
+                {{> components/global/navs/paginator pagination.category totalCount=category.total_products theme_settings=theme_settings}}
+                </div>
+                {{{region name="category_below_content"}}}
+            </div>
+        </div>
+    </div>
+</section>
 
-    <main class="page-content" id="product-listing-container">
-        {{#if category.products}}
-            {{> components/category/product-listing}}
-        {{else}}
-            <p>{{lang 'categories.no_products'}}</p>
-        {{/if}}
-        {{{region name="category_below_content"}}}
-    </main>
-</div>
+{{{region name="featured_blogs"}}}
 
+{{#if banners.bottom}}
+    {{#each banners.bottom_metadata }}
+        {{#contains this.banner-name "Category Banner" }}
+            <section class="bttm-section">
+                <div class="container">
+                    <div class="row ha-center">
+                        <div class="col-xs-12 col-lg-10">
+                            {{{this.content}}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {{/contains}}
+    {{/each}}
+{{/if}}
 {{/partial}}
 {{> layout/base}}

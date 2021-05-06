@@ -1,0 +1,185 @@
+{{#each product.reviews.messages}}
+    {{#if error}}
+        {{> components/global/alerts/error error}}
+    {{/if}}
+    {{#if success}}
+        {{> components/global/alerts/success success}}
+    {{/if}}
+{{/each}}
+<div class="product-view">
+    <div class="title">
+        {{> components/products/details/product-view/title }}
+    </div>
+    {{!-- 
+        <div class="gallery-wrap">
+        <div class="gallery" data-image-gallery>
+            {{> components/products/details/product-view/image }}
+            {{> components/products/details/product-view/thumbnails }}
+            {{> components/global/navs/share }}
+        </div>
+    </div>
+    --}}
+
+    <div class="gallery gallery-wrap" data-image-gallery>
+          {{#if product.images}}
+          <figure class="product-image" data-image-gallery-main>
+                <a href="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}">
+                <img class=""
+                      src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+                      alt="{{product.main_image.alt}}" title="{{product.main_image.alt}}" data-main-image>
+                <div class="video-w">
+                    <iframe id="player" type="text/html" width="100%" height="auto" frameborder="0" 
+                      webkitAllowFullScreen mozallowfullscreen allowFullScreen class="special"
+                      src="" data-video-player>
+                </iframe>
+                </div>
+                </a>
+          </figure>
+          {{else}}
+          <figure class="product-image" data-image-gallery-main
+              data-zoom-image="{{cdn 'assets/img/empty-image.jpg'}}">
+              <a href="{{cdn 'assets/img/empty-image.jpg'}}">
+                  <img class="" src="{{cdn 'assets/img/empty-image.jpg'}}"
+                      alt="Image coming soon" title="Image coming soon" data-main-image>
+                      <div class="video-w"><iframe id="player" type="text/html" width="100%" height="auto" frameborder="0"
+                      webkitAllowFullScreen mozallowfullscreen allowFullScreen 
+                      src="https://www.youtube.com/embed/{{this.featured.id}}?autoplay=1" data-video-player>
+                  </iframe></div>
+              </a>
+          </figure>
+          {{/if}}
+          <div class="thumbnails" 
+          {{#if product.images.length '>' 0}}
+                data-slick='{
+                    "accessibility": false,
+                    "arrows": false,
+                    "infinite": true,
+                    "mobileFirst": true,
+                    "dots": true,
+                    "slidesToShow": 1,
+                    "slidesToScroll": 1,
+                    "vertical": false,
+                    
+                    "responsive": [
+                        {
+                            "breakpoint": 767,
+                            "settings": {
+                                "dots": false,
+                                {{#if product.images.length '>' 5}}
+                                        "slidesToShow": 4,
+                                {{else}}
+                                    {{#if product.videos.list.length '>' 0 }}
+                                        "slidesToShow": 4,
+                                    {{else}}
+                                        "slidesToShow": 5,
+                                    {{/if}}
+                                {{/if}}
+                                "slidesToScroll": 5,
+                                "vertical": false,
+                                "infinite": false,
+                                "arrows":true
+                            }
+                        }
+                    ]
+                }'
+                {{else}}
+                data-slick='{
+                    "accessibility": false,
+                    "arrows": false,
+                    "dots": true,
+                    "infinite": false,
+                    "mobileFirst": true,
+                    "slidesToShow": 1,
+                    "slidesToScroll": 1,
+                    "vertical": false,
+                    "responsive": [
+                    {
+                        "breakpoint": 0,
+                        "settings": {
+                            "arrows": false,
+                            "dots": true,
+                            "slidesToShow": 1,
+                            "slidesToScroll": 1,
+                            "vertical": false
+                        }
+                    },
+                    {
+                        "breakpoint": 992,
+                        "settings": "unslick"
+                    }]
+                }'
+                {{/if}}>
+              {{#each (limit product.images 1)}}
+              <div class="thumbnail">
+                  <a class=""
+                      href="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                      data-image-gallery-item
+                      data-image-gallery-new-image-url="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                      data-image-gallery-zoom-image-url="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}">
+                      <img src="{{getImage this 'product_thumbnail_size' (cdn ../theme_settings.default_image_product)}}"
+                          alt="{{this.alt}}" title="{{this.alt}}">
+                  </a>
+              </div>
+              {{/each}}
+              {{#each (limit product.videos.list 1)}}
+              <div class="thumbnail video">
+                  <a class=""
+                      href="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                      data-image-gallery-item data-image-gallery-new-image-url="https://www.youtube.com/embed/{{id}}?autoplay=1&rel=0"
+                      data-image-gallery-zoom-image-url="https://www.youtube.com/embed/{{id}}">
+                      <img src="//i.ytimg.com/vi/{{id}}/default.jpg" alt="{{title_short}}" title="{{title_short}}">
+                  </a>
+                 <div class="video-w"><iframe src="https://www.youtube.com/embed/{{id}}" title="{{title_short}}"></iframe></div>
+              </div>
+              {{/each}}
+              {{#each (after product.images 1)}}
+              <div class="thumbnail">
+                  <a class=""
+                      href="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                      data-image-gallery-item
+                      data-image-gallery-new-image-url="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                      data-image-gallery-zoom-image-url="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}">
+                      <img src="{{getImage this 'product_thumbnail_size' (cdn ../theme_settings.default_image_product)}}"
+                          alt="{{this.alt}}" title="{{this.alt}}">
+                  </a>
+              </div>
+              {{/each}}
+              {{#each (after product.videos.list 1)}}
+              <div class="thumbnail video">
+                  <a class=""
+                      href="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                      data-image-gallery-item data-image-gallery-new-image-url="https://www.youtube.com/embed/{{id}}?autoplay=1"
+                      data-image-gallery-zoom-image-url="https://www.youtube.com/embed/{{id}}">
+                      <img src="//i.ytimg.com/vi/{{id}}/default.jpg" alt="{{title_short}}" title="{{title_short}}">
+                  </a>
+                  <div class="video-w"><iframe src="https://www.youtube.com/embed/{{id}}" title="{{title_short}}"></iframe></div>
+              </div>
+              {{/each}}
+          </div>
+
+    </div>
+    
+    <div class="details-wrap">
+        {{> components/products/details/common/price product price=product.price schema_org=schema currency_selector=currency_selector }}
+        {{> components/products/details/common/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+        {{#if product.warranty}}
+            <div class="short-desc">
+                {{{ product.warranty }}}
+            </div>
+        {{/if}}
+        {{> components/products/details/product-view/form }}
+        {{> components/products/details/common/help}}
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        try{
+            applyRules('{{product.id}}','{{product.sku}}','{{product.title}}','{{product.brand.name}}','{{product.out_of_stock_message}}');
+        } catch(err){
+            $('.productPrice_' + '{{id}}').show();
+            $('.addtocart_' + '{{id}}').show();
+        }
+    });    
+    </script>
+    
+</div>

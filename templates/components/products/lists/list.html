@@ -1,0 +1,5 @@
+<div class="feed-products">
+    {{#each products}}
+  		{{>components/products/details/card customer=../customer position=(add @index 1)}}
+    {{/each}}
+</ul>

@@ -1,0 +1,29 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCOUNT > INBOX
+
+\*  --------------------------------------------------------------------------  */
+.inbox {
+    border-bottom: remCalc(1) solid $secondary;
+
+    li {
+        padding: remCalc(32) 0;
+        border-top: remCalc(1) solid $secondary;
+
+        &:before {
+            display: none;
+        }
+
+        :last-child {
+            margin: 0;
+        }
+    }
+
+    .h4 {
+        text-transform: none;
+    }
+
+    .date {
+        margin: 0 0 remCalc(4);
+    }
+}

@@ -1,0 +1,82 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: theme_settings.categorypage_products_per_page
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{inject "category" category.name}}
+
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+<header class="hero">
+    <div class="container">
+        {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h1>{{ category.name }}</h1>
+        {{#if category.description}}
+            {{{ category.description }}}
+        {{/if}}
+    </div>
+</header>
+
+<section class="category-section">
+    <div class="container">
+            {{> components/global/navs/paginator pagination.category totalCount=category.total_products theme_settings=theme_settings}}
+        <div class="row">
+            <div class="col-xs-12 col-lg-12">
+                {{#if banners.bottom}}
+                    {{#each banners.bottom_metadata }}
+                        {{#contains this.banner_name "Promo"}}
+                            <div class="banner-w">
+                                {{{this.content}}}
+                            </div>
+                        {{/contains}}
+                    {{/each}}
+                {{/if}}
+                <div>
+                    {{#if category.products}}
+                    <form action="{{urls.compare}}" method='POST' {{#if settings.data_tag_enabled}} data-list-name="Category: {{category.name}}" {{/if}} data-product-compare>
+                        <div class="feed-products sig-saur">
+                            {{#each category.products}}
+                                  {{> components/products/details/card sig=1 position=(add @index 1)}}
+                            {{/each}}
+                        </ul>                    
+                    </form>
+                    {{else}}
+                        <p>{{lang 'categories.no_products'}}</p>
+                    {{/if}}
+                </div>
+                {{{region name="category_below_content"}}}
+            </div>
+        </div>
+    </div>
+</section>
+
+{{{region name="featured_blogs"}}}
+
+{{#if banners.bottom}}
+    {{#each banners.bottom_metadata }}
+        {{#contains this.banner-name "Category Banner" }}
+            <section class="bttm-section">
+                <div class="container">
+                    <div class="row ha-center">
+                        <div class="col-xs-12 col-lg-10">
+                            {{{this.content}}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {{/contains}}
+    {{/each}}
+{{/if}}
+
+{{/partial}}
+{{> layout/base}}

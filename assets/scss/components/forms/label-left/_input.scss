@@ -1,0 +1,26 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL LEFT > INPUTS
+
+\*  --------------------------------------------------------------------------  */
+input:not([type="radio"]):not([type="checkbox"]):not([type="button"]) {
+    display: block;
+    order: 1;
+    width: calc(100% - #{$formLLLabelW} - #{$gutter * .5});
+    height: remCalc(40);
+    padding: $formLLGutter;
+    font-size: remCalc(14);
+    @include formBorder($formLLBorder, $formLLBorderStyle);
+    border-radius: remCalc(5);
+    
+    &:focus {
+        border-color: $formLLBorderFocus;
+    }
+
+    &:disabled {
+        background: $neutral-3;
+        color: $neutral-2;
+        font-style: italic;
+        cursor: not-allowed;
+    }
+}

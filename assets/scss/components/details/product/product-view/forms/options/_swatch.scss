@@ -1,0 +1,44 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORMS - OPTIONS - SWATCHES
+
+\*  --------------------------------------------------------------------------  */
+.opts-swatch {
+
+    label {
+        ~ label {
+            margin: 0 remCalc(8);
+        }
+
+        &:last-of-type {
+            margin: 0 0 0 remCalc(8);
+        }
+
+        &:first-of-type {
+            margin: 0 remCalc(8) 0 0;
+        }
+    }
+
+    .swatch {
+        @include hover {
+            border-color: $secondary;
+        }
+
+        &.unavailable {
+            border-color: rgba($accent-2, .666);
+            opacity: .7;
+            cursor: not-allowed;
+        }
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+        @include srOnly();
+
+        &:checked {
+            + label {
+                box-shadow: remCalc(2) remCalc(2) remCalc(3) rgba($primary, .5);
+                border-color: $tertiary;
+            }
+        }
+    }
+}

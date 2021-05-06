@@ -1,0 +1,26 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > INVERTED FORM COLORS
+
+\*  --------------------------------------------------------------------------  */
+&.invert {
+
+    label {
+        color: $tertiary;
+    }
+
+    input:not([type="radio"]):not([type="checkbox"]), textarea {
+        background: none;
+        color: $white;
+
+        &:focus, &:valid {
+    
+            + label {
+                @include transform((translate(#{remCalc(16)}, -165%)));
+                font-size: .75em;
+                background: $primary;
+            }
+        }
+    }
+
+}

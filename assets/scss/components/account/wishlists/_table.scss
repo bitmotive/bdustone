@@ -1,0 +1,67 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCOUNT - WISHLISTS - TABLE
+
+\*  --------------------------------------------------------------------------  */
+table.table-wishlists {
+    th {
+        font-weight: normal;
+        text-align: center;
+        width: 33.3%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    @media #{$mediaMd} {
+        .th-1 {
+            justify-content: flex-start;
+        }
+    }
+    td {
+        //border-color: $neutral-1;
+    }
+    tbody {
+        td {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:nth-child(1) {
+                //border-left: 1px solid $neutral-1;
+                width: 33.3%;
+            }
+            &:nth-child(2) {
+                width: 33.3%;
+            }
+            &:nth-child(3) {
+                width: 33.3%;
+            }
+            @media #{$mediaMd} {
+                &:first-child {
+                    display:flex;
+                    align-items: center;
+                    width: 33.3%;
+                    justify-content: flex-start;
+                }
+                &:nth-child(2) {
+                    //border-left: none;
+                    width: 33.3%;
+                }
+                &:nth-child(3) {
+                    width: 33.3%;
+                }
+            }
+        }
+        .table-actions {
+            .btn-txt{
+                color: $neutral-1;
+            }
+        }
+    }
+
+    tr {
+        width: 100%;
+        display: flex;
+        align-content: center;
+    }
+}

@@ -1,0 +1,43 @@
+<h2>
+    {{lang 'products.lists.related.heading' }}
+</h2>
+<div class="feed-carousel-featured"
+     data-rfk-carousel
+     data-slick='{
+        "accessibility": false,
+        "infinite": false,
+        "mobileFirst": true,
+        "slidesToShow": 4,
+        "slidesToScroll": 1,
+        "arrows": false,
+        "dots": false,
+        "draggable": false,
+        "swipe": false,
+        "responsive": [
+            {
+                "breakpoint": 767,
+                "settings": {
+                    "infinite": true,
+                    "slidesToShow": 4,
+                    "arrows": false,
+                    "swipe": false,
+                    "draggable": false             
+                }
+            },
+            {
+                "breakpoint": 992,
+                "settings": {
+                    "infinite": true,
+                    "slidesToShow": 4,
+                    "arrows": false,
+                    "swipe": false,
+                    "draggable": false             
+                }
+            }
+        ]
+    }'
+     data-list-name="Related Products">
+    {{#each products}}
+        {{>components/products/details/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+    {{/each}}
+</div>

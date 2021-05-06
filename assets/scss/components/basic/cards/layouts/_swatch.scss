@@ -1,0 +1,54 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CARD - LAYOUT - SWATCH
+
+\*  --------------------------------------------------------------------------  */
+&.swatch {
+    border: none;
+    
+    > div {
+        width: 100%;
+        padding: #{$gutterSm};
+    }
+    
+    dl {
+        
+        dt, dd {
+            font-size: 1.2rem;
+        }
+        
+        dt {
+            padding: #{$gutterSm / 4} 0;
+            margin: 0 0 #{$gutterSm / 4};
+            border-bottom: .1rem solid currentColor;
+        }
+        
+        dd {
+            padding: 0;
+        }
+    }
+    
+    .col-xs-12 & {
+        dl {
+            @include multicolumn($c: 2, $r: 0);
+            
+            @media #{$mediaMd} {
+                @include multicolumn(4, null, null);
+            }
+        }
+    }
+    
+    .col-xs-4 & {
+        dl {
+            @include multicolumn($c: 2, $r: 0);
+        }
+    }
+    
+    .col-xs-4.col-md-2 & {
+        @media #{$mediaMd} {
+            dl {
+                @include multicolumn($c: 1);
+            }
+        }
+    }
+}

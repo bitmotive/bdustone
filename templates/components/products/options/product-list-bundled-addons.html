@@ -1,0 +1,72 @@
+<dl class="accordion acc-options addons" role="presentation" data-display-name="{{this.display_name}}" data-allow-toggle="true" data-allow-multiple="true">
+    {{#filter product.options 'product-list' property='partial'}}
+        {{#filter ../product.custom_fields 'Picklist Options - Checkbox' property='name'}}
+            {{#inArray (split this.value ',') ../this.display_name}}
+                <dt role="heading" aria-level="2"{{#unless required}} class="not-required"{{/unless}}>
+                    <button id="accOptions{{ ../../this.id }}Toggle" type="button" aria-expanded="false" aria-controls="accOptions{{ ../../this.id }}Panel">
+                        {{ ../../this.display_name }}
+                        {{#if ../../required}}
+                            <small class="required">{{lang 'common.required_text'}}</small>
+                        {{else}}
+                            <small>{{lang 'common.optional_text'}}</small>
+                        {{/if}}
+                        <div class="tooltip-trigger icon-i">
+                            i
+                            <div class="tooltip left">
+                                <p>These optional products can be added into your cart.</p>
+                            </div>
+                        </div>
+                    </button>
+                    {{!--{{#each (limit ../../this.values 1)}}
+                        <img src="{{getImage image 'acc_thumbnail'}}" alt="{{ image.alt }}" />
+                    {{/each}} --}}
+                </dt>
+                <dd id="accOptions{{ ../../this.id }}Panel" hidden aria-labelledby="accOptions{{ ../../this.id }}Toggle">
+                  <ul class="opts-picklist" data-bundle-acc-addons-product-ids="{{#each ../../this.values}}{{data}}{{#unless @last}},{{/unless}}{{/each}}" data-display-name="{{this.display_name}}">
+                    {{#each ../../this.values}}
+                        <li data-product-attribute="product-list" data-product-id="{{data}}">
+                            <div class="form-field" data-product-attribute-value="{{id}}">
+                                {{!--{{#if image}}
+                                    <figure class="pl-image">
+                                        {{> components/global/responsive-img
+                                            image=image
+                                            class="productOptions-list-item-image"
+                                            lazyload='lazyload+lqip'
+                                        }}
+                                    </figure>
+                                {{/if}}--}}
+                                <div class="info">
+                                    <p class="pl-name">{{label}}</p>
+                                    <p class="pl-sku"></p>
+                                    <p class="pl-avail"></p>
+                                </div>
+                                <div class="form-field quantity">
+                                    <label class="form-label" for="qty{{id}}">{{lang 'products.quantity'}}</label>
+                                    <div class="form-increment" data-quantity-change>
+                                        <button class="inc-minus" type="button" data-action="dec">
+                                            <span class="sr-only">{{lang 'products.quantity_decrease'}}</span>
+                                        </button>
+                                        <input class="form-input form-input--incrementTotal"
+                                               data-picklist-product
+                                               id="{{data}}"
+                                               name="{{data}}"
+                                               type="number"
+                                               value="0"
+                                               data-quantity-max="{{product.max_purchase_quantity}}"
+                                               min="0"
+                                               pattern="[0-9]*"
+                                               aria-live="polite">
+                                        <button class="inc-plus" type="button" data-action="inc">
+                                            <span class="sr-only">{{lang 'products.quantity_increase'}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {{/each}}
+                  </ul>
+                </dd>
+            {{/inArray}}
+        {{/filter}}
+    {{/filter}}
+</dl>

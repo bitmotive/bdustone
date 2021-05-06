@@ -1,0 +1,44 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FOOTER - NAV - BADGES
+
+\*  --------------------------------------------------------------------------  */
+.secure-badges {
+    font-size: 1.25em;
+    
+    ul {
+        margin: 0 remCalc(-8);
+        @include flex(flex-start, stretch, null, row nowrap);
+    }
+    
+    li {
+        @include flex(stretch, stretch, null, column nowrap);
+        width: calc(33.333% - #{remCalc(16)});
+        margin: 0 remCalc(8);
+        height: 100%;
+    }
+
+    a {
+        @include flex(stretch, stretch, null, column nowrap);
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: remCalc(8);
+        background: #fff;
+        color: $black;
+        padding: remCalc(8) remCalc(4);
+        font-size: remCalc(14);
+        opacity: .667;
+        overflow: hidden;
+
+        @include hover{
+            opacity: 1;
+        }
+
+        img {
+            width: auto;
+            height: remCalc(36);
+            margin: 0 auto;
+        }
+    }
+}

@@ -1,0 +1,547 @@
+---
+products:
+    new:
+        limit: 8
+    featured:
+        limit: 8
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "page"}}
+
+
+
+<section class="nopad">
+    <div class="container">
+        <div class="banner">
+            <div class="img-cont">
+                <picture>
+                    <source srcset="{{imageUrl_mobile.src}}" media="(max-width: 992px)">
+                    <img src="{{imageUrl.src}}" alt="{{imageUrlAlt}}">
+                </picture>
+            </div>
+            <div class="mainText">
+               <div>
+                    <h1>{{heading}}</h1>
+                    <a href="{{buttonUrl-1}}" class="button btn-primary">{{buttonText-1}}</a>
+                    <a href="{{buttonUrl-2}}" class="button btn-secondary">{{buttonText-2}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="nopad">
+    <div class="container">
+        <div class="banner">
+            <div class="img-cont">
+                <picture>
+                    <source srcset="https://cdn11.bigcommerce.com/s-17n78xrsva/product_images/uploaded_images/hero-nonmember-mobile.jpg" media="(max-width: 992px)">
+                    <img src="https://cdn11.bigcommerce.com/s-17n78xrsva/product_images/uploaded_images/hero-nonmember.jpg" alt="{{imgAltText}}">
+                </picture>
+            </div>
+           <div class="mainText" style="">
+               <div style="">
+                    <h1>The Next Evolution Of The Online Gun Store Is Here!</h1>
+                    <a href="" class="button btn-primary">Join Now</a>
+                    <a href="" class="button btn-secondary" style="">Already A Member? Login Here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<div class="nonmember">
+<section class="nopad">
+    <div class="container">
+        <div class="banner">
+            {{#if banners.bottom}}
+                {{#each banners.bottom_metadata}}
+                    {{#if banner-name '===' 'Homepage - Nonmember' }}
+                        {{{this.content}}}
+                        <div>
+                            <h1 style="color:#fff;margin-bottom:2rem;">{{lang 'home.nonmember.top-banner.heading'}}</h1>
+                            <a href="{{lang 'home.nonmember.top-banner.button-1-url'}}" class="button btn-primary">{{lang 'home.nonmember.top-banner.button-1-text'}}</a>
+                            <a href="{{lang 'home.nonmember.top-banner.button-2-url'}}" class="button btn-secondary" style="color:#fff; background:none;border:1px solid #fff;">{{lang 'home.nonmember.top-banner.button-2-text'}}</a>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            {{/if}}
+           
+        </div>
+        {{{region name="covid-message"}}}
+    </div>
+</section>
+
+{{{region name="homepage-section"}}}
+
+<div class="homepage-hero">
+    <div class="hero-carousel">
+        <div class="hero-carousel-start"
+             data-slick='{
+                "accessibility": true,
+                "arrows": false,
+                "dots": true,
+                "mobileFirst": true,
+                "slidesToShow": 1,
+                "slidesToScroll": 1,
+                "responsive": [
+                    {
+                        "breakpoint": 767,
+                        "settings": {
+                            "arrows": true,
+                            "dots": false       
+                        }
+                    }
+                ]
+             }'>
+             {{#each bannerImage}}
+            <div>
+                <a href="{{bannerImageLink}}">
+                    <img class="desktop" src="{{bannerImageUrl.src}}" />
+                    <img class="mobile" src="{{bannerImageUrl_mobile.src}}" />
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="container">
+        <div class="text">
+            {{{region name="important-message"}}}
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="homepage-hero">
+    <div class="hero-carousel">
+
+        <div class="hero-carousel-start"
+             data-slick='{
+                "accessibility": true,
+                "arrows": false,
+                "dots": true,
+                "mobileFirst": true,
+                "slidesToShow": 1,
+                "slidesToScroll": 1,
+                "responsive": [
+                    {
+                        "breakpoint": 767,
+                        "settings": {
+                            "arrows": true,
+                            "dots": false       
+                        }
+                    }
+                ]
+             }'>
+           
+            <div>
+                <img class="desktop" src="https://cdn11.bigcommerce.com/s-17n78xrsva/images/stencil/original/carousel/4/hero-homepage.png?c=1" />
+                <img class="mobile" src="https://cdn11.bigcommerce.com/s-17n78xrsva/product_images/uploaded_images/mobile-hero.png" />
+            </div>
+            <div>
+                <img class="desktop" src="https://cdn11.bigcommerce.com/s-17n78xrsva/images/stencil/original/carousel/4/hero-homepage.png?c=1" />
+                <img class="mobile" src="https://cdn11.bigcommerce.com/s-17n78xrsva/product_images/uploaded_images/mobile-hero.png" />
+            </div>
+            <div>
+                <img class="desktop" src="https://cdn11.bigcommerce.com/s-17n78xrsva/images/stencil/original/carousel/4/hero-homepage.png?c=1" />
+                <img class="mobile" src="https://cdn11.bigcommerce.com/s-17n78xrsva/product_images/uploaded_images/mobile-hero.png" />
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="text">
+            <p><span>IMPORTANT: </span> 
+We are currently experiencing an increased number of out-of-stock prdoucts, shipping delays, and longer than normal transit times. Our product pages have the most up-to-date transit times listed for your reference. <a href="/covid-19">Click here for the latest COVID-19 update from BDU</a>.</p>
+<p>For the fastest response, please direct your questions to <a href="emailto:support@bigdaddyunlimited.com">support@bigdaddyunlimited.com</a></p>
+        </div>
+    </div>
+</div>
+
+<section class="example-products">
+    <div class="container">
+        <div class="example-carousel">
+            <div class="feed-carousel-featured"
+                data-slick='{
+                    "accessibility": false,
+                    "infinite": false,
+                    "mobileFirst": true,
+                    "slidesToShow": 1,
+                    "slidesToScroll": 3,
+                    "arrows": false,
+                    "dots": false,
+                    "draggable": false,
+                    "swipe": false,
+                    "responsive": [
+                        {
+                            "breakpoint": 767,
+                            "settings": {
+                                "slidesToShow": 3,
+                                "arrows": true,
+                                "swipe": true,
+                                "draggable": true             
+                            }
+                        }
+                    ]
+                }'
+                data-list-name="Example Products">
+                {{#each carouselItems}}
+                
+                </article><article class="card" itemscope itemtype="http://schema.org/Product">
+                    <div class="img-w">
+                        <img src="{{carouselItemImageUrl.src}}" />
+                    </div>
+                    <div class="cnt">
+                        <h4>{{carouselItemHeadline}}</h4>
+                        <p>Retail Price: ${{retailPrice}}</p>
+                        <p>Internet Price: ${{internetPrice}}</p>
+                        <p><b>BDU Member Price: ${{bduPrice}}</b></p>
+                        <p class='orange'>Save ${{toFixed (subtract retailPrice bduPrice) 2}} OFF MSRP and ${{toFixed (subtract internetPrice bduPrice) 2}} OFF Lowest Internet Price</p>
+                    </div>
+                </article>
+
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="example-products">
+    <div class="container">
+        <div class="example-carousel">
+            <div class="feed-carousel-featured"
+                data-slick='{
+                    "accessibility": false,
+                    "infinite": false,
+                    "mobileFirst": true,
+                    "slidesToShow": 1,
+                    "slidesToScroll": 3,
+                    "arrows": false,
+                    "dots": false,
+                    "draggable": false,
+                    "swipe": false,
+                    "responsive": [
+                        {
+                            "breakpoint": 767,
+                            "settings": {
+                                "slidesToShow": 3,
+                                "arrows": true,
+                                "swipe": true,
+                                "draggable": true             
+                            }
+                        }
+                    ]
+                }'
+                data-list-name="Example Products">
+               <article class="card" itemscope itemtype="http://schema.org/Product">
+                    <div class="img-w">
+                        <img src="https://via.placeholder.com/500/FFFF00/000000/?text=image" />
+                    </div>
+                    <div class="cnt">
+                        <h4>Name</h4>
+                        <p>Retail Price: ${{retailPrice}}</p>
+                        <p>Internet Price: ${{internetPrice}}</p>
+                        <p><b>BDU Member Price: ${{bduPrice}}</b></p>
+                        <p class='orange'>Save ${{toFixed (subtract retailPrice bduPrice) 2}} OFF MSRP and ${{toFixed (subtract internetPrice bduPrice) 2}} OFF Lowest Internet Price</p>
+                    </div>
+                </article>
+                <article class="card" itemscope itemtype="http://schema.org/Product">
+                    <div class="img-w">
+                        <img src="https://via.placeholder.com/500/FFFF00/000000/?text=image" />
+                    </div>
+                    <div class="cnt">
+                        <h4>Name</h4>
+                        <p>Retail Price: ${{retailPrice}}</p>
+                        <p>Internet Price: ${{internetPrice}}</p>
+                        <p><b>BDU Member Price: ${{bduPrice}}</b></p>
+                        <p class='orange'>Save ${{toFixed (subtract retailPrice bduPrice) 2}} OFF MSRP and ${{toFixed (subtract internetPrice bduPrice) 2}} OFF Lowest Internet Price</p>
+                    </div>
+                </article>
+                <article class="card" itemscope itemtype="http://schema.org/Product">
+                    <div class="img-w">
+                        <img src="https://via.placeholder.com/500/FFFF00/000000/?text=image" />
+                    </div>
+                    <div class="cnt">
+                        <h4>Name</h4>
+                        <p>Retail Price: ${{retailPrice}}</p>
+                        <p>Internet Price: ${{internetPrice}}</p>
+                        <p><b>BDU Member Price: ${{bduPrice}}</b></p>
+                        <p class='orange'>Save ${{toFixed (subtract retailPrice bduPrice) 2}} OFF MSRP and ${{toFixed (subtract internetPrice bduPrice) 2}} OFF Lowest Internet Price</p>
+                    </div>
+                </article>
+                <article class="card" itemscope itemtype="http://schema.org/Product">
+                    <div class="img-w">
+                        <img src="https://via.placeholder.com/500/FFFF00/000000/?text=image" />
+                    </div>
+                    <div class="cnt">
+                        <h4>Name</h4>
+                        <p>Retail Price: ${{retailPrice}}</p>
+                        <p>Internet Price: ${{internetPrice}}</p>
+                        <p><b>BDU Member Price: ${{bduPrice}}</b></p>
+                        <p class='orange'>Save ${{toFixed (subtract retailPrice bduPrice) 2}} OFF MSRP and ${{toFixed (subtract internetPrice bduPrice) 2}} OFF Lowest Internet Price</p>
+                    </div>
+                </article>
+                 <article class="card" itemscope itemtype="http://schema.org/Product">
+                    <div class="img-w">
+                        <img src="https://via.placeholder.com/500/FFFF00/000000/?text=image" />
+                    </div>
+                    <div class="cnt">
+                        <h4>Name</h4>
+                        <p>Retail Price: ${{retailPrice}}</p>
+                        <p>Internet Price: ${{internetPrice}}</p>
+                        <p><b>BDU Member Price: ${{bduPrice}}</b></p>
+                        <p class='orange'>Save ${{toFixed (subtract retailPrice bduPrice) 2}} OFF MSRP and ${{toFixed (subtract internetPrice bduPrice) 2}} OFF Lowest Internet Price</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="tear flip">
+    <div class="container bg-gray-tear flip">
+        <div class="content">
+            <div class="text">
+                <h2>{{lang 'home.nonmember.section-1.heading-1'}}</h2>
+                <p>{{lang 'home.nonmember.section-1.content-1'}}</p>
+                <h2>{{lang 'home.nonmember.section-1.heading-2'}}</h2>
+                <p>{{lang 'home.nonmember.section-1.content-2'}}</p>
+            </div>
+            <div class="media">
+                <iframe
+                    src="https://player.vimeo.com/video/312737095?autoplay=0&loop=0"
+                    frameborder="0"
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container bg-gray-tear {{#if flip}}flip{{/if}}">
+        <div class="content">
+            <div class="text">
+                <h2>{{heading-1}}</h2>
+                <p>{{body-1}}</p>
+                <h2>{{heading-2}}</h2>
+                <p>{{body-2}}</p>
+            </div>
+            <div class="media">
+                {{#if useMedia '===' 'image'}}
+                   <img src="{{imageUrl.src}}" alt="{{imageUrlAlt}}" />
+                {{else}}
+                {{#contains 'youtube' videoUrl.parts.type}}
+                    {{#if videoUrl.parts.id}}
+                        <iframe
+                                type="text/html"
+                                allow="autoplay"
+                                src="https://www.youtube.com/embed/{{videoUrl.parts.id}}?enablejsapi=1&autoplay={{#if autoplay}}1{{else}}0{{/if}}&controls={{#if controls}}1{{else}}0{{/if}}&fs=1&loop={{#if loop}}1&playlist={{videoUrl.parts.id}}{{else}}0{{/if}}&rel=0"
+                                frameborder="0"
+                                webkitallowfullscreen
+                                mozallowfullscreen
+                                allowfullscreen
+                        ></iframe>
+                    {{/if}}
+                {{/contains}}
+                {{#if videoUrl.parts.type '===' 'vimeo'}}
+                    {{#if videoUrl.parts.id}}
+                        <iframe
+                                src="https://player.vimeo.com/video/{{videoUrl.parts.id}}?api=1&autoplay={{#if autoplay}}1{{else}}0{{/if}}&loop={{#if loop}}1{{else}}0{{/if}}"
+                                frameborder="0"
+                                webkitallowfullscreen
+                                mozallowfullscreen
+                                allowfullscreen
+                        ></iframe>
+                    {{/if}}
+                {{/if}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container bg-gray-tear flip">
+        <div class="content">
+            <div>
+                {{> components/global/responsive-img
+                    image="/product_images/uploaded_images/homepage-sniper.jpg"
+                    class="card-image"
+                    fallback_size=theme_settings.productgallery_size
+                    lazyload=theme_settings.lazyload_mode
+                    default_image=theme_settings.default_image_product
+                    }}
+            </div>
+            <div>
+                <h2>{{lang 'home.nonmember.section-2.heading-1'}}</h2>
+                <p>{{lang 'home.nonmember.section-2.content-1'}}</p>
+                <h2>{{lang 'home.nonmember.section-2.heading-2'}}</h2>
+                <p>{{lang 'home.nonmember.section-2.content-2'}}</p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="invert trial">
+    <div class="container">
+        <div class="content">
+            <h2>{{lang 'home.nonmember.trial-benefits.heading'}}</h2>
+            <div class="benefits">
+                <div>
+                    <svg>{{{lang 'home.nonmember.trial-benefits.1.icon'}}}</svg>
+                    <div>
+                        <b>{{lang 'home.nonmember.trial-benefits.1.title'}}</b>
+                        <p>{{lang 'home.nonmember.trial-benefits.1.content'}}</p>
+                    </div>
+                </div>
+                <div>
+                    <svg>{{{lang 'home.nonmember.trial-benefits.2.icon'}}}</svg>
+                    <div>
+                        <b>{{lang 'home.nonmember.trial-benefits.2.title'}}</b>
+                        <p>{{lang 'home.nonmember.trial-benefits.2.content'}}</p>
+                    </div>
+                </div>
+                <div>
+                    <svg>{{{lang 'home.nonmember.trial-benefits.3.icon'}}}</svg>
+                    <div>
+                        <b>{{lang 'home.nonmember.trial-benefits.3.title'}}</b>
+                        <p>{{lang 'home.nonmember.trial-benefits.3.content'}}</p>
+                    </div>
+                </div>
+                <div>
+                    <svg>{{{lang 'home.nonmember.trial-benefits.4.icon'}}}</svg>
+                    <div>
+                        <b>{{lang 'home.nonmember.trial-benefits.4.title'}}</b>
+                        <p>{{lang 'home.nonmember.trial-benefits.4.content'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="{{invert}} trial">
+    <div class="container">
+        <div class="content">
+            <h2>{{titleContext}}</h2>
+            <div class="benefits {{itemsPerRow}}">
+                {{#each facts}}
+                <div>
+                    <img src="{{factImageUrl.src}}" alt="{{factImageAlt}}" />
+                    <div>
+                        {{#if factHeadingVisible '===' 'show'}}<p><b>{{factHeading}}</b></p>{{/if}}
+                        <p>{{factCopy}}</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container quote">
+        <div class="content">
+            <h2>{{lang 'home.nonmember.quote.heading'}}</h2>
+            <div>
+                <blockquote>
+                    {{{lang 'home.nonmember.quote.content'}}}
+                    <footer><img src="/product_images/uploaded_images/colion-noir.jpg" />{{lang 'home.nonmember.quote.author'}}</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container quote">
+        <div class="content">
+            <h2>{{heading}}</h2>
+            <div>
+                <blockquote>
+                    <p>{{quote}}</p>
+                    <footer><img src="{{imageUrl.src}}" alt="{{author}}" />{{author}}</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="trial">
+    <div class="container">
+        <h2>{{{lang 'home.nonmember.how-it-works.heading'}}}</h2>
+        <div class="benefits two">
+            <div>
+                <svg>{{{lang 'home.nonmember.how-it-works.1.icon'}}}</svg>
+                <div>
+                    <p>{{lang 'home.nonmember.how-it-works.1.content'}}</p>
+                </div>
+            </div>
+            <div>
+                <svg>{{{lang 'home.nonmember.how-it-works.2.icon'}}}</svg>
+                <div>
+                    <p>{{lang 'home.nonmember.how-it-works.2.content'}}</p>
+                </div>
+            </div>
+            <div>
+                <svg>{{{lang 'home.nonmember.how-it-works.3.icon'}}}</svg>
+                <div>
+                    <p>{{lang 'home.nonmember.how-it-works.3.content'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="important">
+    <div class="container">
+        <div>
+            <h4>{{lang 'home.nonmember.important.heading'}}</h4>
+            <p>{{lang 'home.nonmember.important.content'}}</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="getstarted invert">
+            <h2>{{lang 'home.nonmember.get-started.heading'}}</h2>
+            <a href="{{lang 'home.nonmember.get-started.button-url'}}" class="button btn-primary desktop">{{lang 'home.nonmember.get-started.button-text'}}</a>
+            {{{lang 'home.nonmember.get-started.content'}}}
+            <a href="{{lang 'home.nonmember.get-started.button-url'}}" class="button btn-primary mobile">{{lang 'home.nonmember.get-started.button-text'}}</a>
+        </div>
+    </div>
+</section>
+
+<section class="more-info">
+    <div class="container ta-center">
+        {{{lang 'home.nonmember.more-info.bullet-1'}}}
+        {{{lang 'home.nonmember.more-info.bullet-2'}}}
+        {{{lang 'home.nonmember.more-info.bullet-3'}}}
+        {{{lang 'home.nonmember.more-info.bullet-4'}}}
+    </div>
+</section>
+
+</div>
+
+{{/partial}}
+{{> layout/base}}

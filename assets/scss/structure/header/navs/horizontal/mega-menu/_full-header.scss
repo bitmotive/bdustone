@@ -1,0 +1,282 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - MEGA MENU - FULL HEADER
+
+\*  --------------------------------------------------------------------------  */
+& {
+    @media #{$mediaFullHeader} {
+        @include flex(center, center, stretch, row nowrap);
+        
+        >li {
+            
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            border-right: remCalc(1) dashed $neutral-1;
+            flex-grow:4;
+            
+            &:last-child {
+                border:0;
+            }
+            >a {
+                //border:1px solid blue;
+                
+                padding-left:remCalc(0);
+                padding-right:remCalc(0);
+                margin-right:remCalc(0);
+                &.hasSubs {
+                    background: url(../img/arrow-white.svg) no-repeat 95% 50%;
+                    padding-right:remCalc(20);
+                }
+            }
+        }
+        
+
+        
+        a {
+            font-size: remCalc(12);
+            //padding: remCalc(10) remCalc(18);
+        }
+        
+        input[type="checkbox"] {
+            &:focus {
+                + label {
+                    @include flex(space-between, center, null, row nowrap);
+                }
+            }
+            
+            &:checked {
+                + label {
+                    display: none;
+                }
+
+                ~ div {
+                    @include flex(space-between, flex-start, flex-start, row nowrap);
+                }
+            }
+        }
+        
+        > li {
+
+            > div {
+                
+                visibility: hidden;
+                opacity:0;
+                transition: .2s .4s ease-in-out;
+                @include position(absolute, null, (left, top), (50%, 100%), translate(-50%, 0));
+                @include flex(space-between, flex-start, null, row nowrap);
+                background: #f6f5f4;
+                padding: remCalc(24) remCalc(0);
+                width: 100%;
+
+                &:before {
+                    @include position(absolute, -1, (left, top), (50%, 0), translate(-50%, 0));
+                    height: 100%;
+                    width: 100vw;
+                    background: $black;
+                    border-top: remCalc(1) dashed $neutral-1;
+                    border-bottom: remCalc(1) solid $neutral-2;
+                    display:block;
+                    content: "";
+                    transition: 0s 0s;
+                }
+
+                a {
+                    padding: remCalc(12) remCalc(16);
+                }
+
+                input[type="checkbox"] {
+                    display: none;
+                }
+
+                > ul {
+                    
+                    @include flex(flex-start, flex-start, flex-start, column wrap);
+                    min-height: remCalc(250);
+                    max-height: remCalc(575);
+                    width: 75%;
+                    overflow: hidden;
+                    position:relative;
+                    &:before, &:after {
+                        content:"";
+                        position:absolute;
+                        width:remCalc(1);
+                        height:100%;
+                        //background:$neutral-2;
+                        top:0;
+                        transition: 0s 0s;
+                    }
+                    &:before {
+                        left:calc(33.333% - 1rem);
+                    }
+                    &:after {
+                        left:calc(66.667% - 1rem)
+                    }
+                    > li {
+                        display: block;
+                        width: 33.333%;
+
+                        > a {
+                            
+                            text-transform: uppercase;
+                            font-family:$headingFF;
+                            font-weight: 600;
+                            letter-spacing: .08em;
+                            font-size:remCalc(16);
+                            padding: remCalc(12) remCalc(16) 0;
+                            &:only-child {
+                                padding: remCalc(12) remCalc(16);
+
+                                &:after {
+                                    content: "";
+                                    display: inline-block;
+                                    position: relative;
+                                    width: remCalc(4);
+                                    height: remCalc(4);
+                                    border-right: remCalc(2) solid currentColor;
+                                    border-top: remCalc(2) solid currentColor;
+                                    transform: translate(#{remCalc(10)}, #{remCalc(-2)}) rotate(45deg);
+                                }
+                            }
+                        }
+
+                        &:nth-child(1), &:nth-child(2) {
+                            display: none;
+                        }
+                    }
+
+                    a {
+                        transition-duration:0s;
+                        font-size: remCalc(14);
+                        white-space: normal;
+                    }
+
+                    ul {
+                        margin: remCalc(8) 0;
+
+                        > li {
+                            &:nth-child(1), &:nth-child(2) {
+                                display: none;
+                            }
+                        }
+
+                        a {
+                            font-size: remCalc(14);
+                            font-weight: 400;
+                            padding: remCalc(4) remCalc(16);
+                        }
+                    }
+
+                    .shop-all {
+                        padding: remCalc(8) 0 0;
+
+                        a {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+
+            &:nth-last-child(2) {
+                > div {
+                    > ul {
+                        > li {
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+            
+            &:hover {
+                cursor:pointer;
+
+                > div {
+                    visibility: visible;
+                    opacity:1;
+                    transition-delay: .2s;
+                    
+                    &:before {
+                        transition-delay: 0s;
+                    }
+                    > ul {
+                        &:before, &:after {
+                            transition-delay: 0s;
+                        }
+                    }
+                }
+
+                > ul {
+                    display: block;
+                }
+            }
+
+        }
+
+        
+        label {
+            display: none;
+            @include position(absolute, null, (left, top), (50%, 100%), translate(-50%, 0));
+            background: $primary;
+            color: $white;
+            font-size: remCalc(12);
+
+            svg {
+                order: 1;
+                fill: currentColor;
+                width: 1.5em;
+                height: 1.5em;
+                margin: 0 0 0 .5em;
+            }
+        }
+
+        .card {
+            a {
+                transition-duration:0s;
+                
+            }
+            width: 25%;
+            background:transparent;
+
+            .img-w {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                margin-top:remCalc(20);
+            }
+            .img-w img {
+                flex-shrink: 0;
+                min-width: 100%;
+                min-height: 100%
+            }
+
+            .img-exclusive {
+                position: absolute;
+                top:0; left:0;height:100%;width:100%;
+                background:
+                linear-gradient(
+                    180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.72) 100%),
+                    url(../img/border-rip.png);
+                background-size:100%;
+
+
+            }
+            
+            .cnt {
+                position: relative;
+                top:remCalc(-130);
+                right: remCalc(20);
+                border:0;
+                color:$white;
+                text-align:right;
+                H2 {
+                    color:$white;
+                    text-transform: uppercase;
+                    margin:0;
+                }
+            }
+        }
+    }
+
+}

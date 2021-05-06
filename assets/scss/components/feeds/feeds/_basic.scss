@@ -1,0 +1,118 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FEED - BASIC
+
+\*  --------------------------------------------------------------------------  */
+.f-basic {
+    
+    > article {
+        @include flex(space-between, flex-start, flex-start, row nowrap);
+        margin: 0 0 remCalc(16);
+        padding: 0 0 remCalc(16);
+        width: 100%;
+        border-bottom: remCalc(1) solid $secondary;
+
+        @media #{$mediaMd} {
+            margin: 0 0 remCalc(20);
+            padding: 0 0 remCalc(20);
+        }
+
+        @media #{$mediaLg} {
+            margin: 0 0 remCalc(24);
+            padding: 0 0 remCalc(24);
+        }
+
+        > a {
+            display: block;
+            @include flexItem(0, 0, auto, 0);
+            width: calc(37.5% - #{remCalc(16)});
+            margin: 0 remCalc(32) 0 0;
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        > div {
+            @include flexItem(0, 1, auto, 0);
+            width: 100%;
+        }
+    }
+
+    h3 {
+        font-size: remCalc(20);
+        line-height: (30 / 24);
+        text-transform: none;
+        margin: 0 0 remCalc(4);
+
+        @media #{$mediaMd} {
+            font-size: remCalc(24);
+        }
+
+        a {
+            color: $primary;
+            text-decoration: none;
+
+            @include hover {
+                color:$neutral-1;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .byline {
+        margin: 0 0 remCalc(16);
+        font-size: remCalc(14);
+        line-height: 1.5;
+        font-weight: normal;
+        
+        @media #{$mediaMd} {
+            font-size: remCalc(16);
+        }
+
+        span {
+            margin: 0 remCalc(8);
+        }
+    }
+
+    .tags {
+        margin: 0 0 remCalc(8);
+        a {
+            color: $accent-1;
+            @include hover {
+                color:$neutral-1;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .summary {
+        margin: 0;
+
+        a {
+            display: inline-flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: $accent-1;
+            text-decoration: none;
+
+            svg {
+                fill: currentColor;
+                width: remCalc(18);
+                height: remCalc(18);
+                transition: all .25s linear;
+            }
+
+            @include hover {
+                color: $accent-1;
+                text-decoration: underline;
+
+                svg {
+                    transform: translate(#{remCalc(5), 0});
+                }
+            }
+        }
+    }
+}

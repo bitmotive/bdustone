@@ -1,0 +1,6 @@
+<ul class="reviews" id="productReviewsList">
+    {{#each reviews.list}}
+        {{> components/products/reviews/review-item }}
+    {{/each}}
+</ul>
+{{> components/global/paginator pagination.reviews}}

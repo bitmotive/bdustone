@@ -1,0 +1,107 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: theme_settings.categorypage_products_per_page
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+{{#partial "page"}}
+<header class="hero interior">
+    <div class="img-cont"><img src="{{getImageSrcset category.image 1x='1280x268'}}" alt="Category Hero Image"></div>
+    <div class="container">
+        {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+        <div>
+            <h1>{{ category.name }}</h1>
+            {{#if category.description}}
+                {{{ category.description }}}
+            {{/if}}
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <nav class="landing">
+            <ul>
+                {{#each categories }}
+                    {{#if is_active }}
+                        {{#each children}}
+                            {{#and is_active children}}
+                                <li class="has-subchildren">
+                                    <h2><a href="{{ url }}">{{ name }}</a></h2>
+                                    <ul>
+                                        {{#each children}}
+                                            <li>
+                                                <a href="{{ url }}">
+                                                    <div class="img-wrap">
+                                                    {{#if image }}
+                                                        <img src="{{getImage image 'cat_nav_size' }}" alt="{{ image.alt }}" />
+                                                    {{else}}
+                                                        <img src="//via.placeholder.com/255x150/b5b5b5/e8e8e8?text=PLACEHOLDER" alt="{{ name }}" />
+                                                    {{/if}}
+                                                    </div>
+                                                    <span>{{ name }}</span>
+                                                </a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                </li>
+                            {{/and}}
+                        {{/each}}
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </nav>
+    </div>
+</section>
+
+{{{region name="featured_blogs"}}}
+
+{{#if banners.bottom}}
+    {{#each banners.bottom_metadata }}
+        {{#contains this.banner-name "Promo Banner" }}
+            <section class="banner-w">
+                <div class="container">
+                    {{{this.content}}}
+                </div>
+            </section>
+        {{/contains}}
+    {{/each}}
+{{/if}}
+{{#if banners.bottom}}
+    {{#each banners.bottom_metadata }}
+        {{#contains this.banner-name "Content Banner" }}
+            <section>
+                <div class="container">
+                    <div class="row ha-center va-center">
+                        {{{this.content}}}
+                    </div>
+                </div>
+            </section>
+        {{/contains}}
+    {{/each}}
+{{/if}}
+{{#if banners.bottom}}
+    {{#each banners.bottom_metadata }}
+        {{#contains this.banner-name "Category Banner" }}
+            <section class="bttm-section">
+                <div class="container">
+                    <div class="row ha-center">
+                        <div class="col-xs-12 col-lg-10">
+                            {{{this.content}}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {{/contains}}
+    {{/each}}
+{{/if}}
+{{/partial}}
+{{> layout/base}}

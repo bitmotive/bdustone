@@ -1,0 +1,44 @@
+<figure
+    class="product-image"
+    data-image-gallery-main
+    {{#if product.main_image}}
+    data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
+    {{/if}}
+    >
+    {{#if product.images}}
+        {{#gt product.images.length 1}}
+        <button class="arrow prev" type="button" data-swap-image="prev">
+            <svg>
+                <title>Previous Image</title>
+                <use xlink:href="#icon-caret-left"></use>
+            </svg>
+        </button>
+        {{/gt}}
+        {{#if product.main_image}}
+            <a href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}"
+                target="_blank"{{#if schema}} itemprop="image"{{/if}}>
+        {{/if}}
+        {{> components/global/responsive-img
+            image=product.main_image
+            class="productView-image--default"
+            fallback_size=theme_settings.product_size
+            lazyload=theme_settings.lazyload_mode
+            default_image=theme_settings.default_image_product
+            otherAttributes="data-main-image"
+        }}
+        {{!-- Remove the surrounding a-element if there is no main image. --}}
+        {{#if product.main_image}}
+            </a>
+        {{/if}}
+        {{#gt product.images.length 1}}
+        <button class="arrow next" type="button" data-swap-image="next">
+            <svg>
+                <title>Next Image</title>
+                <use xlink:href="#icon-caret-right"></use>
+            </svg>
+        </button>
+        {{/gt}}
+    {{else}}
+        <img src="https://via.placeholder.com/900/e8e8e8/fff?text=COMING SOON" alt="{{ product.title }}" />
+    {{/if}}
+</figure>

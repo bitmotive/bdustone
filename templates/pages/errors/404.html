@@ -1,17 +1,164 @@
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<header class="hero">
+    <div class="container">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1 class="page-heading">OOPS, Just a Bit Off Target</h1>
+    </div>
+</header>
 
 <main class="page">
-    <section class="page-content page-content--centered">
-        <h1 class="page-heading">{{lang 'page_not_found.page_heading'}}</h1>
-        <p class="u-textAlignCenter">
-            {{lang 'page_not_found.message'}}
-        </p>
+    <div class="container">
+        
+        <div id="notfound_sorry" style="display: none;">
+            <p class="txt24">We are sorry the page or product you are trying to view is not currently available.</p>
+        </div>
+        
+        <div id="notfound_waiting" style="display:none;border: 1px solid #ECECEC; background-color: #FBFBFB; padding: 5px;border-radius: 2px;text-align: center;">
+            <p class="txt24"><b>Please wait while we search for a suitable alternative...</b></p>
+            <p style="width:300px;margin:0 auto;padding-bottom:20px;">
+                <img src="https://cdn9.bigcommerce.com/s-39rzs2k77u/product_images/uploaded_images/loading.gif" />
+            </p>
+        </div>
+        
+        <div id="notfound_notaproduct"  style="display: none; border: 1px solid #ECECEC; background-color: #FBFBFB; padding: 5px;border-radius: 2px;">
+            <p class="txt24">We are sorry the page you are trying to view has been moved or deleted.</p>
+        
+                <p class="txt24">
+                    Click the button below to return to our homepage.
+                    <div class="404Action"><a class="btn" id="homePageLink" href="/">Return to homepage</a></div>
+            </p>
+        </div>
+        
+        <div id="notfound_optionfound" style="display: none; border: 1px solid #ECECEC; background-color: #FBFBFB; padding: 5px;border-radius: 2px;">
+            <p class="txt24">We are sorry the product you are trying to view is out of stock at our main warehouse.</p>
+            <p class="txt24">This product is in stock through one of our satellite warehouses.</p>
+            <p class="txt24">
+                <div class="404Action"><a class="btn" id="visibleProductPage" href="">Click here to view in stock product.</a></div>
+            </p>
+            <p class="txt24">This is the same product and model, but the pricing may vary by location.</p>
+        </div>
+        
+        <div id="notfound_outofstock" style="display: none; border: 1px solid #ECECEC; background-color: #FBFBFB; padding: 5px;border-radius: 2px;">
+            <p class="txt24">We are sorry this item is currently out of stock at all of our warehouses.</p>
+            <p class="txt24">Items and inventory are replenished on a daily basis. Click the button below to be notified when your product is available again.</p>
+            <p class="txt24">
+                <div class="404Action"><a class="btn" id="productISNLink" href="">Restock notification.</a></div>
+            </p>
+        </div>
+        
+        <div id="notfound_unavailable" style="display: none; border: 1px solid #ECECEC; background-color: #FBFBFB; padding: 5px;border-radius: 2px;">
+            <p class="txt24">This product is not currently available. We do not have an ETA on replenishment at this time</p>
+            <p class="txt24">It may have been a special buy, limited availability product, or has been discontinued.</p>
+            <p class="txt24">If you have further questions, feel free to reach out to our Customer Service Team by phone (800-915-7709) or email (support@bigdaddyunlimited.com)</p>
+        </div>
+        
+        <div id="notfound_error"  style="display: none; border: 1px solid #ECECEC; background-color: #FBFBFB; padding: 5px;border-radius: 2px;">
+            <p class="txt24">We are sorry the page you are trying to view has been moved or deleted.</p>
+        
+            <p class="txt24">
+                Click the button below to return to our homepage.
+                <div class="404Action"><a class="btn" id="homePageLink" href="/">Return to homepage</a></div>
+            </p>
+            <small style="color: #ececec;">[e: 100]</small>
+        </div>
 
-        {{> components/common/search-box}}
-    </section>
+
+
+    </div>
 </main>
+
+<style>
+    .404Action .btn {
+        color: #141414;
+        background-color: #FF9000;
+        background-image: -moz-linear-gradient(top, #f9d85e, #FF9000);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f9d85e), to(#FF9000));
+        background-image: -webkit-linear-gradient(top, #f9d85e, #FF9000);
+        background-image: -o-linear-gradient(top, #f9d85e, #FF9000);
+        background-image: linear-gradient(to bottom, #f9d85e, #FF9000);
+        border: 1px solid #cbcbcb;
+        border-color: #cbcbcb #a2a2a2 #7a7a7a;
+    }
+
+    .404Action > a {
+        width: 250px;
+        text-align: center;
+        outline-width: 0px !important;
+        user-select: auto !important;
+    }
+
+    .404Action .btn:hover {
+        color: #fff;
+        background-color: #2d2d2d;
+        background-image: -moz-linear-gradient(top, #2d2d2d, #141414);
+        background-image: -ms-linear-gradient(top, #2d2d2d, #141414);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2d2d2d), to(#141414));
+        background-image: -webkit-linear-gradient(top, #2d2d2d, #141414);
+        background-image: -o-linear-gradient(top, #2d2d2d, #141414);
+        background-image: linear-gradient(top, #2d2d2d, #141414);
+        border-color: #000;
+        border-color: #000 #000 #000;
+    }
+</style>
+
+<script type="text/javascript">
+                            
+//if(customerEmail && (customerEmail == "p.phillip.jentsch@gmail.com" || customerEmail == "bert.ingley@gmail.com" || customerEmail == "brian@tigerfiles.com")){
+    
+    $('h1.page-heading').text('OOPS, Just a Bit Off Target');
+    $('.BlockContent.full-width').html("");
+    $('div#notfound_sorry').show();
+    $('div#notfound_waiting').show();
+    $.ajax({
+        'url': 'https://automation.bigdaddyunlimited.com/p/checkIfProductPage',
+        'type': 'post',
+        'data': {
+            'pathname': window.location.pathname
+        },
+        'success': function(data) {
+            console.log("Page Check Response: ", data);
+            
+            if(data && typeof data === "object" && data.status){
+                //$('div#notfound_waiting').hide();
+                if(data.status == "visible in stock"){
+                    $('div#notfound_sorry').hide();
+                    $('div#notfound_waiting').hide();
+                    $('div#notfound_optionfound').show();
+                    $('a#visibleProductPage').attr('href', data.url);                                                
+                }
+                if(data.status == "visible not in stock"){
+                    $('div#notfound_sorry').hide();
+                    $('div#notfound_waiting').hide();
+                    $('a#productISNLink').attr('href', data.url + "?RestockNotify");
+                    $('div#notfound_outofstock').show();
+                }
+                if(data.status == "no visible product"){
+                    $('div#notfound_sorry').hide();
+                    $('div#notfound_waiting').hide();
+                    $('div#notfound_unavailable').show();
+                }
+                if(data.status == "not a product page"){
+                    $('div#notfound_sorry').hide();
+                    $('div#notfound_waiting').hide();
+                    $('div#notfound_notaproduct').show();
+                }
+            } else {
+                $('div#notfound_sorry').hide();
+                $('div#notfound_waiting').hide();
+                $('a#homePageLink').attr('href', "https://" + window.location.hostname);
+                $('div#notfound_error').show();
+            }                                            
+        },
+        'error': function(qXHR, textStatus, errorThrown) {
+            $('div#notfound_sorry').hide();
+            $('div#notfound_waiting').hide();
+            $('a#homePageLink').attr('href', "https://" + window.location.hostname);
+            $('div#notfound_error').show();
+        }
+    });
+//}
+</script>
 
 {{/partial}}
 {{> layout/base}}

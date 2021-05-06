@@ -1,0 +1,39 @@
+<div class="feed-carousel-brands"
+     data-rfk-carousel
+     data-slick='{
+        "accessibility": false,
+        "infinite": false,
+        "mobileFirst": true,
+        "arrows": false,
+        "dots": false,
+        "draggable": true,
+        "swipe": true,
+        "slidesToShow":2,
+        "slidesToScroll":1,
+        "arrows": true,
+        "responsive": [
+            {
+                "breakpoint": 767,
+                "settings": {
+                    "slidesToShow": 3,
+                    "slidesToScroll": 3,
+                    "arrows": true         
+                }
+            },
+            {
+                "breakpoint": 992,
+                "settings": {
+                    "slidesToShow": 4,
+                    "slidesToScroll": 4,
+                    "arrows": true          
+                }
+            }
+        ]
+    }'
+     data-list-name="Related Products">
+     {{#for 1 (toInt (lang 'footer.footer_brands.length'))}}
+        {{!--<a class="" href="{{lang (concat (concat 'footer.footer_brands.' $index) '.link')}}">--}}
+            <span><img class="img-w" src="{{cdn 'assets/img/'}}{{lang (concat (concat 'footer.footer_brands.' $index) '.img')}}" /></span>
+        {{!--</a>--}}
+     {{/for}}
+</div>

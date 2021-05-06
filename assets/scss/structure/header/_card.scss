@@ -1,0 +1,26 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - CARD
+
+\*  --------------------------------------------------------------------------  */
+.card {
+    .img-w {
+        margin: 0;
+    }
+
+    .title {
+        font-size: remCalc(16);
+        line-height:  1.31;
+        font-weight: 600;
+        margin: remCalc(8) 0 0;
+    }
+
+    p {
+        margin: remCalc(8) 0 0;
+    }
+
+    .btn-primary {
+        margin: remCalc(12) 0 0;
+        padding: remCalc(12) remCalc(20);
+    }
+}

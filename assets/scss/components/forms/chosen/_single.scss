@@ -1,0 +1,73 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > CHOSEN > SINGLE SELECT OPTION
+
+\*  --------------------------------------------------------------------------  */
+.chosen-container-single {
+    .chosen-single {
+        @include position(relative, null);
+        display: block;
+        overflow: hidden;
+        padding: #{$gutterSm * .5};
+        border: .1rem solid $secondary;
+        background: $white;
+        color: $primary;
+        text-decoration: none;
+        white-space: nowrap;
+        line-height: 1;
+        
+        span {
+            display: block;
+            oveflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        abbr {
+            display: block;
+            //@include position(absolute, null, (top, left), (50%, calc(100% - #{$gutterSm * .5})), translate(-50%, -50%));
+        
+            &:hover {
+
+            }
+        }
+    
+        &:after {
+            display: block;
+            @include position(absolute, null, (left, top), (calc(100% - #{$gutterSm}), 50%), (translate(0, -50%) rotate(45deg)));
+            height: 5px;
+            width: 5px;
+            border-bottom: 2px solid $primary;
+            border-right: 2px solid $primary;
+            @include transition(transform .125s linear);
+            content: "";
+        }
+    }
+    
+    .chosen-default {
+        color: $primary;
+    }
+    
+    .chosen-search {
+        @include position(relative, null);
+        margin: 0;
+        padding: #{$gutterSm * .5};
+        white-space: nowrap;
+        
+        input[type="text"] {
+            padding: #{$gutterSm * .5};
+            width: 100%;
+            border: 1px solid $primary;
+        }
+    }
+    
+    .chosen-drop {
+        margin-top: -1px;
+    }
+    
+    &.chosen-container-single-nosearch {
+        .chosen-search {
+            display: none;
+        }
+    }
+}

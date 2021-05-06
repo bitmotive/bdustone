@@ -1,0 +1,31 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCOUNT - WISHLISTS - TABLE
+
+\*  --------------------------------------------------------------------------  */
+.wishlist {
+    .remove-wishlist {
+        display: block !important;
+        .form-btns {
+            margin: 0;
+            justify-content: flex-end;
+            button {
+                padding-right: 0;
+                font-size: remCalc(20);
+            }
+        }
+    }
+
+    section {
+      padding-top: 0;
+      @media #{$mediaSmBelow} {
+        .container {
+          padding: 0 remCalc(5);
+        }
+      }
+    }
+  }
+@import 'wishlists/table';
+@import 'wishlists/items';
+@import 'wishlists/details';
+@import 'wishlists/form';

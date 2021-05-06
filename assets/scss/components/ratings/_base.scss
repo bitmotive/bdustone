@@ -1,0 +1,32 @@
+/*  --------------------------------------------------------------------------  *\
+
+    RATINGS
+
+\*  --------------------------------------------------------------------------  */
+.rating {
+    @include flex(center, center, null, row nowrap);
+    margin: 0 0 remCalc(12);
+
+    span {
+        display: block;
+        width: remCalc(20);
+        height: remCalc(20);
+        
+        svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            stroke: $neutral-1;
+            stroke-width: remCalc(2);
+            fill: rgba($neutral-1, 0);
+        }
+
+        &.full {
+            fill: $neutral-1;
+        }
+
+        + span {
+            margin-left: remCalc(5);
+        }
+    }
+}

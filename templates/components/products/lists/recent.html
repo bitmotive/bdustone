@@ -1,0 +1,7 @@
+{{! <h2 class="ta-center">{{lang 'account.recent_items.list_heading' }}</h2>
+
+<div class="feed-products">
+    {{#each products}}
+  		{{>components/products/details/card position=(add @index 1)}}
+    {{/each}}
+</ul>

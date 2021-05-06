@@ -1,0 +1,54 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > CHOSEN > RESULTS
+
+\*  --------------------------------------------------------------------------  */
+.chosen-container {
+    .chosen-results {
+        overflow-x: hidden;
+        margin: 0 #{$gutterSm * .5} #{$gutterSm * .5};
+        max-height: 240px;
+        -webkit-overflow-scrolling: touch;
+        
+        li {
+            display: none;
+            padding: #{$gutterSm * .25};
+            color: $primary;
+            
+            &.active-result {
+                display: list-item;
+            }
+            
+            &.disabled-result {
+                display: list-item;
+                color: $accent-2;
+                font-style: italic;
+            }
+            
+            &.highlighted {
+                display: list-item;
+                color: $secondary;
+            }
+            
+            &.no-results {
+                display: list-item;
+                color: $accent-2;
+                font-style: italic;
+            }
+            
+            &.group-result {
+                display: list-item;
+                font-weight: bold;
+            }
+            
+            &.group-option {
+                padding-left: #{$gutter};
+            }
+            
+            em {
+                font-style: normal;
+                text-decoration: underline;
+            }
+        }
+    }
+}

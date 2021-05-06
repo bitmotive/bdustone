@@ -1,0 +1,87 @@
+/*  --------------------------------------------------------------------------  *\
+
+    BREADCRUMB
+
+\*  --------------------------------------------------------------------------  */
+&.breadcrumbs {    
+    margin: remCalc(24) 0 remCalc(16);
+    color: $primary;
+    font-size: remCalc(14);
+    display:none;
+    
+    @media #{$mediaMd} {
+        display: block;
+    }
+
+    ol {
+        @include flex(flex-start, center, center, row wrap);
+        list-style: none;
+        margin: 0;
+    }
+    
+    li {
+        /*
+        @media #{$mediaToggleHeader} {
+            display:none;
+            &:first-child, &:last-child {
+                display:block;
+            }
+            &:first-child {
+                position:relative;
+                padding:0 $gutter 0 0;
+                &:after {
+                    content:"...";
+                    font-weight:400;
+                    @include position(absolute, null, (right, top), (0, 50%), translate(-50%, -50%));
+                    display: block;
+                }
+                > a {
+                    position:relative;
+                    padding:0 $gutter 0 0;
+                    &:after {
+                        content:">";
+                        font-weight:400;
+                        @include position(absolute, null, (right, top), (0, 50%), translate(-50%, -50%));
+                        display: block;
+                    }
+                }
+            }
+        }*/
+        + li {
+            @include position(relative, null);
+            padding: 0 0 0 $gutter;
+            
+            &:before {
+                @include position(absolute, null, (left, top), (#{$gutter * .5}, 50%), translate(-50%, -50%));
+                display: block;
+                content: ">";
+                font-weight:400;
+                color: $neutral-1;
+            }
+        }
+    }
+
+    span {
+        color: $primary;
+        font-weight:500;
+        max-width: 300px; 
+        display:-webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            /* autoprefixer: off */  
+            overflow:hidden;
+    }
+    
+    a {
+        color: $neutral-1;
+        
+        @include hover {
+            color: $primary;
+        }
+
+        span {
+            color: $neutral-1;
+            font-weight:400;
+        }
+    }
+}

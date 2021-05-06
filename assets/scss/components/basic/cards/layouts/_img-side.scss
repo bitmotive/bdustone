@@ -1,0 +1,34 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CARD - LAYOUT - WITH IMAGE ON SIDE
+
+\*  --------------------------------------------------------------------------  */
+&.img-side {
+    
+    @media #{$mediaMd} {
+        @include flex(space-between, center, center, row nowrap);
+
+        .img-w {
+            @include flexItem(0, 0, auto, 0);
+            width: 33.333%;
+        }
+
+        .cnt {
+            @include flexItem(0, 0, auto, 0);
+            width: 66.667%;
+            border-right: remCalc(10) solid $secondary;
+        }
+
+        &.alt, &:nth-child(even) {
+
+            .img-w {
+                order: 0;
+            }
+
+            .cnt {
+                border-left: remCalc(10) solid $secondary;
+                border-right: none;
+            }
+        }
+    }
+}

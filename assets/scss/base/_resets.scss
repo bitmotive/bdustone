@@ -1,0 +1,100 @@
+/*  --------------------------------------------------------------------------  *\
+
+    COMMON RESETS TO HELP MAKE BROWSERS DISPLAY MORE CONSISTANTLY
+
+\*  --------------------------------------------------------------------------  */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    RESETS THE FONT SIZE TO BE BASE 10
+
+\*  --------------------------------------------------------------------------  */
+html {
+    font-size: percentage($rem-base / 16);
+    scroll-behavior: smooth;
+}
+
+/*  --------------------------------------------------------------------------  *\
+
+    PREVENTS HORIZONTAL SCROLLING WHEN IT'S UNDESIRED
+
+\*  --------------------------------------------------------------------------  */
+@media #{$mediaToggleHeader} {
+    html, body {
+        //width: 100%;
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    REMOVES OUTLINE ON FOCUS
+
+\*  --------------------------------------------------------------------------  */
+:focus {
+    outline: none;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    ANCHOR STYLES
+
+    SETS A TRANSITION DEFAULT HERE FOR ALL ANCHORS.
+    
+    SETS UP THE SKIP CONTENT BUTTON THAT SHOULD BE FOUND AS THE FIRST ELEMENT 
+    AFTER THE OPENING BODY TAG ON ALL PAGES.
+
+\*  --------------------------------------------------------------------------  */
+a {
+    transition: all .25s;
+    
+    &.skip-content {
+        @include position(fixed, 10000, (left, top), (50%, 0), translate(-50%, -101%));
+        padding: #{$gutter * .4};
+        background: $white;
+        color: $primary;
+        @include transition((transform .25s, background .25s, color .25s));
+    
+        &:focus {
+            background: $primary;
+            color: $white;
+            @include transform(translate(-50%, #{$gutter}));
+        }
+        
+        @media print {
+            display: none;
+        }
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    RESETS THE BUTTON TO BE JUST LIKE ALL OTHER INLINE ELEMENTS
+
+\*  --------------------------------------------------------------------------  */
+button {
+    background: none;
+    border: none;
+    font-size: 1em;
+    font-family: $copyFF;
+    cursor: pointer;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    RESETS STYLES ON INPUT ELEMENTS FOR FORMS
+
+\*  --------------------------------------------------------------------------  */
+input, select, textarea {
+    border-radius: 0px;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    PROVIDES A CLASS FOR SCREEN READER ONLY ELEMENTS
+
+\*  --------------------------------------------------------------------------  */
+.sr-only {
+    @include srOnly();
+}
+.icons-svg-sprite {
+    display: none;
+}

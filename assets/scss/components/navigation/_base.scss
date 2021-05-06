@@ -1,0 +1,24 @@
+/*  --------------------------------------------------------------------------  *\
+
+    NAVIGATIONS
+
+    This is where all the sites navigations should be defined and included
+
+    Each navigation should have it's own file
+
+    The main, and utility, navigations should be defined in the 
+        structure/header.scss file
+
+\*  --------------------------------------------------------------------------  */
+nav, .nav {
+    @import 'catalog';
+    @import 'landing';
+    @import 'breadcrumb';
+    @import 'interior';
+    @import 'interior-vert';
+    //@import 'sitemap';
+    @import 'pagination';
+    @import 'jump';
+    @import 'social';
+    @import 'share';
+}

@@ -1,0 +1,21 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > CHOSEN > DISALBED STATE
+
+\*  --------------------------------------------------------------------------  */
+.chosen-disabled {
+    opacity: 0.5 !important;
+    cursor: default;
+    
+    .chosen-single {
+        cursor: default;
+    }
+    
+    .chosen-choices {
+        .search-choice {
+            .search-choice-close {
+                cursor: default;
+            }
+        }
+    }
+}

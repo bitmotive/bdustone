@@ -1,0 +1,10 @@
+{{#and price.price_range.min.without_tax price.price_range.max.without_tax}}
+    <p class="price">
+        {{#if price.non_sale_price_without_tax}}
+            <span class="full-price">
+                {{price.non_sale_price_without_tax.formatted}}
+            </span>
+        {{/if}}
+        {{price.price_range.min.without_tax.formatted}} - {{price.price_range.max.without_tax.formatted}} 
+    </p>
+{{/and}}

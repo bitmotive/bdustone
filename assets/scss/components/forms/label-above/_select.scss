@@ -1,0 +1,20 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL ABOVE > SELECTS
+
+\*  --------------------------------------------------------------------------  */
+select {
+    display: block;
+    width: 100%;
+    border: remCalc(1) solid #B5B5B5;
+    font-family: $copyFF;
+    font-size: remCalc(14);
+    border-radius: 4px;
+    background: $white;
+    height: remCalc(42);
+    padding: remCalc(8) remCalc(16);
+    
+    &:focus {
+        outline-color: $formLABorderFocus;
+    }
+}

@@ -1,0 +1,86 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CATALOG NAVIGATIONS
+
+\*  --------------------------------------------------------------------------  */
+&.catalog {    
+    ul {
+        @include flex(flex-start, stretch, stretch, row wrap);
+        margin: 0 #{$gutterSm * -.5};
+
+        @media #{$mediaMd} {
+            margin: 0 #{$gutter * -.5};
+        }
+    }
+    
+    li {
+        @include flexItem(0, 0, auto);
+        padding: 0 remCalc(16);
+        width: 50%;
+            
+        &:nth-last-child(n + 3) {
+            margin-bottom: #{$gutterSm};
+        }
+        
+        @media #{$mediaMd} {
+            width: 33.333%;
+            
+            // RESETS THE 3rd element back to 0
+            &:nth-last-child(3) {
+                margin-bottom: 0;
+            }
+            
+            &:nth-last-child(n + 5) {
+                margin-bottom: #{$gutter};
+            }
+        }
+        
+        &:before {
+            display: none;
+        }
+        
+        + li {
+            margin: 0;
+        }
+
+        &.has-subchildren {
+            width: 100%;
+
+            + li {
+                margin: remCalc(32) 0 0;
+            }
+        }
+    }
+
+    h2 {
+        text-align: center;
+    }
+    
+    span {
+        @include flexItem(0, 0, auto, 1);
+        width: 50%;
+    }
+
+    img {
+        @include flexItem(0, 0, auto, 2);
+        width: 58.333%;
+        margin: remCalc(-35) 0 0 -8.333%;
+    }
+    
+    a {
+        @include flex(center, center, null, row nowrap);
+        border-radius: remCalc(12);
+        background: linear-gradient(180deg, #EA93BE 0%, #E29BBE 0.01%, #D78FB7 42.79%, #C079AA 100%);
+        border: remCalc(5) solid $white;
+        box-shadow: 0 0 0 remCalc(1) $accent-2;
+        color: $white;
+        font-size: remCalc(23);
+        line-height: (30 / 23);
+        font-weight: 300;
+        padding: remCalc(10) remCalc(15) remCalc(0);
+
+        @include hover {
+            box-shadow: 0 0 0 remCalc(2) $primary;
+        }
+    }
+}

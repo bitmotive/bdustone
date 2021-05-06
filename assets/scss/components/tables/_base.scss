@@ -1,0 +1,74 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TABLES - BASIC STYLING
+
+\*  --------------------------------------------------------------------------  */
+table {
+    min-width: 100%;
+    margin: 0 auto 2em;
+    border-collapse: collapse;
+    overflow: auto;
+    border: none;
+    
+    @media #{$mediaLg} {
+        display: table;
+    }
+    tbody tr {
+        border:1px solid $neutral-1;
+        border-bottom:0;
+        &:last-child {
+            border-bottom:1px solid $neutral-1;
+        }
+    }
+    
+    td {
+        padding: remCalc(16);
+        background: $white;
+        text-align: center;
+        padding: remCalc(16);
+    }
+
+    th {
+        padding: remCalc(16) 0;
+        font-weight: 500;
+        color: $primary;
+
+        &:first-child {
+            text-align: left;
+        }
+    }
+    
+    tfoot {
+        color: $secondary;
+        font-size: .75em;
+        
+        td {
+            padding: #{$gutterSm};
+            border: .1rem solid $primary;
+        }
+    }
+    /*  --------------------------------------------------------------------------  *\
+
+        SIZE OPTIONS
+
+        @import 'size/_sm';
+        @import 'size/_lg';
+
+    \*  --------------------------------------------------------------------------  */
+    /*  --------------------------------------------------------------------------  *\
+
+        ADDITIONAL STYLING
+        
+        @import 'styling/_pricing';
+        @import 'styling/_comparison';
+
+    \*  --------------------------------------------------------------------------  */
+}
+/*  --------------------------------------------------------------------------  *\
+
+    STICKY ELEMENTS
+    
+    @import 'sticky/_row';
+    @import 'sticky/_column';
+
+\*  --------------------------------------------------------------------------  */

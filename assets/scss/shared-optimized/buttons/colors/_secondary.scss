@@ -1,0 +1,28 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Button - Secondary
+
+\*  --------------------------------------------------------------------------  */
+.btn-secondary, .button--secondary {
+    background: $white;
+    border-color: $accent-1;
+    color: $accent-1;
+    
+    @include hover {
+        color: $white;
+        background: $accent-1;
+        border-color: $accent-1;
+    }
+
+    .invert & {
+        border-color: $white;
+        background: rgba($white, 0);
+        color: $white;
+
+        @include hover {
+            color: $white;
+            background: $accent-1;
+            border-color: $accent-1;
+        }
+    }
+}

@@ -1,0 +1,88 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCORDION
+
+\*  --------------------------------------------------------------------------  */
+.accordion {
+    margin: 0 0 #{$gutter};
+    border-bottom: remCalc(1) solid $neutral-2;
+
+    > dt {
+        border-top: remCalc(1) solid $neutral-2;
+        & ~ dt {
+            margin:0;
+        }
+        > button {
+            @include position(relative);
+            width: 100%;
+            padding: remCalc(12) remCalc(50) remCalc(12) 0;
+            background: none;
+            color: $primary;
+            text-align: left;
+            font-size: remCalc(14);
+            font-weight:600;
+            line-height: 1.5;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+
+            transition: all .25s;
+           
+            @include hover {
+                color: $secondary;
+            }
+
+            //&[aria-expanded="true"] {
+            //    color: $primary;
+            //}
+        }
+    }
+
+    > dd {
+        width: 100%;
+        padding: #{$gutter} 0;
+        
+        :last-child {
+            margin-bottom: 0;
+        }
+        li {
+            a {
+                display: inline-block;
+            }
+        }
+    }
+    /* -------------------------- *\
+    
+    Indicator Options
+    
+    Comment out what you don't want to include.  Also, if only one style is used, remove the class
+    name from the imported file to reduce output of code.
+
+    //@import 'accordions/indicators/_chevron';
+    //@import 'accordions/indicators/_triangle';
+    
+    \* -------------------------- */
+    @import 'accordions/indicators/_plus-minus';
+
+    &.acc-options {
+        @import 'accordions/indicators/_plus-close';
+    }
+    /* -------------------------- *\
+    
+    Sizing Options
+    
+    Comment out what you don't want to include.  Also, if only one style is used, remove the class
+    name from the imported file to reduce output of code.
+
+    @import 'accordions/sizing/_sm';
+    @import 'accordions/sizing/_lg';
+    
+    \* -------------------------- */
+    /* -------------------------- *\
+
+
+    Invert
+
+    \* -------------------------- */
+
+    @import 'accordions/_invert.scss';
+}

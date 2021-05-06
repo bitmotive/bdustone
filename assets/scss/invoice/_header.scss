@@ -1,0 +1,25 @@
+/*  --------------------------------------------------------------------------  *\
+
+    INVOICE - HEADER
+
+\*  --------------------------------------------------------------------------  */
+header {
+    padding: remCalc(12) remCalc(16) 0;
+    position: relative;
+
+    img {
+        width: 1in;
+        margin: 0 .25in 0 0;
+    }
+
+    h1 {
+        @include position(absolute, null, (left, top), (1.5in, 50%), translate(0, -50%));
+        white-space: nowrap;;
+    }
+
+    address {
+        @include position(absolute, null, (right, top), (#{remCalc(16)}, 50%), translate(0, -50%));
+        font-size: remCalc(12);
+        font-style: normal;
+    }
+}

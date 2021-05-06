@@ -1,0 +1,16 @@
+<script>
+    var itemPrice = '{{total.formatted}}';
+    itemPrice = itemPrice.replace(/\,/g,'');
+    itemContainer.array.push({name: '{{name}}', sku: '{{sku}}', price: itemPrice, quantity: '{{quantity}}'});
+    //console.log("sku: " + "{{sku}}" + ", Item: " + "{%%GLOBAL_CartItemId%%}");
+    if("{{customer.customer_group_id}}" == "1"){
+        console.log("Is member");
+        bduMembershipSKUs.forEach(function(sku){
+            console.log("sku is " + sku + " item sku is " + "{{sku}}"); 
+            if(sku == "{{sku}}"){
+                console.log("Is member with membership in cart");
+                //console.log("Membership sku found, item " + "%%GLOBAL_CartItemId%%");
+            }
+        });
+    }
+</script>

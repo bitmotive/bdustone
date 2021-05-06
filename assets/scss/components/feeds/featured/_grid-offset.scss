@@ -1,0 +1,32 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FEED - FEATURED - OFFSET
+
+\*  --------------------------------------------------------------------------  */
+.f-feat-offset {
+        
+    @media #{$mediaMd} {
+        @include grid((1fr 1fr), (1fr 1fr 1fr 1fr 1fr));
+        width: 75%;
+        margin: 0 auto;
+
+        > article {
+
+            &:nth-child(1) {
+                @include gridItem($rowStart: 1, $rowSpan: 2, $columnStart: 2);
+            }
+
+            &:nth-child(2) {
+                @include gridItem($rowStart: 2, $rowSpan: 2, $columnStart: 1);
+            }
+
+            &:nth-child(3) {
+                @include gridItem($rowStart: 3, $rowSpan: 2, $columnStart: 2);
+            }
+
+            &:nth-child(4) {
+                @include gridItem($rowStart: 4, $rowSpan: 2, $columnStart: 1);
+            }
+        }
+    }
+}

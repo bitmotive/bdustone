@@ -1,0 +1,17 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL
+
+\*  --------------------------------------------------------------------------  */
+main.product {
+    @media #{$mediaLgBelow} {
+        overflow:hidden;
+    }
+}
+.det-product {
+    background: $neutral-3;
+        
+    @import 'product-view/base';
+    @import 'description';
+    @import 'reviews';
+}

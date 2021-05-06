@@ -1,0 +1,89 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HERO > WITH FORM
+
+\*  --------------------------------------------------------------------------  */
+.w-form {
+
+
+    .hero-search {
+        height: remCalc(40);
+        width: 100%;
+        @include flexItem(0, 0, auto);
+        margin: 0 0 remCalc(16);
+        
+
+        .form-el {
+            width: 100%;
+        }
+        .form-el {
+            @include flex(space-between, stretch, null, row nowrap);
+        }
+    
+        input {
+            width: 100%;
+            font-size: remCalc(12);
+            @include flexItem(0, 1, auto);
+            border: remCalc(1) solid $accent-2;
+            border-right: none;
+            border-radius: remCalc(5) 0 0 remCalc(5);
+            padding: remCalc(6) remCalc(12);
+        }
+    
+        button {
+            width: remCalc(40);
+            height: remCalc(40);
+            border: remCalc(1) solid $accent-2;
+            border-left: none;
+            border-radius: 0 remCalc(5) remCalc(5) 0;
+            color: $primary;
+            padding: remCalc(8);
+            background: $white;
+    
+            svg {
+                display: block;
+                fill: none;
+                width: 100%;
+                height: 100%;
+    
+                * {
+                    stroke: currentColor;
+                    stroke-width: remCalc(1);
+                    stroke-linecap: round;
+                }
+            }
+    
+            @include hover {
+                color: $primary;
+            }
+        }
+    }
+
+    .form-el {
+        margin: 0;
+    }
+
+    label {
+        width: remCalc(72);
+    }
+
+    select {
+        width: calc(100% - #{remCalc(72)});
+        background: none;
+        border: none;
+        color: $primary;
+    }
+
+    @media #{$mediaFullHeader} {
+        @include flex(space-between, flex-end, null, row nowrap);
+
+        h1 {
+            margin: 0;
+        }
+
+        .hero-search {
+            width: 25%;
+            margin: 0;
+        }
+    }
+}

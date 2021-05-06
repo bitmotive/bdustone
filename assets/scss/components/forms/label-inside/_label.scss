@@ -1,0 +1,37 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL INSIDE > LABELS
+
+\*  --------------------------------------------------------------------------  */
+label {
+    @include position(absolute, null, (left, top), (0, 50%), translate((#{$formLIGutter}), -50%));
+    @include transition(transform .15s linear);
+    padding: 0 remCalc(4);
+}
+
+input[type="file"], input[type="date"], input[type="range"], select, .chosen {
+    + label {
+        @include transform((translate(#{$formLIGutter}, -200%) scale(.75)));
+    }
+}
+textarea {
+    + label {
+        top: #{$formLIGutter};
+        font-size: .75em;
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    FOCUS STATES
+
+\*  --------------------------------------------------------------------------  */
+input:not([type="radio"]):not([type="checkbox"]) {
+    &:focus, &:valid {
+
+        + label {
+            @include transform((translate(#{$formLIGutter}, -150%)));
+            font-size: .75em;
+            background: $white;
+        }
+    }
+}

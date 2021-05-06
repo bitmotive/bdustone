@@ -1,0 +1,37 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FEED - FEATURED - FLEX
+
+\*  --------------------------------------------------------------------------  */
+.f-feat-flex {
+    @include flex(center, stretch, null, row wrap);
+    margin: 0 #{$gutterSm * -.5};
+    
+    @media #{$mediaMd} {
+        margin: 0 #{$gutter * -.5};
+    }
+    
+    > article {
+        @include flexItem(1, 0, auto);
+        width: calc(50% - #{$gutterSm});
+        margin: 0 #{$gutterSm / 2} ;
+        
+        &:nth-last-child(n + 3) {
+            margin-bottom: #{$gutterSm};
+        }
+        
+        @media #{$mediaMd} {
+            width: calc(25% - #{$gutter});
+            max-width: calc(33.333% - #{$gutter});
+            margin: 0 #{$gutter / 2} #{$gutter};
+        
+            &:nth-last-child(3), &:nth-last-child(4) {
+                margin-bottom: 0;
+            }
+        
+            &:nth-last-child(n + 5) {
+                margin-bottom: #{$gutterSm};
+            }
+        }
+    }
+}

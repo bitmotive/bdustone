@@ -1,0 +1,24 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - ROOT ONLY
+
+\*  --------------------------------------------------------------------------  */
+.main-nav {
+    
+    a {
+        display: block;
+        padding: #{$gutterSm / 2} #{$gutterSm};
+        color: $primary;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        
+        @include hover {
+            color: $secondary;
+        }
+    }
+    
+    @media #{$mediaFullHeader} {
+        @include flex(flex-end, center, stretch, row nowrap);
+    }
+}

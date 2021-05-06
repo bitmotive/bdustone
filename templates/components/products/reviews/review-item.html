@@ -1,0 +1,23 @@
+
+<article class="review" 
+         itemprop="review" 
+         itemscope 
+         itemtype="http://schema.org/Review">
+    <p class="rating"
+       itemprop="reviewRating" 
+       itemscope 
+       itemtype="http://schema.org/Rating">
+        {{> components/products/details/common/ratings rating=rating}}
+        <span class="sr-only" itemprop="ratingValue">{{ rating }}</span>
+    </p>
+    <h3 itemprop="name">
+        {{ title }}
+        <small>{{ date }}</small>
+    </h3>
+    <p itemprop="reviewBody">{{nl2br text}}</p>
+    {{#if name}}
+        <p itemprop="author">
+            <strong>{{lang 'products.reviews.post_on_by' date=date name=name }}</strong>
+        </p>
+    {{/if}}
+</article>

@@ -1,0 +1,65 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - TOGGLE
+
+\*  --------------------------------------------------------------------------  */
+.toggle-trigger {
+    $barH: remCalc(2);
+    @include position(absolute, null, (left, top), (0, remCalc(15)));
+    width: remCalc(50);
+    height: remCalc(55);
+    float: left;
+    margin: 0;
+    padding: remCalc(20) remCalc(15);
+    
+    .bar {
+        display: block;
+        @include position(absolute, null, (left, top), (50%, 50%));
+        height: $barH;
+        width: remCalc(20);
+        background: $white;
+        @include transition(transform .25s);
+        
+        &:nth-child(1) {
+            transform: translate(-50%, -50%) translate(0, remCalc(-7));
+        }
+        
+        &:nth-child(2) {
+            transform: translate(-50%, -50%);
+        }
+        
+        &:nth-child(3) {
+            transform: translate(-50%, -50%) translate(0, remCalc(7));
+        }
+    }
+    
+    @media #{$mediaFullHeader} {
+        display: none;
+    }
+}
+
+.toggle {
+    @include srOnly();
+    
+    @media #{$mediaFullHeader} {
+        display: none;
+    }
+    
+    &:checked {
+        + .toggle-trigger {
+            .bar {
+                &:nth-child(1) {
+                    width: 0;
+                }
+                
+                &:nth-child(2) {
+                    @include transform((translate(-50%, -50%) rotate(45deg)));
+                }
+                
+                &:nth-child(3) {
+                    @include transform((translate(-50%, -50%) rotate(-45deg)));
+                }
+            }
+        }
+    }
+}

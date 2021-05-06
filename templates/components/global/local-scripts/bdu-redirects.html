@@ -1,0 +1,123 @@
+<script type="text/javascript">
+    
+    var bduMembershipSKUs = exportedSettings.bduMembershipSKUs;
+    var cartCheckForMemberships = exportedSettings.enableMembershipCartCheck;
+    var newRestockNotify = exportedSettings.enableINS;
+    var disableStoreCreditForMembershipPurchase = exportedSettings.disableStoreCreditForMembershipPurchase;
+    var alertMessageList = exportedSettings.alertMessageList;
+    var nonMemberVisibleProducts = exportedSettings.nonMemberVisibleProducts;
+    var bduMembershipInfo = exportedSettings.bduMembershipInfo;
+
+    // SCRIPT: REDIRECTION
+
+    let destination = exportedSettings.homepageRedirectLocations.stencil_v1;
+    console.log(destination);
+    var customerGroupId = "{{customer_group_id}}";
+
+    if(customerGroupId == 1){
+        setCookie('isMember','{{customer.email}}',365*5);
+        var customerEmail = "{{customer.email}}";
+        var customerName = "{{customer.name}}";
+    }
+    var baseURL = window.location.href.substr(0, window.location.href.length-window.location.search.length).split( '/' );
+    var queryString = window.location.search;
+    var parts = window.location.pathname.split( '/' );
+    var currentDIR = parts[1];
+    
+    var redirectFlag = false;
+    var devFlag = false;
+    
+    // console out tracked variables for debugging
+    console.log('Group: \t\t' + customerGroupId);
+    console.log("Email: \t\t" + getCookie('isMember'));
+    console.log("Name: \t\t" + customerName);
+    console.log("DIR: \t\t" + currentDIR);
+    console.log("Base: \t\t" + baseURL[2]);
+    console.log("");
+
+    // start the redirection logic
+    if (baseURL[2] == 'store-39rzs2k77u.mybigcommerce.com') {
+        devFlag = true;
+    }
+
+    if(currentDIR == '' && !devFlag) {
+        
+        if(customerGroupId == "1") {
+            redirectFlag = true;
+            console.log('member');
+            window.location.replace(destination.member);
+        }
+        if(customerGroupId == "2" && !redirectFlag) {
+            redirectFlag = true;
+            if(getCookie('isMember')){
+                console.log('login');
+                window.location.replace(destination.login);
+            } else {
+                console.log('newjoin 1');
+                //window.location.replace(destination.newjoin + queryString);
+            }
+        }
+        if(customerGroupId == "3" && !redirectFlag) { //is logged in and a former member
+            redirectFlag = true;
+            console.log('rejoin');
+            window.location.replace(destination.rejoin);
+        }
+        if(getCookie('isMember') && !redirectFlag) {
+            //redirectFlag = true;
+            //console.log('shouldnt be here');
+            //window.location.replace(destination.login);
+        }
+        if(!redirectFlag){
+            console.log('bottom');
+            //window.location.replace(destination.newjoin + queryString);
+        }
+    }
+    
+    if(currentDIR == "bdu-member-portal" && customerGroupId != 1 && !devFlag){
+        console.log('not allowed on members page');
+        window.location.replace(destination.home);
+    }
+    
+    if(currentDIR == "login.php") {
+        window.sessionStorage.setItem('atLogin', 'true')
+    } else {
+        if(currentDIR == "account.php" && window.sessionStorage.getItem('atLogin') == 'true') {
+            window.sessionStorage.removeItem('atLogin');
+            window.location.replace(destination.member);
+        } else {
+            window.sessionStorage.removeItem('atLogin');
+        }
+    }
+//end of redirect script
+
+// Simple set/get cookie functions
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+    
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+</script>
+
+<script type="text/javascript">
+    (function(e,t,o,n,p,r,i){e.visitorGlobalObjectAlias=n;e[e.visitorGlobalObjectAlias]=e[e.visitorGlobalObjectAlias]||function(){(e[e.visitorGlobalObjectAlias].q=e[e.visitorGlobalObjectAlias].q||[]).push(arguments)};e[e.visitorGlobalObjectAlias].l=(new Date).getTime();r=t.createElement("script");r.src=o;r.async=true;i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)})(window,document,"https://diffuser-cdn.app-us1.com/diffuser/diffuser.js","vgo");
+    vgo('setAccount', '798933811');
+    vgo('setTrackByDefault', true);
+    vgo('process');
+</script>

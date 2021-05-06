@@ -1,0 +1,19 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL LEFT > TEXTAREAS
+
+\*  --------------------------------------------------------------------------  */
+textarea {
+    display: block;
+    order: 1;
+    width: calc(100% - #{$formLLLabelW} - #{$gutter * .5});
+    height: calc(6em + #{$gutterSm + $gutterSm * .5});
+    padding: $formLLGutter;
+    @include formBorder($formLLBorder, $formLLBorderStyle);
+    font-size: remCalc(14);
+    border-radius: remCalc(5);
+    
+    &:focus {
+        border-color: $formLLBorderFocus;
+    }
+}

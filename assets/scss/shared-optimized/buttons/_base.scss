@@ -1,0 +1,104 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Buttons
+
+    These are used throughout the website to create a call to action for another element like
+    submitting a form, linking to another page, or linking to another element on the same page.
+    GENERIC BUTTON STYLES
+    This sets up the base of all our styles, it's also the btn-default styles
+
+\*  --------------------------------------------------------------------------  */
+.button, .optimizedCheckout-buttonPrimary {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    padding: remCalc(15) remCalc(25);
+    margin: 0;
+    background: $neutral-3;
+    border-radius: 0;
+    color: $primary;
+    font-family: $headingFF;
+    font-weight: 600;
+    font-size: remCalc(15);
+    line-height: 1;
+    letter-spacing: 1pt;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .25s;
+    width: 100%;
+
+    + [class*="btn-"] {
+        margin: remCalc(15) 0 0;
+    }
+
+    svg {
+        display: inline-block;
+        width: remCalc(20);
+        height: remCalc(16);
+        fill: currentColor;
+    }
+
+    @media #{$mediaLg} {
+        width: auto;
+        margin: 0 remCalc(15) 0 0;
+        padding: remCalc(15) remCalc(20);
+
+        + [class*="btn-"] {
+            margin: 0 remCalc(15) 0 0;
+        }
+
+        &:last-child {
+            margin: 0;   
+        }
+    }
+
+    @media #{$mediaXl} {
+        padding: remCalc(15) remCalc(33);
+    }
+    
+    @include hover {
+        border-color: $primary;
+        background: $primary;
+        color: $neutral-3;
+    }
+
+    
+    /*  ----------------------------------------------------------------------  *\
+
+        Button Arrow Options
+
+        @import 'icon/_icon-top';
+        @import 'icon/_icon-bottom';
+        @import 'icon/_icon-left';
+        @import 'icon/_icon-right';
+
+    \*  ----------------------------------------------------------------------  */
+}
+/*  --------------------------------------------------------------------------  *\
+
+    Button Color Options
+
+\*  --------------------------------------------------------------------------  */
+@import 'colors/primary';
+@import 'colors/secondary';
+@import 'colors/tertiary';
+//@import 'colors/text';
+//@import 'colors/tag';
+//@import 'colors/success';
+//@import 'colors/danger';
+//@import 'colors/warning';
+/*  --------------------------------------------------------------------------  *\
+
+    Buttons Animation Options
+
+\*  --------------------------------------------------------------------------  */
+//@import 'animations/_base';
+//@import 'animations/_fill';
+//@import 'animations/_press';
+//@import 'animations/_effects/_effect-1';
+//@import 'animations/_effects/_effect-2';
+//@import 'animations/_effects/_effect-3';
+//@import 'animations/_effects/_effect-4';
+//@import 'animations/_effects/_effect-5';

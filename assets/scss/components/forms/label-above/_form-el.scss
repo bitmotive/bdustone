@@ -1,0 +1,19 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL ABOVE > FORM ELEMENT
+
+\*  --------------------------------------------------------------------------  */
+.form-el {
+    @include flex(space-between, null, null, column nowrap);
+    margin: 0 0 remCalc(16);
+}
+
+.form-btns {
+    width: 100%;
+    margin: remCalc(32) 0 0;
+    @include flex(center, center, null, row nowrap);
+
+    &.ha-left {
+        justify-content: flex-start;
+    }
+}

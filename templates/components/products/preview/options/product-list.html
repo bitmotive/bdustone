@@ -1,0 +1,35 @@
+{{#each values}}
+    <li data-product-attribute="product-list" data-product-id="{{data}}">
+        <div class="form-field" data-product-attribute-value="{{id}}">
+            {{#if image}}
+                <figure class="productOptions-list-item-figure">
+                    {{> components/global/responsive-img
+                        image=image
+                        class="productOptions-list-item-image"
+                        lazyload='lazyload+lqip'
+                    }}
+                </figure>
+            {{/if}}
+            <div>
+                <h4 class="title">{{label}}</h4>
+                <p class="desc"></p>
+                <input
+                    class="form-checkbox"
+                    type="checkbox"
+                    name="attribute[{{../id}}]"
+                    value="{{id}}"
+                    id="attribute_productlist_{{../id}}_{{id}}"
+                    {{#if selected}}
+                        checked
+                        data-default
+                    {{/if}}
+                    {{#if ../required}}required{{/if}}>
+                <label data-product-attribute-value="{{id}}" class="form-label" for="attribute_productlist_{{../id}}_{{id}}">
+                    <span class="buy">Buy together for only</span>
+                    <span class="added">Added to Cart!</span>
+                    <span class="price"></span>
+                </label>
+            </div>
+        </div>
+    </li>
+{{/each}}

@@ -1,0 +1,22 @@
+{{#and price.price_range (if theme_settings.price_ranges '==' true)}}
+    {{> components/products/details/common/price-range price=price}}
+{{else}}
+    
+    <div class="price{{#if show_total}} w-total{{/if}} productPrice_{{id}}" id="productPrice_{{id}}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        {{#if show_total}}
+            <span>{{lang 'cart.checkout.subtotal'}}:</span>
+        {{/if}}
+
+        <span data-product-price-without-tax="{{price.without_tax.formatted}}">{{price.without_tax.formatted}}</span>
+
+        <meta itemprop="availability" itemtype="https://schema.org/ItemAvailability" content="https://schema.org/{{#if product.pre_order}}PreOrder{{else if product.out_of_stock}}OutOfStock{{else if product.can_purchase '===' false}}OutOfStock{{else}}InStock{{/if}}">
+        <meta itemprop="itemCondition" itemtype="https://schema.org/OfferItemCondition" content="https://schema.org/{{product.condition}}Condition">
+        <meta itemprop="priceCurrency" content="{{currency_selector.active_currency_code}}">
+        <meta itemprop="url" content="{{url}}">
+        <div itemprop="priceSpecification" itemscope itemtype="https://schema.org/PriceSpecification">
+            <meta itemprop="price" content="{{price.without_tax.value}}">
+            <meta itemprop="priceCurrency" content="{{currency_selector.active_currency_code}}">
+            <meta itemprop="valueAddedTaxIncluded" content="false">
+        </div>
+    </div>
+{{/and}}

@@ -1,0 +1,17 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL ATTACHED > INPUTS
+
+\*  --------------------------------------------------------------------------  */
+input:not([type="radio"]):not([type="checkbox"]) {
+    display: block;
+    order: 1;
+    width: calc(100% - #{$formLAtLabelW});
+    padding: $formLAtGutter;
+    @include formBorder($formLAtBorder, $formLAtBorderStyle);
+    border-left: none;
+    
+    &:focus {
+        border-color: $neutral-2;
+    }
+}

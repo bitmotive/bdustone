@@ -1,0 +1,21 @@
+<nav class="pagination">
+    <p>{{{lang 'common.paginator.page_of' current=current total=links.length}}}</p>
+    <ul>
+        <li>
+            <a href="{{#if previous}}{{previous}}{{else}}#{{/if}}" {{#unless reload}}data-faceted-search-facet{{/unless}}{{#unless previous}} class="is-disabled" aria-disabled="true" disabled{{/unless}}>
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-left"></use>
+                </svg>
+                {{lang 'common.previous'}}
+            </a>
+        </li>
+        <li class="pagination-item pagination-item--next">
+            <a href="{{#if next}}{{next}}{{else}}#{{/if}}" {{#unless reload}}data-faceted-search-facet{{/unless}}{{#unless next}} class="is-disabled" aria-disabled="true" disabled{{/unless}}>
+                {{lang 'common.next'}}
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-right"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>
+</div>

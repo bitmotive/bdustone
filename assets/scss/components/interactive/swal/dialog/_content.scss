@@ -1,0 +1,30 @@
+/*  --------------------------------------------------------------------------  *\
+
+    DIALOG - MODAL > CONTENT
+
+\*  --------------------------------------------------------------------------  */
+&-content {
+    width: 100%;
+    padding: remCalc(24) 0;
+    text-align: center;
+    h2 {
+        color:$secondary;
+    }
+    input {
+        width:100%;
+        padding:remCalc(20);
+        border:1px solid $neutral-1;
+        margin-top:remCalc(20);
+        border-radius:remCalc(10);
+    }
+
+
+    
+}
+
+&-validation-message {
+    margin:0 auto;
+    margin-top:remCalc(20);
+    color:red;
+    flex-direction: column;
+}

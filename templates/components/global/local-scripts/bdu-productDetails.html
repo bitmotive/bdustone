@@ -1,0 +1,86 @@
+<script type="text/javascript">
+    var gCustomerGroup = '{{customer_group_name}}';
+    var gCustomerGroupId = '{{customer_group_id}}';
+    var gProductName = '{{product.title}}';
+    var gProductSku = '{{product.sku}}';
+    var gProductId = '{{product.id}}';
+    
+    var gAllowedGroup = "Big Daddy Unlimited Members";
+    var gCustomerName = '{{customer.name}}';
+    var gCustomerFirstName = '{{customer.shipping_address.first_name}}';
+    var gCustomerEmail = '{{customer.email}}';
+    var gIsSigProduct = gProductName.toLowerCase().indexOf("sig sauer") != -1 || gProductName.toLowerCase().indexOf("sig ") != -1;
+    var gCurrentStock = '{{product.stock_level}}';
+    var gBrandName = '{{product.brand.name}}';
+    var gProductPrice = '{{product.price.without_tax.formatted}}';
+
+    var gNotifyResock = false;
+    var isBlockedBrand = false;
+    var brandRule = {};
+
+    if (!gCustomerEmail && bduMembershipSKUs.indexOf(gProductSku) == -1) {
+        var currentPath = window.location.pathname;
+        // console.log(currentPath, 'currentpath TEST');
+        if (currentPath && currentPath.length > 0) {
+            // remove leading slash
+            if (currentPath[0] == "/") {
+                currentPath = currentPath.substring(1);
+            }
+            // remove trailing slash
+            if(currentPath[currentPath.length-1] == "/") {
+               currentPath = currentPath.substring(0, currentPath.length-1);
+            }
+        }    
+        var redirectUrl = "/login.php?from=" + currentPath + "&from403=1";
+
+        if (gProductSku && nonMemberVisibleProducts && (nonMemberVisibleProducts[gProductSku.toLowerCase()] || nonMemberVisibleProducts[gProductSku])) {
+            console.log("Product should be visible to nonMembers");
+        } else {
+            console.log("Need to redirect to: " + redirectUrl);
+            window.location.replace(redirectUrl);
+        }
+    }
+
+    //Triggers InStockNotify if the url has ?InStockNotify in it
+    if (window.location.search.substr(1) == 'NotifyOnRestock') {
+        console.log("Notify on restock");
+
+        $(document).ajaxStop(function() {
+            if (!gNotifyResock) {
+                console.log("Sending");
+                $('input#InStockNotifyEmailAddress').val({{gCustomerEmail}});
+                SubmitISNNotification();
+                gNotifyResock = true;
+            }
+        });
+    }
+
+</script>
+
+<script>
+    setTimeout(function(){ 
+        if (exportedSettings && exportedSettings.productPageContentInjections && exportedSettings.productPageContentInjections.length > 0) {
+            console.log("checking...");
+            for (const blurb of exportedSettings.productPageContentInjections) {
+                if (blurb.isEnabled) {
+                    var testTrue = false;
+                    if (blurb.skuPattern && !testTrue) {
+                        console.log("regex is: " + new RegExp(blurb.skuPattern, blurb.flags));
+                        testTrue = new RegExp(blurb.skuPattern, blurb.flags).test('{{product.sku}}');
+                    }
+                    if (blurb.titlePattern && !testTrue) {
+                        console.log("regex is: " + new RegExp(blurb.titlePattern, blurb.flags));
+                        testTrue = new RegExp(blurb.titlePattern, blurb.flags).test('{{product.name}}');
+                    }
+                    console.log("test is: " + testTrue);
+                    if (testTrue) {
+                        console.log("placing " + blurb.msgHTML + " at " + blurb.htmlSelector);
+                        $(blurb.htmlSelector).append(blurb.msgHTML)
+                        // show message box
+                        $('.help_box').fadeIn();
+                    }
+                }
+            }
+        }
+    }, 2000);                        
+</script>

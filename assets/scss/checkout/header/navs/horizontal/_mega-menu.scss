@@ -1,0 +1,157 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - MEGA MENU
+
+\*  --------------------------------------------------------------------------  */
+nav {
+    @include position(fixed, null, (left, top), (100%, 80px), translate(0, 0));
+    background: $white;
+    width: 100%;
+    height: calc(100vh - 80px);
+    @include transition(transform .25s);
+    
+    @media #{$mediaFullHeader} {
+        @include position(static, null, (left, top), (auto, auto), none);
+        background: none;
+        width: auto;
+        height: auto;
+    }
+}
+
+
+.toggle {
+    &:checked {
+        ~ nav {
+            @include transform(translate(-100%, 0));
+        }
+    }
+}
+
+.main-nav {
+    
+    input[type="checkbox"] {
+        @include srOnly;
+    }
+    
+    a, label, button {
+        display: block;
+        padding: #{$gutterSm / 2} #{$gutterSm};
+        color: $primary;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        white-space: nowrap;
+        
+        @include hover {
+            color: $secondary;
+        }
+    }
+    
+    @media #{$mediaToggleHeader} {
+        border-top: 1px solid $primary;
+    
+        > li {
+            @include flex(space-between, stretch, null, row nowrap);
+            
+            a {
+                @include flexItem(0, 1, auto);
+                width: 100%;
+            }
+            
+            label {
+                @include flexItem(0, 0, auto);
+                width: auto;
+                background: $secondary;
+                color: $white;
+            }
+        }
+        
+        li {
+            
+            + li {
+                border-top: .1rem solid $primary;
+            }
+        }
+        
+        .toggle-text {
+            display: none;
+        }
+
+        ul {
+            @include position(fixed, null, (left, top), (100%, 0));
+            height: calc(100vh - 80px);
+            @include transition(transform .25s);
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: $white;
+        }
+        
+        input {
+            &:checked {
+                ~ div {
+                    @include transform(translate(-100%, 0));
+                }
+            }
+        }
+    }
+    
+    @media #{$mediaFullHeader} {
+        @include flex(flex-end, center, stretch, row nowrap);
+        
+        li {
+            @include position(relative, null);
+            
+            &:hover {
+                ul {
+                    display: block;
+                }
+            }
+        }
+        
+        ul {
+            display: none;
+            @include position(absolute, null, (left, top), (50%, 100%), translate(-50%, 0));
+            min-width: 200px;
+            background: $white;
+            border: .1rem solid $primary;
+            text-align: center;
+            
+            > li {
+                
+                &:nth-child(-n + 2) {
+                    display: none;
+                }
+            
+                &:nth-child(n + 4) {
+                    border-top: .1rem solid $primary;
+                }
+            }
+        }
+        
+        label {
+            display: none;
+            @include position(absolute, null, (left, top), (50%, 100%), translate(-50%, 50%));
+            background: $primary;
+            color: $white;
+            font-size: 1.2rem;
+        }
+        
+        input[type="checkbox"] {
+            &:focus {
+                + label {
+                    display: block;
+                }
+            }
+            
+            &:checked {
+                + label {
+                    display: none;
+                }
+                
+                ~ div {
+                    display: block;
+                }
+            }
+        }
+    }
+}

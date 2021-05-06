@@ -1,37 +1,19 @@
-<nav class="navBar navBar--sub">
-    <ul class="navBar-section account-navigation">
-        {{#if gift_page '===' 'purchase'}}
-            <li class="navBar-item is-active">
+<nav class="int-v">
+    <ul>
+        <li{{#if gift_page '===' 'purchase'}} class="active"{{/if}}>
+            <a href="{{urls.gift_certificate.purchase}}">
                 {{lang 'gift_certificate.purchase.heading'}}
-            </li>
-        {{else}}
-            <li class="navBar-item">
-                <a class="navBar-action" href="{{urls.gift_certificate.purchase}}">
-                    {{lang 'gift_certificate.purchase.heading'}}
-                </a>
-            </li>
-        {{/if}}
-        {{#if gift_page '===' 'redeem'}}
-            <li class="navBar-item is-active">
+            </a>
+        </li>
+        <li{{#if gift_page '===' 'redeem'}} class="active"{{/if}}>
+            <a href="{{urls.gift_certificate.redeem}}">
                 {{lang 'gift_certificate.redeem.heading'}}
-            </li>
-        {{else}}
-            <li class="navBar-item">
-                <a class="navBar-action" href="{{urls.gift_certificate.redeem}}">
-                    {{lang 'gift_certificate.redeem.heading'}}
-                </a>
-            </li>
-        {{/if}}
-        {{#if gift_page '===' 'balance'}}
-            <li class="navBar-item is-active">
+            </a>
+        </li>
+        <li{{#if gift_page '===' 'balance'}} class="active"{{/if}}>
+            <a class="navBar-action" href="{{urls.gift_certificate.balance}}">
                 {{lang 'gift_certificate.balance.heading'}}
-            </li>
-        {{else}}
-            <li class="navBar-item">
-                <a class="navBar-action" href="{{urls.gift_certificate.balance}}">
-                    {{lang 'gift_certificate.balance.heading'}}
-                </a>
-            </li>
-        {{/if}}
+            </a>
+        </li>
     </ul>
 </nav>

@@ -1,0 +1,15 @@
+/*  --------------------------------------------------------------------------  *\
+
+    MEDIA LAYOUT - CAPTION OVER
+
+\*  --------------------------------------------------------------------------  */
+&.cap-over {
+    @include position(relative);
+    
+    > figcaption {
+        @include position(absolute, 100, (left, bottom), (0, 0));
+        width: 100%;
+        background: rgba($primary, .75);
+        color: $white;
+    }
+}

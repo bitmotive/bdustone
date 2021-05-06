@@ -1,0 +1,49 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CASE STUDY - SOLUTIONS
+
+\*  --------------------------------------------------------------------------  */
+.cs-solutions {
+    @include flex(space-between, stretch, null, row wrap);
+    margin: 0 #{$gutterSm * -.5};
+        
+    @media #{$mediaMd} {
+        margin: 0 #{$gutter * -.5};
+    }
+    
+    li {
+        @include flexItem(0, 0, auto);
+        padding: 0 #{$gutterSm * .5};
+        width: 50%;
+            
+        &:nth-last-child(n + 3) {
+            margin-bottom: #{$gutterSm};
+        }
+        
+        @media #{$mediaMd} {
+            padding: 0 #{$gutter * .5};
+            width: 33.333%;
+            
+            // RESETS THE 3rd element back to 0
+            &:nth-last-child(3) {
+                margin-bottom: 0;
+            }
+            
+            &:nth-last-child(n + 4) {
+                margin-bottom: #{$gutter};
+            }
+        }
+        
+        &:before {
+            display: none;
+        }
+        
+        + li {
+            margin: 0;
+        }
+        
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -4,6 +4,8 @@ brand:
         limit: {{theme_settings.brandpage_products_per_page}}
 ---
 {{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{inject "brand" brand.name}}
+
 {{#partial "head"}}
     {{#if pagination.brand.previous}}
         <link rel="prev" href="{{pagination.brand.previous}}">
@@ -14,32 +16,85 @@ brand:
 {{/partial}}
 
 {{#partial "page"}}
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<header class="hero">
+    {{!--<img src="{{getImageSrcset category.image 1x='1280x268'}}" alt="Category Hero Image">--}}
+    <div class="container">
+        <div class="sub-cat">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1>{{ brand.name }}</h1>
+            {{#if brand.description}}
+                {{{ brand.description }}}
+            {{/if}}
+        </div>
+        <!-- <div data-rfk-sort></div> -->
+    </div>
+</header>
 {{#if brand.image}}
     <div class="brand-image-container">
-        {{> components/common/responsive-img
+        {{> components/global/responsive-img
             image=brand.image
             fallback_size=theme_settings.thumb_size
             lazyload='disabled'
         }}
     </div>
 {{/if}}
-<h1 class="page-heading">{{brand.name}}</h1>
 {{{region name="brand_below_header"}}}
-<div class="page">
-    <aside class="page-sidebar" id="faceted-search-container">
-        {{> components/brand/sidebar}}
-    </aside>
-
-    <main class="page-content" id="product-listing-container">
+<section class="category category-section">
+    <div class="container">
         {{#if brand.products}}
-            {{> components/brand/product-listing}}
+            {{> components/global/navs/paginator pagination.category totalCount=brand.products.length theme_settings=theme_settings}}
+            <div class="row">
+                <div class="col-xs-12 col-lg-3">
+                    {{> components/category/sidebar}}
+                </div>
+                <div class="col-xs-12 col-lg-9">
         {{else}}
-            <p>{{lang 'brands.no_products'}}</p>
+            <div class="row">
+                <div class="col-xs-12">
         {{/if}}
-        {{{region name="brand_below_content"}}}
-    </main>
-</div>
+                {{#if banners.bottom}}
+                    {{#each banners.bottom_metadata }}
+                        {{#contains this.banner_name "Promo"}}
+                            <div class="banner-w">
+                                {{{this.content}}}
+                            </div>
+                        {{/contains}}
+                    {{/each}}
+                {{/if}}
+                <div data-rfk-products> 
+                    {{#if brand.products}}
+                        {{> pages/custom/brand/brand-list}}
+                    {{else}}
+                        <p>{{lang 'categories.no_products'}}</p>
+                    {{/if}}
+                </div>
+                <div class="bottom-pag">
+                    {{#if totalCount}}
+                    {{> components/global/navs/paginator pagination.category totalCount=brand.total_products theme_settings=theme_settings}}
+                    {{/if}}
+                    </div>
+                {{{region name="category_below_content"}}}
+            </div>
+        </div>
+    </div>
+</section>
 
+{{{region name="featured_blogs"}}}
+
+<!-- {{#if banners.bottom}}
+    {{#each banners.bottom_metadata }}
+        {{#contains this.banner-name "Category Banner" }}
+            <section class="bttm-section">
+                <div class="container">
+                    <div class="row ha-center">
+                        <div class="col-xs-12 col-lg-10">
+                            {{{this.content}}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {{/contains}}
+    {{/each}}
+{{/if}} -->
 {{/partial}}
 {{> layout/base}}

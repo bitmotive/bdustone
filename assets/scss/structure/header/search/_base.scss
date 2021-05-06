@@ -1,0 +1,48 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - SEARCH
+
+\*  --------------------------------------------------------------------------  */
+@import 'toggle';
+.quick-search {
+    input {
+        color:$white;
+    }
+    
+    @media #{$mediaToggleHeader} {
+        //@include position(absolute, 0, (left, top), (0, remCalc(77)), translate(0, 0));
+        width: 100%;
+        padding: remCalc(24) remCalc(16);
+        border-top: remCalc(1) dashed $tertiary;
+        //@include transition(all .25s linear);
+    
+        #headerToggleSearch:checked ~ & {
+            //top: remCalc(77);
+            //transform: translate(-100%, 0);
+        }
+    }
+    
+    @media #{$mediaFullHeader} {
+        //@include position(relative, 0);
+        height: remCalc(36);
+        //width: 35%;
+        //max-width: remCalc(395);
+        //margin: 0 0 0 6.25%;
+        //@include flexItem(0, 0, auto);
+        flex-grow:1;
+        margin:0 remCalc(350) 0 remCalc(100);
+        margin:0 28% 0 7%;
+
+        &:focus-within {
+
+            .results {
+                &:not(:empty) {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    @import 'form';
+    @import 'results';
+}

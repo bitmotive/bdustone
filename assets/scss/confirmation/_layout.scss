@@ -1,0 +1,91 @@
+/*  --------------------------------------------------------------------------  *\
+
+    OPTIMIZED CHECKOUT > LAYOUT
+
+\*  --------------------------------------------------------------------------  */
+.layout {
+    margin: 0 auto;
+    max-width: $siteWMx;
+    @include setW;
+    padding: remCalc(60) $gutterSm remCalc(40);
+    .cartDrawer {
+        background-color: $neutral-2;
+        border: 1px solid $neutral-1;
+        border-radius: remCalc(10);
+        a {
+            font-size: remCalc(14);
+            text-decoration: underline;
+        }
+
+    }
+    @media #{$mediaMd} {
+        display: grid;
+        grid-template-rows: auto;
+        column-gap: remCalc(32);
+        padding: remCalc(55) $gutterSm remCalc(75);
+    }
+
+    @media #{$mediaLg} {
+        grid-template-columns: 2fr 1fr;
+        padding: remCalc(64) #{$gutter * .5} remCalc(92);
+    }
+
+    &:before, &:after {
+        display: none;
+    }
+
+    &-main {
+        width: 100%;
+        padding: 0;
+        float: none;
+
+        section, section:last-of-type {
+            padding: 0 0 remCalc(24);
+            margin: 0 0 remCalc(24);
+        }
+    }
+
+    &-cart {
+        width: 100%;
+        padding: 0;
+        float: none;
+    }
+}
+
+.continueButtonContainer {
+    margin: remCalc(24) 0 0;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.orderConfirmation {
+    padding: 0;
+}
+
+.orderconfirmation {
+        //styles for video and nonmember display
+        .amount-saved {
+            position: absolute;
+            padding: remCalc(10) remCalc(24) 0 ;
+            text-transform: uppercase;
+            margin: 0 auto;
+            @media #{$mediaLg} {
+                padding-left: remCalc(15);
+            }
+        }
+        .non-member-purchase {
+            display: none;
+            padding-left: remCalc(24);
+            text-transform: uppercase;
+            margin: 0 auto;
+
+        }
+        .subscription-purchased {
+            display: none;
+            padding-left: remCalc(24);
+            text-transform: uppercase;
+            margin: 0 auto;
+        }
+}

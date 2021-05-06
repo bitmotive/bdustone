@@ -1,0 +1,82 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - STICKY INFO
+
+\*  --------------------------------------------------------------------------  */
+.sticky-info-sentinel {
+    height: 1px;
+}
+.sticky-info {
+    visibility: hidden;
+    padding: remCalc(15) 0;
+    border-top: remCalc(1) solid $neutral-2;
+    border-bottom: remCalc(1) solid $neutral-2;
+    background: $white;
+    @include position(sticky, 10001, (top), (0));
+    opacity: 0;
+    transition: visibility 0s, opacity .15s linear;
+    height: 0;
+    display:none;
+
+    @supports (position: sticky) {
+        &.js-stuck {
+            visibility: visible;
+            opacity: 1;
+            height: auto;
+            display:block;
+        }
+    }
+
+    .container {
+        @include flex(center, center, null, row nowrap);
+    }
+
+    .img-w {
+        width: remCalc(72);
+        border: remCalc(1) solid $neutral-2;
+        margin: 0 remCalc(16) 0 0;
+        @include flexItem(0, 0, auto);
+    }
+
+    .prod-name {
+        font-weight: 600;
+        line-height: (24 / 21);
+        width: 33.333%;
+        min-width: 25%;
+        max-width: 33.333%;
+        @include flexItem(1, 1, auto);
+        font-size: remCalc(16);
+
+        @media #{$mediaLg} {
+            font-size: remCalc(21);
+        }
+    }
+
+    .form-product {
+        margin: 0 remCalc(16);
+        @include flexItem(0, 0, auto);
+
+        form {
+            @include flex(space-between, stretch, null, row nowrap);
+        }
+    }
+
+    .form-field.quantity {
+        margin: 0 remCalc(16) 0 0;
+        padding: 0;
+        border-top: none;
+    }
+
+    + .jn.sticky {
+        top: remCalc(126);
+        z-index: 100;
+    }
+
+    .btt {
+        display: none;
+
+        @media #{$mediaLg} {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,248 @@
+.totals-wrap {
+    border: remCalc(1) solid $neutral-1;
+    border-radius: 0;
+    background:$white;
+    padding:0;
+
+    .cart-additionalCheckoutButtons {
+        display:none;
+    }
+    .order-summary-heading {
+        display:none;
+        padding: remCalc(24);
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 30px;
+        text-transform: uppercase;
+        color: $neutral-3;
+        background:$primary;
+        border-radius: 0;
+        margin:-1px;
+        @media #{$mediaMd} {
+            display:block;
+        }
+    }
+
+    > div {
+        padding: remCalc(16);
+        @media #{$mediaMd} {
+            &:last-child {
+                padding-top:0;
+            }
+        }
+        .cart-additionalCheckoutButtons {
+            display:none;
+        }
+        &.cart-actions {
+            .btn-primary {
+                padding-left:remCalc(16);
+                padding-right:remCalc(16); 
+                // If lock needs to match text on hover
+                // &:hover {
+                //     background-color: white;
+                //     color: black;
+                //     border-color: black;
+                // }
+            }
+            svg {
+                fill: none;
+                margin-right: remCalc(8);
+                width: remCalc(25);
+                height: remCalc(25);
+            }
+        }
+    }
+
+    
+
+    ul {
+        li {
+            padding: 0;
+
+            &:before {
+                display: none;
+            }
+        }
+    }
+
+    dl {
+        @include flex(space-between, flex-start, flex-start, row wrap);
+        margin: 0;
+
+        @media #{$mediaMd} {
+            margin: 0;
+        }
+
+        @media #{$mediaLg} {
+            margin: 0;
+        }
+
+        dt, dd {
+            font-style: normal;
+            font-weight: normal;
+            font-size: remCalc(16);
+            line-height: remCalc(24);
+            @include flexItem(0, 0, auto);
+            a {
+                text-decoration: underline;
+                &:hover, &:focus {
+                    color: $secondary;
+                }
+            }
+            &:nth-of-type(n + 2) {
+                margin: remCalc(16) 0 0;
+                padding: remCalc(16) 0 0;
+                border-top: remCalc(1) solid $neutral-1;
+            }
+
+            &:last-of-type {
+                // causes subtotal to bleed outside of div on $1k+ purchases
+                // font-size: remCalc(16);
+                font-weight: 600;
+            }
+
+            &.cart-form, &.cart-toggle {
+                width: 100%;
+                text-align: left;
+                border-top: none;
+                padding: 0;
+            }
+            &.cart-form-promo {
+                display:flex;
+                flex-direction:row;
+                align-items:center;
+                justify-content:space-between;
+                button[class*="coupon-code-"] {
+                    color:$neutral-1;
+                    font-size: remCalc(14);
+                    font-weight:normal;
+                    line-height:normal;
+                }
+            }
+            &.coupon-code {
+                margin-top:remCalc(24);
+                .form-field {
+                    > div {
+                        //margin:remCalc(10) 0 0;
+                        //display:flex;
+                        //flex-direction:row;
+                        //align-items:center;
+                        //input, button {
+                        //    margin:0;
+                        //}
+                        //input {
+                        //    width:62%;
+                        //}
+                        //button {
+                        //    width:38%;
+                        //    height:remCalc(54);
+                        //}
+                    }
+                }
+            }
+        }
+
+        dt {
+            width: 75%;
+        }
+
+        dd {
+            width: 25%;
+            text-align: right;
+        }
+    }
+
+    [class*="btn-"] {
+        width: 100%;
+    }
+    .form {
+        input, textarea, select {
+            background:$neutral-3;
+            border-radius:0;
+            border: 1px solid $neutral-1;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            color:$primary;
+            margin-bottom:remCalc(4);
+            display:block;
+            padding: 14px 20px;
+            width: 100%;
+            margin:10px 0 16px;
+        }
+        label {
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #3E3F49;
+            font-weight:700;
+            display:block;
+        }
+    }
+    .coupon-code-add, .coupon-code-cancel {
+        font-weight: 600;
+        font-size: remCalc(16);
+        line-height: remCalc(24);
+        color:$primary;
+        border-bottom: 1px solid currentColor;
+    }
+    .u-hiddenVisually {
+        display: none;
+    }
+
+    .btn-txt {
+        color: $accent-1;
+        justify-content: flex-start;
+        margin: 0;
+
+        @include hover {
+            color: $accent-1;
+        }
+    }
+
+    .shipping-quotes {
+
+        form {
+            margin: remCalc(24) 0 0;
+            padding: remCalc(24) 0 0;
+            border-top: remCalc(1) solid $neutral-1;
+        }
+        .form-cr {
+
+            label {
+                width: 100%;
+            }
+
+            strong {
+                float: right;
+                text-align: right;
+            }
+        }
+    }
+
+    .toggle {
+        border-bottom: remCalc(1) solid currentColor;
+        padding: .25em 0;
+        color:$neutral-1;
+        font-size: remCalc(14);
+        font-weight:normal;
+        line-height:normal;
+
+        @include hover {
+            border-bottom-color: $neutral-1;
+        }
+    }
+
+    .paypal-smart-buttons {
+        width: 100%;
+        margin: remCalc(16) 0 0;
+    }
+    .gift-certificate-add {
+        border-bottom: 1px solid currentColor;
+        color:$neutral-1;
+        font-size: remCalc(14);
+        font-weight:normal;
+        line-height:normal;
+    }
+}

@@ -1,0 +1,59 @@
+.footer-brands {
+    padding:remCalc(30) 0;
+    background-color:$neutral-2;
+    color:$primary;
+    
+
+    .container {
+       // border:1px solid gold;
+    }
+    
+    .feed-carousel-brands {
+        padding:0 remCalc(20);
+        
+        a,span {
+            //border:1px solid red;
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+        }
+        img {
+            margin:0 auto;
+            display:block;
+            padding:0;
+            width:auto;
+            @media #{$mediaSmBelow} {
+                width: 90%;
+            }
+        }
+
+        .slick-list {
+            //border:1px solid blue;
+           
+
+        }
+        .slick-track {
+            //border:1px solid green;
+        }
+
+        @media #{$mediaMd} {
+            //@include flex(center, stretch, flex-start, row nowrap);
+            //padding:0 remCalc(59);
+        }
+
+        .slick-arrow {
+            @include position(absolute, null, (top), (50%), translate(0, -50%));
+        }
+    
+        .slick-prev {
+            left: remCalc(-15);
+
+        }
+    
+        .slick-next {
+            right: remCalc(-15);
+        }
+
+
+    }
+}

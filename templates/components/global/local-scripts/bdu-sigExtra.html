@@ -1,0 +1,29 @@
+<script>        
+    $(document).ready(function(){        
+
+        if(window.location.pathname.toLowerCase() == '/sig-sauer/sig-sauer' || window.location.pathname.toLowerCase() == '/sig-sauer/sig-sauer/'){
+            console.log("Blocked products: ", blockedProductIdList);              
+            
+            $.ajax({
+                'url': 'https://automation.bigdaddyunlimited.com/api/getSigProductInfo',
+                //'url' : 'https://jsonplaceholder.typicode.com/posts',
+                'type': 'post',
+                'data': { 
+                    'productId': blockedProductIdList 
+                },
+                'success': function(data) {                     
+                    sigAdditionalData = data;                                         
+                    sigAdditionalData.forEach(function(sigData) {                           
+                        // fill in data
+                        $('#sigAdditionalInfo_' + sigData.productId + ' .productUPC').text(sigData.upc);
+                        $('#sigAdditionalInfo_' + sigData.productId + ' .productModel').text(sigData.modelNo);
+                    });
+                },
+                'error': function(qXHR, textStatus, errorThrown) {
+                    console.log("Error getting Sig info: ", errorThrown);
+                }
+            });
+        }
+
+    });    
+</script>

@@ -1,0 +1,16 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL LEFT > FEEDBACK STATES
+
+\*  --------------------------------------------------------------------------  */
+.form-field--error {
+    input:not([type="radio"]):not([type="checkbox"]):not([type="button"]), select, textarea {
+        border-color: $danger;
+    }
+}
+
+.form-field--success {
+    input:not([type="radio"]):not([type="checkbox"]):not([type="button"]), select, textarea {
+        border-color: $success;
+    }
+}

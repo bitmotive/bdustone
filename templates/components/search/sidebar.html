@@ -1,5 +1,13 @@
-<nav>
+{{!--<nav>
     {{#if product_results.faceted_search_enabled}}
         {{> components/faceted-search/index product_results}}
     {{/if}}
+</nav> --}}
+
+<nav data-rfk-sidebar>
+    <input type="checkbox" id="facetsCheck">
+    <label for="facetsCheck" class="facets-heading">{{lang 'categories.facets_heading'}}</label>
+    <div id="facetedSearch" class="facetedSearch sidebarBlock">
+        <dl class="accordion acc-facets" data-allow-multiple="true" data-allow-toggle="true"></dl>
+    </div>
 </nav>

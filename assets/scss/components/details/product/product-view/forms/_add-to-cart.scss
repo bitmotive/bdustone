@@ -1,0 +1,78 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORMS - ADD TO CART
+
+\*  --------------------------------------------------------------------------  */
+.form-field.quantity {
+    @include flex(flex-start, center, null, row nowrap);
+    margin: remCalc(24) 0;
+
+    label {
+        width:auto;
+        margin:0;
+
+    }
+    select {
+        -webkit-appearance: none; 
+        -moz-appearance: none;
+        appearance: none;
+        background: white url(../img/arrow.png) no-repeat 75% 50%;
+    }
+    
+    input {
+        width: remCalc(72);
+        font-size: remCalc(16);
+        font-weight: normal;
+        text-align: center;
+        padding: remCalc(5);
+        border: remCalc(1) solid $neutral-1;
+    }
+
+    .inc-minus, .inc-plus {
+        @include position(relative, null);
+        border: remCalc(1) solid $neutral-1;
+        border-radius: 0;
+        width: remCalc(43);
+        height: remCalc(43);
+        background: $white;
+
+        &:before, &:after {
+            @include position(absolute, null, (left, top), (50%, 50%), translate(-50%, -50%));
+            content: "";
+            background: $primary;
+        }
+
+        @include hover {
+            &:before, &:after {
+                background: $secondary;
+            }
+        }
+    }
+
+    .inc-minus {
+        border-right: none;
+
+        &:before {
+            height: remCalc(2);
+            width: remCalc(12);
+        }
+
+        &:after {
+            display: none;
+        }
+    }
+
+    .inc-plus {
+        border-left: none;
+
+        &:before {
+            height: remCalc(2);
+            width: remCalc(12);
+        }
+
+        &:after {
+            width: remCalc(2);
+            height: remCalc(12);
+        }
+    }
+}

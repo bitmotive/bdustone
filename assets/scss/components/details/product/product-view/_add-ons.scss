@@ -1,0 +1,114 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - ADD ONS
+
+\*  --------------------------------------------------------------------------  */
+.add-ons {
+    margin: remCalc(40) 0 0;
+
+    li {
+        padding: remCalc(24) 0;
+        border-top: remCalc(2) solid $secondary;
+
+        &:before {
+            display: none;
+        }
+    }
+
+    .form-field {
+        @include flex(flex-start, flex-start, null, row nowrap);
+
+        figure {
+            @include flexItem(0, 0, auto);
+            width: remCalc(110);
+            margin: 0 remCalc(24) 0 0;
+        }
+
+        div {
+            @include flexItem(0, 1, auto);
+            width: 100%;
+        }
+    }
+
+    h4 {
+        font-size: remCalc(16);
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .desc {
+        font-size: remCalc(14);
+        color: $secondary;
+    }
+
+    label {
+        font-size: remCalc(14);
+        margin: remCalc(20) 0 0;
+
+        .buy {
+            display: block;
+        }
+
+        .added {
+            display: none;
+            color: $accent-1;
+        }
+
+        .price {
+            font-size: remCalc(16);
+            font-weight: 500;
+        }
+    }
+
+    input[type="checkbox"] {
+        @include srOnly();
+
+        + label {
+            display: block;
+            @include position(relative, null);
+            padding: 0 0 0 remCalc(30);
+
+            &:before {
+                content: "";
+                width: remCalc(16);
+                height: remCalc(16);
+                border: remCalc(1) solid $secondary;
+                border-radius: remCalc(5);
+                display: block;
+                @include position(absolute, null, (left, top), (0, .75em), translate(0, -50%));
+            }
+
+            &:after {
+                content: "";
+                @include position(absolute, null, (left, top), (#{remCalc(10)}, .7em), (translate(-50%, -50%) rotate(-45deg)));
+                width: remCalc(8);
+                height: remCalc(4);
+                border-left: remCalc(1) solid rgba($accent-1, 0.0);
+                border-bottom: remCalc(1) solid rgba($accent-1, 0.0);
+            }
+
+            @include hover {
+                &:before {
+                    border-color: $accent-1;
+                }
+            }
+        }
+
+        &:checked {
+
+            + label {
+                .buy {
+                    display: none;
+                }
+
+                .added {
+                    display: block;
+                }
+
+                &:before, &:after {
+                    border-color: $accent-1;
+                }
+            }
+        }
+    }
+}

@@ -1,36 +1,47 @@
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-<h1 class="page-heading">{{lang 'gift_certificate.heading' }}</h1>
-{{> components/gift-certificate/navigation gift_page='balance'}}
-
-<main class="account account--fixed">
-    <h3>{{lang 'gift_certificate.balance.heading'}}</h3>
-    <p>
-        <strong>{{lang 'gift_certificate.balance.intro' }}</strong>
-    </p>
-
-    {{#if gift_certificate}}
-        {{#if gift_certificate.error}}
-            {{> components/common/alert-error gift_certificate.error}}
-        {{else}}
-            <h1>{{gift_certificate.balance.formatted}}</h1>
-            <h3>{{gift_certificate.code}}</h3>
-        {{/if}}
-    {{/if}}
-
-    <form class="form form--oneField" id="gift-certificate-balance" method="get">
-        <input type="hidden" name="action" value="balance">
-        <div class="form-field">
-            <label class="form-label" for="giftcertificatecode">
-                {{lang 'forms.gift_certificate.balance.code' }}
-            </label>
-            <div class="form-prefixPostfix wrap">
-                <input class="form-input" id="giftcertificatecode" name="giftcertificatecode">
-                <input type="submit" class="button button--primary form-prefixPostfix-button--postfix" value="{{lang 'forms.gift_certificate.balance.submit_value' }}">
+<header class="hero">
+    <div class="container">
+        {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h1 class="ta-left">
+            {{lang 'gift_certificate.heading' }}
+        </h1>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="row ha-left">
+            <div class="col-xs-12 col-md-4 col-lg-3">
+                {{> components/gift-certificate/navigation gift_page='balance'}}
+            </div>
+            <div class="col-xs-12 col-md-8 col-lg-7">
+                <h2>{{lang 'gift_certificate.balance.heading'}}</h2>
+                <p>{{lang 'gift_certificate.balance.intro' }}</p>
+                {{#if gift_certificate}}
+                    {{#if gift_certificate.error}}
+                        {{> components/global/alerts/error gift_certificate.error}}
+                    {{else}}
+                        <h3>{{gift_certificate.balance.formatted}}</h3>
+                        <h4>{{gift_certificate.code}}</h4>
+                    {{/if}}
+                {{/if}}
+                <form class="form form-gc-balance" id="gift-certificate-balance" method="get">
+                    <input type="hidden" name="action" value="balance">
+                    <div class="form-field">
+                        <label for="giftcertificatecode">
+                            {{lang 'forms.gift_certificate.balance.code' }}
+                        </label>
+                        <div>
+                            <input id="giftcertificatecode" name="giftcertificatecode">
+                            <button type="submit" class="btn-primary">
+                                {{lang 'forms.gift_certificate.balance.submit_value' }}
+                            </button>
+                        </div>
+                    </div>
+                </form>                
             </div>
         </div>
-    </form>
-</main>
+    </div>
+</section>
 {{/partial}}
 {{> layout/base}}

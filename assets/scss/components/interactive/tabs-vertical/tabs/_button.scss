@@ -1,0 +1,29 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TABS - VERTICAL - BUTTONS
+
+\*  --------------------------------------------------------------------------  */
+&.buttons {
+    > dt {
+        margin: #{$gutterSm * .5} 0;
+        
+        > button {
+            color: $neutral-2;
+            background: $accent-1;
+            border-bottom: none;
+
+            @include hover {
+                background: $accent-2;
+                color: $secondary;
+                // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+                // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+            }
+
+            &[aria-expanded="true"] {
+                background: $primary;
+                color: $white;
+            }
+     
+        }
+    }
+}

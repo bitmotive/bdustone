@@ -1,0 +1,108 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FEED - ORDERS
+
+\*  --------------------------------------------------------------------------  */
+.f-orders {
+    // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+    @include flex(flex-start, stretch, null, row wrap);
+    margin: 0 ($gutterSm * -.5) remCalc(24);
+    @media #{$mediaMd}{
+        width: 76%;
+        display: inline-flex;
+        padding-top: remCalc(10);
+        margin-left: remCalc(5) !important;
+        padding-left: remCalc(30);
+    }
+    .card {
+        width: calc(50% - #{$gutterSm});
+        margin: 0 ($gutterSm * .5);
+        h4 {
+            margin-bottom: remCalc(8);
+        }
+        h3 {
+            margin-bottom: remCalc(8);
+            text-decoration: underline;
+        }
+        &:nth-child(n + 6) {
+            margin-top: #{$gutterSm};
+        }
+        .row {
+            margin: 0;
+            width: 100%;
+            .col-xs-12 {
+                padding: 0;
+                .status {
+                    overflow: visible;
+                }
+            }
+        }
+        .product-name {
+        text-decoration: none;
+        color: $primary;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        font-size: remCalc(14);
+        min-height: remCalc(64);
+        margin-bottom: 0;
+         /* autoprefixer: off */  
+        overflow: hidden;
+        }
+    }
+
+    @media #{$mediaMd} {
+        .card {
+            width: calc(33.333% - #{$gutterSm});
+
+            &:nth-child(6) {
+                margin-top: 0;
+            }
+
+            &:nth-child(n + 8) {
+                margin-top: #{$gutterSm};
+            }
+        }
+    }
+
+    @media #{$mediaLg} {
+        margin: 0 ($gutter * -.5) remCalc(32);
+
+        .card {
+
+            h3 {
+                font-size: remCalc(18);
+            }
+
+            h4 {
+                font-size: remCalc(16);
+                margin: 0 0 remCalc(4);
+            }
+        }
+    }
+
+    input[type="checkbox"] {
+        @include srOnly;
+
+        &:checked {
+            + .card {
+                border-color: $accent-1;
+                background: $accent-1;
+                
+                .cnt {
+                    color: $white;
+
+                    &:after {
+                        background: $accent-1;
+                    }
+                }
+
+                .price, h3 {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+
+}

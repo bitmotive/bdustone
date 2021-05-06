@@ -1,0 +1,56 @@
+<a href="#content" class="skip-content">Skip to Content</a>
+{{#if banners.top}}
+<div class="banners" data-banner-location="top">
+    {{#each (limit banners.top_metadata 1)}}
+    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+        <div class="container" data-event-type="promotion-click">
+            {{{this.content}}}
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+<header>
+    <div class="dashline"></div>
+    <div class="container">
+        <input type="checkbox" class="toggle" id="headerToggleNav" />
+        <label class="toggle-trigger" for="headerToggleNav">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="sr-only">Menu</span>
+        </label>
+        {{> components/global/store-logo}}
+        <a  class="toggle-cart"
+            href="{{urls.cart}}">
+                <svg><use xlink:href="#icon-cart" /></svg>
+                <span class="sr-only">{{lang 'common.cart'}}</span>
+                <span class="count cart-quantity"></span>
+        </a>
+        {{#if customer}}
+            {{#if customer.customer_group_id "===" 1}}
+                {{#unless template "===" "pages/custom/category/sig-sauer-category"}}
+                    {{> components/global/quick-search }}
+                {{/unless}}
+            {{/if}}
+        {{/if}}
+        
+        <nav>
+            {{#if customer}}
+                {{#if customer.customer_group_id "===" 1}}  
+                    {{#unless template "===" "pages/custom/category/sig-sauer-category"}}
+                        {{> components/global/navs/main }}
+                    {{/unless}}
+                {{/if}}
+            {{/if}}
+            {{> components/global/navs/utility }}
+            {{!-- {{> components/global/navs/affiliates }} --}}
+        </nav>
+        {{!-- {{> components/global/navs/account }} --}}
+        {{#if (lang 'header.promo')}}
+        <div class="promo">
+            {{{lang 'header.promo' }}}
+        </div>
+        {{/if}}
+    </div>
+</header>

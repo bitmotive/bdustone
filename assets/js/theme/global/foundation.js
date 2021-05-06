@@ -6,6 +6,7 @@ import modalFactory from './modal';
 import revealCloseFactory from './reveal-close';
 
 export default function ($element) {
+    Foundation.global.namespace = '';
     $element.foundation({
         dropdown: {
             // specify the class used for active dropdowns

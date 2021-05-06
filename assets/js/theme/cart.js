@@ -24,7 +24,8 @@ export default class Cart extends PageManager {
         const maxQty = parseInt($el.data('quantityMax'), 10);
         const minQty = parseInt($el.data('quantityMin'), 10);
         const minError = $el.data('quantityMinError');
-        const maxError = $el.data('quantityMaxError');
+        // const maxError = $el.data('quantityMaxError');
+        const maxError = `Sorry, you are limited to a quantity of ${maxQty} for this item. Your cart has been adjusted to reflect this limit`
         const newQty = $target.data('action') === 'inc' ? oldQty + 1 : oldQty - 1;
         // Does not quality for min/max quantity
         if (newQty < minQty) {
@@ -237,7 +238,7 @@ export default class Cart extends PageManager {
             cartUpdateQtyTextChange($target, preVal);
         });
 
-        $('.cart-remove', this.$cartContent).on('click', event => {
+        $('.remove', this.$cartContent).on('click', event => {
             const itemId = $(event.currentTarget).data('cartItemid');
             const string = $(event.currentTarget).data('confirmDelete');
             swal.fire({
@@ -260,6 +261,42 @@ export default class Cart extends PageManager {
             // edit item in cart
             this.cartEditOptions(itemId);
         });
+
+        $('.empty-cart').on('click', (e) => {
+            e.preventDefault();
+            const string = $(e.currentTarget).data('confirmDelete');
+            swal.fire({
+                text: string,
+                icon: 'warning',
+                showCancelButton: true,
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        method: 'GET',
+                        url: '/api/storefront/cart',
+                        success: results => {
+                            if (results.length != 0) {
+                                var cartId = results[0].id;
+                                this.clearCart(cartId);
+                            }
+                        }
+                    })
+                }
+            });
+        })
+    }
+
+    clearCart(cartId) {
+        this.$overlay.show();
+        localStorage.setItem('cart-quantity', 0);
+        $.ajax({
+            method: 'DELETE',
+            url: '/api/storefront/carts/'+cartId,
+            async: false,
+            success: response => {
+                window.location.reload();
+            }
+        })
     }
 
     bindPromoCodeEvents() {

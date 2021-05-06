@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('.bfx-sku').each(function(index) {
+    let sku= ($(this).text());
+    
+    let skuObject = exportedSettings.bduMembershipInfo;
+      if (skuObject[sku]) {
+          $(this).parent().parent().parent().parent().children('td').children('.item-options').children('[data-wishlist-add]').hide();
+        //removes the wishlist button from the cart if digital sku is in cart
+        // $("[data-wishlist-add]").hide();
+      }
+    });
+});
+</script>

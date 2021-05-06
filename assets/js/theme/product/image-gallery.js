@@ -6,6 +6,7 @@ export default class ImageGallery {
         this.$mainImage = $gallery.find('[data-image-gallery-main]');
         this.$selectableImages = $gallery.find('[data-image-gallery-item]');
         this.currentImage = {};
+        this.$mainImage.find('div').hide();
     }
 
     init() {
@@ -18,6 +19,14 @@ export default class ImageGallery {
 
         this.setActiveThumb();
         this.swapMainImage();
+    }
+
+    setMainVideo(imgObj) {
+        this.currentImage = _.clone(imgObj);
+
+        this.destroyImageZoom();
+        this.setActiveThumb();
+        this.swapMainVideo();
     }
 
     setAlternateImage(imgObj) {
@@ -49,7 +58,11 @@ export default class ImageGallery {
             $selectedThumb: $target,
         };
 
-        this.setMainImage(imgObj);
+        if ($target.attr('data-image-gallery-new-image-url').indexOf('www.youtube.com') >= 0) {
+            this.setMainVideo(imgObj);
+        } else {
+            this.setMainImage(imgObj);
+        }
     }
 
     setActiveThumb() {
@@ -60,20 +73,30 @@ export default class ImageGallery {
     }
 
     swapMainImage() {
+        this.setImageZoom();
+        this.$mainImage.find('a img').show();
+        this.$mainImage.find('div').hide();
+
         this.easyzoom.data('easyZoom').swap(
             this.currentImage.mainImageUrl,
             this.currentImage.zoomImageUrl,
             this.currentImage.mainImageSrcset,
         );
 
-        this.$mainImage.attr({
-            'data-zoom-image': this.currentImage.zoomImageUrl,
-        });
+    }
+
+    swapMainVideo() {
+        this.$mainImage.find('img').hide();
+        this.$mainImage.find('div').show();
+        this.$mainImage.find('iframe').attr('src', this.currentImage.mainImageUrl);
+        var figureWidth = this.$mainImage.width();
+        var figureHeight = this.$mainImage.height();
+        this.$mainImage.find('iframe').css({'width': figureWidth, 'height': figureHeight});
     }
 
     checkImage() {
-        const containerHeight = $('.productView-image').height();
-        const containerWidth = $('.productView-image').width();
+        const containerHeight = this.$mainImage.height();
+        const containerWidth = this.$mainImage.width();
         const height = this.easyzoom.data('easyZoom').$zoom.context.height;
         const width = this.easyzoom.data('easyZoom').$zoom.context.width;
         if (height < containerHeight || width < containerWidth) {
@@ -87,6 +110,9 @@ export default class ImageGallery {
             errorNotice: '',
             loadingNotice: '',
         });
+    }
+    destroyImageZoom() {
+        this.easyzoom = this.$mainImage.data('easyZoom').teardown();
     }
 
     bindEvents() {

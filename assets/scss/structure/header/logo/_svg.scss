@@ -1,0 +1,50 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - LOGO - SVG
+
+\*  --------------------------------------------------------------------------  */
+.logo {
+    display: block;
+    width: remCalc(160);
+    height: remCalc(18);
+    @include flexItem(0, 0, auto);
+
+    @media #{$mediaToggleHeader} {
+        @include position(absolute, null, (left, top), (remCalc(62), remCalc(27.5)), translate(0, -50%));
+    }
+
+    @media #{$mediaLg} {
+        width: remCalc(144);
+        height: remCalc(16);
+    }
+
+    @media #{$mediaXl} {
+        width: remCalc(180);
+        height: remCalc(20);
+    }
+
+    @media #{$mediaXxl} {
+        width: remCalc(234);
+        height: remCalc(26);
+    }
+    
+    svg {
+        display: block;
+        width: 100%;
+        height: auto;
+
+        .primary {
+            fill: $primary;
+        }
+
+        .secondary {
+            fill: $white;
+        }
+
+        @media #{$mediaFullHeader} {
+            .secondary {
+                fill: $primary;
+            }
+        }
+    }
+}

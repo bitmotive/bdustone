@@ -1,0 +1,26 @@
+.swatches {
+    @include flex(flex-start, center, null, row nowrap);
+
+    li {
+        padding: 0;
+
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.swatch {
+    @include flex(space-between, stretch, null, row nowrap);
+    width: remCalc(32);
+    height: remCalc(32);
+    overflow: hidden;
+    border: remCalc(1) solid $neutral-1;
+
+    span {
+        @include flex(1, 1, auto);
+        min-width: 33.333%;
+        max-width: 100%;
+        width: 100%;
+    }
+}

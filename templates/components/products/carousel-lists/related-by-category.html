@@ -1,0 +1,41 @@
+<h2 class="ta-center">
+    <small>{{lang 'products.lists.byCategory.tag'}}</small> 
+    {{lang 'products.lists.byCategory.heading' }}
+</h2>
+<div id="relatedCategoryProducts"
+    class="feed-carousel-featured"
+    data-slick='{
+        "accessibility": false,
+        "arrows": false,
+        "centerMode": true,
+        "centerPadding": "50px",
+        "dots": true,
+        "infinite": false,
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "responsive": [
+            {
+                "breakpoint": 768,
+                "settings": {
+                    "arrows": true,
+                    "centerMode": false,
+                    "dots": false,
+                    "slidesToShow": 3
+                }
+            },
+            {
+                "breakpoint": 992,
+                "settings": {
+                    "arrows": true,
+                    "centerMode": false,
+                    "dots": false,
+                    "slidesToShow": 4
+                }
+            }
+        ]
+    }'
+    data-list-name="Related Category Products"
+    data-category="{{ category-path }}">
+    <div></div>
+</div>

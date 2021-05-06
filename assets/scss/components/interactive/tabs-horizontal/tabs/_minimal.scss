@@ -1,0 +1,23 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TABS - HORIZONTAL - MINIMAL
+
+\*  --------------------------------------------------------------------------  */
+&.minimal {
+    > dt {
+        margin: 0 #{$gutterSm * .5};
+        
+        > button {
+            border-bottom: .5rem solid currentColor;
+        }
+    }
+    
+    &.t-bottom {
+        > dt {
+            > button {
+                border-bottom: none;
+                border-top: .5rem solid currentColor;
+            }
+        }
+    }
+}

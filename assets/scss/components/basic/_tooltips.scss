@@ -1,0 +1,150 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TOOLTIPS
+
+    Tooltips can be used to display additional information revealed on hover and
+    focus states.
+
+
+    // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+    // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+    // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+    // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+    // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+    // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+
+\*  --------------------------------------------------------------------------  */
+.tooltip-trigger {
+    @include position(relative, 0);
+    margin: remCalc(5) 0 0;
+
+    @include hover {
+        z-index: 1000;
+
+        > .tooltip {
+            display: block;
+        }
+    }
+
+    p &, li &, dd &, blockquote & {
+        border-bottom: .3rem double currentColor;
+    }
+
+    &.icon-i {
+        display: inline-block;
+        background: $tertiary;
+        color: $white;
+        border-radius: remCalc(8);
+        height: remCalc(14);
+        width: remCalc(14);
+        text-align: center;
+        font-size: remCalc(10);
+        line-height: remCalc(14);
+        border: none;
+        transform: translate(0, #{remCalc(-2)});
+        float: right;
+    }
+}
+
+.tooltip {
+    display: none;
+    @include position(fixed, 100, (left, top), (50%, 100%), translate(-50%, -100%));
+    width: 100vw;
+    max-width: 40rem;
+    padding: remCalc(20) remCalc(24);
+    background: $tertiary;
+    box-shadow: 0 remCalc(2) remCalc(9) rgba(0, 0, 0, 0.06);
+    color: $white;
+    font-size: remCalc(14);
+    line-height: (24 / 14);
+    text-align: left;
+
+    @media #{$mediaSm} {
+        width: 30vw;
+    }
+
+    @media #{$mediaMd} {
+        width: 25vw;
+    }
+
+    &.sm {
+        width: auto;
+        padding: remCalc(8) remCalc(12);
+        white-space: nowrap;
+        font-size: remCalc(12);
+        line-height: (16 / 12);
+    }
+
+    p {
+        
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    @media #{$mediaMd} {
+        @include position(absolute, null, top, (#{remCalc(-10)}), translate(-50%, -100%)); 
+
+        &:before {
+            @include position(absolute, 0, (left, top), (50%, 100%), translate(-50%, 0));
+            width: 0;
+            height: 0;
+            content: "";
+        }
+
+        &:before {
+            border-top: remCalc(8) solid $tertiary;
+            border-left: remCalc(8) solid transparent;
+            border-right: remCalc(8) solid transparent;
+        }
+
+        &.bottom {
+            top: calc(100% + #{$gutter});
+            @include transform(translate(-50%, 0%));
+
+            &:before {
+                top: 0;
+                @include transform(translate(-50%, -100%));
+                border-top: none;
+                border-bottom: remCalc(8) solid $tertiary;
+                border-left: remCalc(8) solid transparent;
+                border-right: remCalc(8) solid transparent;
+            }
+        }
+
+        &.left {
+            left: remCalc(-8);
+            top: 50%;
+            @include transform(translate(-100%, -50%));
+
+            &:before {
+                top: 50%;
+                left: 100%;
+            }
+
+            &:before {
+                @include transform(translate(#{remCalc(-1)}, -50%));
+                border-right: none;
+                border-left: remCalc(8) solid $tertiary;
+                border-top: remCalc(8) solid transparent;
+                border-bottom: remCalc(8) solid transparent;
+            }
+        }
+
+        &.right {
+            left: calc(100% + #{remCalc(5)});
+            top: 50%;
+            @include transform(translate(0, -50%));
+
+            &:before {
+                top: 50%;
+                left: 0;
+                @include transform(translate(-100%, -50%));
+                border-left: none;
+                border-right: remCalc(8) solid $tertiary;
+                border-top: remCalc(8) solid transparent;
+                border-bottom: remCalc(8) solid transparent;
+            }
+        }
+    }
+}

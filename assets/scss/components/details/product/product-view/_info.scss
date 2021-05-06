@@ -1,0 +1,59 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - INFO
+
+\*  --------------------------------------------------------------------------  */
+.info {
+    display: none;
+    margin: 0 0 remCalc(24);
+    font-size: remCalc(13);
+
+    @media #{$mediaMd} {
+        @include flex(flex-start, center, null, row wrap);
+    }
+
+    @media #{$mediaLg} {
+        font-size: remCalc(14);
+    }
+
+    strong {
+        color: $accent-1;
+        font-weight: bold;
+    }
+
+    dt {
+        @include flexItem(0, 0, auto);
+        width: remCalc(18);
+        height: remCalc(18);
+        margin: 0 remCalc(10) 0 0;
+    }
+
+    dt ~ dt, dd:nth-of-type(n + 2) {
+        margin-top: remCalc(10);
+    }
+
+    svg {
+        width: remCalc(18);
+        height: remCalc(18);
+        fill: $primary;
+    }
+
+    dd {
+        @include flexItem(0, 1, auto);
+        width: calc(100% - #{remCalc(28)});
+        padding: 0;
+        font-size: remCalc(14);
+        line-height: (19 / 14);
+    }
+}
+
+.alert-box.info {
+    flex-flow: row nowrap;
+    align-items: flex-start;
+
+    svg {
+        fill: currentColor;
+        width: remCalc(24);
+        height: remCalc(24);
+    }
+}

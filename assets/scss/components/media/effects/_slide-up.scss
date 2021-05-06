@@ -1,0 +1,26 @@
+/*  --------------------------------------------------------------------------  *\
+
+    MEDIA HOVER EFFECT - MOVE UP
+
+\*  --------------------------------------------------------------------------  */
+&.slide-up {
+    @media #{$mediaMd} {
+        figcaption {
+            left: 0;
+            top: 100%;
+            @include transform(translate(0, 0));
+            width: 100%;
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+            @include transition(transform .25s);
+        }
+
+        @include hover {
+
+            figcaption {
+                @include transform(translate(0, -100%));
+            }
+        }
+    }
+}

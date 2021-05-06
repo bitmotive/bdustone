@@ -1,0 +1,109 @@
+<div class="guarantees">
+    <div class="container">
+        <div class="facts">
+            <div>
+                <svg><use xlink:href="#icon-phone" /></svg>
+                <div class="fact-container">
+                    <h3>{{lang 'guarantees.support'}}</h3>
+                    <p>{{lang 'guarantees.supportCopy'}}</p>
+                    <p>{{lang 'guarantees.supportCopy2'}}</p>
+                    <p>{{lang 'guarantees.supportCopy3'}}</p>
+                </div>
+            </div>
+            <div>
+                <svg><use xlink:href="#icon-secure" /></svg>
+                <div class="fact-container">
+                    <h3>{{lang 'guarantees.secure'}}</h3>
+                    <p>{{lang 'guarantees.secureCopy'}}</p>
+                    <svg><use xlink:href="#icon-visa" /></svg>
+                    <svg><use xlink:href="#icon-mastercard" /></svg>
+                    <svg><use xlink:href="#icon-Amex" /></svg>
+                    <svg><use xlink:href="#icon-discover" /></svg>
+                </div>
+            </div>
+            <div>
+                <svg><use xlink:href="#icon-refresh" /></svg>
+                <div class="fact-container">
+                    <h3>{{lang 'guarantees.returns'}}</h3>
+                    <p>{{lang 'guarantees.returnsCopy'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    {{#unless template "===" "pages/custom/category/sig-sauer-category"}}
+    <div class="footer-brands">
+        <div class="container">
+            {{> components/brand/list-brand-images }}
+        </div>
+    </div>
+    {{/unless}}
+    <div class="footer-top">
+        <div class="container">
+            {{> components/global/store-logo-footer}}
+            {{> components/global/navs/social}}
+        </div>
+    </div>
+    <div class="footer-contact">
+            <div><p><b>Contact Us</b></p></div>
+            <div><svg><use xlink:href="#icon-location" /></svg><span>6933 NW 4th Blvd.<br />Gainesville, FL 32607<br />United States</span></div>
+            <div><svg><use xlink:href="#icon-phone2" /></svg><span>1-800-915-7709</span></div>
+    </div>
+    <div class="footer-middle">
+        <div class="container" style="">
+                    <nav class="footer">
+                        <ul>
+                            
+                            {{#for 1 (toInt (lang 'footer.footer_nav.length'))}}
+                                <li><div>
+                                    <input type="checkbox" id="footerNavItem{{$index}}" class="sr-only" name="footerNav" />
+                                    <label for="footerNavItem{{$index}}">
+                                        {{{lang (concat (concat 'footer.footer_nav.' $index) '.text')}}}
+                                    </label>
+                                    
+                                    {{#if $index "===" 2}}
+                                      {{#all (if ../../customer) (if ../../customer.customer_group_id "===" 1)}}
+     
+                                            {{#unless ../../../../template "===" "pages/custom/category/sig-sauer-category"}}
+                                                <ul>
+                                                {{#each ../../../../categories}}
+                                                    <li>
+                                                        <a href="{{url}}">{{name}}</a>
+                                                    </li>
+                                                {{/each}}
+                                                </ul>
+                                            {{/unless}}
+                                        {{/all}}
+                                    {{else}}
+                                    <ul>
+                                        {{#for 1 (toInt (lang (concat (concat 'footer.footer_nav.' $index) '.children.length')))}}
+                                            <li>
+                                                <a href="{{lang (concat (concat (concat (concat 'footer.footer_nav.' ../$index) '.children.') $index) '.url')}}"
+                                                    {{#if (lang (concat (concat "footer.footer_nav." $index) ".target")) "===" "_blank"}} target="{{lang (concat (concat 'footer.footer_nav.' $index) '.target')}}"{{/if}}>
+                                                    {{{lang (concat (concat (concat (concat 'footer.footer_nav.' ../$index) '.children.') $index) '.text')}}}
+                                                </a>
+                                            </li>
+                                        {{/for}}
+                                    </ul>
+                                    {{/if}}
+                                    </div>
+                                </li>
+                            {{/for}}
+                        </ul>
+                    </nav>
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    {{#if theme_settings.show_copyright_footer}}
+                        <p class="copyright">&copy; {{moment format="YYYY"}} {{settings.store_name}}. {{lang 'footer.copyright'}}</p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

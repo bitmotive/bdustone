@@ -1,0 +1,34 @@
+/*  --------------------------------------------------------------------------  *\
+
+    MEDIA HOVER EFFECTS
+
+    This file modifies what's found in the base components/basic/_media
+    file.
+
+    This is the base of the hover effects, and then their modifications to the 
+    effects are located in the imported files here.
+
+    If all figures will have the hover effects, move the following definitions
+    to the media base file.
+
+    If you only have one hover effect for all figures, combine those styles with
+    the base media file as well.
+
+    No classes should be needed at that point to modify them.
+
+\*  --------------------------------------------------------------------------  */
+&.hov-eff {
+    
+    @media #{$mediaMd} {
+        @include position(relative, 0);
+        overflow: hidden;
+        color: $white;
+        text-align: center;
+
+        figcaption {
+            @include position(absolute, 1, (left, top), (50%, 50%), translate(-50%, -50%));
+            border: .2rem solid $accent-2;
+            background: rgba($primary, .5);
+        }
+    }
+}

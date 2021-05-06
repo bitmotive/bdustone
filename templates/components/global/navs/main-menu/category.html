@@ -1,0 +1,112 @@
+<li id="mainNavItem{{ id }}">
+    
+    <a href="{{ url }}"{{#if children }} class="hasSubs"{{/if}}>
+        {{ name }}
+    </a>
+    {{#if children }}
+        <input type="checkbox" id="mainNav{{ id }}">
+        <label for="mainNav{{ id }}">
+            {{{lang 'header.main_nav.display_sub_nav' name=name}}}
+            <svg>
+                <use xlink:href="#icon-caret-right"></use>
+            </svg>
+        </label>
+        <div>
+            <ul>
+                <li>
+                    <label for="mainNav{{ id }}">
+                        <svg>
+                            <use xlink:href="#icon-caret-left"></use>
+                        </svg>
+                        {{lang 'header.main_nav.back_to_main'}}
+                    </label>
+                </li>
+                <li>
+                    <a href="{{url}}">{{name}}</a>
+                </li>
+                {{#each children}}
+                    <li>
+                        {{#if children}}
+                            <a href="{{url}}" {{#contains url 'gift-cards'}}class="bfx-remove-element"{{/contains}}>
+                                {{#gt children.length 15}}
+                                    {{{lang 'header.main_nav.shop_all_heading' name=name}}}
+                                {{else}}
+                                    {{name}}
+                                {{/gt}}
+                            </a>
+                            <input type="checkbox" id="subNav{{ id }}">
+                            <label for="subNav{{ id }}">
+                                {{{lang 'header.main_nav.display_sub_nav' name=name}}}
+                                <svg>
+                                    <use xlink:href="#icon-caret-right"></use>
+                                </svg>
+                            </label>
+                            <ul>
+                                <li>
+                                    <label for="subNav{{ id }}">
+                                        <svg>
+                                            <use xlink:href="#icon-caret-left"></use>
+                                        </svg>
+                                        {{{lang 'header.main_nav.back_to_sub' name=../../name}}}
+                                    </label>
+                                </li>
+                                <li>
+                                    <a href="{{url}}">
+                                        {{#gt children.length 15}}
+                                            {{{lang 'header.main_nav.shop_all_heading' name=name}}}
+                                        {{else}}
+                                            {{name}}
+                                        {{/gt}}
+                                    </a>
+                                </li>
+                                {{#unlessEq id compare="105"}}
+                                    {{#each (limit children 15)}}
+                                        <li>
+                                            <a href="{{url}}">{{name}}</a>
+                                        </li>
+                                    {{/each}}
+                                    {{#gt children.length 15}}
+                                    <li class="shop-all">
+                                        <a href="{{url}}">
+                                            {{{lang 'header.main_nav.shop_all_after' name=name}}}
+                                        </a>
+                                    </li>
+                                    {{/gt}}
+                                {{else}}
+                                    {{#each children}}
+                                        <li>
+                                            <a href="{{url}}">{{name}}</a>
+                                        </li>
+                                    {{/each}}                                    
+                                {{/unlessEq}}
+                            </ul>
+                        {{else}}
+                            <a href="{{url}}" {{#contains url 'gift-cards'}}class="bfx-remove-element"{{/contains}}>{{name}}</a>
+                        {{/if}}
+                    </li>
+                {{/each}}
+            </ul>
+           
+                    <div class="card">
+                        <a href="" class="img-w">
+                            {{> components/global/responsive-img
+                                image=image
+                                class="card-image"
+                                fallback_size=theme_settings.productgallery_size
+                                lazyload=theme_settings.lazyload_mode
+                                default_image=theme_settings.default_image_product
+                                }}
+                            <div class="img-exclusive"></div>
+                        </a>
+                        <div class="cnt">
+                            <h2>{{name}}</h2>
+                            <span><a href="{{url}}" class="btn-primary" aria-label="View More {{name}}">
+                                View More
+                            </a>
+                            </span>
+                        </div>
+                    </div>
+            
+        </div>
+    {{/if}}
+</li>

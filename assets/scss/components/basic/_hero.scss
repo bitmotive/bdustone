@@ -1,0 +1,173 @@
+.category, .search {
+    .hero h1 {
+        border:0;
+        margin-bottom:0;
+        padding-bottom:remCalc(7);
+    }
+}
+.login, .createaccount {
+    .hero h1 {
+        border:0;
+        margin-bottom:0;
+        padding-bottom:remCalc(7);
+    }
+}
+.brand {
+    .hero {
+        .sub-cat {
+            padding-bottom: 0;
+            padding-top:0;
+            h1 {
+                color: $primary;
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom:remCalc(7);
+            }
+        }
+    }
+    .brandsub {
+        border:0;
+        margin:0;
+        padding-bottom:remCalc(7);
+    }
+}
+.brands {
+    .hero {
+        h1 {
+            @media #{$mediaSmBelow} {
+                margin-bottom: 0;
+            }
+        }
+    }
+    @media #{$mediaMd} {
+        section {
+            padding-top: 0;
+        }
+    }
+}
+.hero {
+    
+    H1 {
+        border-bottom:1px solid black;
+        padding-bottom:remCalc(10);
+        margin-bottom:remCalc(32);
+        @media #{$mediaMd} {
+            padding-bottom:remCalc(20);
+        }
+    }
+
+}
+
+.page {
+    margin-bottom:remCalc(40);
+}
+
+.default {
+    .hero {
+        //background: black;
+        background: url(../img/bg-exclusives.jpg) top center repeat;
+        padding: 0;
+        @media #{$mediaLgBelow} {
+            padding-top: remCalc(4);
+        }
+        .container {
+            display:block !important;
+        }
+    }
+}
+.cart {
+    .hero {
+      .container {
+        flex-direction: column;
+      }
+    }
+  }
+.hero {
+    @include position(relative, null);
+    padding: 0;
+    @media #{$mediaLgBelow} {
+        padding-top: remCalc(20);
+    }
+    overflow: hidden;
+    @media #{$print} {
+        display: none;
+    }
+    &.txt-only {
+        > div {
+            > h1 {
+                color:$black;
+                font-weight:800;
+            }
+            .cart-actions {
+                padding:0;
+                margin:remCalc(32) 0 0;
+                p {
+                    display:none;
+                }
+                .btn-primary {
+                    padding-left:remCalc(16);
+                    padding-right:remCalc(16);
+                    svg {
+                        fill:none;
+                        margin-right: remCalc(8);
+                        width: remCalc(25);
+                        height: remCalc(25);
+                    }
+                }
+            }
+        }
+    }
+    picture img, .picture img, img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    // new class to control hero elements only on account pages
+
+    .container {
+        background: white;
+
+        @media #{$mediaSmBelow} {
+            text-align:center;
+            padding-top:remCalc(20);
+            display: flex;
+            flex-direction: column-reverse;    
+        }
+        @media #{$mediaMd} {
+            text-align:left;
+        }
+
+        > p:last-child {
+            margin-bottom:remCalc(48);
+        }
+
+        h1 {
+            margin-top:remCalc(0);
+            @media #{$mediaMd} {
+                margin-top:remCalc(46);
+            }
+        }
+
+        
+        
+        div {
+            padding:remCalc(55) 0 remCalc(70);
+            @media #{$mediaLg} {
+                max-width:50%;
+            }
+            &.half {
+                @media #{$mediaLg} {
+                    max-width:25%;
+                }
+            }
+            h1, p {
+                color:$white;
+            }
+
+        }
+    }
+    @import 'heroes/home';
+    @import 'heroes/interior';
+    
+}
+@import 'heroes/hero-carousel';

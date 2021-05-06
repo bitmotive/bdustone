@@ -1,0 +1,88 @@
+<dl class="tabs" data-allow-toggle>
+    <dt class="tab">
+        <button type="button"
+                aria-expanded="true"
+                aria-controls="tabDescription"
+                id="tabDescriptionToggle" >
+            {{lang 'products.description'}}
+        </button>
+    </dt>
+    <dd class="tab-content" id="tabDescription" role="region" aria-labelledby="tabDescriptionToggle" itemprop="description">
+        {{{product.description}}}
+        <p>
+            {{#if product.custom_fields}}
+            {{#each product.custom_fields}}
+                {{name}}: {{value}}<br />
+            {{/each}}
+            {{/if}}
+        </p>
+        <p class="sku">{{product.sku}}</p>
+    </dd>
+    
+    {{#if product.videos}}
+    <dt class="tab">
+        <button type="button"
+                aria-expanded="false"
+                aria-controls="tabVideo"
+                id="tabVideoToggle" >
+            Video
+        </button>
+    </dt>
+    <dd class="tab-content" id="tabVideo" role="region" aria-labelledby="tabVideoToggle" hidden> 
+        <section class="toggle videoGallery" data-video-gallery>
+            <div class="toggle-content is-open" id="videoGallery-content">
+                <div class="videoGallery-main">
+                    <iframe
+                        id="player"
+                        class="lazyload"
+                        type="text/html"
+                        width="640"
+                        height="200"
+                        frameborder="0"
+                        webkitAllowFullScreen
+                        mozallowfullscreen
+                        allowFullScreen
+                        data-src="//www.youtube.com/embed/{{product.videos.list.0.id}}?rel=0"
+                        data-video-player>
+                    </iframe>
+                </div>
+                <ul class= "videoGallery-list">
+                {{#each product.videos.list}}
+                    <li class="videoGallery-item">
+                        <a href="#" class="video {{#if @first}}is-active{{/if}}" data-video-item data-video-id="{{id}}">
+                            <div class="video-figure">
+                                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="//i.ytimg.com/vi/{{id}}/default.jpg"/>
+                            </div>
+                        </a>
+                    </li>
+                {{/each}}
+                </ul>
+         </div>
+        
+        </section>
+        
+    </dd>
+   {{/if}}
+    <dt class="tab">
+        <button type="button"
+                aria-expanded="false"
+                aria-controls="tabShipping"
+                id="tabShippingToggle" >
+            {{lang 'products.shipping_returns.title'}}
+        </button>
+    </dt>
+    <dd class="tab-content" id="tabShipping" role="region" aria-labelledby="tabShippingToggle" hidden>
+        {{{lang 'products.shipping_returns.content'}}}
+    </dd>
+    <dt class="tab">
+        <button type="button"
+                aria-expanded="false"
+                aria-controls="tabWarning"
+                id="tabWarningToggle" >
+            {{lang 'products.warning.title'}}
+        </button>
+    </dt>
+    <dd class="tab-content" id="tabWarning" role="region" aria-labelledby="tabWarningToggle" hidden>
+        {{{lang 'products.warning.content'}}}
+    </dd>
+</dl>

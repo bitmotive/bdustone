@@ -3,23 +3,51 @@ blog:
     posts:
         limit: 5
         pages: 3
-        summary: 200
+        summary: 100
 ---
 {{#partial "page"}}
-
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
-<main class="page">
-    {{#unless theme_settings.hide_blog_page_heading }}
-        <h1 class="page-heading">{{ blog.name }}</h1>
-    {{/unless}}
-
-    {{#each blog.posts}}
-        {{> components/blog/post post=this}}
-    {{/each}}
-
-    {{> components/common/paginator pagination.blog}}
-</main>
-
+<header class="hero bg-grad-grey-w-sparkles has-media">
+    <div class="container">
+        <div class="content">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1>{{#if blog.tag}}{{blog.tag}}{{else}}{{ blog.name }}{{/if}}</h1>
+            {{#if blog.description }}
+                <p>{{{blog.description}}}</p>
+            {{/if}}
+        </div>
+        <div class="img-w">
+            <img src="https://perform-group-llc.mybigcommerce.com/product_images/uploaded_images/dancer-hero.png" alt="Dancer Image">
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="row va-top">
+            <div class="col-xs-12 col-md-2">
+                <h2 class="w-bdr">{{lang 'blog.filters_title'}}</h2>
+                <nav class="archive">
+                    <ul>
+                        {{#for 1 (toInt (lang 'blog.filters_length'))}}
+                        <li{{#if ../blog.tag '===' (lang (concat 'blog.filters.' $index))}} class="is-active"{{/if}}>
+                            <a href="/blog/tag/{{plusify (lang (concat 'blog.filters.' $index))}}">{{lang (concat 'blog.filters.' $index)}}</a>
+                        </li>
+                        {{/for}}
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-xs-12 col-md-10">
+                <h2 class="w-bdr">{{lang 'blog.list_title'}}{{#if blog.tag}}{{lang 'blog.list_filtered'}}{{blog.tag}}{{/if}}</h2>
+                <div class="f-basic" role="feed">
+                    {{#each blog.posts}}
+                        {{> components/blog/post post=this i=@index}}
+                    {{/each}}
+                </div>
+                {{#if pagination.blog }}
+                    {{> components/blog/paginator pagination.blog}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>
 {{/partial}}
 {{> layout/base}}

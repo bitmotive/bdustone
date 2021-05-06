@@ -1,0 +1,25 @@
+<div class="quick-search" id="quickSearch">
+    <form class="form" action="/search/searchresults/">
+        <div class="form-el">
+            <label class="sr-only" for="search_query">
+                {{lang "search.quick_search.input_label"}}
+            </label>
+            <input data-search-quick 
+                   type="text"
+                   name="search_query" 
+                   id="search_query" 
+                   data-error-message="{{lang 'search.error.empty_field'}}" 
+                   placeholder="{{lang 'search.quick_search.input_placeholder'}}" 
+                   autocomplete="off"
+                   data-rfkid="rfkid_6" />
+            <button type="submit">
+                <svg>
+                    <use xlink:href="#icon-search"></use>
+                </svg>
+                <span class="sr-only">Search</span>
+            </button>
+        </div>
+    </form>
+    {{!--<div class="results" 
+         data-bind="html: results"></div>--}}
+</div>

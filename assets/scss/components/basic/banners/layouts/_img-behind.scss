@@ -1,0 +1,31 @@
+/*  --------------------------------------------------------------------------  *\
+
+    BANNERS - LAYOUT - WITH IMAGE BEHIND
+
+\*  --------------------------------------------------------------------------  */
+&.img-behind {
+    @include position(relative, 0);
+    background: $primary;
+    overflow: hidden;
+    
+    > .cnt {
+        @include position(absolute, 100, (left, bottom), (0, 0));
+        color: $white;
+    }
+    
+    &.hov-eff {
+        overflow: hidden;
+        
+        > .cnt {
+            @include transform(translate(0, 100%));
+            @include transition(transform .5s .15s);
+        }
+        
+        @include hover {
+        
+            > .cnt {
+                @include transform(translate(0, 0));
+            }
+        }
+    }
+}

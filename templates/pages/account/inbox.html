@@ -1,23 +1,31 @@
 {{#partial "page"}}
-
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-<h1 class="page-heading">{{lang 'account.messages.heading' }}</h1>
-{{> components/account/navigation account_page='messages'}}
-
-<main class="account account--fixed">
-    <div class="account-body">
-        <section class="account-content">
+    <header class="hero">
+        <div class="container">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1>{{lang 'account.messages.heading' }}</h1>
+        </div>
+    </header>
+    {{> components/account/navigation account_page='messages'}}
+    <section>
+        <div class="container">
+            <div class="sidebar-nav nav">
+                {{> components/account/navigation account_page='messages'}}
+            </div>
             {{#if forms.inbox.error}}
-                {{> components/common/alert-error forms.inbox.error}}
+                {{> components/global/alerts/error forms.inbox.error}}
             {{/if}}
             {{#if forms.inbox.success}}
-                {{> components/common/alert-success forms.inbox.success}}
+                {{> components/global/alerts/success forms.inbox.success}}
             {{/if}}
-            {{> components/account/messages-list messages=customer.inbox.messages}}
-            {{> components/account/messages-form}}
-        </section>
-    </div>
-</main>
-
+            <div class="row va-top">
+                <div class="col-xs-12 col-md-8">
+                    {{> components/account/messages-list messages=customer.inbox.messages}}
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    {{> components/account/messages-form}}
+                </div>
+            </div>
+        </div>
+    </section>
 {{/partial}}
 {{> layout/base}}

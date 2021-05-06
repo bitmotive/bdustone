@@ -1,0 +1,26 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FLOATS
+
+    This sets up float classes that can be used to float elements in conjunction
+    with the columns classes to set the widths.
+
+\*  --------------------------------------------------------------------------  */
+.float-left, .float-right {
+    margin: 0 0 #{$gutter};
+}
+
+@media #{$mediaMd} {
+    
+    .float-left {
+        float: left;
+        padding: 0;
+        margin: 0 #{$gutter} #{$gutter} 0;
+    }
+    
+    .float-right {
+        float: right;
+        padding: 0;
+        margin: 0 0 #{$gutter} #{$gutter};
+    }
+}

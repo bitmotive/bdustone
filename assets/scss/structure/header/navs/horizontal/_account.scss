@@ -1,0 +1,32 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - HORIZONTAL - ACCOUNT NAV
+
+\*  --------------------------------------------------------------------------  */
+.user {
+    @media #{$mediaToggleHeader} {
+        @include position(absolute, 1000, (right, top), (0, 0), translate(100%, 0));
+        transition: .25s transform;
+        border-left: remCalc(1) solid $neutral-2;
+        border-bottom: remCalc(1)solid $neutral-2;
+
+        a {
+            @include flex(flex-end, center, null, row nowrap);
+            padding: remCalc(15) remCalc(24);
+            background: $white;
+            font-weight: 600;
+            font-size: remCalc(14);
+        }
+
+        svg {
+            width: remCalc(24);
+            height: remCalc(24);
+            margin: 0 remCalc(16) 0 0;
+            fill: $secondary;
+        }
+    }
+    
+    @media #{$mediaFullHeader} {
+        display: none;
+    }
+}

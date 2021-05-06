@@ -1,0 +1,26 @@
+<ul class="swatches">
+    {{#each this.values}}
+        <li class="swatch">
+            {{#if image}}
+                <span class='pattern' title="{{this.label}}" style="background-image: url('{{getImage image "swatch_option_size"}}');"></span>
+            {{/if}}
+            {{#if data.[2]}}
+                <span class='color' title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
+                <span class='color' title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
+                <span class='color' title="{{this.label}}" style="background-color: #{{data.[2]}}"></span>
+            {{else}}
+                {{#if data.[1]}}
+                    <span class='color' title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
+                    <span class='color' title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
+                {{else}}
+                    {{#if data.[0]}}
+                        <span class='color' title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+            {{#if pattern}}
+                <span class="pattern style="background-image: url('{{getImage image 'core-swatch'}}');"></span>
+            {{/if}}
+        </li>
+    {{/each}}
+</ul>

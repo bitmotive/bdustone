@@ -1,10 +1,10 @@
 <div class="productView" {{#if settings.data_tag_enabled}} data-event-type="product" data-entity-id="{{product.id}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{product.brand.name}}" data-product-price="{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}" data-product-variant="single-product-option"{{/if}}>
-{{#each product.reviews.messages}}
+    {{#each product.reviews.messages}}
         {{#if error}}
-            {{> components/common/alert-error error}}
+            {{> components/global/alerts/error error}}
         {{/if}}
         {{#if success}}
-            {{> components/common/alert-success success}}
+            {{> components/global/alerts/success success}}
         {{/if}}
     {{/each}}
 
@@ -20,14 +20,15 @@
                 <p class="productView-price">
                     <span>{{product.call_for_price}}</span>
                 </p>
-            {{/if}}
+            {{else}}
             <div class="productView-price">
-                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                {{#if theme_settings.restrict_to_login '!==' true}}
                     {{> components/products/price price=product.price schema_org=schema}}
                 {{else}}
-                    {{> components/common/login-for-pricing}}
-                {{/or}}
+                    {{> components/global/login-for-pricing}}
+                {{/if}}
             </div>
+            {{/if}}
             {{{region name="product_below_price"}}}
             <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
                 {{#if settings.show_product_rating}}
@@ -139,7 +140,7 @@
 
                 {{#if settings.bulk_discount_enabled}}
                     <div class="productView-info-bulkPricing">
-                        {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+                        {{> components/products/details/common/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
                     </div>
                 {{/if}}
 
@@ -170,7 +171,7 @@
                     <a href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}"
                         target="_blank"{{#if schema}} itemprop="image"{{/if}}>
                 {{/if}}
-                {{> components/common/responsive-img
+                {{> components/global/responsive-img
                     image=product.main_image
                     class="productView-image--default"
                     fallback_size=theme_settings.product_size
@@ -200,7 +201,7 @@
                         data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
                         data-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
                     >
-                    {{> components/common/responsive-img
+                    {{> components/global/responsive-img
                         image=this
                         fallback_size=../theme_settings.productview_thumb_size
                         lazyload=../theme_settings.lazyload_mode
@@ -236,24 +237,24 @@
                 {{/if}}
                 {{#if product.out_of_stock}}
                     {{#if product.out_of_stock_message}}
-                        {{> components/common/alert-error product.out_of_stock_message}}
+                        {{> components/global/alerts/error product.out_of_stock_message}}
                     {{else}}
-                        {{> components/common/alert-error (lang 'products.sold_out')}}
+                        {{> components/global/alerts/error (lang 'products.sold_out')}}
                     {{/if}}
                 {{/if}}
             </form>
             {{#if settings.show_wishlist}}
-                {{> components/common/wishlist-dropdown}}
+                {{> components/global/wishlist-dropdown}}
             {{/if}}
         </div>
-        {{> components/common/share}}
+        {{> components/global/share}}
     </section>
 
-    <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
+    <article class="productView-description" itemprop="description">
         {{#if theme_settings.show_product_details_tabs}}
-            {{> components/products/description-tabs}}
+            {{> components/products/details/descriptions/description-tabs}}
         {{else}}
-            {{> components/products/description}}
+            {{> components/products/details/descriptions/description}}
         {{/if}}
     </article>
 </div>

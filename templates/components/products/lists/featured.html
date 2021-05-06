@@ -1,0 +1,6 @@
+<h2>{{lang 'products.featured' }}</h2>
+<div class="feed-featured">
+    {{#each products}}
+        {{>components/products/details/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+    {{/each}}
+</div>

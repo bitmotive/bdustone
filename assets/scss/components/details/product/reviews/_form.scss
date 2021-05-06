@@ -1,0 +1,17 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAILS - REVIEWS - FORM
+
+\*  --------------------------------------------------------------------------  */
+.form-review {
+    max-width: remCalc(800);
+    margin: 0 auto;
+
+    .form-btns {
+        @include flex(center, center, null, row nowrap);
+    }
+
+    .g-recaptcha {
+        padding: 0 0 0 13.5rem;
+    }
+}

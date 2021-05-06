@@ -1,0 +1,16 @@
+.logo {
+    display: block;
+    width: 100%;
+    max-width: remCalc(186);
+    margin: 0 auto remCalc(35);
+
+    .secondary {
+        fill: $white;
+    }
+
+
+    @media #{$mediaMd} {
+        margin:0;
+        margin-bottom: remCalc(16);
+    }
+}

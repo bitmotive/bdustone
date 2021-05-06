@@ -1,0 +1,97 @@
+/*  --------------------------------------------------------------------------  *\
+
+    COPY - BODY STYLES
+
+\*  --------------------------------------------------------------------------  */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    color: $primary;
+    font-family: $headingFF;
+    line-height: 1.25;
+    text-transform: uppercase;
+    
+    .invert & {
+        color: $white;
+    }
+    &.pad-extra {
+        padding:2rem 0;
+    }
+}
+h1, .h1 {
+    font-size: remCalc(42);
+    font-weight: 800;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    line-height: (62 / 42);
+    margin: 0 0 remCalc(10);
+    
+    @media #{$mediaSmBelow} {
+        font-size: remCalc(21);
+    }
+    
+    @media #{$mediaLg} {
+        //font-size: remCalc(38);
+    }
+}
+h2, .h2 {
+    font-size: remCalc(22);
+    font-weight: bold;
+    line-height: (27 / 22);
+    margin: 0 0 remCalc(32);
+
+    small {
+        font-size: remCalc(14);
+        line-height: 1;
+        display: block;
+        margin: 0 0 remCalc(8);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        color: $secondary;
+    }
+    
+    @media #{$mediaMd} {
+        font-size: remCalc(27);
+        margin: 0 0 remCalc(46);
+        .col-md-6 & {
+            margin: 0 0 remCalc(24);
+        }
+    }
+    
+    @media #{$mediaLg} {
+        font-size: remCalc(32);
+        margin: 0 0 remCalc(60);
+
+        small {
+            font-size: remCalc(16);
+            margin: 0 0 remCalc(10);
+        }
+    }
+}
+h3, .h3 {
+    font-size: remCalc(22);
+    font-weight: 600;
+    line-height: (24 / 18);
+    margin: 0 0 remCalc(16);
+    
+    @media #{$mediaMd} {
+        font-size: remCalc(24);
+    }
+    
+    @media #{$mediaLg} {
+        font-size: remCalc(26);
+    }
+}
+h4, .h4 {
+    font-size: remCalc(21);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 remCalc(24);
+    @media #{$mediaSmBelow} {
+        font-size: remCalc(16);
+    }
+}
+h5, .h5, h6, .h6 {
+    font-size: remCalc(16);
+    font-weight: 600;
+    margin: 0 0 remCalc(20);
+}

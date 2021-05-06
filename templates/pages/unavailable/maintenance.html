@@ -3,12 +3,18 @@
 {{/partial}}
 
 {{#partial "page"}}
-    <main>
+    <main style="background-color: black;">
         <header>
-            <h1>{{lang 'maintenance.down'}}</h1>
         </header>
-        <section><p>{{{settings.maintenance.message}}}</p></section>
-        <section></section>
+        <section style="display: flex; flex-direction:column; justify-content: center;">
+            <p style="font-size:2rem; line-height:2.2rem;">BDU is reloading your experience and will be shooting back at you shortly!</p>
+            <img style="width:100%;"" src="{{cdn 'assets/img/DarkBG-Under-Construction.png'}}" />
+            <p style="font-size:2rem; line-height:2.2rem;">
+                Check back in 30 min to see our revamped site.
+            </p>
+        </section>
+        <section>
+        </section>
         <footer><small></small></footer>
     </main>
 {{/partial}}

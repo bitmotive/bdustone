@@ -1,0 +1,30 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CARD - COPY - INFO
+
+\*  --------------------------------------------------------------------------  */
+.info {
+    margin: remCalc(16) 0;
+    padding: remCalc(16) 0 remCalc(16) remCalc(40);
+    border-top: remCalc(1) solid $accent-2;
+    border-bottom: remCalc(1) solid $accent-2;
+    @include position(relative, null);
+
+    .swatch {
+        box-shadow: none;
+        width: remCalc(24);
+        height: remCalc(24);
+        @include position(absolute, null, (left, top), (0, #{remCalc(16)}));
+    }
+
+    p {
+        margin: 0;
+        font-size: remCalc(12);
+        line-height:  (20 / 12);
+
+        &:first-of-type {
+            font-size: remCalc(14);
+            font-weight: 500;
+        }
+    }
+}

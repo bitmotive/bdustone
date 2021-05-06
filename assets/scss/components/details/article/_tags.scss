@@ -1,0 +1,23 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ARTICLE - TAGS
+
+\*  --------------------------------------------------------------------------  */
+.tags {
+    margin: 2.5rem 0 0;
+    padding: 2.5rem 0 0;
+    border-top: remCalc(1) solid $secondary;
+    color: $secondary;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    
+    a {
+        color: $accent-1;
+        
+        @include hover {
+            color: $accent-1;
+            text-decoration: underline;
+        }
+    }
+}

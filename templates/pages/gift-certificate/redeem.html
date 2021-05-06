@@ -1,18 +1,30 @@
 {{#partial "page"}}
-
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-<h1 class="page-heading">{{lang 'gift_certificate.heading' }}</h1>
-{{> components/gift-certificate/navigation gift_page='redeem'}}
-
-<main class="account account--fixed">
-    <h3>{{lang 'gift_certificate.redeem.heading'}}</h3>
-    <p><strong>{{lang 'gift_certificate.redeem.intro' store_name=settings.store_name }}</strong></p>
-    <ol>
-        <li>{{lang 'gift_certificate.redeem.item1' }}</li>
-        <li>{{lang 'gift_certificate.redeem.item2' }}</li>
-        <li>{{{lang 'gift_certificate.redeem.item3' cart_url=urls.cart }}}</li>
-        <li>{{lang 'gift_certificate.redeem.item4' }}</li>
-    </ol>
-</main>
+<header class="hero">
+    <div class="container">
+        {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h1 class="ta-left">
+            {{lang 'gift_certificate.heading' }}
+        </h1>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="row ha-left">
+            <div class="col-xs-12 col-md-4 col-lg-3">
+                {{> components/gift-certificate/navigation gift_page='redeem'}}
+            </div>
+            <div class="col-xs-12 col-md-8 col-lg-7">
+                <h2>{{lang 'gift_certificate.redeem.heading'}}</h2>
+                <p>{{lang 'gift_certificate.redeem.intro' store_name=settings.store_name }}</p>
+                <ol>
+                    <li>{{lang 'gift_certificate.redeem.item1' }}</li>
+                    <li>{{lang 'gift_certificate.redeem.item2' }}</li>
+                    <li>{{{lang 'gift_certificate.redeem.item3' cart_url=urls.cart }}}</li>
+                    <li>{{lang 'gift_certificate.redeem.item4' }}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
 {{/partial}}
 {{> layout/base}}

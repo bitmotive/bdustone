@@ -1,0 +1,49 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCOUNT - WISHLISTS - FORM
+
+\*  --------------------------------------------------------------------------  */
+.form-wishlist {
+    margin: 0 auto;
+    @media #{$mediaMd} {
+        //width: 50%;
+        display: inline-block;
+        padding-top: remCalc(10);
+        }
+}
+
+// controls all form buttons in the accounts
+.form-btns{
+    @media #{$mediaSmBelow} {
+        flex-flow: column nowrap !important;
+    } 
+    .btn-primary{
+        @media #{$mediaMd} {
+        margin-right: remCalc(16);
+        }
+    }
+    .btn-secondary {
+        width: auto;
+        margin:0;
+    }
+}
+
+.wishlist-holder {
+    @media #{$mediaMd} {
+        display: inline-block;
+        margin-left: remCalc(10);
+        width: 75%;
+    }
+}
+// controls buttons inside of the wishlist specifically
+.wishlists {
+    .btn-primary {
+        width: auto;
+        @media #{$mediaSmBelow} {
+            margin-bottom: remCalc(12);
+        }
+    }
+    .flx-start {
+        justify-content: flex-start !important;
+    }
+}

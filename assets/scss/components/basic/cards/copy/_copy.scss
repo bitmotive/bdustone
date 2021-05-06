@@ -1,0 +1,69 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CARD - COPY - COPY ELEMENTS
+
+\*  --------------------------------------------------------------------------  */
+.title {
+    font-size: remCalc(16);
+    font-weight: 600;
+    line-height: remCalc(19);
+    margin: 0 0 remCalc(8);
+    font-family: $copyFF;
+    font-weight: 500;
+    line-height: 24px;
+    a {
+
+        text-decoration: none;
+        color: $primary;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+         /* autoprefixer: off */  
+        overflow: hidden;
+
+        @include hover {
+            color: $tertiary;
+        }
+    }
+
+    span {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+         /* autoprefixer: off */  
+        overflow: hidden;
+    }
+    
+}
+
+p {
+
+    &.style {
+        font-size: remCalc(14);
+        line-height:remCalc(21);
+        margin: 0 0 remCalc(8);
+        color:$tertiary;
+    }
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &.price {
+        font-size: remCalc(16);
+        line-height: (28 / 16);
+        font-weight: 400;
+        margin: 0 0 remCalc(16);
+
+        .full-price {
+            text-decoration: line-through;
+            font-weight: normal;
+            margin: 0 remCalc(8) 0 0;
+            color: $neutral-1;
+        }
+
+        small {
+            font-size: .666em;
+            color: $primary;
+        }
+    }
+}

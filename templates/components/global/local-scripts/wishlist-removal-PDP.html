@@ -1,0 +1,16 @@
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+    $('.sku').each(function(index) {
+    let sku= ($(this).text());
+    let skuObject = exportedSettings.bduMembershipInfo;
+      if (skuObject[sku]) {
+        $('#options-hide-if-membership').hide();
+        $("[data-wishlist-add]").hide();
+
+      }
+    });
+});
+
+</script>

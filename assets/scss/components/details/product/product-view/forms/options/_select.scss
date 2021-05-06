@@ -1,0 +1,22 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORMS - OPTIONS - RECTANGLES
+
+\*  --------------------------------------------------------------------------  */
+.opts-select {
+
+    label {
+        display: block;
+        width: 100%;
+        margin: 0 0 remCalc(8);
+    }
+
+    select {
+        width: 100%;
+        height: remCalc(40);
+        border-radius: 0;
+        font-size: remCalc(16);
+        background: $white;
+        border: remCalc(1) solid $neutral-2;
+    }
+}

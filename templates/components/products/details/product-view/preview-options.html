@@ -1,0 +1,8 @@
+<div class="preview">
+    <h2>Available Colors</h2>
+    {{#each product.options}}
+        {{#if display_name "===" "Colors"}}
+            {{{dynamicComponent 'components/products/preview/options'}}}
+        {{/if}}
+    {{/each}}
+</div>

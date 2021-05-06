@@ -1,0 +1,120 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - ACCORDION
+
+\*  --------------------------------------------------------------------------  */
+.accordion.acc-options {
+    margin: 0 remCalc(-24) remCalc(-24);
+    border-bottom: none;
+    background: $white;
+
+    &:only-child {
+        margin: remCalc(-24);
+    }
+    
+    button {
+        @include flex(flex-start, center, null, row wrap);
+        padding: remCalc(17) remCalc(20);
+        color: $primary;
+        text-transform: none;
+
+        span, small {
+            font-size: remCalc(12);
+            font-weight: normal;
+            margin: 0 0 0 remCalc(4);
+            pointer-events: none;
+        }
+
+        span {
+            color: $accent-7;
+
+            &:before {
+                content: "- ";
+            }
+        }
+
+        small.required {
+            color: $accent-2;
+        }
+
+        @include hover {
+            color: $primary;
+        }
+
+        @media #{$mediaLg} {
+            flex-flow: row nowrap;
+        }
+    }
+
+    dd {
+        padding: remCalc(10) remCalc(18) remCalc(20);
+
+        @media #{$mediaLg} {
+            padding: remCalc(20) remCalc(18) remCalc(30) remCalc(138);
+        }
+    }
+
+    dt, dd {
+        background:#f9f9f9;
+    }
+
+    dt {
+        @include position(relative, null);
+
+        &:first-child {
+            border-top: none;
+        }
+
+        &.not-required {
+            button, + dd {
+                background: #e8e8e8;
+            }
+        }
+        &.open {
+            background: $white;
+            & + dd {
+                background: $white;
+            }
+        }
+
+        img {
+            display: none;
+        }
+
+        @media #{$mediaLg} {
+            img {
+                display: block;
+                @include position(absolute, -1, (left, top), (#{remCalc(20)}, #{remCalc(18)}), translate(0, 0));
+                width: remCalc(100);
+                opacity: 0;
+                visibility: hidden;
+                transition: visibility 0s, opacity .25s linear;
+            }
+        }
+    }
+
+    button[aria-expanded="true"] {
+        background: $white;
+
+        @media #{$mediaLg} {
+            margin: 0 0 0 remCalc(120);
+            width: calc(100% - #{remCalc(120)});
+
+            + img {
+                z-index: 0;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+
+    dt.not-required {
+        button[aria-expanded="true"] {
+            background: $white;
+        }
+    }
+
+    dd:not([hidden]) {
+        background: $white !important;
+    }
+}

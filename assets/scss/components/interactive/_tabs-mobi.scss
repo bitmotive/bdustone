@@ -1,0 +1,61 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TABS - MOBILE (SAME FOR BOTH VERTICAL AND HORIZONTAL LAYOUTS)
+
+\*  --------------------------------------------------------------------------  */
+.tabs {
+    margin: 0 0 #{$gutter};
+    
+    > dt {
+
+        > button {
+            @include position(relative);
+            width: 100%;
+            padding: remCalc(13) 0 remCalc(13) 0;
+            border-bottom: 1px solid currentColor;
+            background: none;
+            color: $black;
+            font-family: $headingFF;
+            text-transform:uppercase;
+            text-align: left;
+            font-size: remCalc(18);
+            line-height: 1;
+            @include hover {
+                color: $secondary;
+            }
+
+            &[aria-expanded="true"] {
+                color: $secondary;
+                &:before {
+                    border-bottom-color: $secondary !important;
+                    border-right-color: $secondary !important;
+                }
+            }
+
+            @media #{$mediaMd} {
+                &:before, &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    > dd {
+        width: 100%;
+        padding: #{$gutter} 0;
+        
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+    /*  ----------------------------------------------------------------------  *\
+    
+    Indicator Options
+    
+    Re-use the accordion styling for this piece.
+    
+    \*  ---------------------------------------------------------------------  */
+    @import 'accordions/indicators/_plus-minus';
+    @import 'accordions/indicators/_chevron';
+    @import 'accordions/indicators/_triangle';
+}

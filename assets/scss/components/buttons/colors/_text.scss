@@ -1,0 +1,52 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Button - Text
+
+\*  --------------------------------------------------------------------------  */
+.btn-txt {
+    background: none;
+    border: none;
+    padding: 0;
+    color: $primary;
+    border-radius: 0;
+
+    svg {
+        margin: 0 remCalc(8) 0 0;
+    }
+
+    &.alt {
+        color: $secondary;
+
+        svg {
+            fill: currentColor;
+        }
+
+        @include hover {
+            color: $primary;
+        }
+    }
+
+    
+    @include hover {
+        color: $tertiary;
+        background: none;
+
+        &.ico-chevron-right:after {
+            border-right-color: $tertiary;
+            border-bottom-color: $tertiary;
+        }
+    }
+
+    &.ico-chevron-right:after {
+        content: "";
+        display: inline-block;
+        width: remCalc(5);
+        height: remCalc(5);
+        border: remCalc(2) solid transparent;
+        border-right-color: $white;
+        border-bottom-color: $white;
+        transform: rotate(-45deg);
+        margin: 0 0 0 remCalc(8);
+        transition: all .25s;
+    }
+}

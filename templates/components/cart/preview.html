@@ -34,7 +34,7 @@
                     {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
                         {{cart.sub_total.formatted}}
                     {{else}}
-                        {{> components/common/login-for-pricing}}
+                        {{> components/global/login-for-pricing}}
                     {{/or}}
                 </strong>
             </div>
@@ -55,7 +55,7 @@
             {{#with cart.added_item}}
                 <figure class="productView-image">
                     <div class="productView-img-container">
-                        {{> components/common/responsive-img
+                        {{> components/global/responsive-img
                             image=image
                             class="productView-image--cart"
                             fallback_size=../theme_settings.product_size
@@ -78,7 +78,7 @@
                         {{#or ../customer (if ../theme_settings.restrict_to_login '!==' true)}}
                             {{quantity}} &times; {{price.formatted}}
                         {{else}}
-                            {{> components/common/login-for-pricing}}
+                            {{> components/global/login-for-pricing}}
                         {{/or}}
                     </div>
 

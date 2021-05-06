@@ -1,0 +1,17 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORMS
+
+\*  --------------------------------------------------------------------------  */
+.form-product {
+    @include position(relative, 100);
+}
+
+@import 'add-to-cart';
+@import 'simple';
+@import 'personalized';
+@import 'bundled';
+@import 'grouped';
+@import 'instock-notify';
+
+@import 'options/base';

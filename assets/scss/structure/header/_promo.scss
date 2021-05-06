@@ -1,0 +1,25 @@
+.promo {
+    @include position(absolute, null, (left, top), (50%, #{remCalc(-16)}), translate(-50%, -50%));
+
+    @media #{$mediaFullHeader} {
+        left: remCalc(16);
+        transform: translate(0, -50%);
+        color: $white;
+        font-size: remCalc(11);
+        weight: 600;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    @media #{$mediaXl} {
+        font-size: remCalc(13);
+    }
+
+    a {
+        color: $white;
+
+        @include hover {
+            text-decoration: underline;
+        }
+    }
+}

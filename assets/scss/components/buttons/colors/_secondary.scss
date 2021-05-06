@@ -1,0 +1,25 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Button - Secondary
+
+\*  --------------------------------------------------------------------------  */
+.btn-secondary {
+    background:none;
+    border:1px solid $neutral-1;
+    color: $tertiary;
+
+    @include hover {
+        background: $accent-1;
+        border-color: $accent-1;
+        color: $white;
+    }
+    &:active {
+        background: $accent-2;
+        border-color: $accent-2;
+        color: $tertiary;
+    }
+
+    .invert & {
+        color: $white;
+    }
+}

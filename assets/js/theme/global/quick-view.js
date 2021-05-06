@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import 'foundation-sites/js/foundation/foundation';
 import 'foundation-sites/js/foundation/foundation.dropdown';
 import utils from '@bigcommerce/stencil-utils';
@@ -7,6 +8,11 @@ import 'slick-carousel';
 
 export default function (context) {
     const modal = defaultModal();
+
+    $('body').on('click', '.quickview2', event => {
+        event.preventDefault();
+        modal.open({ size: 'large' });
+    });
 
     $('body').on('click', '.quickview', event => {
         event.preventDefault();

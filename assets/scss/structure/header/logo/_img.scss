@@ -1,0 +1,28 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - LOGO - SVG
+
+\*  --------------------------------------------------------------------------  */
+.logo {
+    width: remCalc(280);
+    padding: 0;
+
+    @media #{$mediaToggleHeader} {
+        display:block;
+        margin:0 auto;
+        width:70%;
+        max-width: remCalc(186);
+        //@include position(absolute, 100, (left, top), (50%, 50%), translate(-50%, -50%));
+        @include transition(transform 2s);
+    }
+
+    @media #{$mediaFullHeader} {
+        @include transition(transform 2s);
+    }
+    
+    > img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,72 @@
+<ul class="utility">
+    {{#for 1 (toInt (lang 'header.utility_nav.length'))}}
+
+        <li>
+            
+            <p>
+                <span class="need-help">
+                {{{lang (concat (concat 'header.utility_nav.' $index) '.title')}}} 
+                </span><br />
+                {{{lang (concat (concat 'header.utility_nav.' $index) '.text')}}}</p>
+        </li>
+    {{/for}}
+    {{> components/global/currency-selector}}
+    {{#if settings.gift_certificates_enabled}}
+        <!--
+        <li>
+            <a href="{{urls.gift_certificate.purchase}}">{{lang 'common.gift_cert'}}</a>
+        </li>
+        -->
+    {{/if}}
+    
+</ul>
+
+<ul class="utility2">
+    
+    {{#if customer }}
+        <li tabindex="0" class="logout">
+            <a href="{{urls.auth.logout}}">
+                <svg><use xlink:href="#icon-logout" /></svg>
+                <span class="text">{{lang 'common.logout'}}</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{urls.account.index}}">
+                <svg><use xlink:href="#icon-account" /></svg>
+                <span class="text"> {{lang 'common.account'}}</span>
+            </a>
+        </li>
+        <li class="members">
+            <a href="/bdu-member-portal/">
+                <svg><use xlink:href="#icon-members" /></svg>
+                <span class="text">{{lang 'common.member'}}</span>
+            </a>
+        </li>
+    {{else}}
+        <li tabindex="0">
+            <a href="{{urls.auth.login}}">
+                <svg><use xlink:href="#icon-account" /></svg>
+                <span class="text">{{lang 'common.login'}}</span>
+            </a>
+        </li>
+        <li class="members">
+            <a href="/cart.php?action=add&product_id=360711&qty=1&attribute%5B8%5D=100">
+                <svg><use xlink:href="#icon-members" /></svg>
+                <span class="text">{{lang 'common.join'}}</span>
+            </a>
+        </li>
+    {{/if}}
+
+    
+    <li>
+        <a class="cart-logo" href="{{urls.cart}}">
+            <svg><use xlink:href="#icon-cart" /></svg>
+            <span class="text">{{lang 'common.cart'}}</span>
+            <span class="count cart-quantity"></span>
+        </a>
+        <div data-dropdown-content 
+             class="cart-dropdown bfx-minicart-container"
+             id="cartPreviewDropdown"
+             aria-hidden="true"></div>
+    </li>
+</ul>

@@ -1,0 +1,172 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CARDS
+
+    These elements are used to display content, most likely in a sidebar, column 
+    in the body of the page, or as a slide in a carousel.
+
+    They can include images, icons, buttons, and text.
+
+\*  --------------------------------------------------------------------------  */
+.card {
+    overflow: hidden;
+    background: $white;
+    display:flex !important;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    .button {
+        font-size: remCalc(13);
+        padding: remCalc(10) remCalc(10);
+        @media #{$mediaLg} {
+            font-size: remCalc(15);
+            padding: remCalc(10) remCalc(33);
+        }
+        
+    }
+    .img-w {
+        @include position(relative, 0);
+        
+        display: block;
+        width: 100%;
+        padding: 100% 0 0;
+        overflow: hidden;
+        height: 0;
+        background-color:$white;
+
+        img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media #{$mediaSmBelow} {
+            margin-bottom: 0; 
+        }
+        span{
+            img{
+                cursor: default;
+            }
+        }
+        .btn-secondary {
+            @include position(
+                absolute,
+                10,
+                (left, top),
+                (50%, 50%),
+                translate(-50%, -50%)
+            );
+            opacity: 0;
+            white-space: nowrap;
+        }
+    }
+    .cnt {
+        display:flex;
+        flex-direction:column;
+        justify-content: space-between;
+        flex-grow: 1;
+        
+        border-top: 1px solid $neutral-1;
+        padding: remCalc(8) remCalc(0);
+        margin-top:remCalc(8);
+        .price {
+            font-family: $copyFF;
+            font-size: remCalc(12);
+            margin-bottom: remCalc(16);
+            font-weight: normal;
+            line-height: remCalc(16);
+            @media #{$mediaMd} {
+                font-size: remCalc(16);
+            }
+            .full-price {
+                text-decoration: line-through !important;
+                font-weight: normal;
+                margin: 0 remCalc(8) 0 0;
+                color: $danger;
+            }
+        }
+        .sig {
+            font-size: remCalc(12);
+            @media #{$mediaMd} {
+                font-size: remCalc(14);
+            }
+        }
+    }
+    .sig-label {
+        color: $tertiary;
+        font-size: remCalc(12);
+        text-transform: uppercase;
+        display: block;
+        font-weight: 500;
+    }
+    h3 {
+        visibility:visible;// bug-fix for line-clamp issue on Chrome
+        text-transform: none;
+    }
+    .title {
+        min-height: remCalc(55);
+        @media #{$mediaMd} {
+            min-height: remCalc(85)
+        }
+        a {
+            font-size: remCalc(12);
+            line-height: remCalc(16);
+            @media #{$mediaMd} {
+                line-height:remCalc(24);
+                font-size: remCalc(16);
+            }
+        }
+    }
+    &.bg-dark {
+        padding: 0;
+
+        .cnt {
+            padding: remCalc(40) remCalc(32);
+            background: $primary url(../img/bg-growlers.jpg) no-repeat 50% 100%;
+            color: $white;
+        }
+    }
+
+    /*  ---------------------  *\
+        IMPORT STYLES FOR CARD CONTENT STYLING
+    
+        Comment out any alterations that will not be used on your site.
+        This will reduce the file size by removing unused definitions.
+
+        @import 'cards/size/_sm';
+        @import 'cards/size/_lg';
+    \*  ---------------------  */
+    /*  ---------------------*\
+        IMPORT STYLES FOR CARD LAYOUT OPTIONS
+
+        Comment out any options that will not be used on your site.
+        This will reduce the file size by removing unused definitions.
+        @import 'cards/layouts/_img-above';
+        @import 'cards/layouts/_img-side';
+        @import 'cards/layouts/_img-overlap';
+        @import 'cards/layouts/_swatch';
+        @import 'cards/layouts/_carousel';
+    \*  ---------------------  */
+    //@import 'cards/layouts/_img-behind';
+    /*  ---------------------  *\
+        IMPORT STYLES FOR CARD ICON OPTIONS
+
+        Comment out any alterations that will not be used on your site.
+        This will reduce the file size by removing unused definitions.
+
+        @import 'cards/icons/_top';
+        @import 'cards/icons/_left';
+    \*  ---------------------  */
+    /*  ---------------------  *\
+        IMPORT STYLES FOR CARD CONTENT STYLING
+
+        Comment out any alterations that will not be used on your site.
+        This will reduce the file size by removing unused definitions.
+        //@import "cards/copy/_article";
+    \*---------------------*/
+    @import "cards/copy/copy";
+    @import "cards/copy/swatch";
+    @import "cards/copy/info";
+    @import "cards/copy/badges";
+}

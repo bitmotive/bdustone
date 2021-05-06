@@ -1,0 +1,32 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - ROOT ONLY
+
+\*  --------------------------------------------------------------------------  */
+nav {
+    margin: #{$gutterSm} #{$gutterSm * -.5} 0;
+    width: calc(100% + #{$gutterSm});    
+}
+
+.main-nav {
+    border-top: .1rem solid $primary;
+    
+    a {
+        display: block;
+        padding: #{$gutterSm * .5} #{$gutterSm * .5};
+        color: $primary;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        
+        @include hover {
+            color: $secondary;
+        }
+    }
+    
+    li {
+        + li {
+            border-top: .1rem solid $primary;
+        }
+    }
+}

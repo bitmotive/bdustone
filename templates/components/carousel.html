@@ -13,14 +13,14 @@
         <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
             <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
             {{#if @first}}
-                {{> components/common/responsive-img
+                {{> components/global/responsive-img
                     image=stencil_image
                     class="heroCarousel-image"
                     fallback_size='1280w'
                     lazyload='disabled'
                 }}
             {{else}}
-                {{> components/common/responsive-img
+                {{> components/global/responsive-img
                     image=stencil_image
                     class="heroCarousel-image"
                     fallback_size='1280w'

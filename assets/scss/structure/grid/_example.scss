@@ -1,0 +1,32 @@
+/*  --------------------------------------------------------------------------  *\
+
+    EXAMPLE
+
+    This sets up the height and backgrounds for the example laid out in the
+    Component Library.
+
+\*  --------------------------------------------------------------------------  */
+.ex-g {
+    [class*="col-"] {
+        background: rgba($primary, .25);
+        @include position(relative, null);
+        height: 10vh;
+        
+        &:before {
+            @include position(absolute, null, (left, top), (0, 0));
+            width: calc(100% - #{$gutterSm * 2});
+            height: 100%;
+            border-left: #{$gutterSm * .5} solid rgba($primary, .5);
+            border-right: #{$gutterSm * .5} solid rgba($primary, .5);
+            content: "";
+        }
+    
+        @media #{$mediaMd} {
+            &:before {
+                width: calc(100% - #{$gutter});
+                border-left-width: #{$gutter * .5};
+                border-right-width: #{$gutter * .5};
+            }
+        }
+    }
+}

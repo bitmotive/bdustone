@@ -1,0 +1,91 @@
+/*  --------------------------------------------------------------------------  *\
+
+   TABLE - PRICING
+
+\*  --------------------------------------------------------------------------  */
+&.pricing {
+    // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+    // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+    // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+    border: 1px solid transparent;
+    // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+    // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+    // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+    border-collapse: collapse;
+    table-layout: fixed;
+    
+    th, td {
+        // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+        // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+        width: 33.333%;
+        // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+        border-left: #{$gutter * .6} solid $white;
+        border-right: #{$gutter * .6} solid $white;
+        // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+        text-align: center;
+        // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+        // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+    }
+    
+    th {
+        // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+        // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+        padding: #{$gutter} #{$gutterSm};
+        // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+        // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+        font-size: 3em;
+        // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+        // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+    
+        small {
+            // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+            display: block;
+            // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+            margin: 0 0 .25em;
+            // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+            // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+            font-size: .333em;
+            // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+            text-transform: uppercase;
+            // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+        }
+    }
+    
+    td {
+        // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+        // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+        // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+        // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+        // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+        // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+    }
+    
+    tbody>tr {
+        &:last-child {
+            
+            td {
+                // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+                // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+                // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+                // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+                font-size: 2em;
+                font-weight: bold;
+                // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+                // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+                
+                small {
+                    // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+                    display: block;
+                    // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+                    margin: .25em 0 0;
+                    // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+                    // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+                    font-size: .4em;
+                    font-weight: normal;
+                    // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+                    // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+                }
+            }
+        }
+    }
+}

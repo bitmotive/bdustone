@@ -1,0 +1,69 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCOUNT > LOGIN AND FORGOT PASSWORD
+
+\*  --------------------------------------------------------------------------  */
+.login {
+    h2 {
+        border-bottom: 1px solid $primary;
+        padding-bottom: remCalc(18);
+        text-transform: uppercase;
+        font-size: remCalc(19);
+        letter-spacing: 0.04em;
+        font-weight: 600;
+    }
+    .cnt {
+        @media #{$mediaSmBelow} {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    .create-account-btn {
+        @media #{$mediaMd} {
+            width: 55%;
+        }
+    }
+    .btn-login {
+        @media #{$mediaMd} {
+            width: auto;
+        }
+      // @media #{$mediaLg} {
+      //     width: auto;
+      // }
+    }
+    .btn-txt {
+        font-size: remCalc(15);
+            @media #{$mediaMd} {
+                margin: 0;
+                width: auto;
+            }
+    }
+    .row {
+        justify-content: space-between !important;
+        @media #{$mediaSmBelow} {
+            flex-flow: column-reverse;
+            > div {
+                margin-bottom: remCalc(30);
+            }
+        }
+    }   
+}
+
+.forgotpassword {
+    h1 {
+        text-align: center;
+    }
+    section {
+        padding-top: remCalc(20);
+    }
+    input {
+        border-radius: 4px !important;
+    }
+    .form-btns {
+        justify-content: center !important;
+    }
+    .btn-primary {
+        width: 70%;
+    }
+  }

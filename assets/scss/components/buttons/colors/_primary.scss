@@ -1,0 +1,22 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Button - Primary
+
+\*  --------------------------------------------------------------------------  */
+.btn-primary {
+    background: $secondary;
+    border-color: $secondary;
+    color: $black;
+
+    @include hover {
+        background: $accent-1;
+        border-color: $accent-1;
+        color: $white;
+    }
+    
+    &:active {
+        background: $accent-2;
+        border-color: $accent-2;
+        color: $white;
+    }
+}

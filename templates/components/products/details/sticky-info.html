@@ -1,0 +1,31 @@
+<div class="sticky-info-sentinel"></div>
+<aside class="sticky-info">
+    <div class="container">
+        <div class="img-w">
+            <picture>
+                <source src="{{getImage product.main_image 'productthumb_lg' }}" media="(min-width: 992px)"  />
+                <source src="{{getImage product.main_image 'productthumb_md' }}" media="(max-width: 768px)" />
+                <source src="{{getImage product.main_image 'productthumb_sm' }}" media="(max-width: 576px)" />
+                <img src="{{getImage product.main_image 'productthumb_xs' }}" alt="{{ alt }}" />
+            </picture>
+        </div>
+        <div class="prod-name">
+            {{ product.title }}
+        </div>
+        {{#if product.options }}
+            <a href="#content" class="btn-primary">
+                Configure Product
+            </a>
+        {{else}}
+            {{> components/products/details/product-view/form-stick-info }}
+        {{/if}}
+        <a class="btt" href="#content"{{#if product.options }} aria-hidden="true"{{/if}}>
+            <span class="icon">
+                <svg>
+                    <use xlink:href="#icon-arrow-up"></use>
+                </svg>
+            </span>
+            <span class="text">Back To Top</span>
+        </a>
+    </div>
+</aside>

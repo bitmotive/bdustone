@@ -1,12 +1,12 @@
 {{#unless customer.payment_methods}}
-    {{> components/common/alert-info (lang 'account.payment_methods.no_methods')}}
+    {{> components/global/alerts/info (lang 'account.payment_methods.no_methods')}}
 {{/unless}}
 
 {{#each customer.payment_methods}}
     {{!-- Check that the current instrument type is within our whitelist to stop future ones automagically coming through --}}
     {{#inArray ../theme_settings.supported_payment_methods type}}
         <h4 class="paymentMethodsTitle">
-            {{display_name}}
+            {{display_name}} 
         </h4>
         <div class="paymentMethodsGrid">
             {{#each stored_instruments}}

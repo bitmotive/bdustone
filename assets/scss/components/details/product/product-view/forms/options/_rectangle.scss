@@ -1,0 +1,68 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORMS - OPTIONS - RECTANGLES
+
+\*  --------------------------------------------------------------------------  */
+.opts-rect {
+
+    label {
+        padding: remCalc(8) remCalc(12);
+        background: $white;
+        color: $neutral-1;
+        border: remCalc(1) solid $neutral-1;
+        font-size: remCalc(12);
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        font-weight: 600;
+
+        ~ label {
+            margin: 0 remCalc(8);
+        }
+
+        &:first-of-type {
+            margin: 0 remCalc(8) 0 0;
+        }
+
+        &:last-of-type {
+            margin: 0 0 0 remCalc(8);
+        }
+
+        @include hover {
+            //color: $secondary;
+        }
+
+        &.unavailable {
+            //border-color: rgba($accent-2, .666);
+            opacity: .3;
+            cursor: not-allowed;
+            background: 
+         linear-gradient(to top left,
+             rgba(0,0,0,0) 0%,
+             rgba(0,0,0,0) calc(50% - 0.8px),
+             rgba(0,0,0,.5) 50%,
+             rgba(0,0,0,0) calc(50% + 0.8px),
+             rgba(0,0,0,0) 100%),
+         linear-gradient(to top right,
+             rgba(0,0,0,0) 0%,
+             rgba(0,0,0,0) calc(50% - 0.8px),
+             rgba(0,0,0,.5) 50%,
+             rgba(0,0,0,0) calc(50% + 0.8px),
+             rgba(0,0,0,0) 100%);
+        }
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+        @include srOnly();
+
+        &:checked {
+
+            + label {
+                //background: $tertiary;
+                //color: $white;
+                border-color: $black;
+                color:$black;
+                box-shadow: remCalc(2) remCalc(2) remCalc(3) rgba($primary, .4);
+            }
+        }
+    }
+}

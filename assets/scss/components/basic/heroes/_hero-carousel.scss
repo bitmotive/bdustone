@@ -1,0 +1,93 @@
+.homepage-hero {
+    background: url(../img/bg-exclusives.jpg) $black top center repeat;
+    .text {
+        color:$white;
+        padding:remCalc(25) 0 remCalc(25) 0;
+        a,span {
+            color:$secondary;
+            font-weight:500;
+        }
+    }
+    .mobile {
+        display:block;
+        @media #{$mediaMd} {
+            display:none;
+        }
+    }
+    .desktop {
+        display:none;
+        @media #{$mediaMd} {
+            display:block;
+        }
+    }
+}
+
+
+// This trick prevents the flashing of unstyled carousel
+.hero-carousel-start.slick-initialized{
+    visibility: visible;
+    opacity:1;
+}
+.hero-carousel-start{
+    opacity:0;
+    visibility: hidden;
+    transition: opacity .3s ease-out;
+    
+}
+.hero-carousel {
+    max-width: $siteWMx;
+    margin: 0 auto;
+
+    div {
+        padding: 0;
+    }
+
+    .slick-list {
+        //border:1px solid green;
+    }
+    .slick-track {
+        //border:1px solid red;
+    }
+
+    .slick-arrow {
+        @include position(absolute, null, (top), (50%), translate(0, -50%));
+        z-index: 1;
+    }
+
+    .slick-prev {
+        left: remCalc(15);
+
+    }
+
+    .slick-next {
+        right: remCalc(15);
+    }
+
+    .slick-dots {
+        margin-top: remCalc(11);
+        button {
+            //background: $neutral-1;
+        }
+        .slick-active {
+            button {
+                //background: black;
+            }
+        }
+    }
+    
+    .content {
+        padding:remCalc(20);
+    }
+
+    p {
+        color:$white;
+        font-weight:500;
+        span {
+            color: $secondary;
+        }
+        a {
+            color: $secondary;
+        }
+    }
+
+}

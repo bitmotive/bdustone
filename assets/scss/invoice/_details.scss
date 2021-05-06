@@ -1,0 +1,22 @@
+/*  --------------------------------------------------------------------------  *\
+
+    INVOICE - DETAILS
+
+\*  --------------------------------------------------------------------------  */
+.details {
+    @include flex(space-between, flex-start, flex-start, row wrap);
+    margin: 0 0 remCalc(12);
+    padding: remCalc(12) remCalc(16);
+    background: rgba($tertiary, .15);
+
+    > div {
+        width: 50%;
+        @include flexItem(0, 0, auto);
+    }
+
+    h2 {
+        padding: 0;
+        width: 100%;
+        @include flexItem(0, 0, auto);
+    }
+}

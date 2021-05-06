@@ -1,0 +1,43 @@
+<div class="form-field quantity addtocart_{{product.id}}" style="display:none;">
+    <label class="form-label" for="qty[]">{{lang 'products.quantity'}}</label>
+    <select class="form-select" name="qty[]" id="qty[]">
+        {{#and product.min_purchase_quantity product.max_purchase_quantity }}
+            {{#for product.min_purchase_quantity product.max_purchase_quantity}}
+                <option value="{{$index}}">{{$index}}</option>
+            {{/for}}
+        {{else}}
+            {{#if product.min_purchase_quantity '>' 0}}
+                {{#for product.min_purchase_quantity 10}}
+                    <option value="{{$index}}">{{$index}}</option>
+                 {{/for}}
+            {{else if product.max_purchase_quantity '>' 0}}
+                {{#for 1 product.max_purchase_quantity}}
+                    <option value="{{$index}}">{{$index}}</option>
+                 {{/for}}
+            {{else}}
+                {{#for 1 10}}
+                    <option value="{{$index}}">{{$index}}</option>
+                 {{/for}}
+            {{/if}}
+        {{/and}}
+    </select>
+</div>
+<div class="alertBox productAttributes-message" style="display:none">
+    <div class="alertBox-column alertBox-icon">
+        <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></icon>
+    </div>
+    <p class="alertBox-column alertBox-message"></p>
+</div>
+{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+    <div class="form-action">
+        <input id="form-action-addToCart" 
+            data-wait-message="{{lang 'products.adding_to_cart'}}" 
+            class="addtocart_{{product.id}} btn-primary" 
+            style="display:none;" 
+            type="submit"
+            value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+        <p class="requestPrice">
+            <a href="#" onclick="(function(e){e.preventDefault();})(event)" class="requestPriceBtn_{{product.id}} button button--small card-figcaption-button btn-primary" style="display:none;">Request Price</a>
+        </p>
+    </div>
+{{/or}}

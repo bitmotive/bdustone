@@ -1,0 +1,37 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ALERTS
+
+\*  --------------------------------------------------------------------------  */
+.alert-box {
+    @include flex(flex-start, flex-start, null, row nowrap);
+    border: remCalc(1) solid currentColor;
+    border-radius: remCalc(8);
+    padding: remCalc(12) remCalc(16);
+    margin: 0 0 remCalc(32);
+    color: $primary;
+    background: lighten($primary, 60);
+
+    svg {
+        flex-shrink: 0;
+        fill: currentColor;
+        width: remCalc(24);
+        height: remCalc(24);
+        margin: 0 remCalc(16) 0 0;
+    }
+
+    &.success {
+        color: $success;
+        background: lighten($success, 52);
+    }
+
+    &.error {
+        color: $danger;
+        background: lighten($danger, 42);
+    }
+
+    &.info {
+        color: $accent-1;
+        background: lighten($accent-1, 32);
+    }
+}

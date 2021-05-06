@@ -1,0 +1,25 @@
+/*  --------------------------------------------------------------------------  *\
+
+    THIRD PARTY PLUGINS > GOOGLE MAPS
+
+\*  --------------------------------------------------------------------------  */
+.map {
+    @include position(relative, null);
+    padding: 40% 0 0;
+
+    @media #{$mediaMd} {
+        padding: 27% 0 0;
+    }
+
+    @media #{$mediaXxl} {
+        padding: 0;
+        height: 350px;
+    }
+
+    iframe {
+        @include position(absolute, null, (top, left), (0, 0));
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+}

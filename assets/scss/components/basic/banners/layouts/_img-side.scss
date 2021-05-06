@@ -1,0 +1,78 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CARD - LAYOUT - WITH IMAGE ON SIDE
+
+\*  --------------------------------------------------------------------------  */
+&.img-side {
+    
+    @media #{$mediaMd} {
+        @include flex(space-between, stretch, center, row nowrap);
+
+        .img-w {
+            @include flexItem(0, 0, auto, 1);
+            width: 41.667%;
+            overflow: hidden;
+            @include position(relative, null);
+
+            > img {
+                width: 120%;
+                height: auto;
+                @include position(absolute, null, (left, top), (50%, 50%), translate(-50%, -50%));
+            }
+        }
+
+        .cnt {
+            @include flexItem(0, 0, auto, 0);
+            width: 58.333%;
+            border-right: remCalc(10) solid $secondary;
+        }
+
+        &.alt, &:nth-child(even) {
+
+            .img-w {
+                order: 0;
+            }
+
+            .cnt {
+                border-left: remCalc(10) solid $secondary;
+                border-right: none;
+            }
+        }
+
+        &.tall {
+            .img-w {
+                width: 50%;
+
+                > img {
+                    position: static;
+                    transform: none;
+                }
+            }
+
+            .cnt {
+                width: 50%;
+                border: none;
+                padding: remCalc(72) remCalc(36);
+            }
+
+            h3 {
+                font-weight: bold;
+                font-size: remCalc(26);
+                line-height: 1.46;
+                margin: 0 0 remCalc(16);
+                letter-spacing: 0.01em;
+                text-transform: capitalize;
+
+                small {
+                    display: block;
+                    font-weight: 600;
+                    font-size: remCalc(16);
+                    line-height: 1;
+                    letter-spacing: 0.12em;
+                    text-transform: uppercase;
+                    margin: 0 0 remCalc(10);
+                }
+            }
+        }
+    }
+}

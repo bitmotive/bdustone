@@ -1,0 +1,52 @@
+/*  --------------------------------------------------------------------------  *\
+
+    OPTIMIZED CHECKOUT > DROPDOWN SELECT
+
+\*  --------------------------------------------------------------------------  */
+.dropdown--select {
+
+    .dropdown-button {
+        border: remCalc(1) solid $secondary;
+        background: $white;
+        padding: remCalc(15) remCalc(25);
+        line-height: 1;
+        font-size: remCalc(15);
+        text-align: left;
+        @include position(relative);
+
+        @include hover {
+            background: $secondary;
+            color: $primary;
+        }
+
+        &:after {
+            @include position(absolute, null, (right, top), (#{remCalc(16)}, 50%), (translate(-50%, -50%) rotate(45deg)));
+            border: remCalc(2) solid transparent;
+            border-bottom-color: $primary;
+            border-right-color: $primary;
+            content: "";
+            height: remCalc(12);
+            width: remCalc(12);
+            display: block !important;
+        }
+    }
+
+    .dropdownTrigger:not(:only-child) {
+        .dropdown-button {
+            &:after {
+                transform: translate(-50%, -50%) rotate(45deg) rotate(180deg);
+            }
+        }
+    }
+
+    .dropdownMenu {
+
+        ul {
+            li {
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+}

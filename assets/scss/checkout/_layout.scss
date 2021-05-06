@@ -1,0 +1,52 @@
+/*  --------------------------------------------------------------------------  *\
+
+    OPTIMIZED CHECKOUT > LAYOUT
+
+\*  --------------------------------------------------------------------------  */
+.layout {
+    margin: 0 auto;
+    padding: 0 $gutterSm;
+    max-width: $siteWMx;
+    @include setW;
+    
+    @media #{$mediaFullHeader} {
+        padding: 0 #{$gutter * .5};
+    }
+
+    &:before, &:after {
+        display: none;
+    }
+
+    > div {
+        padding:0;
+    
+        @media #{$mediaMd} {
+            padding: remCalc(60) 0;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto;
+            column-gap: remCalc(32);
+        }
+    
+        @media #{$mediaLg} {
+            padding: remCalc(64) 0;
+        }
+    }
+
+    &-main {
+        width: 100%;
+        padding: 0;
+    }
+
+    &-cart {
+        width: 100%;
+        padding: 0;
+    }
+
+}
+
+@media (min-width: 0) and (max-width: 767.9px) {
+    .cartDrawer {
+        display: none;
+    }
+}

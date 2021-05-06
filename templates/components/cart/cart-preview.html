@@ -1,0 +1,58 @@
+{{#if cart.items.length}}
+    <ul class="f-mini">
+        {{#each (limit cart.items 4)}}
+            <li class="bfx-minicart-product">
+                <a class="img" href="{{url}}">
+                    {{#if type '==' 'GiftCertificate'}}
+                        <img src="{{cdn ../../theme_settings.default_image_gift_certificate}}" alt="GiftCertificate" title="GiftCertificate">
+                    {{else}}
+                        {{> components/global/responsive-img
+                            image=image
+                            fallback_size=../../theme_settings.productthumb_size
+                            lazyload=../../theme_settings.lazyload_mode
+                            default_image=../../theme_settings.default_image_product
+                        }}
+                    {{/if}}
+                </a>
+                <div class="cnt">
+                    <p class="title">
+                        <a href="{{url}}">{{name}}</a>
+                    </p>
+                    <p class="price">
+                        {{#if quantity '>' 1}}
+                            <span class="bfx-minicart-product-qty">{{quantity}}</span> &times;
+                        {{/if}}
+                        {{#or ../customer (if ../theme_settings.restrict_to_login '!==' true)}}
+                            <span class="bfx-price bfx-list-price{{#if price_discounted}} bfx-sale-price price--discounted{{/if}}">{{price.formatted}}</span>
+                            {{#if price_discounted}}
+                                <span class="bfx-price bfx-old-price">{{price_discounted.formatted}}</span>
+                            {{/if}}
+                        {{else}}
+                            {{> components/global/login-for-pricing}}
+                        {{/or}}
+                    </p>
+                </div>
+            </li>
+        {{/each}}
+    </ul>
+    <div class="btns-wrap">
+        {{#if cart.show_primary_checkout_button}}
+            <a href="{{urls.checkout.single_address}}" class="btn-primary sm bfx-checkout bfx-remove-element">
+                {{lang 'cart.preview.checkout_now'}}
+            </a>
+        {{/if}}
+        <a href="{{urls.cart}}" class="btn-secondary">
+            {{lang 'cart.preview.view_cart'}}
+        </a>
+
+        {{#if cart.show_multiple_address_shipping}}
+            <a href="{{urls.checkout.multiple_address}}" class="btn-txt sm">
+                {{lang 'cart.preview.checkout_multiple'}}
+            </a>
+        {{/if}}
+    </div>
+{{else}}
+    <div class="previewCart-emptyBody">
+        <p>{{lang 'cart.checkout.empty_cart'}}</p>
+    </div>
+{{/if}}

@@ -1,0 +1,58 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORMS - INSTOCK NOTIFY FORM
+
+\*  --------------------------------------------------------------------------  */
+.oos-form {
+    margin:0 0 remCalc(24);
+    h3 {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: capitalize;
+        font-family:'Rubik', sans-serif;
+        margin:0;
+    }
+    p {
+        font-size: 14px;
+        line-height: 20px;
+        color:$tertiary;
+    }
+    .hidden {
+        display:none;
+    }
+    .form {
+        @include flex();
+        //display:flex;
+        //flex-direction:column;
+
+        @media #{$mediaMd} {
+            //flex-direction:column;
+        }
+        > input {
+            
+            &[type=email] {
+                @include buttonBase();
+                background:$white;
+                font-weight:normal;
+                border-color:$neutral-1;
+                color:$tertiary;
+                padding:remCalc(8.5) remCalc(22);
+                text-transform:none;
+                font-size:remCalc(14);
+                text-align:left;
+                margin:0 0 remCalc(20) !important;
+                width:100% !important;
+                @media #{$mediaMd} {
+                    margin:0 remCalc(20) remCalc(16) 0 !important;
+                    font-size:remCalc(16);
+                }
+            }
+            &[type=submit] {
+                @include buttonBase();
+                margin:0 !important;
+                border:0;
+            }
+        }
+    }
+}

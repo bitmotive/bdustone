@@ -1,0 +1,36 @@
+/*  --------------------------------------------------------------------------  *\
+
+    COPY - LIST STYLES
+
+    Below are resets that will make working with custom bullets and numbers
+    much easier.
+
+\*  --------------------------------------------------------------------------  */
+ul, ol {
+    list-style: none;
+    
+    li {
+        @include position(relative, 0);
+        padding: 0 0 0 remCalc(20);
+        
+        &:before {
+            @include position(absolute, 0, (left, top), (0, (#{$copyLH / 2}em)), translate(0, -50%));
+        }
+        
+        + li {
+            margin: remCalc(10) 0 0;
+        }
+    }
+    
+    ul, ol {
+        margin-bottom: 0;
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    IMPORTS FOR EACH LIST DEFINITION
+
+\*  --------------------------------------------------------------------------  */
+@import 'lists/_unordered';
+@import 'lists/_ordered';
+@import 'lists/_definition';

@@ -1,0 +1,43 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - PRICE
+
+\*  --------------------------------------------------------------------------  */
+
+.price {
+    font-size: remCalc(18);
+    line-height: (27 / 18);
+    font-weight: 500;
+    margin: 0 0 remCalc(16);
+    color: $primary;
+    font-family:$headingFF;
+
+    .full-price {
+        text-decoration: line-through !important;
+        font-weight: normal;
+        margin: 0 remCalc(8) 0 0;
+        color: $neutral-1;
+    }
+
+    &.w-total {
+        @include flex(space-between, center, null, row nowrap);
+        padding: 0 0 remCalc(24);
+        margin: 0 0 remCalc(24);
+        border-bottom: remCalc(1) solid $neutral-2;
+    }
+
+    small {
+        font-size: .666em;
+        color: $primary;
+    }
+
+    @media #{$mediaMd} {
+        font-size: remCalc(18);
+        margin: 0 0 remCalc(20);
+    }
+
+    @media #{$mediaLg} {
+        font-size: remCalc(27);
+        margin: 0 0 remCalc(24);
+    }
+}

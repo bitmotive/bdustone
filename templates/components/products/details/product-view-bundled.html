@@ -1,0 +1,30 @@
+{{#each product.reviews.messages}}
+    {{#if error}}
+        {{> components/global/alerts/error error}}
+    {{/if}}
+    {{#if success}}
+        {{> components/global/alerts/success success}}
+    {{/if}}
+{{/each}}
+<div class="product-view">
+    <div class="title">
+        {{> components/products/details/product-view/title }}
+        <div class="gallery-wrap">
+            <div class="gallery" data-image-gallery>
+                {{> components/products/details/product-view/image }}
+                {{> components/products/details/product-view/thumbnails }}
+                {{> components/global/navs/share }}
+            </div>
+        </div>
+    </div>
+    <div class="details-wrap">
+        {{> components/products/details/common/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+        {{#if product.warranty}}
+            <div class="short-desc">
+                {{{ product.warranty }}}
+            </div>
+        {{/if}}
+        {{> components/products/details/product-view/form-bundled }}
+        {{> components/products/details/common/help}}
+    </div>
+</div>

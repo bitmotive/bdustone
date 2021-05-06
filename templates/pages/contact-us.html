@@ -1,34 +1,35 @@
 {{#partial "page"}}
-
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
-<main class="page">
-    {{#unless theme_settings.hide_contact_us_page_heading }}
-        <h1 class="page-heading">{{page.title}}</h1>
-    {{/unless}}
-
-    {{#if page.sub_pages}}
-        <nav class="navBar navBar--sub">
-            <ul class="navBar-section account-navigation">
-                {{#each page.sub_pages}}
-                    <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
-                {{/each}}
-            </ul>
-        </nav>
-    {{/if}}
-
-    <div id="contact-us-page" class="page-content page-content--centered">
+<header class="hero">
+    <div class="container">
+        {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h1>{{page.title}}</h1>
+    </div>
+</header>
+{{#if page.sub_pages}}
+    <nav class="int">
+        <ul>
+            {{#each page.sub_pages}}
+                <li><a href="{{url}}">{{title}}</a></li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/if}}
+<section>
+    <div class="container">
+        {{#unless theme_settings.hide_contact_us_page_heading }}
+        {{/unless}}
         {{#if forms.contact.success}}
             <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
         {{else}}
-            <p>{{{page.content}}}</p>
-            {{> components/page/contact-us-form}}
+            <div class="row ha-center">
+                <div class="col-xs-12 col-md-10 col-lg-8">
+                    <p>{{{page.content}}}</p>
+                    {{> components/forms/contact-us-form}}
+                </div>
+            </div>
         {{/if}}
-
     </div>
-
-</main>
-
+</section>
 {{/partial}}
 
 {{> layout/base}}

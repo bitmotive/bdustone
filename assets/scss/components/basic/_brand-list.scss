@@ -1,0 +1,34 @@
+.brandGrid {
+    display: grid;
+    @media #{$mediaMd} {
+        grid-template-columns: 50% 50%;
+    }
+    @media #{$mediaLg} {
+        grid-template-columns: 33% 33% 33%;
+    }
+    li {
+        &:before {
+            width: 0;
+            height: 0;
+        }
+    }
+    .brand {
+        margin-top: 0 !important;
+    }
+}
+//hides broken paginator items
+.brand-section {
+    .pagination {
+        justify-content: center;
+        .numbers {
+            p {
+                display: none;
+            }
+        }
+        > div {
+            &:nth-child(2) {
+                display:none;
+            }
+        }
+    }
+}

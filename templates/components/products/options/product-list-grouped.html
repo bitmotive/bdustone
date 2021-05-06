@@ -1,0 +1,43 @@
+<ul class="opts-picklist" data-display-name="{{this.display_name}}">
+    {{#each values}}
+        <li data-product-attribute="product-list" data-product-id="{{data}}">
+            <div class="form-field" data-product-attribute-value="{{id}}">
+                {{!--{{#if image}}
+                    <figure class="pl-image">
+                        {{> components/global/responsive-img
+                            image=image
+                            class="productOptions-list-item-image"
+                            lazyload='lazyload+lqip'
+                        }}
+                    </figure>
+                {{/if}}--}}
+                <div class="info">
+                    <p class="pl-name">{{label}}</p>
+                    <p class="pl-sku"></p>
+                    <p class="pl-avail"></p>
+                </div>
+                <div class="form-field quantity">
+                    <label class="form-label" for="qty{{id}}">{{lang 'products.quantity'}}</label>
+                    <div class="form-increment" data-quantity-change>
+                        <button class="inc-minus" type="button" data-action="dec">
+                            <span class="sr-only">{{lang 'products.quantity_decrease'}}</span>
+                        </button>
+                        <input class="form-input form-input--incrementTotal"
+                               data-picklist-product
+                               id="{{data}}"
+                               name="{{data}}"
+                               type="number"
+                               value="0"
+                               data-quantity-max="{{product.max_purchase_quantity}}"
+                               min="0"
+                               pattern="[0-9]*"
+                               aria-live="polite">
+                        <button class="inc-plus" type="button" data-action="inc">
+                            <span class="sr-only">{{lang 'products.quantity_increase'}}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/each}}
+</ul>

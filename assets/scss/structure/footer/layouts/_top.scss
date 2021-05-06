@@ -1,0 +1,23 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FOOTER - LAYOUT - TOP
+
+\*  --------------------------------------------------------------------------  */
+.footer-top {
+    background: linear-gradient(0deg, #000000 0%, #272727 100%);
+    border-bottom:1px dashed $tertiary;
+    .logo {
+        padding-top:remCalc(20);
+    }
+    .container {
+        
+        @media #{$mediaMd} {
+            @include flex(space-between, center, null, row nowrap);
+
+            > div {
+                flex-flow: row nowrap;
+                align-items: center;
+            }
+        }
+    }
+}

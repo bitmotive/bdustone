@@ -1,0 +1,20 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HERO > SIZES > TEXT ONLY
+
+\*  --------------------------------------------------------------------------  */
+&.txt-only {
+    padding: remCalc(48) 0 remCalc(24);
+    
+    @media #{$mediaMd} {
+        padding: remCalc(52) 0 remCalc(28);
+    }
+    
+    @media #{$mediaLg} {
+        padding: remCalc(56) 0 remCalc(32);
+    }
+
+    + section {
+        padding-top: 0;
+    }
+}

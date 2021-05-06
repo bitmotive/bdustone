@@ -1,42 +1,94 @@
-<form action="{{urls.account.update_action}}" data-edit-account-form class="form" method="post">
+{{!--<p class="account-number"><strong>{{lang 'account.settings.account_number'}}</strong> <span id="accountNumber"></span></p>--}}
+<form action="{{urls.account.update_action}}" data-edit-account-form class="form l-above" method="post">
     {{inject 'firstName' (lang 'forms.validate.account.edit.first_name')}}
     {{inject 'lastName' (lang 'forms.validate.account.edit.last_name')}}
     {{inject 'phoneNumber' (lang 'forms.validate.account.edit.phone')}}
     {{inject 'currentPassword' (lang 'forms.validate.account.edit.password')}}
-    <fieldset class="form-fieldset">
-        <div class="form-row form-row--half">
-            <div class="form-field">
-                <label class="form-label" for="account_firstname">
-                    {{lang 'account.settings.first_name' }}
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="form-el">
+                <label for="account_firstname">{{lang 'account.settings.first_name' }}
                     <small>{{lang 'common.required' }}</small>
-                </label>
-                <input type="text" class="form-input" name="account_firstname" id="account_firstname" value="{{forms.edit_account.first_name}}">
+                </label>        
+
+                <input type="text" name="account_firstname" id="account_firstname" value="{{forms.edit_account.first_name}}" />
             </div>
-            <div class="form-field">
-                <label class="form-label" for="account_lastname">
-                    {{lang 'account.settings.last_name' }}
-                    <small>{{lang 'common.required' }}</small>
-                </label>
-                <input type="text" class="form-input" name="account_lastname" id="account_lastname" value="{{forms.edit_account.last_name}}">
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="account_companyname">
-                    {{lang 'account.settings.company' }}
-                </label>
-                <input type="text" class="form-input" name="account_companyname" id="account_companyname" value="{{forms.edit_account.company_name}}">
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="account_phone">
-                    {{lang 'account.settings.phone' }}
-                </label>
-                <input type="text" class="form-input" name="account_phone" id="account_phone" value="{{forms.edit_account.phone}}">
-            </div>
-            {{#each forms.edit_account.fields}}
-                {{{dynamicComponent 'components/common/forms'}}}
-            {{/each}}
         </div>
-    </fieldset>
-    <div class="form-actions">
-        <button class="button button--primary">{{lang 'account.settings.update_details'}}</button>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-el">
+                <label for="account_lastname">{{lang 'account.settings.last_name' }}
+                        <small>{{lang 'common.required' }}</small>
+                </label>
+                <input type="text" name="account_lastname" id="account_lastname" value="{{forms.edit_account.last_name}}" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-el">
+                <label for="account_companyname">{{lang 'account.settings.company' }}</label>
+                <input type="text" name="account_companyname" id="account_companyname" value="{{forms.edit_account.company_name}}" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-el">
+                <label for="account_phone">{{lang 'account.settings.phone' }}
+                        <small>{{lang 'common.required' }}</small>
+                </label>
+
+                <input type="text" name="account_phone" id="account_phone" value="{{forms.edit_account.phone}}" />
+            </div>
+        </div>
+        {{#each (limit forms.edit_account.fields 1)}}
+        <div class="col-xs-12 col-md-6">
+            <div class="form-el" id="{{id}}" data-validation="{{validation}}" {{#if private_id}}data-type="{{private_id}}"{{/if}}>
+                <label for="{{id}}_input">{{label}}
+                    {{#if required}}
+                        <small>{{lang 'common.required' }}</small>
+                    {{/if}}
+                </label>
+
+                <input type="text" id="{{id}}_input" data-label="{{label}}" name="{{name}}" {{#if value}} value="{{value}}"{{/if}} {{#if placeholder}} placeholder="{{placeholder}}"{{/if}} aria-required="{{required}}" {{#if private_id}}data-field-type="{{private_id}}"{{/if}} />
+            </div>
+        </div>
+        {{/each}}
+   
+        {{#withAfter forms.edit_account.fields 1}}
+        <div class="col-xs-12 col-md-6"> 
+            {{{dynamicComponent 'components/global/forms'}}}
+        </div>
+        {{/withAfter}}
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="form-btns">
+                <button class="btn-primary" type="submit">{{lang 'account.settings.update_details'}}</button>
+            </div>
+        </div>
     </div>
 </form>
+<script>
+    fetch('/graphql', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer {{settings.storefront_api.token}}'
+        },
+        body: JSON.stringify({
+            query: `
+                query getCustomerAccount {
+                    customer {
+                        attributes {
+                            attribute(entityId: 1) {
+                                value
+                            }
+                        }
+                    }
+                }
+            `
+        })
+    })
+    .then(res => res.json())
+    .then(customerData => {
+        let custID = customerData.data.customer.attributes.attribute.value;
+        document.getElementById('accountNumber').insertAdjacentText("afterbegin", custID);
+    });
+</script>

@@ -1,0 +1,265 @@
+<script>
+    var itemContainer = {};
+    itemContainer.array = [];
+    // declare Iterable SDK
+    var _iaq = _iaq || [];
+</script>
+
+<script type="text/javascript" src="//js.iterable.com/analytics.js" async></script>        
+
+<script>
+    $( document ).ready(function() { // wait until cart loads
+    
+    _iaq.push(['account', '4bdd6109000645d68262bc753b4370a1']);
+    
+    // set user
+    var gCustomerEmail = "{{customer.email}}";
+    _iaq.push(['identify', gCustomerEmail, {}]);
+    
+    // get cart items
+    var iterableCartItems = [];
+    $('[data-bdu-cart-item]').each(function(index) {
+        
+        // GROOVE: Below script was rewritten to pull data-attributes needed
+        var item = { 
+            id: $(this).attr("data-cart-Product-Id"),
+            sku: $(this).data("cartProductSku"),   
+            name: $(this).data("cartProductName"),
+            imageUrl: $(this).data("cartProductThumb"),
+            price: $(this).data("cartProductPrice"),
+            quantity: $(this).data("cartProductQty")
+        };
+        iterableCartItems.push(item);
+
+        // find the productId from the classes
+        /*
+        if($(this) && $(this).attr('class')) {
+            var classList = $(this).attr('class').split(/\s+/);
+            var productId = "";
+            
+            $.each(classList, function(index, item) {
+                var productIdIndex = item.indexOf('ProductId_');
+                if (productIdIndex != -1) {
+                    productId = item.replace('ProductId_', '');
+                    //console.log("ProductId:", productId);
+                }
+            });
+            
+            // if the productId was found, create the item object
+            if(productId) {
+                var item = { 
+                    id: productId,
+                    sku: $(this)[0].id,   
+                    name: $(this).find('td.ProductName a')[0].text,
+                    imageUrl: $(this).find('td.CartThumb img')[0].src,
+                    price: Number($(this).find('td.CartItemIndividualPrice')[0].innerHTML.trim().replace(/\$|,/g, '')),
+                    quantity: Number($(this).find('td.CartItemQuantity select')[0].value)
+                };
+                iterableCartItems.push(item);
+            }
+
+        }*/
+    });
+    
+    // update cart
+    console.log("Cart contents:", iterableCartItems);
+    if(gCustomerEmail && iterableCartItems && iterableCartItems.length) {
+        _iaq.push(['updateCart', iterableCartItems]);
+    }
+    
+    });
+</script>
+
+
+<script type="text/javascript">
+    
+    var testingString = window.location.search.substring(1).split("&");
+    var testingFlag = false;
+    var subscriptionInCart = false;
+    var giftCertificateInCart = false;
+    var cartCheckComplete = false;
+    var cartTotal = false;
+    for (i=0;i<testingString.length;i++) {
+       var val = testingString[i].split("=");
+       if (val[0] == "testingFlag") {
+          testingFlag = val[1];          
+       }
+    }
+    
+    if(window.location.pathname === '/checkout' && (cartCheckForMemberships || testingFlag === 'true')){
+        console.log('running membership check script');
+        var dontDoCartCheck = false;
+        if(window.location.search){
+            var checkoutCartQueryString = window.location.search.substring(1);
+            var parameters = checkoutCartQueryString.split("&");    
+            for (i=0;i<parameters.length;i++) {
+               var val = parameters[i].split("=");
+               if (val[0] == "cartnocheckm") {
+                  dontDoCartCheck = val[1];          
+               }
+            }
+        }
+        if(!dontDoCartCheck){         
+            console.log('checking cart');
+            var getURL = "/api/storefront/cart?include=sku";
+            $.ajax({                
+                    type: "GET",
+                    url: getURL,
+                    global: false,
+                    success : function(data) {
+                        console.log('cart return: ',data);
+                        var userCart;
+                        var membershipFound;
+                        try{
+                            userCart = data[0];
+                            cartTotal = userCart.baseAmount;
+                            if(userCart.lineItems.giftCertificates && Array.isArray(userCart.lineItems.giftCertificates) && userCart.lineItems.giftCertificates.length > 0){
+                                giftCertificateInCart = true;
+                            }
+                            for(const item of userCart.lineItems.digitalItems){
+                                if(bduMembershipInfo[item.sku]){
+                                    subscriptionInCart = true; // flag used for disabling store credit use if membership is in cart
+                                    if(bduMembershipInfo[item.sku].type == 'trial'){
+                                    try{
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "https://automation.bigdaddyunlimited.com/api/numberOfTrialMemberships?customerid="+userCart.customerId,
+                                            global: false,
+                                            success: function(trialData){
+                                                console.log('number of trial memberships: ', trialData.trial_memberships);
+                                                var numTrials;
+                                                try{
+                                                    numTrials = trialData;
+                                                    if(numTrials && typeof numTrials === 'object'){
+                                                        if(numTrials.trial_memberships >= 2){
+                                                            //remove trial membership
+                                                            console.log('Remove trial membership ' + item.sku + ' id: ' + item.id);
+                                                            $.ajax({
+                                                                type: "GET",
+                                                                url: "/cart.php?action=remove&item="+item.id,
+                                                                global: false,
+                                                                success: function(removedData){
+                                                                    //redirect to trial membership limit warning                                                        
+                                                                    console.log('Redirect to trial membership limit warning');
+                                                                    window.location.replace('/trial-limit');
+                                                                },
+                                                                error: function(removeError){
+                                                                    console.log('Error removing trial membership from cart');
+                                                                }
+                                                            });
+                                                            //redirect to trial membership limit warning - testing only                                                       
+                                                            //console.log('Redirect to trial membership limit warning');
+                                                            //https://www.bigdaddyunlimited.com/trial-limit
+                                                        } else {
+                                                            if(customerGroupId == 1){
+                                                                console.log('Redirect to duplicate membership page');
+                                                                window.location.replace('/already-member');
+                                                            }
+                                                        }
+                                                    } else {
+                                                        console.log('number of trials check: ', numTrials);
+                                                    }
+                                                } catch(err){
+                                                    console.log('Error parsing number of trials: ',err);
+                                                }
+                                            },
+                                            error: function(trialError){
+                                                console.log('Error getting number of user trials: ', trialError);
+                                            }
+                                        });
+                                    } catch(err){
+                                        console.log('Error reaching automation site: ', err);
+                                    }
+                                    } else {
+                                        if(customerGroupId == 1){
+                                            console.log('Redirect to duplicate membership page');
+                                            window.location.replace('/already-member');
+                                        }
+                                    }
+                                }
+                            }
+                            cartCheckComplete = true;
+                        } catch(err){
+                            console.log('Error parsing the JSON for the cart: ', err);
+                            cartCheckComplete = true;
+                        }
+                    },
+                    error : function(request,error)
+                    {
+                        console.log('Error with ajax request for cart contents: ', error);
+                    }
+                });
+        } else {
+            console.log('no cart check for multiple membership warning');
+            var getURL = "/api/storefront/cart?include=sku";
+            $.ajax({                
+                type: "GET",
+                url: getURL,
+                global: false,
+                success : function(data) {
+                    console.log('cart return: ',data);
+                    var userCart;
+                    try{
+                        userCart = data[0];
+                        cartTotal = userCart.baseAmount;
+                        if(userCart.lineItems.giftCertificates && Array.isArray(userCart.lineItems.giftCertificates) && userCart.lineItems.giftCertificates.length > 0){
+                            giftCertificateInCart = true;
+                        }
+                        for(const item of userCart.lineItems.digitalItems){
+                            if(bduMembershipInfo[item.sku]){
+                                subscriptionInCart = true; // flag used for disabling store credit use if a membership is in cart
+                            }
+                        }
+                        cartCheckComplete = true;
+                    } catch(err){
+                        console.log("Error getting cart contents");
+                        cartCheckComplete = true;
+                    }
+                },
+                error: function(request,error)
+                {
+                    console.log('Error with ajax request for cart contents(2): ', error);
+                }
+            });
+        }
+    }
+</script>
+                                         
+
+
+<script>
+$(document).ready(function() {
+    window.setTimeout(function(){
+        if(subscriptionInCart && disableStoreCreditForMembershipPurchase){
+            console.log("Subscription in cart");
+
+            $('#useStoreCredit, label[for="useStoreCredit"]').hide();
+
+            if($('#useStoreCredit, label[for="useStoreCredit"]').prop("checked") == true){
+                $('#useStoreCredit, label[for="useStoreCredit"]').prop("checked", false).trigger("click");
+            }
+        }
+    }, 2000);
+});
+</script>
+
+<script>
+	$(document).ready(function() {
+		if(window.location.pathname === '/cart.php'){
+			$("tr.bfx-product").each(function() {
+				if ($(this).find("p.sku span").text() && exportedSettings.bduMembershipSKUs.includes($(this).find("p.sku span").text())) {
+					$(this).find("div.option").hide();
+				} else if($(this).find("p.sku span").text() == ""){
+				    $(this).find("div.option").hide();
+				    $(this).find("p.sku").hide();
+				    $(this).find("form.form-wishlist").hide();
+				}
+				
+				if($(this).find("a.bfx-product-name").text().includes("Gift Certificate")){
+				    //console.log($(this).find("a.bfx-product-name").text());
+				    $(this).find("a.bfx-product-name").attr('href', '#');
+				}
+			});
+		}
+	});
+</script>

@@ -1,0 +1,16 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - POTIION - STICKY TOP
+
+\*  --------------------------------------------------------------------------  */
+& {
+    width: 100%;
+
+    @media #{$mediaToggleHeader} {
+        @include position(sticky, 800, (top, left), (0, 0));
+    }
+
+    @media #{$mediaFullHeader} {
+        @include position(sticky, 800, (top), (#{remCalc(-32)}));
+    }
+}

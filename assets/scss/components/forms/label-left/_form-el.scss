@@ -1,0 +1,14 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL LEFT > FORM ELEMENT
+
+\*  --------------------------------------------------------------------------  */
+.form-el {
+    @include flex(space-between, center, null, row wrap);
+    margin-bottom: ($gutterSm * .5);
+    font-size: remCalc(16);
+
+    &.multi-line {
+        align-items: flex-start;
+    }
+}

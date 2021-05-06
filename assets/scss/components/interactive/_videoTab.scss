@@ -1,0 +1,37 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TABS - VIDEO
+
+\*  --------------------------------------------------------------------------  */
+.tabs {
+    .videoGallery {
+        background: $neutral-2;
+        padding: 0;
+        .videoGallery-main{
+            display: flex;
+            justify-content: center;
+            margin-bottom: remCalc(20);
+            iframe {
+                @media #{$mediaMd} {
+                    height: 390px;
+                }
+            }
+        }
+        .videoGallery-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            li {
+                margin:0;
+                padding: 0 remCalc(6);
+                display: block;
+                &:before {
+                    background: none;
+                }
+                @media #{$mediaSmBelow} {
+                    width: 100px;
+                }
+            }
+        }
+    }
+}

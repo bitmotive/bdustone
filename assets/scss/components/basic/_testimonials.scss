@@ -1,0 +1,45 @@
+.testimonials {
+    margin: remCalc(32) remCalc(-8) 0;
+
+    @media #{$mediaMd} {
+        @include flex(space-between, stretch, null, row wrap);
+        margin: remCalc(48) remCalc(-12) 0;
+    }
+    
+    @media #{$mediaLg} {
+        margin: remCalc(64) remCalc(-16) 0;
+    }
+
+    > div {
+        width:100%;
+        margin:0 0 2rem;
+        background: $white;
+        border: remCalc(4) solid $accent-2;
+        border-radius: remCalc(14);
+        padding:2rem;
+        @include flex(flex-start, stretch, null, column nowrap);
+
+        > div {
+            color:$primary;
+
+            strong {
+                display:block;
+            }
+        }
+
+        @media #{$mediaMd} {
+            @include flex(1, 1, auto);
+            max-width: calc(50% - #{remCalc(32)});
+            width: calc(33.333% - #{remCalc(32)});  
+            margin: 0 remCalc(16);
+
+            &:nth-child(n + 4) {
+                margin: remCalc(32) remCalc(16) 0;
+            }
+
+            > * {
+                width: 100%;
+            }
+        }
+    }
+}

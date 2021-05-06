@@ -1,0 +1,21 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - LOGO - SVG
+
+\*  --------------------------------------------------------------------------  */
+.logo {
+    display: block;
+    width: 6rem;
+    color: $primary;
+    
+    > svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        fill: currentColor;
+    }
+    
+    @include hover {
+        color: $secondary;
+    }
+}

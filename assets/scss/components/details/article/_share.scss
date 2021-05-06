@@ -1,0 +1,20 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ARTICLE - SHARE
+
+\*  --------------------------------------------------------------------------  */
+.share {
+    // POSITIONING (DISPLAY, FLEX, FLEX ITEM, POSITION, LEFT, TOP, TRANSFORM)
+    // BOX SIZING (WIDTH, HEIGHT, MARGIN, PADDING)
+    padding: 1rem;
+    // BOX STYLING (OPACITY, BACKGROUND, BOX SHADOW, BORDER, BORDER RADIUS, OVERFLOW)
+    // FONT STYLING (FONT, FONT-FAMILY, FONT-STYLE, FONT-SIZE, LINE-HEIGHT, FONT-WEIGHT)
+    font-size: 1.4rem;
+    line-height: 1.5;
+    // TEXT STYLING (TEXT-DECORATION, TEXT-TRANSFORM, TEXT-ALIGN, TEXT-SHADOW)
+    // OTHER (TRANSITONS, ANIMATIONS, CURSOR)
+    
+    ul {
+        @include flex(space-between, center, null, row nowrap);
+    }
+}

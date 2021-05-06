@@ -1,12 +1,29 @@
+---
+products:
+    new:
+        limit: 8
+    featured:
+        limit: 8
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<header class="hero">
+    <div class="container">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            {{#unless theme_settings.hide_page_heading }}
+                <h1 class="page-heading">{{ page.title }}</h1>
+            {{/unless}}
+    </div>
+</header>
 
 <main class="page">
-    {{#unless theme_settings.hide_page_heading }}
-        <h1 class="page-heading">{{ page.title }}</h1>
-    {{/unless}}
-
+    <div class="container">
+        
     {{#if page.sub_pages}}
     <nav class="navBar navBar--sub">
         <ul class="navBar-section account-navigation">
@@ -17,11 +34,13 @@
     </nav>
     {{/if}}
 
+    {{{region name="page_builder_content"}}}
+
     <div class="page-content page-content--centered">
         {{#replace '%%Syndicate%%' page.content}}
             {{> components/page/rss_feed}}
         {{else}}
-            <p>{{{page.content}}}</p>
+            {{{page.content}}}
         {{/replace}}
     </div>
 
@@ -35,8 +54,11 @@
             {{/each}}
         </ul>
     {{/if}}
+    
+    </div>
 </main>
 
 {{/partial}}
 
 {{> layout/base}}
+

@@ -1,0 +1,66 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ORDER
+
+    Ability to change the columns order to move a later element to the front.
+
+\*  --------------------------------------------------------------------------  */
+.col-xs-pull {
+    order: 0;
+}
+
+.col-xs-push {
+    order: 2;
+}
+
+.col-xs-reset {
+    order: 1;
+}
+
+@media #{$mediaSm} {
+    .col-sm-pull {
+        order: 0;
+    }
+
+    .col-sm-push {
+        order: 2;
+    }
+
+    .col-sm-reset {
+        order: 1;
+    }
+}
+
+@media #{$mediaMd} {
+    .col-md-pull {
+        order: 0;
+    }
+
+    .col-md-push {
+        order: 2;
+    }
+
+    .col-md-reset {
+        order: 1;
+    }
+    .col-md-pad-left {
+        padding-left:8.33333%;
+    }
+    .col-md-pad-right {
+        padding-right:8.33333%;
+    }
+}
+
+@media #{$mediaLg} {
+    .col-lg-pull {
+        order: 0;
+    }
+
+    .col-lg-push {
+        order: 2;
+    }
+
+    .col-lg-reset {
+        order: 1;
+    }
+}

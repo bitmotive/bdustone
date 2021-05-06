@@ -1,0 +1,89 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: 8
+    similar_by_views:
+        limit: 8
+---
+{{#partial "page"}}
+{{inject "product" product}}
+{{inject "settings" settings}}
+<div itemscope itemtype="http://schema.org/Product" class="det-product">
+    <header class="overview">
+        <div class="container complex-personalized">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            {{> components/products/details/product-view-personalized }}
+        </div>
+    </header>
+    {{> components/products/details/sticky-info}}
+    {{> components/products/details/jump-nav}}
+    <section class="bg-grey-w-img-bot">
+        <div class="container">
+            {{> components/products/details/descriptions/description}}
+        </div>
+    </section>
+    <section id="#CompleteYourOrder">
+        <div class="container">
+            {{> components/products/carousel-lists/related products=product.related_products }}
+        </div>
+    </section>
+    {{!--{{#if customer}}
+        {{> components/products/reviews }}
+    {{/if}}--}}
+    <section class="bg-grad-pink-w-sparkles invert ta-center">
+        <div class="container">
+            <h2>{{lang 'products.brand_messaging.heading'}}</h2>
+            <div class="fact-wrap">
+                <div class="fact">
+                    <span class="icon-w">
+                        <svg class="full">
+                            <use xlink:href="#{{lang 'products.brand_messaging.fact-1.icon'}}"></use>
+                        </svg>
+                    </span>
+                    <p>{{lang 'products.brand_messaging.fact-1.copy'}}</p>
+                </div>
+                <div class="fact">
+                    <span class="icon-w">
+                        <svg class="full">
+                            <use xlink:href="#{{lang 'products.brand_messaging.fact-2.icon'}}"></use>
+                        </svg>
+                    </span>
+                    <p>{{lang 'products.brand_messaging.fact-2.copy'}}</p>
+                </div>
+                <div class="fact">
+                    <span class="icon-w">
+                        <svg class="full">
+                            <use xlink:href="#{{lang 'products.brand_messaging.fact-3.icon'}}"></use>
+                        </svg>
+                    </span>
+                    <p>{{lang 'products.brand_messaging.fact-3.copy'}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="Reviews">
+        <div class="container">
+            <h2 class="ta-center">{{lang 'products.turnto_reviews'}}</h2>
+            <div id="tt-reviews-summary"></div>
+            <div id="tt-reviews-list"></div>
+        </div>
+    </section>
+    <section class="bg-grey-w-img-bot" id="QA">
+        <div class="container">
+            <h2 class="ta-center">{{lang 'products.turnto_qa'}}</h2>
+            <div id="tt-instant-answers-widget"></div>
+            <div id="tt-qa-list"></div>
+        </div>
+    </section>
+    <section id="#YouMightAlsoLike">
+        <div class="container">
+            {{> components/products/carousel-lists/related-by-category category-path=breadcrumbs.1.url }}
+        </div>
+    </section>
+</div>
+{{/partial}}
+{{> layout/base}}

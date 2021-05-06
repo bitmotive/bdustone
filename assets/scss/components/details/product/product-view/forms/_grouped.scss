@@ -1,0 +1,15 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - PERSONALIZED FORMS
+
+\*  --------------------------------------------------------------------------  */
+.form-grouped {
+    margin: remCalc(24) 0 0;
+
+    .options {
+        padding: remCalc(24);
+        margin: 0 0 remCalc(24);
+        border: remCalc(1) solid $neutral-1;
+        background: $white;
+    }
+}

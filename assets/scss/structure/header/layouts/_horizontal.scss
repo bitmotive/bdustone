@@ -1,0 +1,17 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - LAYOUT - HORIZONTAL
+
+\*  --------------------------------------------------------------------------  */
+& {
+    .container {
+        @media #{$mediaToggleHeader} {
+            //height: remCalc(55);
+        }
+
+        @media #{$mediaFullHeader} {
+            padding: 0;
+            @include flex(flex-start, center, null, row wrap);
+        }
+    }
+}

@@ -1,0 +1,68 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAILS - REVIEWS - REVIEW
+
+\*  --------------------------------------------------------------------------  */
+.reviews {
+    @include flex(space-between, stretch, null, row wrap);
+
+    article {
+        border: remCalc(4) solid $accent-2;
+        border-radius: remCalc(16);
+        padding: remCalc(32);
+
+        @media #{$mediaMd} {
+            width: calc(50% - #{remCalc(16)});
+
+            &:nth-child(n + 3) {
+                margin-top: remCalc(32);
+            }
+        }
+    }
+
+    .rating {
+        margin: 0 0 remCalc(16);
+    
+        svg {
+            width: remCalc(18);
+            height: remCalc(18);
+            margin: 0 remCalc(3) 0 0;
+    
+            &.full {
+                fill: $primary;
+            }
+        }
+    }
+
+    h3 {
+        font-size: remCalc(16);
+
+        small {
+            margin: remCalc(8) 0 0;
+            font-size: remCalc(12);
+            color: $secondary;
+        }
+
+        @media #{$mediaMd} {
+            font-size: remCalc(20);
+            line-height: 1.333;
+            @include flex(space-between, flex-start, null, row nowrap);
+    
+            small {
+                margin: 0 0 0 remCalc(16);
+                white-space: nowrap;
+                font-size: remCalc(14);
+                line-height: 2;
+            }
+        }
+
+        @media #{$mediaLg} {
+            font-size: remCalc(24);
+    
+            small {
+                margin: 0 0 0 remCalc(24);
+                font-size: remCalc(16);
+            }
+        }
+    }
+}

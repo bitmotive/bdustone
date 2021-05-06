@@ -1,7 +1,7 @@
 {{#partial "page"}}
 {{inject 'comparisons' comparisons}}
 {{inject 'compareRemoveMessage' (lang 'compare.no_remove')}}
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{> components/global/breadcrumbs breadcrumbs=breadcrumbs}}
 <h1 class="page-heading">{{lang 'compare.header' products=comparisons.length}}</h1>
 <div class="page">
     <main class="page-content">
@@ -14,7 +14,7 @@
                     <article class="card">
                         <figure class="card-figure">
                             <div class="card-img-container">
-                                {{> components/common/responsive-img
+                                {{> components/global/responsive-img
                                     image=image
                                     class="card-image"
                                     fallback_size=../theme_settings.product_size
@@ -42,7 +42,7 @@
                                     {{> components/products/price price=price}}
                                 {{/if}}
                             {{else}}
-                                {{> components/common/login-for-pricing}}
+                                {{> components/global/login-for-pricing}}
                             {{/or}}
                         </div>
                     </article>

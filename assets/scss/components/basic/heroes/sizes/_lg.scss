@@ -1,0 +1,46 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HERO > SIZES > LARGE
+
+\*  --------------------------------------------------------------------------  */
+&.lg {
+    padding: remCalc(55) 0 0;
+
+    &:after {
+        display: none;
+    }
+    
+    @media #{$mediaMd} {
+        padding: remCalc(80) 0;
+
+        .container {
+            @include flex(flex-start, center, null, row nowrap);
+        }
+
+        .content {
+            @include flexItem(0, 0, auto);
+            width: 50%;
+        }
+
+        &.has-media .img-w {
+            @include flexItem(0, 0, auto);
+            width: 58.333%;
+            margin: remCalc(-80) 0;
+        }
+    }
+    
+    @media #{$mediaLg} {
+        padding: remCalc(100) 0;
+
+        .content {
+            width: 41.667%;
+            margin: 0 0 0 8.333%;
+        }
+
+        &.has-media .img-w {
+            @include flexItem(0, 0, auto);
+            width: 62.5%;
+            margin: remCalc(-100) 0 remCalc(-100) -4.1667%;
+        }
+    }
+}

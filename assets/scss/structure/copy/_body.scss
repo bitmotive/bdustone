@@ -1,0 +1,12 @@
+/*  --------------------------------------------------------------------------  *\
+
+    COPY - BODY STYLES
+
+\*  --------------------------------------------------------------------------  */
+body {
+    color: $primary;
+    font-family: $copyFF;
+    font-size: remCalc($copyFS);
+    line-height: $copyLH;
+    background:$body;
+}

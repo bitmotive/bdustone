@@ -1,0 +1,13 @@
+<div class="user">
+    {{#if customer }}
+        <a href="{{urls.account.index}}">
+            <svg><use xlink:href="#icon-account" /></svg>
+            {{lang 'common.account'}}
+        </a>
+    {{else}}
+        <a href="{{urls.auth.login}}">
+            <svg><use xlink:href="#icon-account" /></svg>
+            {{lang 'common.login'}}
+        </a>
+    {{/if}}
+</div>

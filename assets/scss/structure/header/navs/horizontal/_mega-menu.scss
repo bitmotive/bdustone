@@ -1,0 +1,62 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - MEGA MENU
+
+\*  --------------------------------------------------------------------------  */
+nav {
+    position:relative;
+    width: 100%;
+    max-width:$siteWMx;
+
+    @media #{$mediaToggleHeader} {
+        @include position(fixed, null, (left, top), (0, remCalc(75)), translate(-100%, 0));
+        background: $black;
+        // causes the nav to not take up full page on phone device
+        height: 100vh;
+        padding-bottom:remCalc(200);
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling:touch;
+        @include transition(transform .25s);
+    }
+    
+    @media #{$mediaFullHeader} {
+        height: auto;
+        width: 100%;
+        margin: remCalc(10) 0 0;
+    }
+    
+    a, label, button {
+        display: block;
+        padding: remCalc(9) remCalc(16);
+        color: $white;
+        font-size: remCalc(14);
+        white-space: nowrap;
+        
+        @include hover {
+            color: $secondary;
+        }
+    }
+
+}
+
+
+#headerToggleNav {
+    &:checked {
+        ~ nav {
+            @media #{$mediaToggleHeader} {
+                @include transform(translate(0, 0));
+            }
+        }
+    }
+}
+
+.main {
+    
+    input[type="checkbox"] {
+        @include srOnly;
+    }
+    
+    @import 'mega-menu/toggle-header';
+    @import 'mega-menu/full-header';
+}

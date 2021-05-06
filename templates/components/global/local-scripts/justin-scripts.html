@@ -1,0 +1,156 @@
+<script type="text/javascript">
+
+var blockedProductIdList = [];
+var sigAdditionalData = [];
+
+function apiRequest(p,u,e) {
+
+    // hide price request button
+    $('.requestPriceBtn_' + p["productId"]).hide();
+
+    // GROOVE: uncomment below to send all requests to testing api
+    //u = 'test';
+    switch (u) {
+        case 'price':
+            APIurl = 'https://automation.bigdaddyunlimited.com/requestPrice';
+            break;
+        case 'price_sig':
+            APIurl = 'https://automation.bigdaddyunlimited.com/sigPriceRequest';
+            break;
+        case 'test':
+            APIurl = 'https://jsonplaceholder.typicode.com/posts';
+            break;
+    }
+
+    $.ajax({
+        url : APIurl,
+        type: 'post',
+        data: {
+            'email':(e ? e : customerEmail),
+            'product': p["productName"],
+            'productId': p["productId"],
+            'productSku': p["productSku"],
+            'url': window.location.href
+        },
+        beforeSend: function(qXHR,settings) {
+            console.log(settings);
+        },
+        success: function(data) {
+            apiFeedback(data);
+        },
+        error: function(qXHR, textStatus, errorThrown) {
+            apiFeedback(errorThrown);                           
+        }
+    });
+
+    function apiFeedback(data) {
+        if(data == "success"){
+            $('.requestPriceBtn_'+p["productId"]).after("<div class='request request_success'>Price request sent! A customer service agent will email you shortly.</div>");
+        } else {
+            $('.requestPriceBtn_'+p["productId"]).after("<div class='request request_failed'>Failed to send price request, please try again later.</div>");                                
+        }
+    }
+    
+}
+
+function applyRules(id,sku,name,brand,outOfStock) {
+    try {
+        let p = {};
+            p["productId"]=id;
+            p["productSku"]=sku;
+            p["productName"]=name;
+            p["brandName"]=brand;
+            p["isOutOfStock"]= (outOfStock ? "Out of Stock" : "");
+    
+        let isBlockedBrand=false;
+        let brandRule=null;
+        let consoleBg = {
+            "error": "background: red; color: white; display: block;",
+            "good": "background: lightgreen; color: black; display: block;",
+        }
+    
+        if (gBlockedBrands.includes(p["brandName"].toLowerCase()) ||
+            (gBlockedBrands.some(function(brandName) {return p["productName"].toLowerCase().includes(brandName) === true;}) && !p["brandName"])) {
+                isBlockedBrand = true;
+                consoleBg = consoleBg.error;
+                if(typeof priceDisplayRules !== 'undefined' && priceDisplayRules && priceDisplayRules.rules) {
+                    brandRule = priceDisplayRules.rules[p["brandName"].toLowerCase()];
+                }
+        } else {
+            consoleBg = consoleBg.good;
+        }
+        
+        console.log('%c'+p["productId"] + ": " + p["productName"] + " is blocked? " + isBlockedBrand + " Brand: "+ p["brandName"],consoleBg);
+        
+        if(isBlockedBrand) {
+            blockedProductIdList.push(p["productId"]);
+    
+            // request price button click handler (off prevents multiple of the same click handlers on the same button)
+            $('.requestPriceBtn_' + p["productId"]).off('click').click(function() {
+                console.log('Price Request button clicked!');
+    
+                if(window.location.pathname.toLowerCase() != '/sig-sauer/sig-sauer' && window.location.pathname.toLowerCase() != '/sig-sauer/sig-sauer/'){
+                    // make the api request and pass product array
+                    apiRequest(p,'price');
+                } else {
+                    // call sweet alert to capture email address
+                    const Swal = sweetAlert.mixin({
+                        buttonsStyling: false,
+                        customClass: {
+                            confirmButton: 'button',
+                            cancelButton: 'button',
+                        },
+                    });
+                    Swal.fire({
+                        title: 'Request Price',
+                        input: 'email',
+                        // GROOVE: uncomment below for testing
+                        //inputValue: 'justin@groovecommerce.com',
+                        text: 'Please enter the email address to which you would like the price sent:',
+                        inputPlaceholder: 'email@example.com',
+                        confirmButtonText: 'Send Price Request',
+                        showCancelButton: true,
+                        cancelButtonText: 'Close'
+                    }).then(function(result) {
+                        if(result.isConfirmed) {
+                            // make the api request and pass product array
+                            apiRequest(p,'price_sig',result.value);
+                        }
+                    });
+                }
+            });
+    
+            // format the text in the request price button and display the MAP price if enabled
+            if(brandRule) {
+                // set the request price button text
+                $('.requestPriceBtn_' + p["productId"]).text(brandRule.buttonText);
+                if(brandRule.priceDisplay && brandRule.priceDisplay.show == "MAP") {
+                    // show MAP pricing
+                }
+            }
+    
+            // show request price button
+            $('.requestPriceBtn_' + p["productId"]).show();
+            
+            // show and format out of stock button if the product is out of stock
+            if(p["isOutOfStock"]) {
+                console.log(p["productId"] + ": is out of stock ");
+                $('[data-product-id='+p["productId"]+']').addClass("disabled").click(function(e) {
+                    e.preventDefault();
+                });
+            }
+        } else {
+            // show price and add to cart button since this is not a blocked brand
+            $('.productPrice_' + p["productId"]).show();
+            $('.addtocart_' + p["productId"]).show();
+        }
+    } catch(err) {
+        console.log("Error applying brand rules:", err);
+        
+        // show price and add to cart button since this is not a blocked brand
+        $('.productPrice_' + p["productId"]).show();
+        $('.addtocart_' + p["productId"]).show();
+    }
+}
+
+</script>

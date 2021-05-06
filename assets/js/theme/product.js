@@ -29,9 +29,9 @@ export default class Product extends PageManager {
         // Init collapsible
         collapsibleFactory();
 
-        this.productDetails = new ProductDetails($('.productView'), this.context, window.BCData.product_attributes);
+        this.productDetails = new ProductDetails($('.product-view'), this.context, window.BCData.product_attributes);
         this.productDetails.setProductVariant();
-
+        
         videoGallery();
 
         const $reviewForm = classifyForm('.writeReview-form');
@@ -52,6 +52,14 @@ export default class Product extends PageManager {
 
         this.productReviewHandler();
         this.bulkPricingHandler();
+
+        // Changing Bulk Options Accordion Color
+        $('.acc-options > dt > button[aria-expanded=false]').on( "click", function() {
+            $(this).closest('dt').toggleClass('open');
+        });
+        //$('.acc-options > dt > button[aria-expanded=true]').on( "click", function() {
+        //    $(this).closest('dt').removeClass('open');
+        //});
     }
 
     productReviewHandler() {

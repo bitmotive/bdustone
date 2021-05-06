@@ -1,0 +1,38 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORMS - OPTIONS
+
+\*  --------------------------------------------------------------------------  */
+[class*="opts-"] {
+    @include flex(flex-start, stretch, null, row wrap);
+    @include position(relative, null);
+
+    p {
+        @include flex(flex-start, flex-start, null, row nowrap);
+        @include flex(0, 0, auto);
+        margin: 0 0 remCalc(8);
+        width: 100%;
+    }
+
+    small {
+        font-size: 1em;
+        font-weight: normal;
+        color: $accent-2;
+        text-transform: uppercase;
+        margin: 0 0 0 remCalc(3);
+    }
+
+    + [class*="opts-"] {
+        margin: remCalc(24) 0 0;
+    }
+
+    label {
+        cursor: pointer;
+    }
+}
+
+@import 'rectangle';
+@import 'swatch';
+@import 'select';
+@import 'text-inputs';
+@import 'picklist-grouped';

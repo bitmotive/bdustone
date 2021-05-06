@@ -1,0 +1,45 @@
+{{#if product.out_of_stock}}
+    {{#if product.availability '===' "Discontinued"}}
+        <p class="availability oos discontinued"><span>{{lang 'products.current_stock'}}</span> {{{lang 'products.availability_status.discontinued'}}}</p>
+    {{else}}
+        <p class="availability"><span>{{lang 'products.current_stock'}}</span> {{{lang 'products.availability_status.out_of_stock'}}}</p>
+        {{> components/products/details/common/out-of-stock-form}}
+    {{/if}}
+{{/if}}
+{{#if product.can_purchase}}
+    {{#if product.mpn }}
+        {{#if (toInt product.mpn) '===' 0}}
+            <p class="availability oos"><span>{{lang 'products.current_stock'}}</span> {{{lang 'products.availability_status.backorder'}}}</p>
+        {{else}}
+            <p class="availability"><span>{{lang 'products.current_stock'}}</span> {{{lang 'products.availability_status.in_stock'}}}</p>
+        {{/if}}
+    {{else}}
+        {{#filter product.custom_fields 'Lead Time' property='name'}}
+            {{#if (first (split value '|')) '===' '0'}}
+                {{#lt (toInt (last (split value "|"))) 6}}
+                    <p class="availability">{{{lang 'products.availability_status.lead_time_days' 
+                            day=(last (split value '|'))
+                        }}}</p>
+                {{else}}
+                    <p class="availability">{{{lang 'products.availability_status.lead_time_weeks' 
+                            week=(floor (divide (toInt (last (split value '|'))) 5))
+                        }}}</p>
+                {{/lt}}
+            {{ else }} 
+                {{#lt (toInt (first (split value '|'))) 6}}
+                    <p class="availability">{{{lang 'products.availability_status.lead_time_span_days' 
+                            first_day=(first (split value '|')) 
+                            last_day=(last (split value '|'))
+                        }}}</p>
+                {{else}}
+                    <p class="availability">{{{lang 'products.availability_status.lead_time_span_weeks' 
+                            first_week=(floor (divide (toInt (first (split value '|'))) 5)) 
+                            last_week=(floor (divide (toInt (last (split value '|'))) 5))
+                        }}}</p>
+                {{/lt}}
+            {{/if}}
+        {{else}}
+            <p class="availability"><span>{{lang 'products.current_stock'}}</span> {{{lang 'products.availability_status.in_stock'}}}</p>
+        {{/filter}}
+    {{/if}}
+{{/if}}

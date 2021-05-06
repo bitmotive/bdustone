@@ -1,0 +1,34 @@
+/*  --------------------------------------------------------------------------  *\
+
+    MEDIA LAYOUT - OVERLAP
+
+\*  --------------------------------------------------------------------------  */
+&.cap-overlap {
+    @media #{$mediaMd} {
+        @include flex(center, center, null, row nowrap);
+        
+        img {
+            @include position(relative, 0);
+            @include flexItem(0, 0, auto);
+            width: calc(50% + #{$gutter});
+        }
+        
+        figcaption {
+            @include position(relative, 1);
+            width: 50%;
+            margin: 0 0 0 #{$gutter * -1};
+        }
+    
+        &.alt {
+
+            img {
+                order: 1;
+            }
+
+            figcaption {
+                width: 50%;
+                margin: 0 #{$gutter * -1} 0 0;
+            }
+        }
+    }
+}

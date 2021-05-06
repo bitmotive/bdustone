@@ -1,0 +1,58 @@
+/*  --------------------------------------------------------------------------  *\
+
+    NAV - SHARE
+
+\*  --------------------------------------------------------------------------  */
+&.share {
+    @include flex(flex-start, center, null, row nowrap);
+    margin: 0;
+    font-size: 1.25em;
+    order: 3;
+
+    @media #{$mediaMd} {
+        width: 85%;
+        margin: 0 0 0 15%;
+    }
+
+    h5 {
+        margin: 0 remCalc(16) 0 0;
+        font-size: remCalc(16);
+        font-weight: normal;
+    }
+    
+    ul {
+        @include flex(flex-start, center, null, row nowrap);
+    }
+    
+    li {
+        + li {
+            margin: 0 0 0 remCalc(8);
+        }
+    }
+
+    a {
+        @include position(relative, null);
+        display: block;
+        width: remCalc(32);
+        height: remCalc(32);
+        padding: remCalc(7);
+        border-radius: remCalc(32);
+        border: remCalc(1) solid currentColor;
+        color: $accent-7;
+        @include transition(all .25s linear);
+
+        @include hover {
+            background: $accent-7;
+            color: $white;
+        }
+    }
+
+    svg {
+        @include transition(all .25s linear);
+        fill: currentColor;
+        display: block;
+        width: remCalc(18);
+        height: remCalc(18);
+        @include position(absolute, null, (left, top), (50%, 50%), translate(-50%, -50%));
+    }
+}

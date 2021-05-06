@@ -1,0 +1,27 @@
+<a{{#if is_active}} class="is-active"{{/if}} href="{{url}}">
+    {{name}}
+</a>
+{{#if children}}
+    <ul>
+        <li>
+            <a href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
+        </li>
+        {{#each children}}
+            <li>
+                <a{{#if is_active}} class="is-active"{{/if}}
+                    href="{{url}}">
+                    {{name}}
+                </a>
+                {{#if children}}
+                    <ul>
+                        {{#each children}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
+{{/if}}

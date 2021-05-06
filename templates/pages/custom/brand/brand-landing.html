@@ -1,0 +1,115 @@
+---
+products:
+    new:
+        limit: 8
+carousel: {{theme_settings.homepage_show_carousel}}
+---
+{{#partial "page"}}
+<header class="hero interior">
+    <div class="img-cont"><img src="{{lang 'brand_landing.hero.bg_img_url'}}" alt="{{lang 'brand_landing.hero.bg_img_alt'}}"></div>
+    <div class="container">
+        <div class="half">
+            <img src="{{lang 'brand_landing.hero.logo_img_url'}}" alt="{{lang 'brand_landing.hero.logo_img_alt'}}">
+            <p>{{lang 'brand_landing.hero.desc'}}</p>
+            <a class="btn-primary" href="{{lang 'brand_landing.hero.cta_link'}}">{{lang 'brand_landing.hero.cta_text'}}</a>
+        </div>
+    </div>
+</header>
+<section class="ta-center bg-grey-w-img-top">
+    <div class="container">
+        <h2><small>{{lang 'brand_landing.categories.title_sm'}}</small> {{lang 'brand_landing.categories.title_lg'}}</h2>
+            <nav class="landing sm">
+                <ul>
+                    <li><a href="{{lang 'brand_landing.categories.cat_1_link'}}"><img src="{{lang 'brand_landing.categories.cat_1_img_url'}}" alt="{{lang 'brand_landing.categories.cat_1_img_alt'}}"> <span>{{lang 'brand_landing.categories.cat_1_text'}}</span> </a></li>
+                    <li><a href="{{lang 'brand_landing.categories.cat_2_link'}}"><img src="{{lang 'brand_landing.categories.cat_2_img_url'}}" alt="{{lang 'brand_landing.categories.cat_2_img_alt'}}"> <span>{{lang 'brand_landing.categories.cat_2_text'}}</span> </a></li>
+                    <li><a href="{{lang 'brand_landing.categories.cat_3_link'}}"><img src="{{lang 'brand_landing.categories.cat_3_img_url'}}" alt="{{lang 'brand_landing.categories.cat_3_img_alt'}}"> <span>{{lang 'brand_landing.categories.cat_3_text'}}</span> </a></li>
+                    <li><a href="{{lang 'brand_landing.categories.cat_4_link'}}"><img src="{{lang 'brand_landing.categories.cat_4_img_url'}}" alt="{{lang 'brand_landing.categories.cat_4_img_alt'}}"> <span>{{lang 'brand_landing.categories.cat_4_text'}}</span> </a></li>
+                    <li><a href="{{lang 'brand_landing.categories.cat_5_link'}}"><img src="{{lang 'brand_landing.categories.cat_5_img_url'}}" alt="{{lang 'brand_landing.categories.cat_5_img_alt'}}"> <span>{{lang 'brand_landing.categories.cat_5_text'}}</span> </a></li>
+                    <li><a href="{{lang 'brand_landing.categories.cat_6_link'}}"><img src="{{lang 'brand_landing.categories.cat_6_img_url'}}" alt="{{lang 'brand_landing.categories.cat_6_img_alt'}}"> <span>{{lang 'brand_landing.categories.cat_6_text'}}</span> </a></li>
+                    <li><a href="{{lang 'brand_landing.categories.cat_7_link'}}"><img src="{{lang 'brand_landing.categories.cat_7_img_url'}}" alt="{{lang 'brand_landing.categories.cat_7_img_alt'}}"> <span>{{lang 'brand_landing.categories.cat_7_text'}}</span> </a></li>
+                    <li><a href="{{lang 'brand_landing.categories.cat_8_link'}}"><img src="{{lang 'brand_landing.categories.cat_8_img_url'}}" alt="{{lang 'brand_landing.categories.cat_8_img_alt'}}"> <span>{{lang 'brand_landing.categories.cat_8_text'}}</span> </a></li>
+                </ul>
+            </nav>
+    </div>
+</section>
+<section>
+    <div class="container">
+        {{> components/products/carousel-lists/new products=brand.products }}
+    </div>
+</section>
+<section class="bg-grey-w-img-bot">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-push">
+                <img src="{{lang 'brand_landing.img_side_1.img_url'}}" alt="{{lang 'brand_landing.img_side_1.img_alt'}}" />
+            </div>
+            <div class="col-xs-12 col-md-6 col-md-pad-right">
+                <h2><small>{{lang 'brand_landing.img_side_1.title_sm'}}</small> {{lang 'brand_landing.img_side_1.title_lg'}}</h2>
+                <p>{{lang 'brand_landing.img_side_1.desc'}}</p>
+                <a class="btn-primary" href="{{lang 'brand_landing.img_side_1.cta_link'}}">{{lang 'brand_landing.img_side_1.cta_text'}}</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <img src="{{lang 'brand_landing.img_side_2.img_url'}}" alt="{{lang 'brand_landing.img_side_2.img_alt'}}" />
+            </div>
+            <div class="col-xs-12 col-md-6 col-md-pad-left">
+                <h2><small>{{lang 'brand_landing.img_side_2.title_sm'}}</small> {{lang 'brand_landing.img_side_2.title_lg'}}</h2>
+                <p>{{lang 'brand_landing.img_side_2.desc'}}</p>
+                <a class="btn-primary" href="{{lang 'brand_landing.img_side_2.cta_link'}}">{{lang 'brand_landing.img_side_2.cta_text'}}</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section  class="bg-dark invert">
+    <div class="container">
+        <h2 class="ta-center"><small>{{lang 'brand_landing.facts.title_sm'}}</small> {{lang 'brand_landing.facts.title_lg'}}</h2>
+        <div class="fact-wrap">
+            <div class="fact"><img src="{{lang 'brand_landing.facts.fact_1_icon_url'}}" alt="{{lang 'brand_landing.facts.fact_1_icon_alt'}}" />
+                <h3>{{lang 'brand_landing.facts.fact_1_title'}}</h3>
+                <p>{{lang 'brand_landing.facts.fact_1_desc'}}</p>
+            </div>
+            <div class="fact"><img src="{{lang 'brand_landing.facts.fact_2_icon_url'}}" alt="{{lang 'brand_landing.facts.fact_2_icon_alt'}}" />
+                <h3>{{lang 'brand_landing.facts.fact_2_title'}}</h3>
+                <p>{{lang 'brand_landing.facts.fact_2_desc'}}</p>
+            </div>
+            <div class="fact"><img src="{{lang 'brand_landing.facts.fact_3_icon_url'}}" alt="{{lang 'brand_landing.facts.fact_3_icon_alt'}}" />
+                <h3>{{lang 'brand_landing.facts.fact_3_title'}}</h3>
+                <p>{{lang 'brand_landing.facts.fact_3_desc'}}</p>
+            </div>
+            <div class="fact"><img src="{{lang 'brand_landing.facts.fact_4_icon_url'}}" alt="{{lang 'brand_landing.facts.fact_4_icon_alt'}}" />
+                <h3>{{lang 'brand_landing.facts.fact_4_title'}}</h3>
+                <p>{{lang 'brand_landing.facts.fact_4_desc'}}</p>
+            </div>
+        </div>
+    </div>
+</section >
+<section>
+    <div class="container">
+        <div class="row va-center">
+            <div class="col-xs-12 col-md-6 col-md-push">
+                <img src="{{lang 'brand_landing.img_side_3.img_url'}}" alt="{{lang 'brand_landing.img_side_3.img_alt'}}" />
+            </div>
+            <div class="col-xs-12 col-md-6 col-md-pad-right">
+                <h2>{{lang 'brand_landing.img_side_3.title_lg'}}</h2>
+                <p>{{lang 'brand_landing.img_side_3.desc'}}</p>
+                <a class="btn-primary" href="{{lang 'brand_landing.img_side_3.cta_link'}}">{{lang 'brand_landing.img_side_3.cta_text'}}</a>
+            </div>
+        </div>
+    </div>
+</section >
+{{#if banners.bottom}}
+    {{#each banners.bottom_metadata}}
+        <section class="bttm-section">
+            <div class="container">
+                <div class="row ha-center">
+                    <div class="col-xs-12 col-lg-10">
+                        {{{this.content}}}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {{/each}}
+{{/if}}
+{{/partial}}
+{{> layout/base}}

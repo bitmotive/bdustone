@@ -1,0 +1,145 @@
+// =============================================================================
+// MAINTENANCE NOTICE (Settings)
+// =============================================================================
+// =============================================================================
+// MAINTENANCE MODE (CSS)
+// =============================================================================
+
+.maintenanceNotice {
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    color: #333;
+    left: remCalc(0);
+    padding: remCalc(8);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10001;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+
+    a {
+        color: #3E67F8;
+    }
+}
+
+// =============================================================================
+// ADMIN BAR MODE (CSS)
+// =============================================================================
+
+body.hasAdminBar {
+    padding-bottom: 46px; // 55px (Mobile Header) + 46px (Admin Bar)
+}
+
+.adminBar {
+    // Only show admin bar at desktop width
+    display: none;
+
+    @media #{$mediaMd} {
+        display: block;
+    }
+
+    background-color: #333;
+    box-shadow: 0 remCalc(2) remCalc(7) 0 rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    height: remCalc(46);
+    left: 0;
+    position: fixed;
+    text-decoration: none;
+    bottom: 0;
+    width: 100%;
+    z-index: 10001;
+
+    .svg-icon {
+        display: inline-flex;
+        align-self: center;
+    }
+    .svg-icon svg {
+        height:1em;
+        width:1em;
+    }
+    .svg-icon.svg-baseline svg {
+        top: .125em;
+        position: relative;
+    }
+
+    .adminBar-content {
+        width: calc(100% - 45px);
+        flex: 0 0 auto;
+    }
+
+    .adminBar-content, .adminBar-private, .container {
+        align-items: center;
+        display: flex;
+        height: remCalc(46);
+        justify-content: flex-start;
+    
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+    
+        a:hover {
+            background-color: #fff;
+            color: #3E67F8;
+            border-radius: 5px;
+        }
+    
+    }
+}
+
+.adminBar-logo {
+    float: left;
+    height: remCalc(46);
+    width: 45px;
+
+    svg {
+        height: 100%;
+        padding: remCalc(8);
+        width: 100%;
+    }
+}
+
+.adminBar-private {
+    margin-right: auto;
+    text-align: left;
+
+    a {
+        padding: 10px;
+    }
+
+    span {
+        white-space: nowrap;
+    }
+}
+
+.adminBar-links {
+
+    margin-left: auto;
+    text-align: right;
+    padding-right: 5px;
+
+    a {
+        padding: 10px;
+    }
+
+    span {
+        white-space: nowrap;
+    }
+}
+
+.adminBar-large {
+    display:none;
+    @media #{$mediaLg} {
+        display: initial;
+    }
+}
+
+.preview {
+    font-weight: 400;
+    padding-left: 9px;
+}

@@ -1,0 +1,116 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER
+
+\*  --------------------------------------------------------------------------  */
+body > header {
+    background: $accent-1;
+
+    @media #{$mediaFullHeader} {
+        border-top: remCalc(48) solid $accent-1;
+        background: none;
+    }
+
+    &.checkoutHeader {
+        border-top:none;
+        padding:remCalc(25) 0 ;
+        background:$primary;
+        border-bottom:1px solid $neutral-1;
+        display: flex;
+        align-items: center;
+        .checkoutHeader-content {            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: row nowrap;
+            background-color: black;
+            margin: 0 auto;
+            padding:0 2rem;
+            max-width: $siteWMx;
+            justify-content:center;
+            @include setW;
+            @media #{$mediaMd} {
+                padding:0;
+            }
+            .checkoutHeader-link {
+                margin:0;
+                width:remCalc(200);
+                img {
+                    max-height: remCalc(88);
+                }
+                svg {
+                    path {
+                        fill:$white;
+                    }
+                }
+            }
+        }
+    }
+
+
+    @media #{$print} {
+        display: none;
+    }
+    /*  ----------------------------------------------------------------------  *\
+
+        POSITIONING OPTIONS
+
+        @import 'header/positioning/_absolute-top';
+        @import 'header/positioning/_fixed-top';
+        @import 'header/positioning/_fixed-left';
+        @import 'header/positioning/_relative';
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'header/positioning/sticky-top';
+    /*  ----------------------------------------------------------------------  *\
+
+        LAYOUT OPTIONS
+
+        @import 'header/layouts/_vertical';
+        @import 'header/layouts/vertical/_w-utility-nav';
+        @import 'header/layouts/vertical/_w-utility-bar';
+        @import 'header/layouts/vertical/_w-toggle';
+
+        @import 'header/layouts/horizontal/has-util-nav';
+        @import 'header/layouts/horizontal/has-util-bar';
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'header/layouts/horizontal';
+    /*  ----------------------------------------------------------------------  *\
+
+        LOGO
+
+        @import 'header/logo/_img-tagline';
+        @import 'header/logo/_svg';
+        @import 'header/logo/_svg-tagline';
+        @import 'header/logo/_text';
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'header/logo/img';
+    /*  ----------------------------------------------------------------------  *\
+
+        NAVIGATIONS
+
+        @import 'header/navs/vertical/_root-only';
+        @import 'header/navs/vertical/_dropdown';
+        @import 'header/navs/vertical/_utility';
+
+        @import 'header/na≈vs/horizontal/_root-only';
+        @import 'header/navs/horizontal/_mega-menu';
+        @import 'header/navs/_toggle';
+        @import 'header/navs/horizontal/utility';
+        @import 'header/navs/horizontal/dropdown';
+
+    \*  ----------------------------------------------------------------------  */
+    /*  ----------------------------------------------------------------------  *\
+
+        SEARCH
+
+    \*  ----------------------------------------------------------------------  */
+    /*  ----------------------------------------------------------------------  *\
+
+        COMPONENTS
+        @import 'header/cart/cart';
+
+    \*  ----------------------------------------------------------------------  */
+}

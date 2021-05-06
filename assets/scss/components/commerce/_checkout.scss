@@ -1,0 +1,14 @@
+.checkout-options {
+    margin-top: remCalc(24);
+    align-items: flex-end;
+        a {
+        font-size: remCalc(14);
+     }
+    .empty-cart {
+        display: flex;
+        align-items: center;
+        span {
+            padding-right: remCalc(5);
+        }
+    }
+}

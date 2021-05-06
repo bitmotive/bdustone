@@ -1,0 +1,32 @@
+<div class="form-field opts-text" data-product-attribute="input-text" data-display-name="{{ this.display_name }}">
+    <label for="attribute_text_{{id}}">
+        {{last (split this.display_name "|")}}:
+
+        <small {{#unless required}}style="display:none"{{/unless}}>{{lang 'common.required'}}</small>
+        
+        {{#each product.custom_fields}}
+            {{#contains name ../this.display_name }}
+                {{#if (last (split value '|'))}}
+                    <div class="tooltip-trigger icon-i">
+                        i
+                        <div class="tooltip left">
+                            <p>{{last (split value '|')}}</p>
+                        </div>
+                    </div>
+                {{/if}}
+            {{/contains}}
+        {{/each}}
+    </label>
+    <input class="form-input form-input--small" 
+           type="text" 
+           id="attribute_text_{{id}}" 
+           name="attribute[{{this.id}}]" 
+           value="{{this.prefill}}" 
+           {{#if required}}required{{/if}} 
+           {{#if max_length}}maxlength="{{max_length}}"{{/if}}
+           {{#each product.custom_fields}}
+                {{#contains name ../this.display_name }}
+                    {{> components/global/forms/pattern regex=(first (split value '|')) }}
+                {{/contains}}
+            {{/each}} />
+</div>

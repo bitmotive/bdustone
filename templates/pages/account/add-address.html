@@ -1,44 +1,44 @@
 {{#partial "page"}}
-
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
-    {{#if forms.address.address_id}}
-        <h2 class="page-heading">{{lang 'forms.address.edit.heading'}}</h2>
-    {{else}}
-        <h2 class="page-heading">{{lang 'forms.address.add.heading'}}</h2>
-    {{/if}}
-
-    {{> components/account/navigation account_page='addresses'}}
-
-    <div class="account account--fixed">
-
-        {{#if forms.address.error}}
-            {{> components/common/alert-error forms.address.error}}
-        {{/if}}
-
-        <div class="account-body">
-
-            <form action="{{forms.address.action}}" data-address-form class="form" method="post">
-                {{#if forms.address.address_id }}
-                    <input type="hidden" name="shipid" value="{{forms.address.address_id}}">
+    <header class="hero">
+        <div class="container">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1 class="ta-left">
+                {{#if forms.address.address_id}}
+                    {{lang 'forms.address.edit.heading'}}
+                {{else}}
+                    {{lang 'forms.address.add.heading'}}
                 {{/if}}
-                <fieldset class="form-fieldset">
-                    <div class="form-row form-row--half">
-                        {{#each forms.address.shipping_fields }}
-                            {{{dynamicComponent 'components/common/forms'}}}
-                        {{/each}}
-                    </div>
-                </fieldset>
-                <div class="form-actions">
-                    <input type="submit" class="button button--primary" value="{{lang 'forms.address.submit_value'}}">
-                    <a href="{{urls.account.addresses}}" class="button">{{lang 'common.cancel'}}</a>
-                    {{inject 'required' (lang 'common.required')}}
-                    {{inject 'state_error' (lang 'errors.state_error')}}
-                </div>
-            </form>
-
+            </h1>
+            {{> components/account/navigation account_page='addresses'}}
         </div>
-    </div>
-
+    </header>
+    <section>
+        <div class="container account">
+            <div class="sidebar-nav nav">
+                {{> components/account/navigation account_page='addresses'}}
+            </div>
+            <div class="row ha-center">
+                <div class="col-xs-12 col-md-10 col-lg-8">
+                    {{#if forms.address.error}}
+                        {{> components/global/alerts/error forms.address.error}}
+                    {{/if}}
+                    <form action="{{forms.address.action}}" data-address-form class="form form-address l-above" method="post">
+                        {{#if forms.address.address_id }}
+                            <input type="hidden" name="shipid" value="{{forms.address.address_id}}">
+                        {{/if}}
+                        {{#each forms.address.shipping_fields }}
+                            {{{dynamicComponent 'components/global/forms'}}}
+                        {{/each}}
+                        <div class="form-btns">
+                            <button type="submit" class="btn-primary">{{lang 'forms.address.submit_value'}}</button>
+                            <a href="{{urls.account.addresses}}" class="btn-txt">{{lang 'common.cancel'}}</a>
+                            {{inject 'required' (lang 'common.required')}}
+                            {{inject 'state_error' (lang 'errors.state_error')}}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 {{/partial}}
 {{> layout/base}}

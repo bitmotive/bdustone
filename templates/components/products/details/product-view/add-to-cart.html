@@ -1,0 +1,28 @@
+<div class="form-field quantity" id="product-qty">
+    <label class="form-label" for="qty[]">{{lang 'products.quantity'}}</label>
+    <div class="form-increment" data-quantity-change>
+        <button class="inc-minus" type="button" data-action="dec">
+            <span class="sr-only">{{lang 'products.quantity_decrease'}}</span>
+        </button>
+        <input class="form-input form-input--incrementTotal"
+               id="qty[]"
+               name="qty[]"
+               type="tel"
+               value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+               data-quantity-min="{{product.min_purchase_quantity}}"
+               data-quantity-max="{{product.max_purchase_quantity}}"
+               min="1"
+               pattern="[0-9]*"
+               aria-live="polite">
+        <button class="inc-plus" type="button" data-action="inc">
+            <span class="sr-only">{{lang 'products.quantity_increase'}}</span>
+        </button>
+    </div>
+</div>
+{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+    <div class="form-action">
+        <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="btn-primary" type="submit"
+            value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+    </div>
+     {{{snippet 'product_addtocart'}}}
+{{/or}}

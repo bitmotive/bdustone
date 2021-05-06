@@ -1,0 +1,6 @@
+<h2>{{lang 'products.related' }}</h2>
+<div class="feed-featured" data-list-name="Related Products">
+    {{#each this}}
+  		{{>components/products/details/card position=(add @index 1)}}
+    {{/each}}
+</div>

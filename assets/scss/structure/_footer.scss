@@ -1,0 +1,84 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FOOTER
+
+\*  --------------------------------------------------------------------------  */
+body>footer {
+    background:$black;
+    color: $white;
+    font-size: remCalc(14);
+    text-align: center;
+    
+    @import 'footer/layouts/top';
+    @import 'footer/layouts/middle';
+    @import 'footer/layouts/bottom';
+
+    .footer-contact {
+        border-bottom:1px dashed $tertiary;
+        padding:remCalc(20);
+        text-align:left;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color:$neutral-4;
+
+        @media #{$mediaSm} {
+            flex-direction: row;
+        }
+
+        b {
+            color:$white;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+        
+        div {
+            display:flex;
+            padding:remCalc(5) 0;
+        }
+        svg {
+            height:15px;
+            width:15px;
+            margin-right:remCalc(10);
+            path {
+                fill: $white;
+            }
+        }
+        @media #{$mediaMd} {
+            display:none;
+        }
+    }
+
+    a {
+        color: $neutral-4;
+        text-decoration: none;
+
+        @include hover {
+            text-decoration: underline;
+            color: $secondary;
+        }
+    }
+
+    @media #{$print} {
+        display: none;
+    }
+    /*  ----------------------------------------------------------------------  *\
+
+        COMPONENTS
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'footer/components/brands';
+    @import 'footer/components/logo';
+    @import 'footer/components/copyright';
+    @import 'footer/components/address';
+    @import 'footer/components/hs-form';
+    /*  ----------------------------------------------------------------------  *\
+
+        NAVIGATIONS
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'footer/navs/social';
+    @import 'footer/navs/footer';
+    @import 'footer/navs/badges';
+    @import 'footer/navs/copyright';
+}

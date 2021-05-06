@@ -1,0 +1,12 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAILS - REVIEWS
+
+\*  --------------------------------------------------------------------------  */
+.reviews-wrap {
+    @include position(relative, null);
+
+    @import 'reviews/review';
+    @import 'reviews/form';
+    @import 'reviews/rating';
+}

@@ -2,6 +2,7 @@ import { hooks } from '@bigcommerce/stencil-utils';
 import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
+//from './groove/components/interactive/hubspot';
 
 export default class Brand extends CatalogPage {
     onReady() {
@@ -13,6 +14,9 @@ export default class Brand extends CatalogPage {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
             hooks.on('sortBy-submitted', this.onSortBySubmit);
         }
+        
+        // Hubspot featured blogs
+        //this.Hubspot = new Hubspot();
     }
 
     initFacetedSearch() {

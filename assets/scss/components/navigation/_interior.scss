@@ -1,0 +1,190 @@
+/*  --------------------------------------------------------------------------  *\
+
+    INTERIOR NAVIGATIONS
+
+\*  --------------------------------------------------------------------------  */
+
+&.int {
+  @media #{$mediaSmBelow} {
+    margin-top: -24px;
+    margin-bottom: remCalc(18);
+    position: relative;
+    z-index: 100;
+    text-align: left;
+    //controls input switch to drop mobile nav
+    input[type="checkbox"] {
+      @include srOnly;
+      &:checked {
+        ~ .int-ul {
+          transition-duration: 1s;
+          bottom: -4%;
+          z-index: 4;
+          li {
+              svg {
+                    display:none;
+                }
+            }
+        }
+      }
+    }
+  }
+  @media #{$mediaMd} {
+    display: none;
+    > input {
+      display: none;
+    }
+    > label {
+      display: none;
+    }
+  }
+  @media #{$print} {
+    display: none;
+  }
+
+  h1 {
+    @media #{$mediaSmBelow} {
+      margin: 0;
+    }
+  }
+  label {
+    @media #{$mediaSmBelow} {
+      text-align: left;
+      font-size: remCalc(16);
+      font-weight: 600;
+      font-family: $headingFF;
+      line-height: remCalc(27);
+      text-transform: uppercase;
+      margin-top: remCalc(20);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h1 {
+          border-bottom: none;
+          padding-bottom: 0;
+      }
+      //only the svg inside of labels
+      svg {
+        margin-left: remCalc(10);
+      }
+    }
+  }
+  ul {
+    @include flex(space-between, center, center, row nowrap);
+    background: linear-gradient(
+      0deg,
+      rgb(0, 0, 0) 0,
+      rgb(0, 0, 0) 3px,
+      rgb(255, 255, 255) 3px
+    );
+    margin: 0 auto;
+    width: 100%;
+
+    @media #{$mediaSmBelow} {
+      flex-flow: column nowrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: fixed;
+      bottom: 100%;
+      z-index: 4;
+      height: 83vh;
+      transition-duration: 1s;
+      left: 0;
+      //only the label inside drawer
+      .int-label {
+        position: relative;
+        border-radius: 10px;
+        height: remCalc(70);
+        margin: remCalc(24) remCalc(10) remCalc(15);
+        margin-right: 0;
+        width:90%;
+
+      }
+      .back-nav {
+        border: none;
+        padding: 0 !important;
+      }
+    }
+    @media #{$mediaMd} {
+      .int-label {
+        display: none;
+      }
+      flex-flow: column;
+      align-items: flex-start;
+      svg {
+        display: none;
+      }
+    }
+    li {
+      margin: 0 remCalc(15);
+      &.is-active {
+        a {
+          color: $secondary;
+        }
+      }
+      @media #{$mediaSmBelow} {
+        width: 90%;
+        // background: white url(../img/arrow.png) no-repeat 95% 50%;
+        a {
+          border-bottom-width: 1px;
+          padding-left: remCalc(12);
+        }
+      }
+      @media #{$mediaMd} {
+        margin: 0;
+        width: 100%;
+        &:first-child {
+          a {
+            padding-top: 0 !important;
+          }
+        }
+      }
+    }
+  }
+  a {
+    @include position(relative, null);
+    @include flex(space-between, center, null, row nowrap);
+    border-bottom: 1px solid currentColor;
+    color: $primary;
+    padding: remCalc(16) 0 !important;
+    padding-bottom: remCalc(4);
+    font-size: remCalc(16);
+    font-weight: 600;
+    font-family: $headingFF;
+    line-height: remCalc(27);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    @media #{$mediaLg} {
+      font-size: remCalc(19);
+    }
+    @include hover {
+      color: $secondary;
+      text-decoration: none;
+    }
+  }
+  svg {
+    width: remCalc(20);
+    height: remCalc(20);
+    margin: 0 remCalc(8) 0 0;
+    fill: $primary;
+  }
+  section {
+    @media #{$mediaLg} {
+      margin-left: remCalc(12);
+      margin-right: remCalc(12);
+    }
+  }
+}
+// controls the switch between sidebar and top nav for interior nav of account pages
+&.sidebar-nav {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  .int {
+    @media #{$mediaSmBelow} {
+      display: none;
+    }
+    @media #{$mediaMd} {
+      display: flex;
+    }
+  }
+}

@@ -5,6 +5,8 @@ import ImageGallery from '../product/image-gallery';
 import modalFactory, { showAlertModal } from '../global/modal';
 import _ from 'lodash';
 import Wishlist from '../wishlist';
+import GrooveProduct from '../groove/components/products/product';
+import swal from '../global/sweet-alert';
 
 export default class ProductDetails {
     constructor($scope, context, productAttributesData = {}) {
@@ -17,10 +19,12 @@ export default class ProductDetails {
         this.initRadioAttributes();
         Wishlist.load(this.context);
         this.getTabRequests();
+        this.grooveProduct = new GrooveProduct(context, this.$scope);
+        this.grooveProduct.init();
 
         const $form = $('form[data-cart-item-add]', $scope);
         const $productOptionsElement = $('[data-product-option-change]', $form);
-        const hasOptions = $productOptionsElement.html().trim().length;
+        const hasOptions = $productOptionsElement.length ? $productOptionsElement.html().trim().length : 0;
         const hasDefaultOptions = $productOptionsElement.find('[data-default]').length;
 
         $productOptionsElement.on('change', event => {
@@ -29,7 +33,7 @@ export default class ProductDetails {
         });
 
         $form.on('submit', event => {
-            this.addProductToCart(event, $form[0]);
+             this.addProductToCart(event, $form[0]);
         });
 
         // Update product attributes. Also update the initial view in case items are oos
@@ -160,16 +164,16 @@ export default class ProductDetails {
         let productVariant = unsatisfiedRequiredFields.length === 0 ? options.sort().join(', ') : 'unsatisfied';
         const view = $('.productView');
 
-        if (productVariant) {
+        /*if (productVariant) {
             productVariant = productVariant === 'unsatisfied' ? '' : productVariant;
             if (view.attr('data-event-type')) {
                 view.attr('data-product-variant', productVariant);
             } else {
-                const productName = view.find('.productView-title')[0].innerText;
+                const productName = view.find('[itemprop="name"]')[0].innerText;
                 const card = $(`[data-name="${productName}"]`);
                 card.attr('data-product-variant', productVariant);
             }
-        }
+        }*/
     }
 
     /**
@@ -259,7 +263,7 @@ export default class ProductDetails {
             return;
         }
 
-        utils.api.productAttributes.optionChange(productId, $form.serialize(), 'products/bulk-discount-rates', (err, response) => {
+        utils.api.productAttributes.optionChange(productId, $form.serialize(), 'products/details/common/bulk-discount-rates', (err, response) => {
             const productAttributesData = response.data || {};
             const productAttributesContent = response.content || {};
             this.updateProductAttributes(productAttributesData);
@@ -393,18 +397,23 @@ export default class ProductDetails {
                 const tmp = document.createElement('DIV');
                 tmp.innerHTML = errorMessage;
 
-                return showAlertModal(tmp.textContent || tmp.innerText);
-            }
-
-            // Open preview modal and update content
-            if (this.previewModal) {
-                this.previewModal.open();
-
-                this.updateCartContent(this.previewModal, response.data.cart_item.id);
+                //return showAlertModal(tmp.textContent || tmp.innerText);
+                swal.fire({
+                    text: errorMessage,
+                    icon: 'error',
+                });
             } else {
-                this.$overlay.show();
-                // if no modal, redirect to the cart page
-                this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
+
+                // Open preview modal and update content
+                if (this.previewModal) {
+                    this.previewModal.open();
+
+                    this.updateCartContent(this.previewModal, response.data.cart_item.id);
+                } else {
+                    this.$overlay.show();
+                    // if no modal, redirect to the cart page
+                    this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
+                }
             }
         });
     }
@@ -482,13 +491,12 @@ export default class ProductDetails {
      * @param  {String} message
      */
     showMessageBox(message) {
-        const $messageBox = $('.productAttributes-message');
+        const $messageBox = $('.availability');
 
         if (message) {
-            $('.alertBox-message', $messageBox).text(message);
-            $messageBox.show();
+            $messageBox.addClass('oos').text(message);
         } else {
-            $messageBox.hide();
+            $('.availability').removeClass('oos').text('In stock & ready to ship');
         }
     }
 
@@ -662,6 +670,9 @@ export default class ProductDetails {
             $attribute.hide();
         } else {
             $attribute.addClass('unavailable');
+            var formEl = '#' + $attribute.attr('for');
+            var $formEl = $(formEl);
+            $formEl.prop('disabled', 'disabled');
         }
     }
 
@@ -689,6 +700,9 @@ export default class ProductDetails {
             $attribute.show();
         } else {
             $attribute.removeClass('unavailable');
+            var formEl = '#' + $attribute.attr('for');
+            var $formEl = $(formEl);
+            $formEl.prop('disabled', false);
         }
     }
 

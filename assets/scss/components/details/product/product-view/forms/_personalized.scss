@@ -1,0 +1,32 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - PERSONALIZED FORMS
+
+\*  --------------------------------------------------------------------------  */
+.form-personalized {
+    margin: remCalc(24) 0 0;
+
+    .options {
+        padding: remCalc(24);
+        border: remCalc(1) solid $neutral-1;
+        background: $white;
+    }
+    .form-inlineMessage {
+        display:block;
+        color:$secondary;
+    }
+    .form-field-group {
+        @include flex(space-between, center, null, row wrap);
+        margin: 0 remCalc(-16) remCalc(16);
+
+        > .form-cr {
+            width: 33.333%;
+            padding: remCalc(8) remCalc(16);
+            margin: 0;
+
+            &:nth-child(n + 4) {
+                padding-top: 0;
+            }
+        }
+    }
+}

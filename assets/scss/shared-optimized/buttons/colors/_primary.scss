@@ -1,0 +1,29 @@
+/*  --------------------------------------------------------------------------  *\
+
+    Button - Secondary
+
+\*  --------------------------------------------------------------------------  */
+.button--primary, .optimizedCheckout-buttonPrimary {
+    background: $accent-1;
+    border-color: $accent-1;
+    color: $white;
+    @media #{$mediaMdOnly} {
+        margin-bottom: remCalc(10);
+    }
+    @include hover {
+        background: $accent-1;
+        border-color: $accent-1;
+    }
+
+    .invert & {
+        background: $white;
+        border-color: $white;
+        color: $accent-1;
+    
+        @include hover {
+            background: $accent-1;
+            border-color: $accent-1;
+            color: $white;
+        }
+    }
+}

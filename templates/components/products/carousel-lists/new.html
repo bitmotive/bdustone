@@ -1,0 +1,38 @@
+<h2 class="ta-center">
+    <small>{{lang 'page.rss.products.new.tag'}}</small> 
+    {{lang 'page.rss.products.new.heading' }}
+</h2>
+<div class="feed-carousel-featured"
+     data-rfk-carousel
+     data-slick='{
+        "accessibility": false,
+        "arrows": false,
+        "dots": true,
+        "infinite": true,
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 4,
+        "responsive": [
+            {
+                "breakpoint": 767,
+                "settings": {
+                    "arrows": true,
+                    "dots": false,
+                    "slidesToShow": 3            
+                }
+            },
+            {
+                "breakpoint": 992,
+                "settings": {
+                    "arrows": true,
+                    "dots": false,
+                    "slidesToShow": 4                   
+                }
+            }
+        ]
+    }'
+     data-list-name="Related Products">
+    {{#each products}}
+        {{>components/products/details/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+    {{/each}}
+</div>

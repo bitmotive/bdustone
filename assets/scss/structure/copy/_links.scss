@@ -1,0 +1,20 @@
+/*  --------------------------------------------------------------------------  *\
+
+    COPY - BASIC LINK STYLES
+
+    BUTTONS are located in the Components > Basic > Button file.
+
+\*  --------------------------------------------------------------------------  */
+a {
+    color: $linkC;
+    text-decoration: none;
+    
+    @include hover {
+        color: $linkCHov;
+        text-decoration: underline;
+    }
+
+    address &, &[href*="tel:"] {
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,16 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - LAYOUT - HORIZONTAL
+
+\*  --------------------------------------------------------------------------  */
+& {
+    .container {
+        @include flex(center, center, null, row nowrap);
+        padding: remCalc(20) remCalc(24);
+
+        @media #{$mediaFullHeader} {
+            padding: 0 remCalc(15) remCalc(15);
+            justify-content: center;
+        }
+    }
+}

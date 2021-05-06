@@ -1,0 +1,24 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TABS - VERTICAL - MINIMAL
+
+\*  --------------------------------------------------------------------------  */
+&.minimal {
+    > dt {
+        margin: #{$gutterSm * .5} 0;
+        
+        > button {
+            border-right: .5rem solid currentColor;
+            border-bottom: none;
+        }
+    }
+    
+    &.t-right {
+        > dt {
+            > button {
+                border-right: none;
+                border-left: .5rem solid currentColor;
+            }
+        }
+    }
+}

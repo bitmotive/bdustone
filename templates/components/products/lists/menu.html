@@ -1,0 +1,26 @@
+{{#each products}}
+    {{#each category}}
+        {{#contains this ../../catName}}
+            {{#contains this ../../../subcatName}}
+            <li{{#if ../../../brand.name}} class="{{hyphenate (toLowerCase ../../../../brand.name)}}"{{/if}}>
+                {{#if ../../../brand.name "===" "Spicy"}}<svg><use xlink:href="#icon-spicy"/></svg>{{/if}} 
+                <h4>{{../../../name}}</h4>
+                {{#if ../../../summary}}
+                    <div class="summary">
+                        {{{ ../../../../summary }}}
+                    </div>
+                {{/if}}
+                {{#if ../../../price.sale_price_without_tax.formatted "!==" "$0.00"}}
+                    {{#if ../../../../catName "==="  "Dinner"}}
+                        <p class="price">{{../../../../../price.non_sale_price_without_tax.formatted}}</p>
+                    {{else}}
+                        <p class="price">{{../../../../../price.sale_price_without_tax.formatted}}</p>
+                    {{/if}}
+                {{else}}
+                    <p class="price">{{../../../../price.without_tax.formatted}}</p>
+                {{/if}}
+            </li>
+            {{/contains}}
+        {{/contains}}
+    {{/each}}
+{{/each}}

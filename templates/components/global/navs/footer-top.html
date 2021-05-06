@@ -1,0 +1,12 @@
+<nav class="footer-top">
+    <ul>
+        {{#for 1 (toInt (lang 'footer.footer_top_nav.length'))}}
+            <li {{#contains (lang (concat (concat 'footer.footer_top_nav.' $index) ".url")) 'gift-cards'}}class="bfx-remove-element"{{/contains}}>
+                <a href="{{lang (concat (concat 'footer.footer_top_nav.' $index) '.url')}}"
+                    {{#if (lang (concat (concat "footer.footer_top_nav." $index) ".target")) "===" "_blank"}} target="{{lang (concat (concat 'footer.footer_top_nav.' $index) '.target')}}"{{/if}}>
+                    {{{lang (concat (concat 'footer.footer_top_nav.' $index) '.text')}}}
+                </a>
+            </li>
+        {{/for}}
+    </ul>
+</nav>

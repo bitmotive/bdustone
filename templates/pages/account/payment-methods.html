@@ -1,12 +1,18 @@
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <h2 class="page-heading">{{lang 'account.payment_methods.heading' }}</h2>
-    {{> components/account/navigation account_page='payment_methods'}}
-
-    <div class="account account--fixedLarge">
-        <div class="account-body">
+    <header class="hero">
+        <div class="container">
+            {{> components/global/navs/breadcrumbs breadcrumbs=breadcrumbs}}
+            <h1 class="ta-left">{{lang 'account.payment_methods.heading' }}</h1>
+            {{> components/account/navigation account_page='payment_methods'}}
+        </div>
+    </header>
+    <section>
+        <div class="container account">
+            <div class="sidebar-nav nav">
+                {{> components/account/navigation account_page='payment_methods'}}
+            </div>
             {{> components/account/payment-methods-list }}
         </div>
-    </div>
+    </section>
 {{/partial}}
 {{> layout/base}}

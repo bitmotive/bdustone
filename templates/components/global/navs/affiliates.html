@@ -1,0 +1,16 @@
+<ul class="affiliates">
+    <li>
+        <a href="{{lang 'header.affiliates.contact.url'}}">{{{lang 'header.affiliates.contact.text'}}}</a>
+    </li>
+    {{#for 1 (toInt (lang 'header.affiliates.length'))}}
+        <li>
+            <a href="{{lang (concat (concat 'header.affiliates.' $index) '.url')}}"
+                {{#if (lang (concat (concat "header.affiliates." $index) ".target")) "===" "_blank"}} target="{{lang (concat (concat 'header.utility_nav.' $index) '.target')}}"{{/if}}>
+                <svg>
+                    <title>{{lang (concat (concat 'header.affiliates.' $index) '.text')}}</title>
+                    <use xlink:href="#icon-logo-{{dashcase (lang (concat (concat 'header.affiliates.' $index) '.text'))}}"></use>
+                </svg>
+            </a>
+        </li>
+    {{/for}}
+</ul>

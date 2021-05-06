@@ -1,0 +1,53 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FEED - FEATURED - GRID
+
+\*  --------------------------------------------------------------------------  */
+.f-feat-grid {
+    
+    @media #{$mediaMd} {
+        @include grid((5fr 7fr), (1fr));
+
+        > article {
+            @include gridItem();
+            
+            &:first-child {
+                @include gridItem(null, null, 1, 3, 1, 1);
+            }
+            
+            &:nth-child(2) {
+                @include gridItem(null, null, 1, 1, 2, 1);
+            }
+            
+            &:nth-child(3) {
+                @include gridItem(null, null, 2, 1, 2, 1);
+            }
+            
+            &:nth-child(4) {
+                @include gridItem(null, null, 3, 1, 2, 1);
+            }
+            
+            &:nth-child(n + 2) {
+                
+                @include flex(stretch, center, null, row nowrap);
+                
+                > a {
+                    width: 41.667%;
+                }
+                
+                > div {
+                    width: 58.333%;
+                    padding: $gutterSm;
+                }
+                
+                .by {
+                    margin: 0;
+                }
+                
+                .tags {
+                    display: none;
+                }
+            }
+        }
+    }
+}

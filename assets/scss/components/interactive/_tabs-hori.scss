@@ -1,0 +1,115 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TABS - HORIZONTAL
+
+\*  --------------------------------------------------------------------------  */
+.tabs {
+    
+    @media #{$mediaMd} {
+        @include flex(space-between, stretch, flex-end, row wrap);
+        //padding: 0 remCalc($sideMarginMd);
+
+        > dt:not(.sr-only) {
+            @include position(relative, 100);
+            width: 100%;
+            padding: 0;
+            margin: 0 0 0 remCalc(0);
+            background: none;
+            
+            > button {
+                width: 100%;
+                color: $black;
+                font-family: $headingFF;
+                text-decoration: none;
+                text-transform: uppercase;
+                border: none;
+                padding: 0;
+                padding: remCalc(8) remCalc(16);
+                font-size: remCalc(19);
+                line-height: (27 / 19);
+                letter-spacing: .04em;
+
+                @include hover {
+                    color: $white;
+                    background: $secondary;
+                }
+                
+                &[aria-expanded="true"] {
+                    background:black;
+                    color:$white;
+                }
+                
+                
+            }
+
+            @media #{$mediaMd} {
+                @include flexItem(0, 0, auto, 0);
+                width: auto;
+            }
+        }
+
+        > dd {
+            @include position(relative, 0);
+            width: 100%;
+            padding: #{$gutter};
+
+            @media #{$mediaMd} {
+                @include flexItem(0, 0, auto, 1);
+                width: 100%;
+                margin: remCalc(0) 0 0;
+                padding: remCalc(32) 0 0;
+                //border-top: remCalc(1) solid $accent-2;
+
+                &:only-of-type {
+                    margin: remCalc(40) 0 0;
+                }
+                
+                &.tab-content {
+                    border-top:3px solid black;
+                    a {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            :last-child {
+                margin-bottom: 0;
+            }
+        }
+        /* -------------------------- *\
+        TAB OPTIONS
+
+        Comment out what you don't want to include.  Also, if only one style is used, remove the class
+        name from the imported file to reduce output of code.
+        \* -------------------------- */
+        @import 'tabs-horizontal/tabs/_traditional';
+        @import 'tabs-horizontal/tabs/_button';
+        @import 'tabs-horizontal/tabs/_minimal';
+        /* -------------------------- *\
+        TAB INDICATOR
+
+        Comment out what you don't want to include.  Also, if only one style is used, remove the class
+        name from the imported file to reduce output of code.
+        \* -------------------------- */
+        @import 'tabs-horizontal/_indicator';
+        /* -------------------------- *\
+        TAB ALIGNMENT
+
+        Comment out what you don't want to include.  Also, if only one style is used, remove the class
+        name from the imported file to reduce output of code.
+        \* -------------------------- */
+        @import 'tabs-horizontal/alignment/_left';
+        @import 'tabs-horizontal/alignment/_right';
+        @import 'tabs-horizontal/alignment/_bottom';
+        /* -------------------------- *\
+        TAB SIZING
+
+        Comment out what you don't want to include.  Also, if only one style is used, remove the class
+        name from the imported file to reduce output of code.
+        \* -------------------------- */
+        @import 'tabs-horizontal/sizing/_sm';
+        @import 'tabs-horizontal/sizing/_lg';
+    }
+
+}

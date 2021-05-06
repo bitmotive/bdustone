@@ -12,7 +12,7 @@
     <div class="modal-body">
         <div class="writeReview-productDetails">
             <div class="writeReview-productImage-container">
-                {{> components/common/responsive-img
+                {{> components/global/responsive-img
                     image=product.main_image
                     fallback_size=theme_settings.product_size
                     lazyload=theme_settings.lazyload_mode
@@ -44,25 +44,25 @@
 
                 <!-- Name -->
                 {{#if product.reviews.author}}
-                    {{> components/common/forms/text id="revfromname" name="revfromname" label=(lang 'products.reviews.form_write.name') value=product.reviews.author}}
+                    {{> components/global/forms/text id="revfromname" name="revfromname" label=(lang 'products.reviews.form_write.name') value=product.reviews.author}}
                 {{else}}
-                    {{> components/common/forms/text id="revfromname" name="revfromname" label=(lang 'products.reviews.form_write.name') value=customer.name}}
+                    {{> components/global/forms/text id="revfromname" name="revfromname" label=(lang 'products.reviews.form_write.name') value=customer.name}}
                 {{/if}}
 
                 {{#if product.reviews.show_review_email}}
                     <!-- Email -->
                     {{#if product.reviews.email}}
-                        {{> components/common/forms/text id="email" name="email" required="false" label=(lang 'products.reviews.form_write.email') value=product.reviews.email}}
+                        {{> components/global/forms/text id="email" name="email" required="false" label=(lang 'products.reviews.form_write.email') value=product.reviews.email}}
                     {{else}}
-                        {{> components/common/forms/text id="email" name="email" required="false" label=(lang 'products.reviews.form_write.email') value=customer.email}}
+                        {{> components/global/forms/text id="email" name="email" required="false" label=(lang 'products.reviews.form_write.email') value=customer.email}}
                     {{/if}}
                 {{/if}}
 
                 <!-- Review Subject -->
-                {{> components/common/forms/text id="revtitle" name="revtitle" required="true" label=(lang 'products.reviews.form_write.subject') value=product.reviews.title}}
+                {{> components/global/forms/text id="revtitle" name="revtitle" required="true" label=(lang 'products.reviews.form_write.subject') value=product.reviews.title}}
 
                 <!-- Comments -->
-                {{> components/common/forms/multiline id="revtext" name="revtext" required="true" label=(lang 'products.reviews.form_write.comments') value=product.reviews.text}}
+                {{> components/global/forms/multiline id="revtext" name="revtext" required="true" label=(lang 'products.reviews.form_write.comments') value=product.reviews.text}}
 
                 {{{product.reviews.recaptcha.markup}}}
 

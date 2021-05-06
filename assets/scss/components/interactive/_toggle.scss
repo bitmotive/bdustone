@@ -1,0 +1,36 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TOGGLE
+
+\*  --------------------------------------------------------------------------  */
+.toggle {
+    @include position(relative, null);
+    /*  ----------------------------------------------------------------------  *\
+
+        CORE STYLING
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'toggle/_nav';
+    @import 'toggle/_panel';
+    /*  ----------------------------------------------------------------------  *\
+
+        NAV PLACEMENT
+    
+        Remove these files if they aren't used on your website.
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'toggle/nav-placement/_top-left';
+    @import 'toggle/nav-placement/_top-right';
+    @import 'toggle/nav-placement/_bottom-left';
+    @import 'toggle/nav-placement/_bottom-right';
+    @import 'toggle/nav-placement/_bottom-center';
+    /*  ----------------------------------------------------------------------  *\
+
+        SIZING OPTIONS
+    
+        Remove these files if they aren't used on your website.
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'toggle/sizing/_sm';
+    @import 'toggle/sizing/_lg';
+}

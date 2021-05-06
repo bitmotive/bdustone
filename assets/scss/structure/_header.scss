@@ -1,0 +1,106 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER
+
+\*  --------------------------------------------------------------------------  */
+body {
+    padding: remCalc(0) 0 0;
+
+    @media #{$mediaFullHeader} {
+        padding: remCalc(0) 0 0;
+    }
+    
+}
+
+body > header {
+    
+    
+
+    background:linear-gradient(0deg, #000000 0%, #272727 100%);
+    color: #666;
+    // > div {
+    //     background: inherit;
+    // }
+    @media #{$mediaFullHeader} {
+        
+        
+        .dashline {
+            position:absolute;top:127px;width:100%;
+            border-top:remCalc(1) dashed $neutral-1;
+        }
+        padding:0;
+        border-top: remCalc(32) solid $secondary;
+    }
+
+    @media #{$print} {
+        display: none;
+    }
+    /*  ----------------------------------------------------------------------  *\
+
+        POSITIONING OPTIONS
+
+        @import 'header/positioning/_absolute-top';
+        @import 'header/positioning/_sticky-top';
+        @import 'header/positioning/_fixed-left';
+        @import 'header/positioning/_relative';
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'header/positioning/sticky-top';
+    /*  ----------------------------------------------------------------------  *\
+
+        LAYOUT OPTIONS
+
+        @import 'header/layouts/_vertical';
+        @import 'header/layouts/vertical/_w-utility-nav';
+        @import 'header/layouts/vertical/_w-utility-bar';
+        @import 'header/layouts/vertical/_w-toggle';
+
+        @import 'header/layouts/horizontal/has-util-nav';
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'header/layouts/horizontal';
+    @import 'header/layouts/horizontal/has-util-bar';
+    /*  ----------------------------------------------------------------------  *\
+
+        LOGO
+
+        @import 'header/logo/_img-tagline';
+        @import 'header/logo/_svg-tagline';
+        @import 'header/logo/_text';
+        @import 'header/logo/_svg';
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'header/logo/img';
+    /*  ----------------------------------------------------------------------  *\
+
+        NAVIGATIONS
+
+        @import 'header/navs/vertical/_root-only';
+        @import 'header/navs/vertical/_dropdown';
+        @import 'header/navs/vertical/_utility';
+
+        @import 'header/na≈vs/horizontal/_root-only';
+        @import 'header/navs/horizontal/dropdown';
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'header/navs/_toggle';
+    @import 'header/navs/horizontal/utility';
+    @import 'header/navs/horizontal/mega-menu';
+    @import 'header/navs/horizontal/affiliates';
+    @import 'header/navs/horizontal/account';
+    /*  ----------------------------------------------------------------------  *\
+
+        SEARCH
+
+    \*  ----------------------------------------------------------------------  */
+    /*  ----------------------------------------------------------------------  *\
+
+        COMPONENTS
+
+    \*  ----------------------------------------------------------------------  */
+    @import 'header/cart/cart';
+    @import 'header/promo';
+    @import 'header/card';
+}
+@import 'header/search/base';
+@import 'header/navs/nav-open';

@@ -1,0 +1,54 @@
+/*  --------------------------------------------------------------------------  *\
+
+    INVOICE - ITEMS
+
+\*  --------------------------------------------------------------------------  */
+.items {
+    margin: 0 0 remCalc(12);
+    padding: remCalc(12) remCalc(16);
+    background: rgba($tertiary, .15);
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        line-height: 1;
+    }
+
+    th, td {
+        padding: remCalc(8) remCalc(16);
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+
+    th {
+        text-align: left;
+        background: $tertiary;
+        color: $white;
+    }
+
+    tbody {
+        tr:nth-child(even) {
+            background: rgba($white, .75);
+        }
+    }
+
+    tfoot {
+        td {
+            text-align: right;
+
+            &:first-child {
+                font-weight: bold;
+            }
+        }
+
+        tr {
+            &:last-child {
+                td {
+                    border-top: remCalc(1) solid $tertiary;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - LAYOUT - VERTICAL
+
+\*  --------------------------------------------------------------------------  */
+& {
+    padding: #{$gutterSm / 2} 0;
+    
+    > div {
+        @include flex(space-between, center, null, row wrap);
+        padding: 0 #{$gutterSm / 2};
+    }
+    
+    nav {
+        width: 100%;
+    }
+    
+    @media #{$mediaFullHeader} {
+        border-right: .1rem solid $primary;
+    }
+}

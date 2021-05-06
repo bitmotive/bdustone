@@ -1,0 +1,311 @@
+/* CSS Document */
+
+// This trick prevents the flashing of unstyled carousel
+.feed-carousel-featured.slick-initialized{
+    //visibility: visible;
+    //opacity:1;
+}
+.feed-carousel-featured {
+    //opacity:0;
+    //visibility: hidden;
+    //transition: opacity .3s ease-out;
+
+    //border:1px solid red;
+
+    @media #{$mediaMd} {
+        @include flex(center, stretch, flex-start, row nowrap);
+        padding:0 remCalc(0);
+    }
+    
+    .related-products & {
+        //margin-bottom: remCalc(70);
+        @media #{$mediaMd} {
+            padding:0 0;
+        }
+    }
+    
+    .card {
+        //border:1px solid green;
+        width: 48% !important;
+        margin: remCalc(8) 0;
+               
+        @media #{$mediaMd} {
+            margin: 0 remCalc(16);
+            flex: 1 1 auto;
+        }
+
+    }
+
+    .slick-list {
+        //border:1px solid blue;
+        overflow: visible;
+        @media #{$mediaMd} {
+            width: 100%;
+            overflow: hidden;
+        }
+    }
+
+    .slick-track {
+        border-top: 1px solid $primary;
+       
+        @media #{$mediaSmBelow} {
+            width: 100% !important;
+            flex-flow: row wrap;
+            transform: none !important;
+            > :nth-child(n+5) {
+                display: none !important;
+            }
+        }
+        
+        @media #{$mediaMd}{
+            border-top: 0;
+        }
+
+    }
+
+    .slick-arrow {
+        @include position(absolute, null, (top), (40%), translate(0, -100%));
+    }
+
+    .slick-prev {
+        left: remCalc(-30);
+        @media #{$mediaLg} {
+            left: remCalc(-50);
+        }
+    }
+
+    .slick-next {
+        right: remCalc(-30);
+
+        @media #{$mediaLg} {
+            right: remCalc(-50);
+        }
+    }
+}
+
+//aligns Shop All Buttons on mobile
+.carousel-section {
+    
+    //border:1px solid green;
+    padding-top: remCalc(35) 0 remCalc(35) 0;
+
+    h2 {
+        margin:0 0 remCalc(14);
+        letter-spacing: 0.02em;
+        display:flex;
+        flex-flow: row nowrap;
+        align-content: center;
+        justify-content: space-between;
+
+        @media #{$mediaMd} {
+            margin:0 remCalc(15) remCalc(15) remCalc(15);
+            font-size: remCalc(36);
+            padding-bottom: remCalc(16);
+            border-bottom: 1px solid black;
+        }
+
+    }
+
+    .related-products {
+        H2 {
+            @media #{$mediaMd} {
+                margin:0 remCalc(15) remCalc(15) remCalc(15);
+            }
+        }
+    }
+}
+.carousel-container{
+    @media #{$mediaSmBelow} {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2 {
+            margin-bottom: remCalc(8);
+        }
+    }
+    @media #{$mediaMd}{
+        padding:0;
+        h2 {
+            font-size:remCalc(27);
+            line-height: remCalc(40);
+        }
+     }
+}
+
+.shop-all-mobile {
+    width: auto;
+    padding: remCalc(11) remCalc(34);
+    margin-top: remCalc(32);
+    font-size: remCalc(16);
+    @media #{$mediaSmBelow} {
+        margin-top:remCalc(12);
+    }
+    @media #{$mediaMd}{
+        display:none;
+    }
+}
+.shop-all-desktop {
+    display: none;
+    width: auto;
+    @media #{$mediaMd}{
+        display: flex;
+    }
+}
+.news-carousel {
+    margin-bottom: remCalc(40);
+
+    .slick-track {
+        @media #{$mediaSmBelow} {
+            > :nth-child(n+4) {
+                display: none !important;
+            }
+        }
+    }
+
+    .card {
+        @media #{$mediaSmBelow} {
+            width: 100% !important;
+            margin-bottom:remCalc(40);
+        }
+        .title {
+            min-height:auto;
+        }
+        .cnt {
+            text-align:center;
+            @media #{$mediaMd} {
+                text-align: left;
+            }
+        }
+        h3 { 
+            a {
+                font-family: $headingFF;
+                font-size: remCalc(18);
+                line-height: remCalc(27);
+                letter-spacing: 0.02em;
+                text-transform: uppercase;
+                font-weight: bold;
+                text-align: center;
+                
+                @media #{$mediaMd} {
+                    text-align: left;
+                }
+            }
+        }
+        p {
+            display:-webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            /* autoprefixer: off */  
+            overflow:hidden;
+            @media #{$mediaSmBelow} {
+                display:none;
+            }
+        }
+    }
+
+    .card-featured{ 
+        .img-w {
+            padding: 55% 0 0;
+
+            > a {
+                //position:relative;
+                &:after {
+                    content:"";
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-color: transparent transparent transparent#fff;
+                    position:absolute;
+                    top:50%;
+                    left:50%;
+                    transform:translate(-50%, -50%);
+                    opacity:1;
+                }
+                &:hover,
+                &.is-active {
+                    &:after {
+                        opacity:.8;
+                    }
+                }
+            }
+        }
+        .cnt {
+            border:0;
+            > a {
+                color:$secondary;
+            }
+        }
+    }
+}
+.bdu-exclusives {
+    // This will be an image, this code is temporary to design white font adjustments
+    background-color: black;
+    background:url(../img/bg-exclusives.jpg) top center repeat;
+    
+    .img-exclusive {
+        position: absolute;
+        top:0; left:0;height:100%;width:100%;
+        background:url(../img/border-rip.png);
+        background-size:100%;
+    }
+    
+    h2 {
+        color: $neutral-3;
+        @media #{$mediaMd} {
+            padding-bottom: remCalc(16);
+            border-color: $white;
+            margin-bottom: 0;
+        }
+    }
+    .shop-all-mobile {
+        margin-top: 0;
+        margin-bottom: remCalc(78);
+        
+    }
+ 
+    //design specific to exclusive list on home page
+    .feed-carousel-featured{
+        text-align:center;
+        @media #{$mediaMd} {
+            text-align:left;
+        }
+
+
+
+        .slick-track {
+
+            padding-top: remCalc(30);
+            @media #{$mediaSmBelow} {
+                padding:remCalc(10);
+                > :nth-child(n+4) {
+                    display: none !important;
+                }
+            }
+            @media #{$mediaLg} {
+                padding-top: remCalc(48);
+            }
+        }
+
+        .card{
+            background-color: $primary;
+            color: $neutral-3;
+            width: 100% !important;
+            margin-bottom:remCalc(60);
+            .cnt {
+                border:0; 
+            }
+
+            .title {
+                margin-bottom: remCalc(16);
+                a {
+                    color:$neutral-3;
+                    font-weight: 600;
+                    font-family: $headingFF;
+                    letter-spacing: 0.02em;
+                    text-transform: uppercase;
+                    font-size: remCalc(16);
+                }
+            }
+        }
+    }
+}

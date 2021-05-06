@@ -1,0 +1,25 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL ABOVE > TEXTAREAS
+
+\*  --------------------------------------------------------------------------  */
+textarea {
+    display: block;
+    order: 1;
+    width: 100%;
+    height: calc(6em + ($formLAGutter * 2));
+    padding: $formLAGutter;
+    border: remCalc(1) solid #B5B5B5;
+    border-radius: 0;
+    
+    &:focus {
+        border-color: $formLABorderFocus;
+    }
+
+    &:disabled {
+        background: $neutral-3;
+        color: $neutral-2;
+        font-style: italic;
+        cursor: not-allowed;
+    }
+}

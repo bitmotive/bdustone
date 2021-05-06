@@ -1,0 +1,47 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORMS - OPTIONS - INPUTS
+
+\*  --------------------------------------------------------------------------  */
+.opts-text {
+    width: 100%;
+
+    label, .form-label {
+        display: block;
+        @include flexItem(0, 0, auto);
+        margin: 0 0 remCalc(8);
+        width: 100%;
+    }
+
+    input {
+        padding: remCalc(8) remCalc(16);
+        height: remCalc(40);
+        width: 100%;
+        border: remCalc(1) solid $neutral-1;
+        font-size: remCalc(16);
+
+        @include hover {
+            border-color: $tertiary;
+        }
+    }
+
+    textarea {
+        padding: remCalc(8) remCalc(16);
+        height: remCalc(140);
+        width: 100%;
+        border: remCalc(1) solid $neutral-1;
+        font-size: remCalc(16);
+        font-family: $copyFF;
+
+        @include hover {
+            border-color: $tertiary;
+        }
+    }
+}
+
+.form-label {
+    display: block;
+    @include flexItem(0, 0, auto);
+    margin: 0 0 remCalc(8);
+    width: 100%;
+}

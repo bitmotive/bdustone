@@ -1,0 +1,63 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HERO > MEDIA
+
+\*  --------------------------------------------------------------------------  */
+&.has-media {
+    overflow: hidden;
+    @media (max-width: 767.9px) {
+        padding-bottom:0;
+    }
+    .container {
+        @include flex(space-between, stretch, null, column);
+        @media #{$mediaMd} {
+            @include flex(space-between, stretch, null, row nowrap);
+        }
+    }
+    
+    .img-w {
+
+        @media #{$mediaMd} {
+            margin: remCalc(-20) 0;
+            width: 58.333%;
+        }
+
+        @media #{$mediaLg} {
+            width: 50%;
+            margin: remCalc(-24) -4.1667% remCalc(-24) 0;
+        }
+    }
+
+    picture img, img {
+        display: block;
+        width: 100%;
+        height: auto;
+        
+        @media #{$mediaPortrait} {
+            height: 100%;
+            width: auto;
+        }
+    }
+    
+    .content {
+        @include position(relative, 100);
+        width: 100%;
+        @media #{$mediaMd} {
+            width: 50%;
+        }
+    }
+
+    .breadcrumb {
+        @media #{$mediaMd} {
+            margin: 0 0 remCalc(48);
+        }
+
+        @media #{$mediaLg} {
+            margin: 0 0 remCalc(64);
+        }
+    }
+    
+    &:after {
+        display: none;
+    }
+}

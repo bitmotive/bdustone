@@ -1,0 +1,81 @@
+<div class="thumbnails"    
+    {{#if product.images.length '>' 1}}
+        data-slick='{
+            "accessibility": false,
+            "arrows": false,
+            "infinite": true,
+            "mobileFirst": true,
+            "dots": true,
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "vertical": false,
+            
+            "responsive": [
+                {
+                    "breakpoint": 992,
+                    "settings": {
+                        "dots": false,
+                        {{#if product.images.length '>' 4}}
+                            "slidesToShow": 4,
+                        {{else}}
+                            "slidesToShow": 5,
+                        {{/if}}
+                        "slidesToScroll": 1,
+                        "vertical": false,
+                        "infinite": false,
+                        "arrows":true
+                    }
+                }
+            ]
+        }'
+        {{else}}
+        data-slick='{
+            "accessibility": false,
+            "arrows": false,
+            "dots": true,
+            "infinite": false,
+            "mobileFirst": true,
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "vertical": false,
+            "responsive": [
+            {
+                "breakpoint": 0,
+                "settings": {
+                    "arrows": false,
+                    "dots": true,
+                    "slidesToShow": 1,
+                    "slidesToScroll": 1,
+                    "vertical": false
+                }
+            },
+            {
+                "breakpoint": 992,
+                "settings": "unslick"
+            }]
+        }'
+        {{/if}}>
+    {{#forEach product.images}}
+        <div class="thumbnail">
+            <a
+                href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
+                data-image-gallery-item
+                data-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
+                data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
+                data-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
+                {{#if isFirst}}class="is-active"{{/if}}
+            >
+                <picture>
+                    <source src="{{getImage this 'productthumb_lg' }}" media="(min-width: 992px)"  />
+                    <source src="{{getImage this 'productthumb_md' }}" media="(max-width: 768px)" />
+                    <source src="{{getImage this 'productthumb_sm' }}" media="(max-width: 576px)" />
+                    <img src="{{getImage this 'productthumb_xs' }}" alt="{{ alt }}" />
+                </picture>
+            </a>
+        </div>
+    {{/forEach}}
+</div>
+
+{{!--
+    
+--}}

@@ -1,0 +1,27 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL ABOVE > INPUTS
+
+\*  --------------------------------------------------------------------------  */
+input:not([type="radio"]):not([type="checkbox"]) {
+    display: block;
+    width: 100%;
+    padding: remCalc(8) remCalc(16);
+    border: remCalc(1) solid #B5B5B5;
+    border-radius: 4px;
+    background: $white;
+    font-size: remCalc(14);
+    line-height: (24 / 16);
+    font-family: $copyFF;
+
+    &:focus {
+        border-color: $primary;
+    }
+
+    &:disabled {
+        background: $neutral-3;
+        color: $neutral-2;
+        font-style: italic;
+        cursor: not-allowed;
+    }
+}

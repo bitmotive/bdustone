@@ -1,0 +1,58 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - FORM
+
+\*  --------------------------------------------------------------------------  */
+.options {
+    margin: 0 0 remCalc(24);
+    padding: 0 0 remCalc(24);
+    border-bottom: remCalc(1) solid $neutral-2;
+}
+
+.form-label {
+    font-weight:500;
+    font-size: remCalc(14);
+    line-height: (24 / 14);
+    SPAN {
+        color:$neutral-1;
+        font-weight:normal;
+    }
+
+    @media #{$mediaLg} {
+        font-size: remCalc(16);
+    }
+}
+
+select {
+    margin-left:remCalc(20);
+    background: none;
+    border: 1px solid $neutral-1;
+    border-radius: 10px;
+    padding: remCalc(10) remCalc(15);
+    padding-right: remCalc(36); 
+    font-size: remCalc(16);
+    color: $primary;
+    &:focus{
+        border: 1px solid $primary;
+    }
+}
+
+.form-btns {
+
+    [class*="btn-"] {
+        + [class*="btn-"], + .drop-btn {
+            margin-top: remCalc(16);
+        }
+    }
+    
+
+    @media #{$mediaMd} {
+        @include flex(space-between, center, null, row nowrap);
+
+        [class*="btn-"] {
+            + [class*="btn-"], + .drop-btn {
+                margin-top: 0;
+            }
+        }
+    }
+}

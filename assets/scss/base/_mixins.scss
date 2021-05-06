@@ -1,0 +1,689 @@
+/*  --------------------------------------------------------------------------  *\
+
+    GLOBAL MIXINS
+
+    These are a common set of mixins that are commonly 
+
+\*  --------------------------------------------------------------------------  */
+/*  --------------------------------------------------------------------------  *\
+
+    SCREEN READER ONLY
+
+    This mixin hides all content from the view, but keeps it audible for 
+    screen readers.
+
+\*  --------------------------------------------------------------------------  */
+@mixin srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+}
+/*  --------------------------------------------------------------------------  *\
+
+    CLEARS
+
+    Both of the following mixins can be used to clear floated elements.
+
+    Clearfix makes the before and after of the wrapping element able to clear
+    the floats contained within it. This is good to use when all floated 
+    elements are contained with in a single parent element.
+
+    Clear makes the element itself clear the floats, this is used when an 
+    element is following a floated element and needs to be on a new row.
+
+    While floating is older and not as prefered as using newer techniques for 
+    page layout, it still serves a useful purpose and should be used 
+    appropriately.
+
+\*  --------------------------------------------------------------------------  */
+@mixin clearfix {
+    &:before, &:after {
+        display: block;
+        height: 0;
+        width: 100%;
+        content: "";
+        clear: both;
+    }
+}
+@mixin clear() {
+    clear: both;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE APPEARANCE MIXIN
+
+    This is used to reset an objects experience of the default settings applied
+    by the browser.
+
+\*  --------------------------------------------------------------------------  */
+@mixin appearance($a) {
+    -webkit-appearance: $a;
+       -moz-appearance: $a;
+            appearance: $a;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE HOVER/FOCUS MIXIN
+
+    90% of the time when a hover psuedo class is added to an element the focus 
+    psuedo class should be defined as well. These psuedo classes are also 
+    generally the same styles.
+
+    We've created the hover mixin to apply both the hover & focus states.
+
+    This MUST be used whenever defining a hover state, unless the focus state
+    requires different behavior to be applied.
+
+\*  --------------------------------------------------------------------------  */
+@mixin hover {
+    &:hover, &:focus {
+        @content;
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE TRAMSFORM MIXINS
+
+    Transform is used to move an element on the page, without triggering a 
+    re-paint.  This is key when animating either through animate or transition
+    on an element, the animation will be faster and work better when using the
+    transform property rather than the left, top, right, and bottom properties.
+
+    The transform mixins are a set of commonly coupled CSS 3 properties used
+    together.  They are each individually defined because they don't all need
+    to be used all the time.
+
+    Transform is a must for all of the others to work, and the others are 
+    useless without it.
+
+    Transform Origin will change the location where the transform will start
+    to take effect from.
+
+    Perspective will be be amount of distance in space the transform should be
+    applied from.
+
+    Backface is used to hide the backside of an element when it's rotated and
+    the back of the parent element is not visible.  Without this applied, the
+    back side of the element will appear behind the front of the element.
+
+\*  --------------------------------------------------------------------------  */
+@mixin transform($val) {
+    -webkit-transform: $val;
+        -ms-transform: $val;
+            transform: $val;
+}
+@mixin transformOrigin($val) {
+    -webkit-transform-origin: $val;
+        -ms-transform-origin: $val;
+            transform-origin: $val;
+}
+@mixin transformStyle($val) {
+    -webkit-transform-style: $val;
+        -ms-transform-style: $val;
+            transform-style: $val;
+}
+@mixin perspective($val) {
+    -webkit-perspective: $val;
+        -ms-perspective: $val;
+            perspective: $val;
+}
+@mixin backface($val) {
+    -webkit-backface-visibility: $val;
+            backface-visibility: $val;
+}
+@mixin willChange($val) {
+    will-change: $val;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE POSITION MIXIN
+
+    The position mixin was created to help position elements by combining 
+    severally coupled properties into the mixin.
+
+    When positioning something relative, absolute, fixed, or sticky we almost
+    always are defining the z-index, so that is our second variable.  Setting
+    the variable to null will ignore the z-index property completely and the
+    z-index will be inherited from it's natural position in the dom. Otherwise
+    pass in an integer and the z-index will be defined.
+
+    The next variable applies the direction, this can either be an array of 
+    directions passed in like (top, left), or it can be a single direction like
+    left.
+
+    The next variable applies the coordinates corresponding to the direction. 
+    For each direction passed in, a corresponding coordinate needs to accompany
+    it. For example if (top, left) is set as our direction, then (0, 0) would 
+    set the top: 0; left: 0; properties.
+
+    The last variable to be passed in is the transform property which will 
+    call the transform mixin.
+
+    Only the position variable is required to make the mixin wor, which is why
+    we default to relative, the rest are preset to null.
+
+\*  --------------------------------------------------------------------------  */
+@mixin position($pos: relative, $zi: null, $dir: null, $xy: null, $trans: null) {
+    @if ($pos == absolute) or ($pos == fixed) or ($pos == sticky) {
+        @if ($pos == sticky) {
+            position: relative;
+            position: -webkit-sticky;
+            position: sticky;
+        } @else {
+            position: $pos;
+        }
+        z-index: $zi;
+        @if ($pos == sticky) {
+
+            @supports (position: -webkit-sticky) {
+                @if ($dir and $xy) {
+                    @each $d in $dir {
+                        $i: index($dir, $d);
+                        @if (length($xy) > ($i - 1)) {
+                            #{$d}: #{nth($xy, $i)};
+                        }
+                    }
+                }
+            }
+            @supports (position: sticky) {
+                @if ($dir and $xy) {
+                    @each $d in $dir {
+                        $i: index($dir, $d);
+                        @if (length($xy) > ($i - 1)) {
+                            #{$d}: #{nth($xy, $i)};
+                        }
+                    }
+                }
+            }
+        } @else {
+            @if ($dir and $xy) {
+                @each $d in $dir {
+                    $i: index($dir, $d);
+                    @if (length($xy) > ($i - 1)) {
+                        #{$d}: #{nth($xy, $i)};
+                    }
+                }
+            }
+        }
+        @if ($trans) {
+            @include transform($trans);
+        }
+    } @else if ($pos == relative) {
+        position: relative;
+        z-index: $zi;
+        @if ($trans) {
+            @include transform($trans);
+        }
+    } @else if ($pos == static) {
+        position: static;
+        @if ($trans) {
+            @include transform($trans);
+        }
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE FLEX MIXINS
+
+    This group of mixins can be used to ensure all vendor prefixing is 
+    correctly applied to support older browsers.  In addition, we couple the 
+    common properties that work with flex.
+
+    When the flex mixin is called, the first property will set the display of
+    the object to flex.
+
+    The first variable allows you to set the justify content property which 
+    aligns the child elements accross the first axis. 
+
+    Remember:
+        - when setting flex-flow to column the first axis is the Y-axis 
+        - when setting flex-flow to row the first axis is the X-axis
+
+    The second variable allows you to set the align items property which 
+    aligns the child elements accross the second axis. 
+
+    Remember:
+        - when setting flex-flow to column the second axis is the Y-axis 
+        - when setting flex-flow to row the second axis is the X-axis
+
+    The third variable allows you to set align content, which has no effect
+    when there is only one line of items, 
+
+    The final variable is flex-flow which allows you to set the direction and 
+    whether the items inside can wrap or not.
+
+    The Flex Item mixin is used to apply properties to the flexed item.
+
+    The first three variables are required in order for this mixin to work.
+
+    The grow variable tells the flex item whether it's allowed to grow to 
+    fill the unused space.
+
+    The shrink variable tells the flex item whether it's allowed to shrink
+    to accomodate more elements within the space.
+
+    The flex basis variable defines how much space the element should take up
+    initially, then scale proportionatly based on that with the other sibling
+    elements. Generally we leave this set to auto.
+
+    The final variable defines the order for the element to appear.
+
+\*  --------------------------------------------------------------------------  */
+@mixin flex($jc: null, $ai: null, $ac: null, $ff: row wrap) {
+    display: -webkit-box;
+    display:     -ms-flexbox;
+    display: -webkit-flex;
+    display:         flex;
+    justify-content: $jc;
+    align-items: $ai;
+    align-content: $ac;
+    flex-flow: $ff;
+}
+@mixin inlineFlex($jc: null, $ai: null, $ac: null, $ff: row wrap) {
+    display: -webkit-inline-box;
+    display:     -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display:         inline-flex;
+    justify-content: $jc;
+    align-items: $ai;
+    align-content: $ac;
+    flex-flow: $ff;
+}
+@mixin flexItem($g: 0, $s: 1, $b: auto, $o: null) {
+    -webkit-box-flex: $g $s $b;
+        -webkit-flex: $g $s $b;
+            -ms-flex: $g $s $b;
+                flex: $g $s $b;
+    order: $o;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE CSS COLUMNS MIXIN
+
+    This is used to set a parent element to X number of columns. This is not to 
+    be confused with our grid columns, or grid-template-columns mixins.
+
+    The multicolumn mixin breaks the content contained within a parent element
+    into multiple columns.  This is helpful for breaking lists or paragraphs
+    into multiple columns.
+
+    The first variable defines how many columns are desired.
+
+    The second variable defines the space between each column.
+
+    The third variable defines the rule styling (same definition as a border)
+    applied between each column.
+
+\*  --------------------------------------------------------------------------  */
+@mixin multicolumn($c: 2, $g: (#{$gutter}), $r: .2rem solid $accent-2) {
+    -webkit-column-count: $c;
+        -ms-column-count: $c;
+            column-count: $c;
+    -webkit-column-gap: $g;
+        -ms-column-gap: $g;
+            column-gap: $g;
+    -webkit-column-rule: $r;
+        -ms-column-rule: $r;
+            column-rule: $r;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE SET WIDTH MIXIN
+
+    This mixin is used to set the width of an element based on a group of
+    media queries and their corresponding widths. For example the div within
+    the header, section, and footer elements all use this mixin to set the
+    width of the element at a corresponding media query so they are all
+    styled with the same width.
+    
+    The first variable is a set of media queries, the first item in the array
+    will be set as the default. The following items will all be set to their
+    corresponding media queries.
+    
+    The second variable is an array of widths, normally % based, but could be
+    any value acceptable to be defined in the width property.
+
+\*  --------------------------------------------------------------------------  */
+@mixin setW($wQueryList: $siteWQueryList, $wList: $siteWList) {
+    @each $q in $wQueryList {
+        $i: index($wQueryList, $q);
+
+        @if $i == 1 {
+            width: nth($wList, $i);
+        } @else {
+            @media #{$q} {
+                width: nth($wList, $i);
+            }
+        }
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE CSS3 GRID MIXINS
+
+    This set of mixins are used to build grid layouts using the CSS3 Grid 
+    property.
+
+    Grid Columns is used to set the columns on a parent element.
+
+    Grid Rows is used to set the rows on a parent element.
+    
+    Grid Column Gap will define the space between the columns.
+
+    Grid Row Gap will define the space between the rows.
+
+    Grid will combine all of the above mixins into 1 mixin used to define
+    the base of the parent item.  The above mixins can be used on their own
+    to change their values at various media queries.
+
+    IE11 does support grid, so we can utilize it to create complex layouts, 
+    however there are some elements of the grid which it does not support.  
+    This mixin will fix all of that and write out the proper settings to 
+    support IE.
+
+    We utilize the @supports feature which is not supported by IE11, but is
+    supported by all browsers that also happen to use grid.  So using this 
+    feature we can reset some of the settings applied to IE11.
+
+    The grid item mixin will set specific values needed for the placement of
+    the item itself.
+
+\*  --------------------------------------------------------------------------  */
+@mixin gridColumns($columns: (1fr 1fr)) {
+    -ms-grid-columns: $columns;
+        grid-template-columns: $columns;
+             template-columns: $columns;
+}
+
+@mixin gridRows($rows: 1fr) {
+    -ms-grid-rows: $rows;
+        grid-template-rows: $rows;
+             template-rows: $rows;
+}
+
+@mixin gridColumnGap($gap: $gutter) {
+    grid-column-gap: $gap;
+         column-gap: $gap;
+    
+}
+
+@mixin gridRowGap($gap: $gutter) {
+    grid-row-gap: $gap;
+         row-gap: $gap;
+    
+}
+
+@mixin grid(
+            $columns: 1fr 1fr, 
+            $rows: 1fr, 
+            $columnGap: $gutter, 
+            $rowGap: $gutter, 
+            $ieMargin: null, 
+            $margin: null,
+            $flow: row, 
+            $justifyItems: stretch, 
+            $alignItems: stretch, 
+            $justifyContent: stretch, 
+            $alignContent: stretch
+        ) {
+    display: -ms-grid;
+    display: grid;
+    
+    @include gridColumns($columns);
+    @include gridColumnGap($columnGap);
+    @include gridRows($rows);
+    @include gridRowGap($rowGap);
+    
+    justify-items: $justifyItems;
+    align-items: $alignItems;
+    
+    justify-content: $justifyContent;
+    align-content: $alignContent;
+            
+    grid-auto-flow: $flow;
+         auto-flow: $flow;
+    
+    @if ($ieMargin) {
+        margin: $ieMargin;
+
+        @if ($margin) {
+            @supports (display: grid) {
+                margin: $margin;
+            }
+        }
+    }
+}
+
+@mixin gridItem($columnGap: $gutterSm, $rowGap: $gutterSm, $rowStart: null, $rowSpan: null, $columnStart: null, $columnSpan: null) {    
+    -ms-grid-row: $rowStart;
+        grid-row: $rowStart;
+    @if ($rowSpan) {
+        -ms-grid-row-span: $rowSpan;
+            grid-row-end: span $rowSpan;    
+    }
+    
+    -ms-grid-column: $columnStart;
+        grid-column: $columnStart;
+    @if ($columnSpan) {
+        -ms-grid-column-span: $columnSpan;
+            grid-column-end: span $columnSpan;
+    }
+
+    margin: $rowGap $columnGap;
+    
+    @supports (display: grid) {
+        margin: 0;
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE GRID LAYOUT MIXINS
+
+    This mixin is used to create a row and column based grid structure, like 
+    the one found in bootstrap, actually exactly like the one found in bootstrap.
+
+    The Set Col Widths mixin is looped over and sets the width based of an 
+    element based on how many columns are defined.
+
+    Generate Columns is used to loop over each media query and then calls the 
+    Set Col Widths mixin to build each group out.
+
+\*  --------------------------------------------------------------------------  */
+@mixin setColWidths($baseClass: col-, $size: xs) {
+    $class-slug: #{$baseClass}#{$size};
+
+    @for $i from 1 through $gridCount {
+        .#{$class-slug}-#{$i} {
+            width: #{percentage($i / $gridCount)};
+        }
+    }
+}
+@mixin generateCols($mGCMediaList: $gridMediaList, $mGCMediaQueryList: $gridMediaQueryList, $baseClass: col-) {
+    @each $mediaQuery in $mGCMediaList {
+        $i: index($mGCMediaList, $mediaQuery);
+        $query: nth($mGCMediaQueryList, $i);
+        
+        @if ($i == 1) {
+            $sizeSlug: to-lower-case($mediaQuery);
+            @include setColWidths(#{$baseClass}, #{$sizeSlug});
+        } @else {
+            
+            @media #{$query} {
+                $sizeSlug: to-lower-case($mediaQuery);
+                @include setColWidths(#{$baseClass}, #{$sizeSlug});
+            }
+        }
+    }
+}
+@mixin setColGaps($baseClass: col-, $size: xs) {
+    $class-slug: #{$baseClass}#{$size};
+
+    @for $i from 1 through $gridCount {
+        .#{$class-slug}-#{$i} {
+            margin-left: #{percentage($i / $gridCount)};
+        }
+    }
+}
+@mixin generateGaps($mGCMediaList: $gridMediaList, $mGCMediaQueryList: $gridMediaQueryList, $baseClass: gap-) {
+    @each $mediaQuery in $mGCMediaList {
+        $i: index($mGCMediaList, $mediaQuery);
+        $query: nth($mGCMediaQueryList, $i);
+        
+        @if ($i == 1) {
+            $sizeSlug: to-lower-case($mediaQuery);
+            @include setColGaps(#{$baseClass}, #{$sizeSlug});
+        } @else {
+            
+            @media #{$query} {
+                $sizeSlug: to-lower-case($mediaQuery);
+                @include setColGaps(#{$baseClass}, #{$sizeSlug});
+            }
+        }
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    CSS 3 EFFECTS
+
+    These mixins in the past have had lots of browser prefixes to make them
+    work across all the browsers.
+
+    We will maintain the prefixes, and remove them as needed.
+
+    The mixins will continue to work, as to not break the code, but as older
+    browsers decline in use, we will remove unnecessary prefixes to help keep
+    our file size limited.
+
+    Effects include:
+    * Box Shadow
+    * Animations
+    * Filters
+    * Tranistions
+
+\*  --------------------------------------------------------------------------  */
+@mixin boxShadow($val) {
+    @if ($val == none) {
+        box-shadow: none;
+    } @else {
+        box-shadow: $val;
+    }
+}
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+@mixin animation($val) {
+    -webkit-animation: #{$val};
+            animation: #{$val};
+}
+@mixin animationIteration($val) {
+    -webkit-animation-iteration-count: #{$val};
+            animation-iteration-count: #{$val};
+}
+@mixin animationName($name) {
+    -webkit-animation-name: #{$name};
+            animation-name: #{$name};
+}
+@mixin animationTiming($val) {
+    -webkit-animation-timing-function: #{$val};
+            animation-timing-function: #{$val};
+}
+@mixin animationDuration($val) {
+    -webkit-animation-duration: $val;
+            animation-duration: $val;
+}
+@mixin animationDelay($val) {
+    -webkit-animation-delay: $val;
+            animation-delay: $val;
+}
+@mixin animationFillMode($val) {
+    -webkit-animation-fill-mode: $val;
+            animation-fill-mode: $val;
+}
+/*--- FILTERS ---*/
+@mixin filter($filter) {
+    -webkit-filter: $filter;
+            filter: $filter;
+}
+/*--- TRANSITION ---*/
+@mixin transition($val: all) {
+    transition: $val;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE FONT SIZE MIXIN
+
+    This mixin was originally used to support REM and PX based measurement for
+    fonts.  However, since we have moved to a completely rem based measurement
+    this mixin is less likely to be used.
+
+    This is marked for deletion in an upcoming update, but we want to keep this
+    around for a little while longer.
+
+\*  --------------------------------------------------------------------------  */
+@mixin fontSize($fs, $lh: null) {
+    font-size: #{$fs};
+    line-height: $lh;
+}
+/*  --------------------------------------------------------------------------  *\
+
+    THE BUTTON MIXIN
+
+    This mixin controls the base button styles since there are several different
+    buttons class structures used throughout BigCommerce.
+
+\*  --------------------------------------------------------------------------  */
+@mixin buttonBase() {
+    appearance:none;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding:remCalc(9) remCalc(30);
+    margin: 0;
+    border: remCalc(1) solid currentColor;
+    font-size: remCalc(15);
+    font-weight: 500;
+    line-height: (22 / 15);
+    text-align: center;
+    letter-spacing: inherit;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: all .25s;
+    width: 100%;
+    border-radius: 10px;
+    font-family:$copyFF;
+
+    + [class*="btn-"] {
+        margin: remCalc(15) 0 0;
+    }
+
+    svg {
+        display: inline-block;
+        width: remCalc(20);
+        height: remCalc(16);
+        fill: currentColor;
+    }
+
+    @media #{$mediaLg} {
+        width: auto;
+        margin: 0;
+
+        + [class*="btn-"] {
+            margin: 0 0 0 remCalc(15);
+        }
+    }
+
+    @include hover {
+        text-decoration:none;
+    }
+}

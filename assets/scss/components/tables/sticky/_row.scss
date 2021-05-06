@@ -1,0 +1,26 @@
+/*  ------------------------------------------------------------------------------  *\
+
+    TABLE - STICKY - ROW
+
+\*  ------------------------------------------------------------------------------  */
+.s-row {
+    max-height: 600px;
+    overflow: auto;
+    margin: 0 0 #{gutterSm};
+    border: 1px solid $primary;
+    
+    @media #{$mediaMd} {
+        margin: 0 0 #{$gutter};
+    }
+    
+    table {
+        margin: 0;
+        border: none;
+    }
+
+    thead {
+        th {
+            @include position(sticky, null, (top), (0));
+        }
+    }
+}

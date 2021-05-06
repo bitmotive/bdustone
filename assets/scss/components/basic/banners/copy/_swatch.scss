@@ -1,0 +1,15 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CARD - COPY - SWATCHES
+
+\*  --------------------------------------------------------------------------  */
+.swatches {
+    padding: remCalc(3) 0;
+}
+
+.swatch {
+    width: remCalc(10);
+    height: remCalc(10);
+    box-shadow: 0 0 0 remCalc(2) $white, 0 0 0 remCalc(3) $primary;
+    margin: 0 remCalc(11) 0 remCalc(3);
+}

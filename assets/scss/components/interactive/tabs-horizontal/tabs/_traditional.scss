@@ -1,0 +1,40 @@
+/*  --------------------------------------------------------------------------  *\
+
+    TABS - HORIZONTAL - TRADITIONAL
+
+\*  --------------------------------------------------------------------------  */
+&.traditional {
+    > dt {
+        @include position(relative, 200);
+        margin: 0 #{$gutterSm * .25} -.2rem;
+        
+        > button {
+            border: .2rem solid currentColor;
+            border-bottom-color: transparent;
+
+            &[aria-expanded="true"] {
+                border-bottom-color: $white;
+            }
+        }
+    }
+    
+    > dd {
+        @include position(relative, 100);
+        border: .2rem solid $primary;
+    }
+    
+    &.t-bottom {
+        > dt {
+            > button {
+                margin: -.2rem #{$gutter * .25} 0;
+                border-bottom-color: currentColor;
+                border-top-color: transparent;
+                
+                &[aria-expanded="true"] {
+                    border-bottom-color: currentColor;
+                    border-top-color: $white;
+                }
+            }
+        }
+    }
+}

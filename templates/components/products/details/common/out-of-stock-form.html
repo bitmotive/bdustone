@@ -1,0 +1,21 @@
+<div id="RestockNotifyBox" class="oos-form help InfoMessage">
+    <div id="RestockNotifyInline" style="">
+        <div style="clear:both"></div>
+        <div id="RestockNotifyOutOfStock"><p>{{lang 'products.notify.message'}}</p></div>
+        <div id="RestockNotifyInvalidEmail" style="display:none;color:#ff0000;">{{lang 'products.notify.message_invalid_email'}}</div>
+        <div id="RestockNotifyEmail" class="form">
+            <label for="oosEmail" class="sr-only">Email address:</label>
+            <input id="RestockNotifyEmailAddress" type="email" name="user" maxlenth="90" placeholder="{{lang 'products.notify.placeholder'}}">
+        </div>
+        <div id="RestockNotifyButton">
+            <input id="RestockNotifyClick" class="btn-primary" type="submit" 
+                onclick="SubmitRSNotification(); return false;"
+                    value="{{lang 'products.notify.button'}}">
+        </div>
+        <div id="RestockNotifyComplete" style="display:none;">{{lang 'products.notify.message_success'}}</div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+
+{{> components/global/local-scripts/bdu-redirectNotify }}
+    

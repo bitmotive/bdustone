@@ -1,0 +1,31 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCOUNT - WISHLISTS - DETAILS
+
+\*  --------------------------------------------------------------------------  */
+.feed-wishlist {
+  @media #{$mediaMd} {
+    width: 76%;
+    display: inline-flex;
+    padding-top: remCalc(10);
+    padding-left: remCalc(30);
+    margin-left: remCalc(10);
+  }
+}
+
+.footer-wishlist {
+  width: 100%;
+  .btn-txt {
+    justify-content: flex-start;
+  }
+
+  @media #{$mediaMd} {
+    @include flex(space-between, center, null, row nowrap);
+    border-top: remCalc(1) solid $primary;
+    margin: remCalc(24) 0 0;
+    padding: remCalc(12) 0 0;
+    nav {
+      width: auto;
+    }
+  }
+}

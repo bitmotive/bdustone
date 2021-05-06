@@ -1,0 +1,65 @@
+<nav class="share">
+    <h5>{{lang 'common.share'}}</h5>
+    <ul>
+        <li>
+            <a href="https://pinterest.com/pin/create/button/?url={{ settings.base_url }}{{ product.url }}&media={{ product.title }}&description=" target="_blank">
+                <svg>
+                    <title>Pin on Pinterest</title>
+                    <use xlink:href="#icon-soc-pinterest"></use>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a href="https://twitter.com/share?text={{ product.title }}&url={{ settings.base_url }}{{ product.url }}&hashtags=CurtainCall" target="_blank">
+                <svg>
+                    <title>Share on Twitter</title>
+                    <use xlink:href="#icon-soc-twitter"></use>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ settings.base_url }}{{ product.url }}" target="_blank">
+                <svg>
+                    <title>Share on Facebook</title>
+                    <use xlink:href="#icon-soc-facebook"></use>
+                </svg>
+            </a>
+        </li>
+        {{!--
+        <li>
+            <a href="{{url}}" target="_blank">
+                <svg>
+                    <title>Share on Instagram</title>
+                    <use xlink:href="#icon-soc-instagram"></use>
+                </svg>
+            </a>
+        </li>
+        --}}
+        {{!--
+        <li>
+            <a href="{{url}}" target="_blank">
+                <svg viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="circle" d="M32.5 16.5C32.5 25.2357 25.4593 32.3125 16.7802 32.3125C8.10109 32.3125 1.06042 25.2357 1.06042 16.5C1.06042 7.76431 8.10109 0.6875 16.7802 0.6875C25.4593 0.6875 32.5 7.76431 32.5 16.5Z" />
+                    <path class="logo" d="M24.3807 12.1509C22.5555 12.1509 21.0705 10.6708 21.0705 8.85152C21.0705 8.57106 20.8424 8.34375 20.5611 8.34375H17.8327C17.5513 8.34375 17.3233 8.57106 17.3233 8.85152V20.0011C17.3233 21.0706 16.4504 21.9407 15.3772 21.9407C14.3042 21.9407 13.4313 21.0706 13.4313 20.0011C13.4313 18.9315 14.3042 18.0614 15.3772 18.0614C15.6586 18.0614 15.8867 17.8341 15.8867 17.5536V14.8341C15.8867 14.5538 15.6586 14.3264 15.3772 14.3264C12.238 14.3264 9.68405 16.8721 9.68405 20.0011C9.68405 23.1302 12.238 25.6758 15.3772 25.6758C18.5165 25.6758 21.0705 23.1302 21.0705 20.0011V15.0658C22.0845 15.6047 23.2127 15.8859 24.3807 15.8859C24.662 15.8859 24.8901 15.6586 24.8901 15.3781V12.6586C24.8901 12.3783 24.662 12.1509 24.3807 12.1509ZM23.8712 14.8493C22.7836 14.7592 21.7508 14.3804 20.8585 13.7407C20.7035 13.6294 20.4989 13.614 20.3287 13.701C20.1586 13.7878 20.0517 13.9623 20.0517 14.1529V20.0011C20.0517 22.5702 17.9546 24.6602 15.3772 24.6602C12.7998 24.6602 10.7029 22.5702 10.7029 20.0011C10.7029 17.6036 12.5292 15.6232 14.8678 15.3694V17.0895C13.4748 17.331 12.4124 18.5446 12.4124 20.0011C12.4124 21.6306 13.7424 22.9564 15.3772 22.9564C17.0122 22.9564 18.3422 21.6306 18.3422 20.0011V9.3593H20.0814C20.3147 11.3335 21.8905 12.9042 23.8712 13.1368V14.8493Z" />
+                </svg>
+            </a>
+        </li>
+        --}}
+        <li>
+            <a href="mailto:#">
+                <svg>
+                    <title>Email to a friend</title>
+                    <use xlink:href="#icon-mail"></use>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a a href="#" onclick="window.print();return false;">
+                <svg>
+                    <title>Print this page</title>
+                    <use xlink:href="#icon-printer"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>
+</nav>

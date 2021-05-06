@@ -1,0 +1,17 @@
+/*  --------------------------------------------------------------------------  *\
+
+    BANNERS - LAYOUT - IMAGE SIDE FULL SCREEN MODIFICATIONS
+
+\*  --------------------------------------------------------------------------  */
+.full-screen & {
+    justify-content: flex-start;
+    
+    &.alt, &:nth-child(even) {
+        justify-content: flex-end;
+    }
+    
+    > .cnt {
+        padding: #{$gutter * 2};
+        max-width: calc(#{$siteWMx * .5} - #{$gutter});
+    }
+}

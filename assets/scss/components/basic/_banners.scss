@@ -1,0 +1,140 @@
+/*  --------------------------------------------------------------------------  *\
+
+    BANNERS
+
+    These elements are used to display content, most likely in a sidebar, column 
+    in the body of the page, or as a slide in a carousel.
+
+    They can include images, icons, buttons, and text.
+
+\*  --------------------------------------------------------------------------  */
+
+.promo-banner {
+    background: $neutral-3 !important;
+    @media #{$mediaMd} {
+        padding: 0 remCalc(50);
+    }
+}
+
+.banner {
+    background: $primary;
+    .container {
+        max-width: 1329px;
+        padding: 0;
+    }
+    p {
+        font-size: remCalc(13);
+        line-height: remcalc(18);
+        text-transform: capitalize;
+        font-weight: 500;
+        &:nth-child(2) {
+            display: none;
+        }
+        &:nth-child(3){
+            display:none;
+        }
+        &:nth-child(4){
+            display:none;
+        }
+        margin-bottom: 0;
+        @media #{$mediaMd} {
+            &:nth-child(1){
+                display:none;
+            }
+            &:nth-child(2) {
+                display: block;
+                color:$white;
+            }
+            &:nth-child(3){
+                display: block;
+                color:$white;
+                background: url(../img/bg-exclusives.jpg) top center repeat;
+                padding: remCalc(24) remCalc(35);
+                padding-bottom: 0;
+                span {
+                    color: $secondary;
+                }
+            }
+            &:nth-child(4){
+                display:block;
+                color: $white;
+                padding: remCalc(24) remCalc(35);
+                padding-top: remCalc(18);
+                a {
+                    color: $secondary;
+                }
+            }
+        }
+        @media #{$mediaLg} {
+            font-size: remCalc(16);
+            line-height: remcalc(23);
+            &:nth-child(3) {
+            padding-left: remCalc(80);
+            padding-right: remCalc(80);
+            }
+            &:nth-child(4) {
+            padding-left: remCalc(80);
+            padding-right: remCalc(80);
+            }
+        } 
+    }
+    .img-w {
+
+        > img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .cnt {
+        padding: remCalc(20) remCalc(32);
+    }
+
+    /*  ---------------------  *\
+        IMPORT STYLES FOR CARD CONTENT STYLING
+    
+        Comment out any alterations that will not be used on your site.
+        This will reduce the file size by removing unused definitions.
+
+        @import 'cards/size/_sm';
+        @import 'cards/size/_lg';
+    \*  ---------------------  */
+    /*  ---------------------*\
+        IMPORT STYLES FOR CARD LAYOUT OPTIONS
+
+        Comment out any options that will not be used on your site.
+        This will reduce the file size by removing unused definitions.
+        @import 'cards/layouts/_img-above';
+        @import 'cards/layouts/_img-behind';
+        @import 'cards/layouts/_img-overlap';
+        @import 'cards/layouts/_swatch';
+        @import 'cards/layouts/_carousel';
+    \*  ---------------------  */
+    @import 'banners/layouts/_img-side';
+    /*  ---------------------  *\
+        IMPORT STYLES FOR CARD ICON OPTIONS
+
+        Comment out any alterations that will not be used on your site.
+        This will reduce the file size by removing unused definitions.
+
+        @import 'cards/icons/_top';
+        @import 'cards/icons/_left';
+    \*  ---------------------  */
+    /*  ---------------------  *\
+        IMPORT STYLES FOR CARD CONTENT STYLING
+
+        Comment out any alterations that will not be used on your site.
+        This will reduce the file size by removing unused definitions.
+        //@import "cards/copy/_article";
+    \*---------------------*/
+    @import "banners/copy/copy";
+    //@import "banners/copy/swatch";
+    //@import "banners/copy/info";
+}
+
+
+.banner.invert, .banner-w.invert {
+    .title, h3, p {
+        color: $white;
+    }
+}

@@ -1,0 +1,27 @@
+/*  ------------------------------------------------------------------------------  *\
+
+    TABLE - STICKY - COLUMN
+
+\*  ------------------------------------------------------------------------------  */
+.s-column {
+    max-width: 100%;
+    overflow: auto;
+    margin: 0 0 #{$gutterSm};
+    border: 1px solid $primary;
+    
+    @media #{$mediaMd} {
+        margin: 0 0 #{$gutter};
+    }
+    
+    table {
+        margin: 0;
+        border: none;
+    }
+
+    tr {
+        :first-child {
+            @include position(sticky, null, (left), (0));
+            white-space: nowrap;
+        }
+    }
+}

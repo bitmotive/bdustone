@@ -1,0 +1,37 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CAROUSEL - SLICK ARROW
+
+\*  --------------------------------------------------------------------------  */
+.slick-arrow {
+    width: remCalc(36);
+    height: remCalc(36);
+    border-radius: 50%;
+    overflow: hidden;
+    text-indent: remCalc(36);
+    background-color: rgba($primary, .5);
+    transition: .25s background-color linear;
+
+    &.slick-disabled {
+        pointer-events: none;
+        background-color: rgba($primary, .25);
+    }
+
+    @include hover {
+        background-color: $primary;
+    }
+}
+
+.slick-prev {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxNSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGQ9Ik0xMS4zMDk3IDEzLjIyOTlMOS42Mjk4OSAxNC42MjVMMy42OTAxOSA3LjVMOS42Mjk4OSAwLjM3NTAwMkwxMS4zMDk3IDEuNzcwMTJMNi41MjUwNCA3LjQ5OTk3TDExLjMwOTcgMTMuMjI5OVoiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDAiPgo8cmVjdCB5PSIxNSIgd2lkdGg9IjE1IiBoZWlnaHQ9IjE1IiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMCAxNSkiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==');
+    background-position: 43% 50%;
+    background-repeat: no-repeat;
+    background-size: remCalc(16) remCalc(16);
+}
+
+.slick-next {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxNSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGQ9Ik0zLjY5MDI2IDEuNzcwMTJMNS4zNzAxMSAwLjM3NUwxMS4zMDk4IDcuNUw1LjM3MDExIDE0LjYyNUwzLjY5MDI2IDEzLjIyOTlMOC40NzQ5NiA3LjUwMDAzTDMuNjkwMjYgMS43NzAxMloiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDAiPgo8cmVjdCB4PSIxNSIgd2lkdGg9IjE1IiBoZWlnaHQ9IjE1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCAxNSAwKSIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4=');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: remCalc(16) remCalc(16);
+}

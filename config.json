@@ -1,5 +1,5 @@
 {
-  "name": "Big Daddy Unlimited (2020.12.02 1200)",
+  "name": "Big Daddy Unlimited (2020.12.02 1200) (2)",
   "version": "2020.12.02 1200",
   "meta": {
     "price": 0,
@@ -367,8 +367,7 @@
           "gifts_specialty"
         ]
       },
-      "images": {
-      },
+      "images": {},
       "settings": {
         "hide_breadcrumbs": false,
         "hide_page_heading": false,

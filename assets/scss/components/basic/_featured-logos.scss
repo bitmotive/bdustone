@@ -1,0 +1,20 @@
+.featured-logos {
+    @include flex(space-between, center, null, row nowrap);
+    margin: 0 ($gutter * -.5);
+    overflow: auto;
+
+    img {
+        width: auto;
+        height: remCalc(35);
+        margin: 0 ($gutter * .5);
+    }
+
+    @media #{$mediaMd} {
+
+        img {
+            min-width: remCalc(50);
+            max-width: remCalc(200);
+            height: auto;
+        }
+    }
+}

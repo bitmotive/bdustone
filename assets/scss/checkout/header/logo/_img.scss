@@ -1,0 +1,20 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - LOGO - SVG
+
+\*  --------------------------------------------------------------------------  */
+.logo {
+    width: remCalc(140);
+
+
+    @media #{$mediaFullHeader} {
+        width: remCalc(140);
+        margin-top: -2.375rem;
+    }
+    
+    > img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,57 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CARD - LAYOUT - WITH IMAGE BEHIND
+
+\*  --------------------------------------------------------------------------  */
+&.img-behind {
+    @include position(relative, null);
+    background: $primary;
+    overflow: hidden;
+    padding: 0;
+
+    &:before {
+        @include position(absolute, 50, (left, top), (0, 0));
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #3A3436 46.87%, rgba(35, 31, 32, 0) 88.54%);
+        box-shadow: inset 0 remCalc(4) remCalc(10) rgba(0, 0, 0, .4);
+        content: "";
+        display: block;
+        opacity: .7;
+        pointer-events: none;
+    }
+    
+    .cnt {
+        @include position(absolute, 100, (left, top), (50%, 50%), translate(-50%, -50%));
+        width: 80%;
+        color: $white;
+        text-align: center;
+        pointer-events: none;
+    }
+
+    h2 {
+        font-size: remCalc(26);
+        font-weight: bold;
+        line-height: (30 / 26);
+    }
+
+    [class*="btn-"] {
+        display: inline-block;
+    }
+
+    &:hover {
+        .btn-secondary {
+            background:transparent;
+            color: $white;
+        }
+    }
+
+    .img-w:focus {
+        + .cnt {
+            .btn-secondary {
+                background:transparent;
+                color: $white;
+            }
+        }
+    }
+}

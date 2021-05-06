@@ -1,0 +1,117 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - DESCRIPTION
+
+\*  --------------------------------------------------------------------------  */
+.accordion.acc-description {
+    margin: 0 0 remCalc(24);
+
+    @media #{$mediaMd} {
+        padding: remCalc(24);
+        @include flex(space-between, flex-start, null, row wrap);
+        background: $white;
+        border: remCalc(1) solid $neutral-2;
+
+        button {
+            border-bottom: none;
+            font-size: remCalc(16);
+            font-weight: 600;
+            line-height: 1;
+            color: $primary;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 0;
+            cursor: default;
+            pointer-events: none;
+
+            &:before, &:after {
+                display: none;
+            }
+
+            @include hover {
+                color: $primary;
+            }
+
+            &[aria-expanded="true"] {
+                color: $primary;
+            }
+        }
+
+        > dt, > dd {
+            @include flex(0, 0, auto);
+            width: 100%;
+            order: 5;
+
+            &:nth-of-type(1) {
+                width: calc(66.667% - #{remCalc(62)});
+            }
+
+            &:nth-of-type(2) {
+                width: calc(33.333% - #{remCalc(62)});
+            }
+
+        }
+
+        > dt {
+            margin: 0 0 remCalc(24);
+            border-top: none;
+
+            &:nth-of-type(1) {
+                order: 1;
+            }
+
+            &:nth-of-type(2) {
+                order: 2;
+            }
+
+            &:nth-of-type(n + 3) {
+                border-top: remCalc(1) solid $neutral-2;
+                margin: remCalc(32) 0 remCalc(24);
+                padding: remCalc(32) 0 0;
+            }
+        }
+
+        > dd {
+            display: block !important;
+            padding: 0;
+
+            &:nth-of-type(1) {
+                order: 3;
+            }
+
+            &:nth-of-type(2) {
+                order: 4;
+            }
+
+            &:nth-of-type(n + 3) {
+                > ul {
+                    @include multicolumn(3, #{remCalc(32)}, null);
+
+                    > li {
+                        display: inline-block;
+                        width: 100%;
+                        margin: remCalc(8) 0;
+                    }
+                }
+            }
+        }
+
+        @media #{$mediaLg} {
+            padding: remCalc(32) remCalc(48);
+        }
+
+        @media #{$mediaXl} {
+            padding: remCalc(42) remCalc(96);
+        }
+    }
+}
+
+.short-desc {
+    margin: remCalc(24) 0;
+
+    @media #{$mediaMd} {
+        margin: remCalc(24) 0 0;
+        padding: remCalc(24) 0 0;
+        border-top: remCalc(1) solid $neutral-2;
+    }
+}

@@ -1,0 +1,172 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FOOTER - NAV - FOOTER
+
+\*  --------------------------------------------------------------------------  */
+.footer {
+    font-size: remCalc(14);
+    line-height: remCalc(21);
+    margin: 0;
+    text-align: left;
+    width:100%;
+    
+    @media #{$mediaSmBelow} {
+        ul:first-child {
+            > li:first-child {
+                border:1px solid red;
+                display:none;
+            }
+        }
+    }
+
+
+    svg {
+        height:15px;
+        width:15px;
+        path {
+            fill: $white;
+        }
+        display:block;
+        float:left;
+        margin-top:.1rem;
+        margin-bottom:2rem;
+        margin-right:.5rem;
+    }
+
+    
+    label {
+        
+        letter-spacing: .08em;
+        font-weight: 600;
+        text-transform: uppercase;
+        @media #{$mediaMd} {
+            
+        }
+    }
+
+    > ul {
+        margin: 0;
+        
+        @media #{$mediaSmBelow} {
+            > li {
+                border-bottom:1px dashed $tertiary;
+                ul {
+                    margin-bottom:remCalc(33);
+                    li {
+                        padding: 0 0 remCalc(12) 0; 
+                        
+                    }
+                }
+            }
+        }
+
+
+        @media #{$mediaMd} {
+            @include flex(space-around, stretch, null, row nowrap);
+            align-items: stretch;
+            
+            > li {
+
+                width: calc(25%);
+                padding:remCalc(22) remCalc(30);
+                border-right:1px dashed $tertiary;
+                &:last-child {
+                    border:0;
+                }
+                &:first-child {
+                    width: calc(25%);
+                    padding-left:0;
+                }
+                
+            }
+
+            li {
+                ul {
+
+                    height:remCalc(300);
+                    @include flex(flex-start,flex-start, stretch, column wrap);
+
+                    li {
+                        //border:1px solid green;
+                        white-space: nowrap;
+                        padding: 0 0 remCalc(20) 0;  
+                    }
+                }
+            }
+            div {
+                
+            }
+        }
+    }
+
+    ul {
+        ul {
+            margin: remCalc(16) 0 0;
+            //columns:2;
+
+            li {
+                + li {
+                    //margin: remCalc(8) 0 0;
+                }
+            }
+        }
+    }
+
+    @media #{$mediaSmBelow} {
+        label, a {
+            display: block;
+        }
+
+        ul {
+            margin: 0 remCalc(-15);
+
+            ul {
+                margin: 0;
+                display: none;
+                columns: 2;
+                li {
+                    break-inside: avoid-column;
+                }
+            }
+        }
+
+        label {
+            padding: remCalc(16);
+            @include position(relative);
+
+            &:before {
+                @include position(absolute, null, (right, top), (#{remCalc(16)}, 50%), (translate(0, -50%) rotate(45deg)));
+                content: "";
+                width: remCalc(6);
+                height: remCalc(6);
+                border-bottom: remCalc(2) solid $white;
+                border-right: remCalc(2) solid $white;
+                transition: transform .25s linear;
+            }
+        }
+
+        a {
+            padding: remCalc(0) remCalc(16);
+            //background: rgba($white, .25);
+        }
+
+        input:checked {
+            + label {
+                &:before {
+                    transform: translate(0, -50%) rotate(45deg) rotate(-180deg);
+                }
+            }
+            ~ ul {
+                display: block;
+            }
+        }
+        #footerNavItem1:checked {
+            ~ ul {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+}

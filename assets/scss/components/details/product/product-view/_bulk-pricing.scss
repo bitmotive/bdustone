@@ -1,0 +1,22 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - BULK PRICING
+
+\*  --------------------------------------------------------------------------  */
+.bulk-pricing {
+    font-size: remCalc(14);
+    line-height: (18 / 14);
+    margin: 0 0 remCalc(24);
+
+    li {
+        padding: 0;
+
+        &:before {
+            display: none;
+        }
+
+        + li {
+            margin: remCalc(8) 0 0;
+        }
+    }
+}

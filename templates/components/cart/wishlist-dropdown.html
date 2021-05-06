@@ -1,0 +1,36 @@
+<form action="/wishlist.php?action=add&product_id={{product_id}}" class="drop-btn form form-wishlist form-action bfx-remove-element" data-wishlist-add method="post">
+    | <a style="margin-left: 10px" aria-controls="wishlistDropdown" 
+       aria-expanded="false" 
+       class="{{#if class_name }}{{ class_name }}{{ else }}btn-tertiary{{/if}}" 
+       data-dropdown="wishlistDropdown-{{product_id}}">
+        {{lang 'account.wishlists.add_item'}}
+    </a>
+    <ul aria-hidden="true" 
+        data-dropdown-content 
+        id="wishlistDropdown-{{product_id}}" 
+        tabindex="-1">
+        {{#if customer.wishlists}}
+            {{#each customer.wishlists}}
+                <li>
+                    <button formaction="{{this.add_url}}&product_id={{../product_id}}"
+                            type="submit">
+                        {{this.name}}
+                    </button>
+                </li>
+            {{/each}}
+        {{else}}
+            <li>
+                <button type="submit"
+                        data-action="add_to_default">
+                    {{lang 'account.wishlists.add_to_default'}}
+                </button>
+            </li>
+        {{/if}}
+        <li>
+            <a href="/wishlist.php?action=addwishlist&product_id={{product_id}}"
+                rel="nofollow">
+               {{lang 'account.wishlists.create_new'}}
+            </a>
+        </li>
+    </ul>
+</form>

@@ -1,0 +1,42 @@
+/*  --------------------------------------------------------------------------  *\
+
+    INTERIOR NAVIGATIONS
+
+\*  --------------------------------------------------------------------------  */
+&.int-v {
+    font-size: 0.875rem;
+    color: #231f20;
+    
+    a {
+        color: #231f20;
+        
+        @include hover {
+            text-decoration: underline;
+            color: #98262b;
+        }
+    }
+
+    .active {
+
+        > a {
+            text-decoration: underline;
+        }
+    }
+
+    li {
+        padding: 0 0 0.5rem;
+        
+        &:before {
+            display: none;
+        }
+
+        &:last-child {
+            padding: 0;
+        }
+    }
+
+    ul ul {
+        padding: 0 0 0 1rem;
+        margin: 0;
+    }
+}

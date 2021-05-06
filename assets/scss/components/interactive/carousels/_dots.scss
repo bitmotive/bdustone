@@ -1,0 +1,44 @@
+/*  --------------------------------------------------------------------------  *\
+
+    OWL CAROUSEL - DOTS > COUNTER
+
+\*  --------------------------------------------------------------------------  */
+.slick-dots {
+    @include flex(center, center, null, row nowrap);
+    width: 100%;
+    margin:0;
+
+    li {
+        padding: 0;
+        display:flex;
+        + li {
+            margin: 0 0 0 remCalc(8);
+        }
+
+        &:before {
+            display: none;
+        }
+
+        button {
+            text-indent: -9999em;
+            overflow: hidden;
+            width: remCalc(6);
+            height: remCalc(6);
+            border-radius: remCalc(6);
+            background: $neutral-2;
+
+            @include hover {
+                background: $neutral-1;
+            }
+        }
+
+        &.slick-active {
+            button {
+                background: $neutral-1;
+                width: remCalc(11);
+                height: remCalc(11);
+                border-radius: remCalc(11);
+            }
+        }
+    }
+}

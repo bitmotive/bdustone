@@ -1,0 +1,178 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - HORIZONTAL - UTILITY NAV
+
+\*  --------------------------------------------------------------------------  */
+.utility {
+    
+    font-size:remCalc(14);
+    color:$white;
+    a {
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color:$secondary;
+    }
+    p {
+        
+        margin:0;
+        padding:0;
+    }
+
+    li {
+        border:0;
+        &:nth-last-child(-n + 2) {
+
+            a {
+                @include flex(flex-start, center, null, row nowrap);
+                //height: remCalc(55);         
+            }
+
+            svg {
+                width: remCalc(14);
+                height: remCalc(14);
+                margin: 0;
+                fill: $white;
+                margin-right:remCalc(8);
+            }
+        }
+    }
+    .need-help {
+        
+        color: $secondary;
+        font-size: remCalc(14);
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    @media #{$mediaToggleHeader} {
+        @include flex(flex-end, flex-start, null, column nowrap);
+        
+        li {
+            width:100%;
+            border-top: remCalc(1) dashed $tertiary;
+            
+        }
+        //padding: remCalc(10) 0;
+        //background-color:#ffcc00;
+        a {
+            display:none !important;
+        }
+        p {
+            padding: remCalc(14) remCalc(16);
+        }
+       
+    }
+
+    @media #{$mediaFullHeader} {
+        @include flex(flex-end, center, null, row nowrap);
+        @include position(absolute, null, (right, top), (remCalc(0), remCalc(-85)));
+
+        border-left: 1px solid $tertiary;
+        a {
+            padding: 0;
+        }
+
+        li {
+            margin: 0 0 0 remCalc(24);
+        
+            &:nth-last-child(2) {
+                margin: 0 0 0 remCalc(24);
+            }
+            svg {
+                display:none;
+            }
+        }
+    }
+}
+
+.utility2 {
+    
+    font-size:remCalc(14);
+    color:$black;
+
+    a {
+        font-weight:normal;
+        color:$secondary;
+    }
+
+    li {
+
+        a {
+            @include flex(flex-start, center, null, row nowrap);
+            //height: remCalc(55);         
+        }
+
+        svg {
+            width: remCalc(15);
+            height: remCalc(15);
+            margin-top: remCalc(-1);
+            fill: $black;
+            margin-right:remCalc(8);
+        }
+       
+    }
+
+    .text {
+        //@include srOnly();
+        color:$black; 
+    }
+    
+    @media #{$mediaToggleHeader} {
+        @include flex(flex-end, flex-start, null, column-reverse nowrap);
+        li {
+            width:100%;
+            border-top: remCalc(1) dashed $tertiary;
+            padding:remCalc(5) 0;
+            svg {
+                fill: $white;
+            }
+        }
+        //padding: remCalc(10) 0;
+        .text {
+            color:$white; 
+        }
+        .members {
+            background-color:$secondary;
+            .text {
+                color:$black;
+            }
+        }
+        li:last-child {
+            display: none;
+        }
+        
+    }
+    
+    @media #{$mediaFullHeader} {
+        @include flex(flex-end, center, null, row nowrap);
+        @include position(absolute, null, (right, top), (remCalc(0), remCalc(-151)));
+       
+        width:100%;
+        a {
+            padding: 0;
+            line-height:1rem;
+        }
+        li {
+            margin: 0 0 0 remCalc(24);
+            padding-right: remCalc(16);
+            border-right:1px solid rgba(0,0,0,0.25);
+            &:last-child {
+                padding:0;
+                border:0;
+            }
+            &.logout {
+                @include position(absolute, null, (left), (remCalc(0)));
+                padding:0;
+                border:0;
+                margin:0;
+            }
+        }
+        .cart-logo {
+            font-weight:600;
+            text-transform: uppercase;
+        }
+
+        
+    }
+
+}

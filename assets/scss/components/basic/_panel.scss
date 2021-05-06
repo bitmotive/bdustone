@@ -1,0 +1,32 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PANEL
+
+\*  --------------------------------------------------------------------------  */
+.panel {
+    margin: 0 remCalc(24);
+
+    .heading {
+        padding: remCalc(18) remCalc(24);
+        background: $accent-7;
+        color: $white;
+        border: remCalc(1) solid $accent-7;
+        border-radius:0;
+        h2 {
+            color:$white;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 30px;
+        }
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .cnt {
+        padding: remCalc(24);
+        border: remCalc(1) solid #B5B5B5;
+        border-top: none;
+        border-radius:0;
+    }
+}

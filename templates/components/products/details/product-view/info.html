@@ -1,0 +1,120 @@
+<dl class="info">
+    {{#if product.upc}}
+        <dt>{{lang 'products.upc'}}</dt>
+        <dd data-product-upc>{{product.upc}}</dd>
+    {{/if}}
+    {{#if product.condition}}
+        <dt>{{lang 'products.condition'}}</dt>
+        <dd>{{product.condition}}</dd>
+    {{/if}}
+    {{#if product.availability}}
+        <dt>{{lang 'products.availability'}}</dt>
+        <dd>{{product.availability}}</dd>
+    {{/if}}
+    {{#all product.weight theme_settings.show_product_weight}}
+        <dt>{{lang 'products.weight'}}</dt>
+        <dd data-product-weight>{{product.weight}}</dd>
+    {{/all}}
+    {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
+        <dt>{{lang 'products.width'}}</dt>
+        <dd data-product-width>
+            {{product.width}}
+            {{#if settings.measurements.length '==' 'Centimeters'}}
+            ({{lang 'products.measurement.metric'}})
+            {{else}}
+            ({{lang 'products.measurement.imperial'}})
+            {{/if}}
+        </dd>
+        <dt>{{lang 'products.height'}}</dt>
+        <dd data-product-height>
+            {{product.height}}
+            {{#if settings.measurements.length '==' 'Centimeters'}}
+            ({{lang 'products.measurement.metric'}})
+            {{else}}
+            ({{lang 'products.measurement.imperial'}})
+            {{/if}}
+        </dd>
+        <dt>{{lang 'products.depth'}}</dt>
+        <dd data-product-depth>
+            {{product.depth}}
+            {{#if settings.measurements.length '==' 'Centimeters'}}
+            ({{lang 'products.measurement.metric'}})
+            {{else}}
+            ({{lang 'products.measurement.imperial'}})
+            {{/if}}
+        </dd>
+    {{/all}}
+    {{#if product.min_purchase_quantity}}
+        <dt>{{lang 'products.min_purchase_quantity'}}</dt>
+        <dd>{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
+    {{/if}}
+    {{#if product.max_purchase_quantity}}
+        <dt>{{lang 'products.max_purchase_quantity'}}</dt>
+        <dd>{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
+    {{/if}}
+    {{#if product.gift_wrapping_available}}
+        <dt>{{lang 'products.gift_wrapping'}}</dt>
+        <dd>{{lang 'products.gift_wrapping_available'}}</dd>
+    {{/if}}
+    {{#if product.shipping}}
+        {{#if product.shipping.calculated}}
+            <dt>{{lang 'products.shipping'}}</dt>
+            <dd>{{lang 'products.shipping_calculated'}}</dd>
+        {{else}}
+            {{#if product.shipping.price.value '===' 0}}
+                <dt>{{lang 'products.shipping'}}</dt>
+                <dd>{{lang 'products.shipping_free'}}</dd>
+            {{else}}
+                <dt>{{lang 'products.shipping'}}</dt>
+                <dd>{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+    {{#if settings.bulk_discount_enabled}}
+        {{> components/products/details/common/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+    {{/if}}
+    {{#each product.custom_fields}}
+        {{#if name "===" "Ship Week"}}
+            <dt>
+                <svg><use xlink:href="#icon-calendar" /></svg>
+                <span class="sr-only">Delivery</span>
+            </dt>
+            {{#if value "===" "1"}}
+                <dd>In-stock and ready to ship Friday, July XX</dd>
+            {{/if}}
+            {{#if value "===" "2"}}
+                <dd>In-stock and ready to ship Friday, August XX</dd>
+            {{/if}}
+            {{#if value "===" "3"}}
+                <dd>In-stock and ready to ship Friday, September XX</dd>
+            {{/if}}
+            {{#if value "===" "4"}}
+                <dd>In-stock and ready to ship Friday, October XX</dd>
+            {{/if}}
+            {{#if value "===" "5"}}
+                <dd>In-stock and ready to ship Friday, November XX</dd>
+            {{/if}}
+            {{#if value "===" "6"}}
+                <dd>In-stock and ready to ship Friday, December XX</dd>
+            {{/if}}
+        {{/if}}
+    {{/each}}
+    {{#each product.custom_fields}}
+        {{#if name "===" "Exclusivity"}}
+            <dt>
+                <svg><use xlink:href="#icon-logo-cc" /></svg>
+                <span class="sr-only">Exclusive</span>
+            </dt>
+            <dd>{{ value }}</dd>
+        {{/if}}
+    {{/each}}
+    {{#each product.custom_fields}}
+        {{#if name "===" "Catalog"}}
+            <dt>
+                <svg><use xlink:href="#icon-lookbook" /></svg>
+                <span class="sr-only">Catalog</span>
+            </dt>
+            <dd>{{ value }}</dd>
+        {{/if}}
+    {{/each}}
+</dl>

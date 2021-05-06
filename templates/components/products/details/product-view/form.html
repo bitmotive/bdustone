@@ -1,0 +1,64 @@
+<div class="form-product form-simple">
+    <form method="post" 
+        action="{{product.cart_url}}" 
+        enctype="multipart/form-data"
+        data-cart-item-add>
+        <input type="hidden" name="action" value="add">
+        <input type="hidden" name="product_id" value="{{product.id}}"/>
+       
+        {{#if product.min_purchase_quantity '>' 0}}
+            <div class="form-field">
+                <label class="form-label form-label--alternate">
+                    {{lang 'products.min_purchase_quantity'}}
+                    <span>{{product.min_purchase_quantity}}</span>
+                </label>
+            </div>
+        {{/if}}
+        {{#if product.max_purchase_quantity '>' 0}}
+            <div class="form-field">
+                <label class="form-label form-label--alternate">
+                    {{lang 'products.max_purchase_quantity'}}
+                    <span>{{product.max_purchase_quantity}} </span>
+                </label>
+            </div>
+        {{/if}}
+        {{#if product.out_of_stock}}
+            <div class="form-field">
+                <label class="form-label form-label--alternate">
+                    {{lang 'products.current_stock'}}
+                    <span>{{lang 'products.availability_status.out_of_stock'}}</span>
+                </label>
+            </div>
+            {{> components/products/details/common/out-of-stock-form}}
+        {{else}}
+            {{#if product.stock_level}}
+            <div class="form-field">
+                <label class="form-label form-label--alternate">
+                    {{lang 'products.current_stock'}}
+                    <span>{{product.stock_level}}</span>
+                </label>
+            </div>
+            {{/if}}
+        {{/if}}
+        {{#if product.options}}
+            <div class="options" data-product-option-change>
+                {{#each product.options}}
+                    {{{dynamicComponent 'components/products/options'}}}
+                {{/each}}
+            </div>
+        {{/if}}
+        {{#if product.can_purchase}}
+            <div>
+            {{> components/products/details/product-view/add-to-cart-select}}
+            </div>
+        {{/if}}
+
+         
+       
+    </form>
+    {{#if product.can_purchase}}
+        {{#if settings.show_wishlist}}
+          {{> components/global/wishlist-dropdown customer=../customer product_id=product_id}}
+        {{/if}}
+    {{/if}}
+</div>

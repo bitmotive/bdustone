@@ -1,0 +1,91 @@
+/*  --------------------------------------------------------------------------  *\
+
+    MEDIA OBJECTS
+
+    All of our media elements should be wrapped in a <figure> tag to help provide 
+    context to the element.
+
+\*  --------------------------------------------------------------------------  */
+video, img, picture {
+    // Set the base styles for the media element here
+    display: block;
+    width: 100%;
+    height: auto;
+}
+iframe {
+    max-width: 100%;
+}
+.video-w {
+    position: relative;
+    padding-top: 56.25%;
+
+    iframe {
+        @include position(absolute, null, (left, top), (0, 0));
+        width: 100%;
+        height: 100%;
+    }
+}
+figure {
+    // Set the base styles for majority figure tags here
+    margin: 0 0 #{$gutterSm};
+    
+    @media #{$mediaMd} {
+        margin: 0 0 #{$gutter};
+    }
+    
+    > figcaption {
+        // Set the base styles for majority figcaption tags here
+        padding: #{$gutterSm};
+        background: $neutral-2;
+        
+        @media #{$mediaMd} {
+            padding: #{$gutter};
+        }
+        
+        :last-child {
+            // Set the last child to have a margin bottom of 0 to follow the 
+            // padding set in the figcaption properly
+            margin-bottom: 0;
+        }
+    }
+    /*  ----------------------------------------------------------------------  *\
+
+        LAYOUT OPTIONS
+    
+        Comment or remove when the following layouts are not necessary
+
+    \*  ----------------------------------------------------------------------  */    
+    @import 'layouts/_cap-side';
+    @import 'layouts/_cap-overlap';
+    @import 'layouts/_cap-over';
+    /*  ----------------------------------------------------------------------  *\
+
+        HOVER EFFECTS
+    
+        Comment or remove when the following effects are not necessary
+
+    \*  ----------------------------------------------------------------------  */    
+    @import 'effects/_hover-effects';
+    @import 'effects/_draw-border';
+    @import 'effects/_fade-in';
+    @import 'effects/_slide-up';
+    @import 'effects/_zoom';
+}
+/*  ----------------------------------------------------------------------  *\
+
+    SIZING OPTIONS
+
+\*  ----------------------------------------------------------------------  */    
+@import 'sizing/_columns';
+/*  --------------------------------------------------------------------------  *\
+
+    MEDIA GALLERY
+
+\*  --------------------------------------------------------------------------  */
+@import '_gallery';
+/*  --------------------------------------------------------------------------  *\
+
+    HOT SPOTS
+
+\*  --------------------------------------------------------------------------  */
+@import '_hot-spots';

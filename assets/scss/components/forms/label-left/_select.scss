@@ -1,0 +1,27 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL LEFT > SELECTS
+
+\*  --------------------------------------------------------------------------  */
+select {
+    display: block;
+    order: 1;
+    // commented out for pagination sort-by at top of category page
+    // width: calc(100% - #{$formLLLabelW} - #{$gutter * .5});
+    // height: remCalc(40);
+    padding: $formLLGutter;
+    background: $white;
+    font-size: remCalc(14);
+    @include formBorder($formLLBorder, $formLLBorderStyle);
+    
+    &:focus {
+        border-color: $formLLBorderFocus;
+    }
+
+    &:disabled {
+        background: $neutral-3;
+        color: $neutral-2;
+        font-style: italic;
+        cursor: not-allowed;
+    }
+}

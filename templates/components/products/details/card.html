@@ -1,0 +1,76 @@
+<article class="card" itemscope itemtype="https://schema.org/Product">
+    {{#if remove_url }}
+    <form action="{{remove_url}}" style="display:none;" class="form l-above remove-wishlist" method="post">
+        <div class="form-btns">
+            <button type="submit" class="btn-txt sm ">
+                X
+            </button>
+        </div>
+    </form>
+    {{/if}}
+    <div class="img-w">
+            {{#unless sig}}<a href="{{url}}">{{/unless}}
+                {{> components/global/responsive-img
+                image=image
+                class="card-image"
+                fallback_size=theme_settings.productgallery_size
+                lazyload=theme_settings.lazyload_mode
+                default_image=theme_settings.default_image_product
+                }}
+                <div class="img-exclusive"></div>
+            {{#unless sig}}</a>{{/unless}}
+    </div>
+    <div class="cnt">
+        <h3 class="title" itemprop="name">
+            {{#if sig}}
+                <span>{{name}}</span>
+            {{else}}
+                <a href="{{url}}">{{name}}</a>
+            {{/if}}
+            
+        </h3>
+
+        {{#if sig}}
+            <p class="sig" id="sigAdditionalInfo_{{id}}">
+                UPC: <b class="productUPC"></b><br />
+                Model: <b class="productModel"></b>
+            </p>
+        {{/if}}
+
+            {{> components/products/details/common/price }}
+
+        <span>
+        {{#if show_cart_action}}
+            {{#if has_options}}
+                <a href="{{url}}" class="button button--small card-figcaption-button btn-primary" style="display:none;">{{lang 'products.choose_an_option'}}</a>
+            {{/if}}
+            {{#if pre_order}}
+                <a href="{{url}}" class="button button--small card-figcaption-button btn-primary" style="display:none;">{{lang 'products.pre_order'}}</a>
+            {{/if}}
+            {{#if add_to_cart_url }}
+                <a href="{{add_to_cart_url}}" class="addtocart_{{id}} button button--small card-figcaption-button btn-primary" rel="nofollow" style="display:none;">{{lang 'products.add_to_cart'}}</a>
+            {{/if}}
+            {{#if out_of_stock_message }}
+                <a href="{{url}}" class="button button--small card-figcaption-button btn-tertiary" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+            {{/if}}
+        {{/if}}
+        </span>
+        
+        <p class="requestPrice">
+            <a href="#" onclick="(function(e){e.preventDefault();})(event)" class="requestPriceBtn_{{id}} button button--small card-figcaption-button btn-primary" style="display:none;">Request Price</a>
+        </p>
+
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        try{
+            applyRules('{{id}}','{{sku}}','{{name}}','{{brand.name}}','{{out_of_stock_message}}');
+        } catch(err){
+            $('.productPrice_' + '{{id}}').show();
+            $('.addtocart_' + '{{id}}').show();
+        }
+    });
+    </script>
+</article>
+

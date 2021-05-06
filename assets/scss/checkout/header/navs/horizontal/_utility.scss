@@ -1,0 +1,77 @@
+/*  --------------------------------------------------------------------------  *\
+
+    HEADER - NAVIGATION - HORIZONTAL - UTILITY NAV
+
+\*  --------------------------------------------------------------------------  */
+.utility {
+    background: $accent-1;
+    font-size: remCalc(14);
+
+    svg {
+        width: 1em;
+        height: 1em;
+        margin: 0 remCalc(8) 0 0;
+    }
+
+    .cart-quantity {
+        @include position(absolute, null, (left, top), (100%, 0), translate(-25%, -50%));
+        background: $white;
+        color: $accent-1;
+        border-radius: 100%;
+        width: 1.5em;
+        height: 1.5em;
+        font-size: .75em;
+        text-align: center;
+        line-height: 1.5;
+        margin: 0 0 0 remCalc(8);
+    }
+   
+    
+
+    a, label, button {
+        @include flex(space-between, center, null, row nowrap);
+        @include position(relative, null);
+        color: $white;
+
+        @include hover {
+            color: $accent-1;
+        }
+    }
+
+    @media #{$mediaToggleHeader} {
+        width: 100%;
+
+        li {
+            + li {
+                border-top: remCalc(1) solid $white;
+            }
+        }
+
+        a, label, button {
+            padding: remCalc(24);
+            text-transform: uppercase;
+        }
+    }
+
+    @media #{$mediaFullHeader} {
+        @include flex(flex-end, center, null, row nowrap);
+        position: absolute;
+        top: 0;
+        right: remCalc(15);
+        height: remCalc(48);
+        transform: translate(0, remCalc(-48));
+        
+        li {
+            padding: 0 #{$gutterSm};
+            line-height: remCalc(20);
+
+            + li {
+                border-left: remCalc(1) solid $white;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+}

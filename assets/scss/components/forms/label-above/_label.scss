@@ -1,0 +1,19 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL ABOVE > LABELS
+
+\*  --------------------------------------------------------------------------  */
+label, .label {
+    display: block;
+    order: 0;
+    margin: 0 0 remCalc(8);
+
+    small {
+        color: $danger;
+        font-size: .75em;
+
+        //&:before {
+        //    content: "*";
+        //}
+    }
+}

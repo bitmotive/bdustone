@@ -1,0 +1,22 @@
+/*  --------------------------------------------------------------------------  *\
+
+    CONTAINER
+
+\*  --------------------------------------------------------------------------  */
+.container {
+    //border:3px solid gold;
+    max-width: $siteWMx;
+    @include setW;
+
+    margin: 0 auto;
+    padding: 0 remCalc($sideMarginSm) !important;
+
+    @media #{$mediaMd} {
+        padding: 0 remCalc($sideMarginMd) !important;
+    }
+
+    @media #{$mediaFullHeader} {
+        padding: 0 remCalc($sideMarginLg) !important;
+    }
+
+}

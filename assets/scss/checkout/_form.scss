@@ -1,0 +1,110 @@
+/*  --------------------------------------------------------------------------  *\
+
+    OPTIMIZED CHECKOUT > FORMS
+
+\*  --------------------------------------------------------------------------  */
+.form {
+
+    &-field {
+        &:before, &:after {
+            display: none;
+        }
+
+        .form-label, .form-input {
+            float: none;
+        }
+    
+        .form-label {
+            margin: 0 0 remCalc(8);
+        }
+    
+        .form-input {
+            border: remCalc(1) solid $secondary;
+            padding: remCalc(15) remCalc(25);
+            line-height: 1;
+            font-size: remCalc(15);
+
+            @media #{$mediaLg} {
+                padding: remCalc(15) remCalc(20);
+            }
+
+            &.has-icon {
+                margin: 0 0 remCalc(8);
+                float: left;
+            }
+        }
+
+        &-errors {
+            margin: remCalc(8) 0;
+        }
+
+        &-error {
+            padding: 0;
+            margin: 0;
+
+            &:before {
+                display: none;
+            }
+
+            + .form-field-error  {
+                margin-top: remCalc(8);
+            }
+
+            label {
+                margin: 0;
+                display: block;
+            }
+        }
+    }
+
+    &-actions {
+        .button {
+
+        }
+    }
+
+    &-checklist {
+
+        &-item {
+            padding: 0;
+    
+            &:before {
+                display: none;
+            }
+        }
+
+        &-checkbox {
+            ~ .form-label {
+                &:before {
+                    border-color: $accent-1;
+                }
+            }
+
+            &:checked {
+                ~ .form-label {
+                    &:before {
+                        border-color: $accent-1;
+                    }
+
+                    &:after {
+                        background: $accent-1;
+                    }
+                }
+            }
+        }
+
+    }
+
+    &-prefixPostfix {
+        display: block;
+
+        @media #{$mediaMd} {
+            @include flex(space-between, stretch, null, row nowrap);
+        }
+
+        .button {
+            height: auto;
+            width: auto;
+        }
+    }
+}

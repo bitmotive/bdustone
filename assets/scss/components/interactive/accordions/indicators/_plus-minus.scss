@@ -1,0 +1,48 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ACCORDION - INDICATOR - PLUS/MINUS TOGGLE
+
+\*  --------------------------------------------------------------------------  */
+//&.plus-minus {
+    
+    > dt {
+        
+        > button {
+            
+            &:before, &:after {
+                @include position(absolute, null, (left, top), (100%, 50%));
+                width: remCalc(8);
+                height: remCalc(2);
+                background: $primary;
+                transition: all .25s;
+                content: "";
+
+            }
+
+            &:before {
+                @include transform(translate(-100%, -50%) rotate(45deg));
+            }
+
+            &:after {
+                @include transform(translate(-30%, -50%) rotate(135deg));
+            }
+
+            &[aria-expanded="true"] {
+                &:before {
+                    @include transform(translate(-100%,-50%)rotate(135deg));
+                }
+                &:after {
+                    @include transform(translate(-30%, -50%) rotate(45deg));
+                }
+            }
+
+            
+            @include hover{
+                &:before, &:after{
+                background: $secondary;
+                }
+            }
+     
+        }
+    }
+//}

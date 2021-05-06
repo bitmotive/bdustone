@@ -1,0 +1,39 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - HEADINGS
+
+\*  --------------------------------------------------------------------------  */
+.overview {
+    h1 {
+        font-size: remCalc(16);
+        font-weight: 600;
+        line-height: 1.5;
+        margin: 0 0 remCalc(5);
+        text-transform:none;
+        
+        @media #{$mediaMd} {
+            font-size: remCalc(22);
+            margin: 0 0 remCalc(5);
+        }
+        
+        @media #{$mediaLg} {
+            font-size: remCalc(27);
+            line-height: (37 / 27);
+        }
+    }
+
+    h2 {
+        font-size: remCalc(18);
+        margin: 0 0 remCalc(4);
+
+        @media #{$mediaMd} {
+            font-size: remCalc(21);
+            margin: 0 0 remCalc(6);
+        }
+
+        @media #{$mediaLg} {
+            font-size: remCalc(24);
+            margin: 0 0 remCalc(8);
+        }
+    }
+}

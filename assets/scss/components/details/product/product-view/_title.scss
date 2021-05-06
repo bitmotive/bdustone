@@ -1,0 +1,49 @@
+/*  --------------------------------------------------------------------------  *\
+
+    PRODUCT DETAIL - PRODUCT VIEW - TITLE
+
+\*  --------------------------------------------------------------------------  */
+
+.sku {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.brand {
+    margin: 0;
+    color: $secondary;
+    font-size: remCalc(14);
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4%;
+
+    strong {
+        font-weight: 600;
+    }
+}
+
+.rating {
+    justify-content: flex-start;
+    margin: 0;
+
+    svg {
+        width: remCalc(12);
+        height: remCalc(12);
+        margin: 0 remCalc(3) 0 0;
+        stroke: $primary;
+        stroke-width: remCalc(1);
+        fill: none;
+
+        &.full {
+            fill: $primary;
+        }
+    }
+
+    .review-link {
+        margin: 0 0 0 remCalc(8);
+        font-size: remCalc(13);
+        font-weight: 500;
+        width: auto;
+    }
+}

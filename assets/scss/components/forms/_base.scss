@@ -1,0 +1,70 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS
+
+    Each form component should have it's own file each alteration should have it's
+    own file.
+
+    The default files below will be used to show a basic form with labels above.
+    
+    Additional styling of forms can be found in the themes > component library
+    folder to show examples of the other forms found in the component library.
+
+\*  --------------------------------------------------------------------------  */
+@import '_mixins';
+form {
+    /*  ----------------------------------------------------------------------  *\
+
+        Custom Checkboxes and Radio Buttons
+
+    \*  ----------------------------------------------------------------------  */
+    /*  ----------------------------------------------------------------------  *\
+
+        Custom Styling of Select Boxes
+
+    \*  ----------------------------------------------------------------------  */
+    @import '_chosen';
+    /*  ----------------------------------------------------------------------  *\
+
+        Form label position and styling
+    
+        All of the below are not needed for all websites, generally only one, or 
+        two of the below files are needed.
+    
+        l-above - places the label above the field
+        l-inside - places the label within the field
+        l-left - places the label to the left of the field
+        l-attached - place the label to the left and styles it to look attached
+            to the field
+        
+        &.l-left {
+        }
+        
+        &.l-attached {
+            @import 'label-attached/_base';
+        }
+        &.small {
+            @import 'label-above/base';
+        }
+
+    \*  ----------------------------------------------------------------------  */
+    &.l-left {
+        @import 'label-left/base';
+    }        
+    &.l-inside {
+        @import 'label-inside/_base';
+    }
+
+    &.l-above {
+        @import 'label-above/_base';
+    }
+
+    &.form-gc-balance {
+        @import 'gift-certificate-balance';
+    }
+
+    @import 'get-in-touch';
+    @import 'newsletter';
+    @import 'invert';
+}
+@import '_check-radios';

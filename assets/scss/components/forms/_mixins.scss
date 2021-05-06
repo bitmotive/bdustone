@@ -1,0 +1,13 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > MIXINS
+
+\*  --------------------------------------------------------------------------  */
+@mixin formBorder($formBorder: border, $formBorderStyle: 1px solid $primary) {
+    @if ($formBorder == "border") {
+        border: $formBorderStyle;
+    } @else {
+        border: none;
+        #{$formBorder}: $formBorderStyle;
+    }
+}

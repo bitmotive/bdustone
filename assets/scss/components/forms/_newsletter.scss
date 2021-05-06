@@ -1,0 +1,30 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > GET IN TOUCH MODIFICATIONS
+
+\*  --------------------------------------------------------------------------  */
+&.form-newsletter {
+    margin: remCalc(16) 0 0;
+
+    @media #{$mediaMd} {
+        margin: remCalc(20) 0 0;
+        @include flex(space-between, flex-start, null, row wrap);
+    
+        .form-el {
+            width: calc(100% - #{remCalc(140)});
+        }
+
+        .form-btns {
+            width: remCalc(124);
+        }
+    }
+
+    @media #{$mediaLg} {
+        margin: remCalc(24) 0 0;
+    }
+
+    .form-copy {
+        width: 100%;
+        margin: remCalc(16) 0 0;
+    }
+}

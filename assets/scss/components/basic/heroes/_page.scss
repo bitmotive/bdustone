@@ -1,0 +1,14 @@
+&.has-bg {
+    @include position(relative, null);
+    padding: remCalc(20) 0;
+    text-align: center;
+    
+    @media #{$mediaMd} {
+        padding: remCalc(20) 0 remCalc(48);
+        text-align: left;
+    }
+    
+    @media #{$mediaLg} {
+        padding: remCalc(24) 0 remCalc(64);
+    }
+}

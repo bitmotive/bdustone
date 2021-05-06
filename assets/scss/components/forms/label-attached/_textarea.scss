@@ -1,0 +1,18 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > LABEL ATTACHED > TEXTAREAS
+
+\*  --------------------------------------------------------------------------  */
+textarea {
+    display: block;
+    order: 1;
+    width: calc(100% - #{$formLAtLabelW});
+    height: calc(6em + ($formLAtGutter * 2));
+    padding: $formLAtGutter;
+    @include formBorder($formLAtBorder, $formLAtBorderStyle);
+    border-left: none;
+    
+    &:focus {
+        border-color: $formLAtBorderFocus;
+    }
+}

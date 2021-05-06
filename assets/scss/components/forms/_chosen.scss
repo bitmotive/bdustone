@@ -1,0 +1,73 @@
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > CHOSEN
+
+    Chosen, a Select Box Enhancer for jQuery and Prototype
+    by Patrick Filler for Harvest, http://getharvest.com
+
+    Version 1.8.7
+    Full source at https://github.com/harvesthq/chosen
+    Copyright (c) 2011-2018 Harvest http://getharvest.com
+
+    MIT License, https://github.com/harvesthq/chosen/blob/master/LICENSE.md
+
+\*  --------------------------------------------------------------------------  */
+.chosen-container {
+    @include position(relative, 0);
+    display: block;
+    
+    .chosen-drop {
+        @include position(absolute, null, (left, top), (0, 100%));
+        width: 100%;
+        border: 1px solid $primary;
+        border-top: none;
+        background: $white;
+        display: none;
+    }
+    
+    li {
+        list-style: none;
+        
+        &:before {
+            display: none;
+        }
+    }
+    
+    a {
+        cursor: pointer;
+    }
+    
+    &.chosen-with-drop {
+        z-index: 1000;
+        
+        .chosen-drop {
+            display: block;
+        }
+    }
+    
+    .search-choice, .chosen-single {
+        
+        .group-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: $secondary;
+            
+            &:after {
+                content: ":";
+                margin-left: 2px;
+            }
+        }
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+
+    FORMS > CHOSEN IMPORTS OF OPTIONS
+
+\*  --------------------------------------------------------------------------  */
+@import 'chosen/_single';
+//@import 'chosen/_multi'; // UNCOMMENT THIS IF YOUR SITE USES MULTI SELECTS
+@import 'chosen/_results';
+@import 'chosen/_active';
+@import 'chosen/_disabled';
+//@import 'chosen/_rtl'; // UNCOMMENT THIS IF YOUR SITE SUPPORTS RTL LANGUAGES

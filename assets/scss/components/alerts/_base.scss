@@ -1,0 +1,19 @@
+/*  --------------------------------------------------------------------------  *\
+
+    ALERTS
+
+\*  --------------------------------------------------------------------------  */
+.alert {
+    //background: $neutral-1;
+    //color: $white;
+    padding: remCalc(8) remCalc(8);
+    font-size: remCalc(16);
+    font-weight: normal;
+    line-height: 1.5;
+
+    .container {
+        text-align: center;
+    }
+    
+    @import 'admin-bar';
+}

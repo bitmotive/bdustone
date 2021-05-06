@@ -1,0 +1,56 @@
+/*  --------------------------------------------------------------------------  *\
+
+    OPTIMIZED CHECKOUT > CART
+
+\*  --------------------------------------------------------------------------  */
+.cart {
+    border: remCalc(1) solid $neutral-1;
+    border-radius: 0;
+    background:$white;
+    padding:0;
+    box-shadow: none;
+    margin: 0;
+
+    &-heading {
+        padding: remCalc(24) remCalc(24) remCalc(12);
+    }
+
+    .cart-header {
+        padding: remCalc(16) remCalc(24);
+        color: $neutral-3;
+        background:$primary;
+        border-radius: 0;
+        margin:0;
+        h3 {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 30px;
+            text-transform: capitalize;
+        }
+        h3, a {
+            color: $neutral-3;
+        }
+        @media #{$mediaMd} {
+            padding: remCalc(24);
+        }
+    }
+
+    &-section {
+        padding: remCalc(12) remCalc(24);
+        border-top: none;
+        border-bottom: 1px solid $neutral-1;
+    }
+
+    section:last-of-type {
+        padding: remCalc(12) remCalc(24) remCalc(24);
+        border-top: none;
+    }
+
+    &-priceItem--total {
+        font-size: remCalc(20);
+
+        .cart-priceItem-value {
+            font-size: remCalc(20);
+        }
+    }
+}

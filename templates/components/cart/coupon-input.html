@@ -1,15 +1,21 @@
-<div class="cart-total-value">
-
-    <button class="coupon-code-add">{{lang 'cart.coupons.add_coupon'}}</button>
-
-    <button class="coupon-code-cancel" style="display: none;">{{lang 'cart.coupons.cancel'}}</button>
-</div>
-
-<div class="cart-form coupon-code" style="display: none;">
+<dt class="cart-form cart-form-promo">
+    <span>{{lang 'cart.coupons.promo_code_title'}}</span>
+    <button class="coupon-code-add">
+        {{lang 'cart.coupons.add_coupon'}}
+    </button>
+    <button class="coupon-code-cancel" style="display: none;">
+        {{lang 'cart.coupons.cancel'}}
+    </button>
+</dt>
+<dd class="cart-form coupon-code" style="display: none;">
     <form class="form form--hiddenLabels coupon-form" method="post" action="{{urls.cart}}">
-        <label class="form-label" for="couponcode">{{lang 'cart.coupons.coupon_code'}}</label>
-        <input class="form-input" data-error="{{lang 'cart.coupons.empty_error'}}"  id="couponcode" type="text" name="couponcode" value="" placeholder="{{lang 'cart.coupons.coupon_code'}}">
-        <input class="button button--primary button--small" type="submit" value="{{lang 'cart.coupons.button'}}">
-        <input type="hidden" name="action" value="applycoupon">
+        <div class="form-field">
+            <label for="couponcode">{{lang 'cart.coupons.coupon_code'}}</label>
+            <div>
+                <input class="form-input" data-error="{{lang 'cart.coupons.empty_error'}}"  id="couponcode" type="text" name="couponcode" value="" placeholder="{{lang 'cart.coupons.coupon_code'}}">
+                <button class="btn-secondary" type="submit">{{lang 'cart.coupons.button'}}</button>
+            </div>
+        </div>
+        <input type="hidden" name="action" value="applycoupon" />
     </form>
-</div>
+</dd>

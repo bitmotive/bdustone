@@ -1,0 +1,202 @@
+/*  --------------------------------------------------------------------------  *\
+
+    BACKGROUNDS - MIXINS
+
+\*  --------------------------------------------------------------------------  */
+@mixin bgPercentageBase($classStub: bg-primary, $bgC: $primary, $incH: true, $incV: true) {
+    
+    @if $incH == true and $incV == true {
+
+        [class*="#{$classStub}-l-"], 
+        [class*="#{$classStub}-r-"], 
+        [class*="#{$classStub}-t-"], 
+        [class*="#{$classStub}-b-"] {
+
+            @media #{$mediaMd} {
+                @include position(relative, null);
+
+                &:before {
+                    @include position(absolute, 0, null, null);
+                    background: $bgC;
+                    content: "";
+                }
+
+                > .cnt {
+                    @include position(relative, 100);
+                }
+            }
+        }
+    } @else if $incV == true {
+        
+        [class*="#{$classStub}-t-"], 
+        [class*="#{$classStub}-b-"] {
+
+            @media #{$mediaMd} {
+                @include position(relative, null);
+
+                &:before {
+                    @include position(absolute, 0, null, null);
+                    background: $bgC;
+                    content: "";
+                }
+
+                > .cnt {
+                    @include position(relative, 100);
+                }
+            }
+        }
+    } @else {
+        
+        [class*="#{$classStub}-l-"], 
+        [class*="#{$classStub}-r-"] {
+
+            @media #{$mediaMd} {
+                @include position(relative, null);
+
+                &:before {
+                    @include position(absolute, 0, null, null);
+                    background: $bgC;
+                    content: "";
+                }
+
+                > .cnt {
+                    @include position(relative, 100);
+                }
+            }
+        }
+    }
+    @if $incH == true {
+        
+        [class*="#{$classStub}-l-"], 
+        [class*="#{$classStub}-r-"] {
+
+            &:before {
+                height: 100%;
+                top: 0;
+            }
+        }
+
+        [class*="#{$classStub}-l-"] {
+            &:before {
+                left: 0;
+            }
+        }
+
+        [class*="#{$classStub}-r-"] {
+            &:before {
+                right: 0;
+            }
+        }
+        
+        @include bgPercentagesHorizontal($classStub, $bgC);
+    }
+    
+    @if $incV == true {
+        [class*="#{$classStub}-t-"], 
+        [class*="#{$classStub}-b-"] {
+
+            &:before {
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        [class*="#{$classStub}-t-"] {
+            &:before {
+                top: 0;
+            }
+        }
+
+        [class*="#{$classStub}-b-"] {
+            &:before {
+                bottom: 0;
+            }
+        }
+        
+        @include bgPercentagesVertical($classStub, $bgC);
+    }
+}
+// BACKGROUNDS - HORIZONTAL BACKGROUND PERCENTAGES
+@mixin bgPercentagesHorizontal($classStub: bg-primary, $bgC: $primary) {
+    @each $bgS in $bgSize {
+        
+        .#{$classStub}-l-#{$bgS}, .#{$classStub}-r-#{$bgS} {
+            
+            &:before {
+                width: calc(7.5% + (85% * #{$bgS / 100}));
+            }
+    
+            @media #{$mediaXxl} {
+                &:before {
+                    width: calc(((100% - 1200px) / 2) + (1200px * #{$bgS / 100}));
+                }
+            }
+        }
+    }
+}
+// BACKGROUNDS - VERTICAL BACKGROUND PERCENTAGES
+@mixin bgPercentagesVertical($classStub: bg-primary, $bgC: $primary) {
+    @each $bgS in $bgSize {
+        
+        .#{$classStub}-t-#{$bgS}, .#{$classStub}-b-#{$bgS} {
+            
+            &:before {
+                height: percentage($bgS / 100);
+            }
+        }
+    }
+}
+/*  --------------------------------------------------------------------------  *\
+    BACKGROUNDS - GRADIENTS
+\*  --------------------------------------------------------------------------  */
+// Use this version if you don't need to support relic browser versions
+@mixin bgGradient($dir: to right, $start: $primary, $end: $white, $stops: null) {
+    background: $start; /* Old browsers */
+    @if ($stops) {
+        background: linear-gradient($dir, $start 0%, $stops, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    } @else {
+        background: linear-gradient($dir, $start 0%, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+}
+// VERTICAL - TOP TO BOTTOM
+@mixin bgGradientVertical($start: $primary, $end: $white, $stops: null) {
+    background: $start; /* Old browsers */
+    @if ($stops) {
+        // background: -moz-linear-gradient(top, $start 0%, $stops, $end 100%); /* UNCOMMENT FOR FF3.6-15 SUPPORT */
+        // background: -webkit-linear-gradient(top, $start 0%, $stops, $end 100%); /* UNCOMMENT FOR Chrome10-25,Safari5.1-6 SUPPORT */
+        background: linear-gradient(to bottom, $start 0%, $stops, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    } @else {
+        // background: -moz-linear-gradient(top, $start 0%, $end 100%); /* UNCOMMENT FOR FF3.6-15 SUPPORT */
+        // background: -webkit-linear-gradient(top, $start 0%, $end 100%); /* UNCOMMENT FOR Chrome10-25,Safari5.1-6 SUPPORT */
+        background: linear-gradient(to bottom, $start 0%, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start', endColorstr='$end',GradientType=0 ); /* UNCOMMENT FOR IE6-9 SUPPORT */
+}
+// HORIZONTAL - LEFT TO RIGHT
+@mixin bgGradientHorizontal($start: $primary, $end: $white, $stops: null) {
+    background: $start; /* Old browsers */
+    @if ($stops) {
+        // background: -moz-linear-gradient(left, $start 0%, $stops, $end 100%); /* UNCOMMENT FOR FF3.6-15 SUPPORT */
+        // background: -webkit-linear-gradient(left, $start 0%, $stops, $end 100%); /* UNCOMMENT FOR Chrome10-25,Safari5.1-6 SUPPORT */
+        background: linear-gradient(to right, $start 0%, $stops, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    } @else {
+        // background: -moz-linear-gradient(left, $start 0%, $end 100%); /* UNCOMMENT FOR FF3.6-15 SUPPORT */
+        // background: -webkit-linear-gradient(left, $start 0%, $end 100%); /* UNCOMMENT FOR Chrome10-25,Safari5.1-6 SUPPORT */
+        background: linear-gradient(to right, $start 0%, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start', endColorstr='$end',GradientType=1 ); /* UNCOMMENT FOR IE6-9 SUPPORT */
+}
+// DIAGONAL
+@mixin bgGradientDiagonal($start: $primary, $end: $white, $deg: 45, $stops: null) {
+    background: $start; /* Old browsers */
+    @if ($stops) {
+        // background: -moz-linear-gradient(#{$deg}deg, $start 0%, $stops, $end 100%); /* UNCOMMENT FOR FF3.6-15 SUPPORT */
+        // background: -webkit-linear-gradient(#{$deg}deg, $start 0%, $stops, $end 100%); /* UNCOMMENT FOR Chrome10-25,Safari5.1-6 SUPPORT */
+        background: linear-gradient(#{$deg}deg, $start 0%, $stops, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    } @else {
+        // background: -moz-linear-gradient(#{$deg}deg, $start 0%, $end 100%); /* UNCOMMENT FOR FF3.6-15 SUPPORT */
+        // background: -webkit-linear-gradient(#{$deg}deg, $start 0%, $end 100%); /* UNCOMMENT FOR Chrome10-25,Safari5.1-6 SUPPORT */
+        background: linear-gradient(#{$deg}deg, $start 0%, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start', endColorstr='$end',GradientType=1 ); /* UNCOMMENT FOR IE6-9 SUPPORT */
+}
