@@ -9,6 +9,24 @@
             {{/each}}
         {{/if}}
     <li class="account-listItem">
+        {{! The goal of the next code block is to generate links for products.
+            order_product_id and product_id are two separate values.
+            order_product_id is a unique identifier per order placed mapping to a product.
+            product_id (or product.id) is the unique identifier of a product in the catalog, 
+            and may be used as a cannonical link with the format: /products.php?productId=XYZ
+            This could be written without nested loops if it were possible to access the results
+            of the split helper function by array index. It does not appear that this is doable.
+            The closest helper functions such as 'after' and 'before' do not seem to work when nested.}}
+        {{#each (split image.data "products/") as |text index| }}
+            {{#if index '==' '1'}}
+                {{#each (split this "/") as |text2 index2| }}
+                  {{#if index2 '==' '0'}}
+                      {{assignVar 'productID' this }}
+                  {{/if}}
+                {{/each}}
+            {{/if}}
+        {{/each}}
+
         {{#if show_reorder}}
             <div class="account-product-checkItem form-cr">
                 <input class="form-checkbox check-only" type="checkbox" id="account-product-id-{{order_product_id}}" value="{{order_product_id}}">
@@ -21,6 +39,7 @@
             {{#if type '===' 'giftcertificate'}}
                 <img src="{{cdn ../../theme_settings.default_image_gift_certificate}}" alt="Gift Certificate" title="Gift Certificate">
             {{else}}
+            <a href="/products.php?productId={{ getVar "productID" }}">
                 {{> components/global/responsive-img
                     image=image
                     class="account-product-image"
@@ -28,6 +47,7 @@
                     lazyload=../../theme_settings.lazyload_mode
                     default_image=../../theme_settings.default_image_product
                 }}
+            </a>
             {{/if}}
             {{#unless refunded}}
                 {{#if download_url}}
@@ -43,7 +63,11 @@
             {{/unless}}
         </label>
         <div class="cnt">
-            <p class="title"><label for="account-product-id-{{order_product_id}}">{{quantity}} &#215; {{name}}</label></p>
+        <p class="title">
+        <a href="/products.php?productId={{ getVar "productID" }}">
+        {{quantity}} &#215; {{name}}
+        </a>
+        </p>
             <p class="price">{{price.formatted}}</span>
             {{#if brand}}
                 <h6>{{brand.name}}</h6>
