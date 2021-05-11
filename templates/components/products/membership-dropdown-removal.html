@@ -1,0 +1,8 @@
+<script>
+    // if product sku contains 'BDU-Member', delete dropdown option and wishlist option
+    var product_sku = $('.sku').text();
+
+    if ( exportedSettings.bduMembershipSKUs.includes(product_sku)  ) {
+        $('.opts-select').hide();
+    }
+</script>
