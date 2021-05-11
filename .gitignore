@@ -1,6 +1,7 @@
 node_modules/
 package-lock.json
 .stencil
+.env
 .DS_Store
 assets/css-artifacts
 assets/js/bundle.js

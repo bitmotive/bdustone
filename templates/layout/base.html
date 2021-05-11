@@ -7,8 +7,13 @@
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
         
-        <!--<script src="https://cdn9.bigcommerce.com/s-39rzs2k77u/templates/__custom/js/externals.js"></script>-->
+        {{#if theme_settings.environment '==' 'development'}}
+        <!-- development: pull externals.js from prod -->
+        <script src="https://cdn11.bigcommerce.com/s-39rzs2k77u/content/js/externals.js?v=1620667725"></script>
+        {{else}}
+        <!-- prod -->
         <script src="{{cdn 'webdav:js/externals.js'}}"></script>
+        {{/if}}
         {{> components/global/local-scripts/bdu-redirects }}
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

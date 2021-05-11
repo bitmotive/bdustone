@@ -44,7 +44,7 @@
     "Firefox ESR"
   ],
   "settings": {
-    "environment": "production",
+    "environment": "development",
     "hide_breadcrumbs": false,
     "hide_page_heading": false,
     "hide_category_page_heading": false,

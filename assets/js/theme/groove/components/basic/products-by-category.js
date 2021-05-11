@@ -21,7 +21,7 @@ export default class GetProductsByCategory {
                             name
                             entityId
                             description
-                            products(first: 8) {
+                            products(first: ${limit}) {
                               edges {
                                 node {
                                   name
@@ -75,12 +75,41 @@ export default class GetProductsByCategory {
         })
         .then(res => res.json())
         .then(products => {
-            //console.log(products.data.site.route.node.products.edges);
-            
+
+          // @TODO The following conditonal splits the logic between
+          // "static" and "dynamic" carousels. However, there is a lot
+          // of code duplication (i.e. the same thing in both places)
+          // that could be more elegantly refactored in the future.
+
+          // STATIC carousels do not display arrows
           if (format==='static') {
-            //console.log('Calling Static Carousel ' + format);
+
+            // The default sort order is 70
+            let defaultSort = 70;
+
             for(let [i, prod] of products.data.site.route.node.products.edges.entries()) {
                 let card = document.createElement('article');
+
+                // By default all cards should have a sort order
+                let currentSort = defaultSort;
+
+                // Let's see if this carousel category appears in the bduHomepageCarouselOptions object...
+                let categoryKey = category.replaceAll('/', '');
+                if( 'bduHomepageCarouselOptions' in exportedSettings && categoryKey in exportedSettings.bduHomepageCarouselOptions ){
+
+                    // There are some extraneous keys we can delete before our comparison
+                    let keySKUs = Object.keys(exportedSettings.bduHomepageCarouselOptions[categoryKey]);
+                    keySKUs = keySKUs.filter(function(item){
+                        return item !== 'categoryID' && item !== 'displayTitle';
+                    });
+
+                    // Check if this SKU was supplied and find its 'sort' value
+                    $.each(keySKUs, function(){
+                        if( this == prod.node.sku ){
+                            currentSort = exportedSettings.bduHomepageCarouselOptions[categoryKey][this].sort;
+                        }
+                    });
+                }
 
                 let img = "https://via.placeholder.com/900/e8e8e8/000?text=IMAGE COMING SOON";
               if (prod.node.defaultImage !== null) {
@@ -93,6 +122,13 @@ export default class GetProductsByCategory {
                 price = price.toLocaleString('en-US', {style:'currency',currency:'USD'});
               }
                 card.className = "card";
+                // Create a unique id for each card based on the product SKU
+                card.id = "card" + "-" + prod.node.sku;
+                // Add a sort order to every carousel card
+                $(card).attr('data-sort', currentSort);
+                // Add the product SKU to every carousel card
+                $(card).attr('data-sku', prod.node.sku);
+
                 card.insertAdjacentHTML('beforeend', `
                     <div class="img-w">
                         <a href="${prod.node.path}" class="img-l">
@@ -122,8 +158,40 @@ export default class GetProductsByCategory {
                     `);
                 
                 if (prod.node.inventory.isInStock === true && i < limit) {
-                    document.getElementById(id).appendChild(card);
+
+                    // The following code will place a carousel card
+                    // into a carousel. Before doing so, it will check
+                    // the sort order of the card against all prior cards
+                    // in the carousel and insert it in the appropriate location.
+
+                    let currentSort = $(card).attr('data-sort');
+                    let carousel = $(document.getElementById(id));
+                    let cards = carousel.find('article');
+                    let cardLength = cards.length;
+
+                    // If this is our first card it can simply be appended.
+                    if( cardLength == 0 ){
+                        document.getElementById(id).appendChild(card);
+                    } else {
+
+                        // Check all prior cards in the carousel and insert
+                        // prior to the next greater card in the list.
+                        let added = 0;
+                        for(let x = 1; x <= cardLength; x++){
+                            let sort = $(cards[x - 1]).attr('data-sort');
+                            if(currentSort < sort & added == 0) {
+                                $(cards[x - 1]).before(card);
+                                added = 1;
+                                break;
+                            }
+                        }
+                        if(added == 0){
+                            // No greater sort values were found, so this should be added last.
+                            document.getElementById(id).appendChild(card);
+                        }
+                    }
                     i++;
+
                 }
                 
                 try {
@@ -132,8 +200,6 @@ export default class GetProductsByCategory {
                     console.log(exception);
                 }
             }
-            
-           
             
             $('#'+id).slick({
                 "accessibility": false,
@@ -147,20 +213,46 @@ export default class GetProductsByCategory {
                     {
                         "breakpoint": 767,
                         "settings": {
-                            "slidesToShow": 3,
-                            "slidesToScroll": 3,
-                            "arrows": false         
+                            "slidesToShow": 6,
+                            "slidesToScroll": 6,
+                            "arrows": false
                         }
                     }
                 ]
             });
-          }  // end format === 'static'
-          else if (format === 'dynamic') {
-            //console.log('Calling Dynamic Carousel ' + format);
-            for(let [i, prod] of products.data.site.route.node.products.edges.entries()) {
-              let card = document.createElement('article');
 
-              let img = "https://via.placeholder.com/900/e8e8e8/000?text=IMAGE COMING SOON";
+          }  // end format === 'static'
+          // DYNAMIC carousels may be scrolled with arrows
+          else if (format === 'dynamic') {
+
+            // The default sort order is 70
+            let defaultSort = 70;
+
+            for(let [i, prod] of products.data.site.route.node.products.edges.entries()) {
+                let card = document.createElement('article');
+
+                // By default all cards should have a sort order
+                let currentSort = defaultSort;
+
+                // Let's see if this carousel category appears in the bduHomepageCarouselOptions object...
+                let categoryKey = category.replaceAll('/', '');
+                if( 'bduHomepageCarouselOptions' in exportedSettings && categoryKey in exportedSettings.bduHomepageCarouselOptions ){
+
+                    // There are some extraneous keys we can delete before our comparison
+                    let keySKUs = Object.keys(exportedSettings.bduHomepageCarouselOptions[categoryKey]);
+                    keySKUs = keySKUs.filter(function(item){
+                        return item !== 'categoryID' && item !== 'displayTitle';
+                    });
+
+                    // Check if this SKU was supplied and find its 'sort' value
+                    $.each(keySKUs, function(){
+                        if( this == prod.node.sku ){
+                            currentSort = exportedSettings.bduHomepageCarouselOptions[categoryKey][this].sort;
+                        }
+                    });
+                }
+
+                let img = "https://via.placeholder.com/900/e8e8e8/000?text=IMAGE COMING SOON";
               if (prod.node.defaultImage !== null) {
                 img = prod.node.defaultImage.url;
               }
@@ -172,6 +264,13 @@ export default class GetProductsByCategory {
               }
 
               card.className = "card";
+              // Create a unique id for each card based on the product SKU
+              card.id = "card" + "-" + prod.node.sku;
+              // Add a sort order to every carousel card
+              $(card).attr('data-sort', currentSort);
+              // Add the product SKU to every carousel card
+              $(card).attr('data-sku', prod.node.sku);
+
               card.insertAdjacentHTML('beforeend', `
                   <div class="img-w">
                       <a href="${prod.node.path}" class="img-l">
@@ -201,9 +300,40 @@ export default class GetProductsByCategory {
                   `);
                   
               if (prod.node.inventory.isInStock === true && i < limit) {
-                  document.getElementById(id).appendChild(card);
+                  // The following code will place a carousel card
+                  // into a carousel. Before doing so, it will check
+                  // the sort order of the card against all prior cards
+                  // in the carousel and insert it in the appropriate location.
+
+                  let currentSort = $(card).attr('data-sort');
+                  let carousel = $(document.getElementById(id));
+                  let cards = carousel.find('article');
+                  let cardLength = cards.length;
+
+                  // If this is our first card it can simply be appended.
+                  if( cardLength == 0 ){
+                      document.getElementById(id).appendChild(card);
+                  } else {
+
+                      // Check all prior cards in the carousel and insert
+                      // prior to the next greater card in the list.
+                      let added = 0;
+                      for(let x = 1; x <= cardLength; x++){
+                          let sort = $(cards[x - 1]).attr('data-sort');
+                          if(currentSort < sort & added == 0) {
+                              $(cards[x - 1]).before(card);
+                              added = 1;
+                              break;
+                          }
+                      }
+                      if(added == 0){
+                          // No greater sort values were found, so this should be added last.
+                          document.getElementById(id).appendChild(card);
+                      }
+                  }
                   i++;
               }
+
 
                 try {
                     applyRules(prod.node.entityId,prod.node.sku,prod.node.name,prod.node.brand.name,false);
