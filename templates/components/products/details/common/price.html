@@ -1,13 +1,23 @@
 {{#and price.price_range (if theme_settings.price_ranges '==' true)}}
     {{> components/products/details/common/price-range price=price}}
 {{else}}
-    
+
     <div class="price{{#if show_total}} w-total{{/if}} productPrice_{{id}}" id="productPrice_{{id}}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         {{#if show_total}}
             <span>{{lang 'cart.checkout.subtotal'}}:</span>
         {{/if}}
 
-        <span data-product-price-without-tax="{{price.without_tax.formatted}}">{{price.without_tax.formatted}}</span>
+        <span data-product-price-without-tax="{{price.without_tax.formatted}}" {{# if price.rrp_without_tax }}class="msrp-true"{{/if}}{{# if price.sale_price_without_tax }}class="msrp-true"{{/if}}>{{price.without_tax.formatted}}</span>
+
+        {{# if price.sale_price_without_tax }}
+        <span class="msrp-price">
+            {{price.non_sale_price_without_tax.formatted}}
+        </span>
+        {{ else if price.rrp_without_tax }}
+        <span class="msrp-price">
+            {{price.rrp_without_tax.formatted}}
+        </span>
+        {{/if}}
 
         <meta itemprop="availability" itemtype="https://schema.org/ItemAvailability" content="https://schema.org/{{#if product.pre_order}}PreOrder{{else if product.out_of_stock}}OutOfStock{{else if product.can_purchase '===' false}}OutOfStock{{else}}InStock{{/if}}">
         <meta itemprop="itemCondition" itemtype="https://schema.org/OfferItemCondition" content="https://schema.org/{{product.condition}}Condition">
