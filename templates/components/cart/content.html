@@ -65,12 +65,16 @@
                                 {{#contains name '|'}}
                                     <span>{{last (split name ' | ')}}:</span>
                                 {{else}}
+                                    {{#if name '!==' 'Choose Membership Type' }}
                                     <span>{{name}}:</span>
+                                    {{/if}}
                                 {{/contains}}
                                 {{#if is_file}}
                                     <a href="/viewfile.php?attributeId={{../id}}&cartitem={{../../id}}">{{value}}</a>
                                 {{else}}
+                                    {{#if name '!==' 'Choose Membership Type' }}
                                     <span>{{{value}}}</span>
+                                    {{/if}}
                                 {{/if}}
                             </div>
                             {{/each}}
