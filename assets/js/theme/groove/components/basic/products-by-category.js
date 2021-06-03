@@ -179,7 +179,7 @@ export default class GetProductsByCategory {
                         let added = 0;
                         for(let x = 1; x <= cardLength; x++){
                             let sort = $(cards[x - 1]).attr('data-sort');
-                            if(currentSort < sort & added == 0) {
+                            if(+currentSort < +sort && added == 0) {
                                 $(cards[x - 1]).before(card);
                                 added = 1;
                                 break;
